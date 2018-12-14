@@ -1,0 +1,40 @@
+<div class="questionBox alert" id="questionnaireBox" ng-class="[type ? 'alert-' + type : null]">
+    <div class="title">
+      <strong class="ftw-n">尊敬的宏财用户</strong>
+    </div>
+  
+    <div class="content">
+      <p class="tips text-left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该项目的风险等级为{{rankSymbol}}级，根据您的风险测评结果（{{riskTolerance}}），该风险等级的项目，累计出借金额不宜超过{{totalSymbolLimits >= 0 ? (totalSymbolLimits / 10000) + '万' : '不限'}}，请根据下表进行出借或重新进行风险测评：</p>
+      <ul class="table">
+        <li>
+          <p class="first ft-bold">项目风险等级</p>
+          <p>A</p>
+          <p>B</p>
+          <p>C</p>
+          <p>D</p>
+        </li>
+        <li>
+          <p class="first ft-bold">出借中</p>
+          <p>{{riskInvestLimits.ainvestingAmount >= 0 ? (riskInvestLimits.ainvestingAmount / 10000) + '万元' : '不限'}}</p>
+          <p>{{riskInvestLimits.binvestingAmount >= 0 ? (riskInvestLimits.binvestingAmount / 10000) + '万元' : '不限'}}</p>
+          <p>{{riskInvestLimits.cinvestingAmount >= 0 ? (riskInvestLimits.cinvestingAmount / 10000) + '万元' : '不限'}}</p>
+          <p>{{riskInvestLimits.dinvestingAmount >= 0 ? (riskInvestLimits.dinvestingAmount / 10000) + '万元' : '不限'}}</p>
+        </li>
+        <li>
+          <p class="first ft-bold">可出借</p>
+          <p>{{riskInvestLimits.remainALimits >= 0 ? (riskInvestLimits.remainALimits / 10000) + '万元' : '不限'}}</p>
+          <p>{{riskInvestLimits.remainBLimits >= 0 ? (riskInvestLimits.remainBLimits / 10000) + '万元' : '不限'}}</p>
+          <p>{{riskInvestLimits.remainCLimits >= 0 ? (riskInvestLimits.remainCLimits / 10000) + '万元' : '不限'}}</p>
+          <p>{{riskInvestLimits.remainDLimits >= 0 ? (riskInvestLimits.remainDLimits / 10000) + '万元' : '不限'}}</p>
+        </li>
+      </ul>
+      <!-- 提交按钮 -->
+      <div class="margin-b-30 col-xs-8 col-xs-offset-2">
+        <a class="reassessment-btn" ng-click="toQuestion();$hide();">重新测评</a>
+        <a class="know-btn" ng-click="$hide();">我知道了</a>  
+      </div>
+    </div>
+  </div>
+  <div class="mask_layer"></div>
+  
+  

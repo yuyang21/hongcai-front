@@ -1,0 +1,61 @@
+<!--债权转让页面-->
+<div class="right-area right-assets-height recharge col-md-8 col-lg-9 assignment_transfer">
+  <div class="currency-style">
+    <div class="title">
+      <span class="tip">债权转让</span>
+    </div>
+
+    <!--end 安全认证提示 -->
+    <div class="main user-right-h">
+      <form class="col-md-10 col-md-offset-1 bg-grey6 margin-t-20 record-w margin-l-40 padding-b-20" name="assignmentsForm">
+        <div class="col-md-6 margin-t-30 padding-l-30">
+          <div class="row text-recharge-tip">
+            <div class="col-md-3 text-left"><b>可转债权：</b></div>
+            <div class="col-md-5 padding-l-0"><span class="ft-orange2 ft-24">{{creditRightAmount || 0 | number: 2}}</span>元</div>
+          </div>
+          <div class="row text-recharge-tip">
+            <div class="col-md-3 text-left"><b>转让金额：</b></div>
+            <input name="amount" type="number" class="input-assignment fl mgn-top7" value="请输入转让金额" placeholder="请输入转让金额" id="amount" ng-model="transferAmount" />
+            <span class="span-money fl">元</span>
+          </div>
+          <div class="row ft-12 ft-red4 margin-l-90" ng-if="msg">{{msg}}</div>
+          <div class="row text-recharge-tip">
+            <div class="col-md-3 text-left"><b>折让比例：</b></div>
+            <input name="percent" type="number" class="input-assignment fl mgn-top7" value="请输入折让比例" placeholder="请输入折让比例" id="percent" ng-model="transferPercent" />
+            <span class="span-money fl">%</span>
+          </div>
+          <div class="row ft-12 ft-red4 margin-l-90 margin-b-5" ng-show="errMsg">{{errMsg}}</div>
+          <!-- <div class="row ft-12 ft-red4 margin-l-90" ng-show="assignmentsForm.percent.$error.pattern">最小折让比例为0%；最大折让比例为20%；最多输入一位小数。</div> -->
+            <div class="row ft-12 margin-l-90 position-re">受让人预计收益率为{{annualEarnings}}%<span class="ft-orange2">+{{exProfit >= 0 ? exProfit : 0 || 0 | number: 2}}%</span>
+            <a class="project_desp display-inbl cursor-pt" ng-click="showTip = !showTip" href="javascript:;" focus-blur></a>
+            <p class="pro_des_dot_tip" ng-show="showTip"><span>折让比例=（债权价值 - 转让价格）/ 债权价值，设置一定的折让比例有利于债权转出。</span></p>
+          </div>
+        </div>
+        
+        <div class="col-md-5 margin-t-15 margin-b-30">
+          <div class="col-md-12 margin-l-15 margin-t-61 margin-b-30">该笔转让预计可以回款<span class="ft-orange2 ft-16">{{(transferAmount != undefined && transferPercent != undefined ? transferAmount + profit - counterFee - ((transferAmount + profit) * transferPercent / 100) - cashCoupon * (transferAmount / creditRight.amount) : 0) || 0 | number: 2}}</span>元</div>
+          <div class="form-group col-xs-12 margin-l-15 margin-b-0">
+            <button id="transferBtn" class="btn border-half ft-16 transferBtn" ng-class="{'btn-recharge-grey': (transferAmount || transferPercent) && (msg || errMsg || showErrMsg) || assignmentsForm.percent.$error.pattern , 'btn-recharge-orange':!msg && !errMsg && !showErrMsg && !assignmentsForm.percent.$error.pattern}" ng-click="assignmentsTransfer()" ng-disabled="!transferAmount || clicked || assignmentsForm.percent.$error.pattern">确认转让</button>
+          </div>
+          <div class="col-md-12 margin-l-15 ft-red4" ng-if="showErrMsg">{{showErrMsg}}</div>
+        </div>
+      </form>
+      <div  ng-hide="securityStatus.realNameAuthStatus !== 1" class="col-md-10 col-md-offset-1 border-bd-grey margin-t-30 margin-b-10 record-w margin-l-40"></div>
+      <div class="col-md-10 col-md-offset-1 bg-yellow margin-t-20 record-w margin-l-40" ng-hide="securityStatus.realNameAuthStatus !== 1">
+        <div class="ft-14 padding-20 padding-b-20">
+          <p class="ft-red4"><i class="fa fa-tint ft-red4" style="margin-right:15px;"></i><b>温馨提示:</b></p>
+          <div class="padding-l-20">
+            <p>1. 如果您急于转出该笔债权，建议您适当增加折让比例，以吸引出借者关注；</p>
+            <p>2. 转让收入 = 债权价值 *（1 - 折让比例）- 转让手续费 - 其他扣费，其中债权价值 = 转让本金 + 当期已产生的利息；</p>
+            <p>3. 预计转让收入是以当日全额转让为前提计算的金额，实际收入以真实交易为准；</p>
+            <p>4. 手续费 = 转让本金 * 1%，单笔转让的手续费最低为3元。</p>
+            <p>5. 转让期间内如遇项目还息，您的转让项目将被暂时冻结，借款方还息操作完成后可以继续转让；</p>
+            <p>6. 转让申请成功后，你可以在“个人中心-债权转让”中查看转让详情或撤销剩余转让本金。</p>
+            <p>7. 宏财网享有债权转让相关问题的最终解释权，如有疑问欢迎拨打400-9907626。</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 text-center margin-t-10">转让即表示您已阅读并同意<a ui-sref="root.assignment-agreement" href="/assignment-agreement" class="ft-blue0">《债权转让及受让协议》</a></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,111 @@
+<!--投资人-->
+<div class="col-md-12 col-lg-12 right-area" style="margin-left:0;padding:10%;">
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ1 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ1 =! changeInvestorsQ1"></div>
+    <p class="p-click" ng-click="changeInvestorsQ1 =! changeInvestorsQ1">&nbsp;我刚刚接触宏财网，如何投资？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ1 == true">您需要注册宏财网，完成手机认证，邮箱认证，实名认证，完成充值，然后进行投资。具体可以参考新手引导的操作流程。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ2 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ2 =! changeInvestorsQ2"></div>
+    <p class="p-click" ng-click="changeInvestorsQ2 =! changeInvestorsQ2">&nbsp;如何注册为宏财网用户，登录宏财网有几种方式？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ2 == true">暂时适用用户名登录，手机号登录，激活邮箱登录。未来实现：QQ登录，微博登录等等。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ3 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ3 =! changeInvestorsQ3"></div>
+    <p class="p-click" ng-click="changeInvestorsQ3 =! changeInvestorsQ3">&nbsp;在宏财网投资，有什么投资门槛？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ3 == true">年满18周岁，具有完全民事权利能力和民事行为能力，可以在宏财网网站上进行注册、完成实名认证、绑定银行卡，成为出借人进行投资。最低投资门槛为100元人民币起投，按100元人民币整数倍递增。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ4 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ4 =! changeInvestorsQ4"></div>
+    <p class="p-click" ng-click="changeInvestorsQ4 =! changeInvestorsQ4">&nbsp;在宏财网投资确认后，是否可以取消？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ4 == true">在宏财网投资确认后，是不可以取消的。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ5 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ5 =! changeInvestorsQ5"></div>
+    <p class="p-click" ng-click="changeInvestorsQ5 =! changeInvestorsQ5">&nbsp;如果投资标的项目，未募集满，对已投资用户有什么影响？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ5 == true">1、若募集期满，但借款额度未满，宏财网会与企业协商适当延长融资期或按流标处理；对客户投资影响是，延长期限的，计息日会顺延，按流标处理的，返还本金，并向投资者按银行同期活期利率支付利息
+    <br>2、随着平台的发展与壮大，投资客户增多，项目的募集满所需时间已越来越短，经常关注宏财网站会发现，项目没有募集不满的情况，只有供不应求；
+    <br>3.倘若真的发生延长募集期仍未满额情况，宏财网将按项目流标处理或通过引入战略合作伙伴进行补足。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ6 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ6 =! changeInvestorsQ6"></div>
+    <p class="p-click" ng-click="changeInvestorsQ6 =! changeInvestorsQ6">&nbsp;在宏财网投资需要什么费用？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ6 == true">目前宏财网承诺杜绝一切隐性收费，支持开户免费、认证免费、本息保障免费，银行存管机构收取部分费用，具体收费规则：
+    <br><br>投资人（个人）：
+    <br>充值：免费；
+    <br>提现：2元/笔；
+    <br><br>借款人（个人）：
+    <br>充值：按照充值金额的0.2%收取充值费；
+    <br>提现：2元/笔；
+    <br><br>借款人（公司）：
+    <br>充值：10元/笔；
+    <br>提现：2元/笔；</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ7 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ7 =! changeInvestorsQ7"></div>
+    <p class="p-click" ng-click="changeInvestorsQ7 =! changeInvestorsQ7">&nbsp;在投资标的的时候，资金为什么会冻结？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ7 == true">在您确认投资后且借款项目还未满额时，为了确认您对该项目标的的投资、方便平台数据统计，您投出的资金将会被短暂冻结。当借款项目满额的时候，投资人的投资就会解除冻结并正式投资生效。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ8 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ8 =! changeInvestorsQ8"></div>
+    <p class="p-click" ng-click="changeInvestorsQ8 =! changeInvestorsQ8">&nbsp;什么是年化利率？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ8 == true">年化利率是指投资期限为一年时所获得的回报率。
+    <br>年化利率=（投资内收益/本金）/(投资月数/12)*100%
+    <br>年均收益=本金*年化利率
+    <br>实际收益=本金*年化利率*投资月数/12</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ9 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ9 =! changeInvestorsQ9"></div>
+    <p class="p-click" ng-click="changeInvestorsQ9 =! changeInvestorsQ9">&nbsp;投资标的的还款方式有哪些？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ9 == true">宏财网主要有三种还款方式：
+    <br>等额本息：借款人每月以相等金额还借款本息，也是银行房贷常常采用的方法。 
+    <br>利随本清：即项目标的到期后，借款人一次性归还投资人所有的本金和利息。
+    <br>按月付息到期还本：借款人每月偿还固定利息，最后一期偿还全部本金和最后一期利息。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ10 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ10 =! changeInvestorsQ10"></div>
+    <p class="p-click" ng-click="changeInvestorsQ10 =! changeInvestorsQ10">&nbsp;在宏财网投资，我如何查看借款企业的原始借款合同？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ10 == true">我公司有完善的风控制度，对每一个项目融资都保有完整的合同存档，如投资者想查看相关的原始合同，宏财网出于对合同各方保密的义务，目前只提供项目相关投资人亲自来我公司现场查阅这一途径。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ11 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ11 =! changeInvestorsQ11"></div>
+    <p class="p-click" ng-click="changeInvestorsQ11 =! changeInvestorsQ11">&nbsp;投资期间是否产生费用？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ11 == true">在投资期间没有任何费用，仅仅是在提现时由我们合作的银行存管机构收取2元一笔的提现手续费。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ12 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ12 =! changeInvestorsQ12"></div>
+    <p class="p-click" ng-click="changeInvestorsQ12 =! changeInvestorsQ12">&nbsp;在宏财网投资产品期限和收益是怎样的？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ12 == true">宏财网产品期限有1-12月不等，根据不同的借款企业借款时间的不同而不同。
+    <br>投资收益利率，投资年化利率一般在10%-14%之间，根据借款企业的借款时间以及所能够承担的借款成本，而设立借款利率，即投资人的投资回报率。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ13 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ13 =! changeInvestorsQ13"></div>
+    <p class="p-click" ng-click="changeInvestorsQ13 =! changeInvestorsQ13">&nbsp;投资标的后的计息日是什么时候开始的？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ13 == true">成功在宏财网投资某企业的借款标后，计息日为标的借款企业募集满额并且成功放款给该标的借款企业的当日。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ14 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ14 =! changeInvestorsQ14"></div>
+    <p class="p-click" ng-click="changeInvestorsQ14 =! changeInvestorsQ14">&nbsp;投资标的期满后止息日是怎么计算的？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ14 == true">投资某标的企业后，投资标的企业最后一笔还款日期，最后一天不计算利息。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ15 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ15 =! changeInvestorsQ15"></div>
+    <p class="p-click" ng-click="changeInvestorsQ15 =! changeInvestorsQ15">&nbsp;投资标的项目到期后，资金回到哪儿？可以立马提现或者再进行投资吗？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ15 == true">项目到期后，本金和利息是回到您在银行存管开立的账户中。是可以提现和再投资操作的，而且我们建议投资人在收到还款后及时地进行再次投资，确保收益的最大化。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ16 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ16 =! changeInvestorsQ16"></div>
+    <p class="p-click" ng-click="changeInvestorsQ16 =! changeInvestorsQ16">&nbsp;投资的项目未到期是否可以收回出借的本金和收益？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ16 == true">投资标的项目未到期，暂时不可以收回出借本金，出借收益的收回根据借款企业采取的哪种还款方式而决定。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ17 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ17 =! changeInvestorsQ17"></div>
+    <p class="p-click" ng-click="changeInvestorsQ17 =! changeInvestorsQ17">&nbsp;假如宏财网因为自身运营变动或者倒闭，会影响用户的投资本息收回吗？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ17 == true">宏财网的任何变动，甚至运营不善倒闭，都不会影响投资者与借款企业间的借贷关系及借款协议的执行。借款企业有义务继续按照借款协议的约定，按时偿还投资人的借款本金和利息。此外，借款协议中的承担实际担保义务的银行存管机构，仍须按协议履行应尽的担保责任。否则投资人有权依据借款合同的约定采取必要的法律手段追究借款企业及相关机构的法律责任。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeInvestorsQ18 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ18 =! changeInvestorsQ18"></div>
+    <p class="p-click" ng-click="changeInvestorsQ18 =! changeInvestorsQ18">&nbsp;我应该如何减少我的投资风险？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ18 == true">除了担保机构提供的“100%本息担保”及宏财网与合作机构的双重审核外，宏财网的平台机制同样可以起到分散风险的作用。宏财网建立在风险分散、小额多笔的理念上，通过引入国有大型担保机构再担保的模式，获得更专业的风险控制手段，通过严格准入担保机构，再次加强风险把控力度，保证投资人的本息安全。我们鼓励投资人“不把鸡蛋放在一个篮子里”，尽可能通过多笔投资分散风险。您可以通过降低每笔投资的金额来增加投资项目笔数。</p>
+  </div>
+</div>

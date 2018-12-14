@@ -1,0 +1,17 @@
+<div class="alert changeBankCardTip" ng-class="[type ? 'alert-' + type : null]">
+  <button type="button" class="close" ng-if="dismissable" ng-click="$hide()">&times;</button>
+  <div class="title">
+    <strong >温馨提示：</strong>
+  </div>
+
+  <div class="content">
+     <p ng-if="expectPayCompany == 'FUIOU'">通道正在维护，建议您选用先锋支付或者网银支付完成充值</p>
+     <p ng-if="expectPayCompany == 'UCFPAY'">通道正在维护，建议您选用富友支付或者网银支付完成充值</p>
+  </div>
+
+  <div class="bottom col-xs-10 col-xs-offset-4 margin-b-30">
+    <a class="btn dark-orange ft-white btn-block pull-left w-25" href="javascript:;" ng-click="$hide();">我知道了</a>
+  </div>
+  
+</div>
+<div class="mask_layer"></div>

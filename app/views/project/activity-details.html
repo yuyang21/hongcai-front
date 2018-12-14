@@ -1,0 +1,327 @@
+<div id="project-detail" class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-8">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <div class="hidden-xs hidden-md col-lg-5">
+                  <img src="/images/main_hongbao_red_221.png" alt="" style="width:100%;" ng-if="projectType === 2">
+                  <img src="/images/main_hao_221.png" alt="" style="width:100%;" ng-if="projectType === 3">
+                </div>
+                <div class="col-lg-7">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <h1 class="project-name">{{ project.name || '项目名称'}}</h1>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-4 border-r">
+                      <h3 class="text-center text-nowrap hc-text-red"><small>10%+</small><strong>90%</strong></h3>
+                      <h4 class="text-center text-nowrap">年均收益</h4>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 border-r">
+                      <h3 class="text-center text-nowrap" ng-if="projectType === 2">无上限</h3>
+                      <h3 class="text-center text-nowrap tuhao-mess" ng-if="projectType === 3">30万元宏包</h3>
+                      <h4 class="text-center text-nowrap">项目规模</h4>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                      <h3 class="text-center text-nowrap">3天</h3>
+                      <h4 class="text-center text-nowrap">项目期限</h4>
+                    </div>
+                  </div>
+                  <hr style="margin-top: 9px;margin-bottom: 9px;">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <h5>还款方式：到期一次性返还利息</h5>
+                    </div>
+                    <div class="col-xs-12" ng-if="projectType === 3">
+                      <h5>开始日期：2015年01月04日</h5>
+                    </div>
+                    <!-- <div class="col-xs-12">
+                        <h5>截止日期：{{ project.releaseEndTime || 0 | amDateFormat: 'YYYY年MM月DD日'}}</h5>
+                      </div> -->
+                    <div class="col-xs-12">
+                      <h5>业务类型：促销活动</h5>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="hidden-xs col-sm-12">&nbsp;</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="panel panel-default project-info" ng-init="activeTab=0;">
+            <ul class="nav nav-pills nav-justified">
+              <li ng-class="{active: activeTab===$index}" ng-repeat="tab in tabs"><a ng-click="switchTab($index)">{{tab.title}}</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane" ng-class="{active: activeTab===$index}" ng-repeat="tab in tabs">
+                <section ng-if="tab.title==='活动详情'">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <h4 class="page-header"><i class="fa fa-square hc-text-red"></i> 活动描述</h4>
+                      </div>
+                      <div class="col-xs-12">
+
+                        <p ng-if="projectType === 2">宏包标为长期投资体验活动（结束时间请关注网站公告），每个标的仅限于宏包投资。
+                          <br>宏包标固定发标时间为0:00。投标时限为24小时。
+                          <br>宏包标总投资金额不限，投资人数不限。</p>
+
+                        <p ng-if="projectType === 3">宏财网将于2015年01月04日至2015年01月10日发起土豪标投资活动。
+                          <br>土豪标投资总额为：30万元宏包。
+                          <br>土豪标投标时间：2015年01月04日 —— 募满即止（如未能募满，将于2015年01月10日23时59分59秒自动关标并计息）。
+                          <br> 投资资格：通过<a class="hc-text-red" ui-sref="root.lucky-draw">抽奖</a>所获10,000元宏包的用户。</p>
+
+                      </div>
+                      <div class="col-xs-12">
+                        <h4 class="page-header"><i class="fa fa-square hc-text-red"></i> 收益明细</h4>
+                      </div>
+                      <div class="col-xs-12">
+
+                        <p ng-if="projectType === 2">项目期限为3日。
+                          <br>投资回报率为基础利率10%+奖励利率90%。</p>
+                        <p ng-if="projectType === 3">年均收益10%+活动利率90%，项目期限为3日。</p>
+
+                      </div>
+                      <div class="col-xs-12">
+                        <h4 class="page-header"><i class="fa fa-square hc-text-red"></i> 活动规则</h4>
+                      </div>
+                      <div class="col-xs-12">
+                        <ul style="padding-left: 15px;" ng-if="projectType === 2">
+                          <li>本标的只能使用宏包投资，不得使用现金；</li>
+                          <li>宏包标活动每位投资人投资宏包总数最高为10张（<a ui-sref="root.activity-details({activityId: 25, type: 3})" class="get-rule-inline" style="color:red;">土豪标</a>、<a ui-sref="root.project-list-query({status: '6,7,8,9,10', minCycle: 0, maxCycle: 100, minEarning: 0, maxEarning: 100, minTotalAmount: 0, maxTotalAmount: 200000000, sortCondition:'release_start_time', sortType: false })" class="get-rule-inline" style="color:red;">投资项目</a> 不计算入内）;
+
+                          </li>
+                          <li>宏包为虚拟体验金，不可提现，不可转账；</li>
+                          <li>通过宏包投资所得收益为人民币，可取现或再投资；</li>
+                          <li>宏包使用规则请查看<a href="javascript:;" class="hc-text-red" ng-click="goToRule()">“宏包使用规则”</a>；</li>
+                          <li>在法律允许的范围内，宏财网拥有对本活动的解释权。</li>
+                        </ul>
+                        <ul style="padding-left: 15px;" ng-if="projectType === 3">
+                          <li>土豪标投资资格为通过<a class="hc-text-red" ui-sref="root.lucky-draw">抽奖</a>所获10,000元宏包的用户；</li>
+                          <li>宏包为虚拟体验金，不可提现，不可转账；</li>
+                          <li>通过宏包投资所得收益为人民币，可取现或再投资；</li>
+                          <li>宏包使用规则请查看<a href="javascript:;" class="hc-text-red" ng-click="goToRule()">“宏包使用规则”</a>；</li>
+                          <li>在法律允许的范围内，宏财网拥有对本活动的解释权。</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section ng-if="tab.title==='活动规则'">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <h4 class="page-header"><i class="fa fa-square hc-text-red"></i> 活动规则</h4>
+                      </div>
+                      <div class="col-xs-12">
+                        <ul>
+                          <li>本标的只能使用宏包投资，不得使用现金；</li>
+                          <li>每位投资人投资宏包总数不得超过10张（土豪标不计算入内）;</li>
+                          <li>宏包为虚拟体验金，不可提现，不可转账；</li>
+                          <li>通过宏包投资所得收益为人民币，可取现或再投资；</li>
+                          <li>宏包使用规则请查看“宏包使用规则”；</li>
+                          <li>在法律允许的范围内，宏财网拥有对本活动的解释权。</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section ng-if="tab.title==='活动历程'">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <h4 class="page-header"><i class="fa fa-square hc-text-red"></i> 项目历程</h4>
+                        <ul class="timeline">
+                          <li>
+                            <div class="timeline-badge primary"><i class="fa fa-rocket"></i>
+                            </div>
+                            <div class="timeline-panel">
+                              <div class="timeline-heading">
+                                <h4 class="timeline-title">活动上线</h4>
+                              </div>
+                              <div class="timeline-body">
+                                <p>上线时间：{{project.publishTime || 0 | amDateFormat: 'YYYY年MM月DD日'}}</p>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="timeline-inverted">
+                            <div class="timeline-badge info"><i class="fa fa-users"></i>
+                            </div>
+                            <div class="timeline-panel">
+                              <div class="timeline-heading">
+                                <h4 class="timeline-title">活动募集开始</h4>
+                              </div>
+                              <div class="timeline-body">
+                                <p>开始时间：{{project.releaseStartTime || 0 | amDateFormat: 'YYYY年MM月DD日'}}</p>
+                              </div>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="timeline-badge warning"><i class="fa fa-tree"></i>
+                            </div>
+                            <div class="timeline-panel">
+                              <div class="timeline-heading">
+                                <h4 class="timeline-title">活动募集结束</h4>
+                              </div>
+                              <div class="timeline-body">
+                                <p>结束时间：{{project.releaseEndTime || 0 | amDateFormat: 'YYYY年MM月DD日'}}</p>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="timeline-inverted">
+                            <div class="timeline-badge success"><i class="fa fa-list-ol"></i>
+                            </div>
+                            <div class="timeline-panel">
+                              <div class="timeline-heading">
+                                <h4 class="timeline-title">项目还款</h4>
+                              </div>
+                              <div class="timeline-body">
+                                <p>待还款</p>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-horizontal">
+            <div class="panel panel-default status">
+              <div class="panel-heading ft-16 padding-tAb">
+                <strong>投资状态</strong>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <strong ng-if="projectType === 2">投资类型：宏包</strong>
+                    <strong ng-if="projectType === 3">投资类型：通过抽奖所获10,000元宏包</strong>
+                  </div>
+                  <div class="col-xs-12" ng-if="isLogged">
+                    <strong ng-if="projectType === 2">可投宏包金额：{{canInvestAmount || '0'}}元</strong>
+                    <strong ng-if="projectType === 3">可投宏包金额：{{canInvestAmount | invAmountFormat}}元</strong>
+                  </div>
+                </div>
+                <div class="row" ng-if="projectType === 3">
+                  <div class="col-xs-12">
+                    <span class="pull-left">投资进度：</span>
+                    <div class="progress margin-b-0">
+                      <div class="progress-bar progress-bar-info hc-bg-red" role="progressbar" aria-valuenow="{{progress || 0}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress||0 }}%">{{progress || 0 | number : 2}}%</div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class="col-xs-12 padding-0" ng-if="!isLogged">
+                  <div class="row padding-t-0" ng-if="statSecond > 1 && project.status === 6">
+                    <div class="col-xs-12">开放投资倒计时：</div>
+                    <div class="col-xs-12 project-timer">
+                      <p>{{ statDay }}{{ statTime }}</p>
+                    </div>
+                  </div>
+                  <a ng-click="tologin()" class="btn btn-danger btn-lg btn-block">请先登录</a>
+
+                </div>
+
+                <div class="col-xs-12 padding-0" ng-if="isLogged && project.status  >= 8 && project.status <= 10">
+                    <input type='button' value="已过期" class="btn btn-danger btn-lg btn-block" disabled="disabled" />
+                </div>
+
+                <div class="row padding-t-0" ng-if="isLogged && project.status === 7">
+                  <div class="col-xs-12" ng-if="securityStatus.realNameAuthStatus + securityStatus.mobileStatus < 2">
+                    <a ui-sref="root.userCenter.security-settings" class="btn btn-danger btn-lg btn-block">请完善资料</a>
+                  </div>
+                  <div class="col-xs-12" ng-if="securityStatus.realNameAuthStatus + securityStatus.mobileStatus === 2">
+                    <form ng-submit="isAvailableInvest(project);">
+                      <div ng-if="projectType === 3">
+                        <input type="number" min="0" max="{{canInvestAmount | invAmountFormat}}" step="10000" name="project.amount" ng-model="project.amount" class="form-control margin-b-20" placeholder="投资金额（元）" required>
+                      </div>
+                      <div ng-if="projectType === 2">
+                        <input type="number" min="100" max="{{canInvestAmount}}" step="100" name="project.amount" ng-model="project.amount" class="form-control margin-b-20" placeholder="投资金额（元）" required>
+                      </div>
+                      <input type="hidden" name="project.id" ng-model="project.id" value="{{project.id}}">
+                      <button class="btn btn-danger btn-lg btn-block">立即投资</button>
+                    </form>
+                  </div>
+                </div>
+
+                <div class="row padding-t-0" ng-if="isLogged && project.status === 6">
+                  <div class="col-xs-12">开放投资倒计时：</div>
+                  <div class="col-xs-12 project-timer">
+                    <p>{{ statDay }}{{ statTime }}</p>
+                  </div>
+                </div>
+                <div class="col-xs-12" ng-if="isLogged && project.status === 6">
+                  <a href="javascript:;" class="btn btn-default btn-lg btn-block">即将开始</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="panel panel-default" ng-init="activeTabRight=0;">
+            <ul class="nav nav-pills nav-justified border-b">
+              <li ng-class="{active: activeTabRight===$index}" ng-repeat="tab_right in tabsRight"><a ng-click="switchTabRight($index)">{{tab_right.title}}</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane" ng-class="{active: activeTabRight===$index}" ng-repeat="tab_right in tabsRight">
+                <section ng-if="tab_right.title==='投资记录'">
+                  <div class="panel-body">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>成交时间</th>
+                          <th>投资人</th>
+                          <th>投标金额</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="order in orderList | startFrom:currentPage * pageSize | limitTo:pageSize">
+                          <td>{{order.createTime | date: "yy-MM-dd"}}</td>
+                          <td>{{order.userName}}</td>
+                          <td>{{order.orderAmount| number : 0}}元</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <div class="row">
+                        <div class="col-sx-12 text-center">
+                          <button class="btn btn-sm" ng-disabled="currentPage == 0" ng-click="currentPage = currentPage - 1" disabled="disabled">上一页</button>
+                          {{currentPage + 1 }} / {{numberOfPages()}} 共 {{data.length}} 条
+                          <button class="btn btn-sm" ng-disabled="currentPage >= data.length / pageSize - 1" ng-click="currentPage = currentPage + 1" disabled="disabled">下一页</button>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="alert" ng-class="[type ? 'alert-' + type : null]" ng-controller="SecuritySettingsCtrl">
+  <button type="button" class="close" ng-click="$hide(); reload();">&times;</button>
+  <div class="title">
+    <strong >开通自动投资授权：</strong>
+  </div>
+
+  <div class="content">
+    <p>自动复投需要完成易宝安全授权</p>
+  </div>
+
+  <div class="bottom col-xs-10 col-xs-offset-1">
+    <a class="btn orange-button btn-block pull-left margin-l" href="javascript:;" ng-click="openReservation(); $hide()">开通授权</a>
+  </div>
+</div>
+<div class="mask_layer"></div>

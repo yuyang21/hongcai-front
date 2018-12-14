@@ -1,0 +1,151 @@
+<style>
+  .footer-a {
+    padding-left: 24px;
+    font-size: 14px;
+    line-height: 30px;
+
+  }
+  .footer-a>a{
+    color:#c6c6c6 !important;
+    font-size: 14px !important;
+    }
+  .footer-contact-online > img {
+    float: left;
+    //height: 26px;
+    margin-right: 15px;
+  }
+  #footer .footer-up .tousu {
+    margin-left: 24px;
+    text-align: center;
+  }
+  #footer .footer-up .tousu a {
+    color: #c6c6c6;
+  }
+  #footer .footer-up .tousu a:hover {
+    color: #c6c6c6;
+  }
+</style>
+<div id="footer" ng-show="showFooter">
+  <div class="container-fluid bg-grey53 footer-up" ng-hide="selectSide == 'questionnaire' ">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-xs-6 col-sm-4">
+          <div class="col-md-12">
+            <div class="col-xs-4 text-left">
+              <div class="row footer-a ft-16"><span class="ft-white">关于我们</span></div>
+              <div class="row footer-a"><a ui-sref="root.us.platform" rel="nofollow">宏财简介</a></div>
+              <div class="row footer-a"><a ui-sref="root.us.hongcai-trends" rel="nofollow">宏财动态</a></div>
+              <div class="row footer-a"><a ui-sref="root.us.web-site-notice" rel="nofollow">网站公告</a></div>
+              <div class="row footer-a"><a ui-sref="root.us.media-reports" rel="nofollow">媒体报道</a></div>
+            </div>
+            <div class="col-xs-4 text-left">
+              <div class="row footer-a" style="font-size: 16px;"><span class="ft-white">帮助中心</span></div>
+              <div class="row footer-a"><a ui-sref="root.help-center.investors" rel="nofollow">项目介绍</a></div>
+              <div class="row footer-a"><a ui-sref="root.help-center.investment" rel="nofollow">出借相关</a></div>
+              <div class="row footer-a"><a ui-sref="root.help-center.account-management" rel="nofollow">账户管理</a></div>
+              <div class="row footer-a"><a ui-sref="root.help-center.law-and-policy-guarantee" rel="nofollow">法律保护</a></div>
+            </div>
+            <div class="col-xs-4 text-left">
+              <div class="row footer-a ft-16"><span class="ft-white">合作联系</span></div>
+              <div class="row footer-a"><a ui-sref="root.us.company-profile" rel="nofollow">加入宏财</a></div>
+              <div class="row footer-a"><a ui-sref="root.us.link-us" rel="nofollow">联系我们</a></div>
+            </div>
+          </div>
+          <div class="col-md-12 ft-c6 ft-14 tousu"><a class="ft-c6" target="_blank" href="http://www.bjp2p.com.cn/info/tousu">违法违规行为投诉</a></div>
+        </div>
+        <div class="col-xs-12 col-sm-8 ft-grey666">
+          <div class="col-xs-7 padding-l-50 border-grey6 border-t-none border-b-none">
+              <div class="row">
+                <div class="margin-l-30 col-xs-3" style="width:144px;">
+                  <div class="row download-hint margin-t-2">
+                    <div class="margin-auto" style="width:144px;height:144px;">
+                      <img class="margin-b-2 pull-right" src="images/app-qrcode.png" width="144" height="144" class="margin-l-15">
+                    </div>
+                  </div>
+                  <p><span class="ft-c6">扫一扫下载APP</span></p>
+                </div>
+                <div class="margin-l-30 col-xs-3" style="width:144px;">
+                  <div class="row download-hint margin-t-2">
+                    <div class="margin-auto" style="width:144px;height:144px;">
+                      <img class="margin-b-2 pull-right" src="images/wechat-qrcode.jpg" width="144" height="144" class="margin-l-15">
+                    </div>
+                  </div>
+                  <p><span class="ft-c6">扫一扫关注微信号</span></p>
+                </div>
+              </div>
+          </div>
+          <div class="col-xs-5 padding-l-30">
+              <div class="row margin-b-5">
+                <div class="col-xs-12 col-xs-offset-1 text-left">
+                  <p class="ft-16 ft-white">
+                    <span class="kefu_phone"></span><span>&nbsp;客服热线</span>
+                  </p>
+                  <p class="ft-20 ft-c6 margin-l-25">400-990-7626</p>
+                  <p class="ft-14 ft-c6 margin-l-25">(客服工作时间：9:00-18:00)</p><br>
+                  <p class="ft-16 ft-white margin-l-25">在线客服</p>
+                  <div class="footer-contact-online margin-l-25">
+                    <!-- <a class="feedback2" href="tencent://message/?uin=2880787006&Site=qq&Menu=yes" target="_self" title="在线客服" focus-blur></a>
+                    <ul class="qqBox2">
+                      <li class="qqBox-header ft-16 margin-b-30">
+                        <i class="fa fa-user"></i><i class="fa fa-comment-o"></i>&nbsp;&nbsp;在线客服
+                      </li>
+                      <li class="margin-b-30">
+                        <a target="_self" href="tencent://message/?uin=2880787006&Site=qq&Menu=yes">
+                            <img border="0" src="/images/qq_online.gif" alt="客服一" />&nbsp;客服一
+                          </span>
+                        </a>
+                      </li>
+                      <li class="margin-b-30">
+                        <a target="_self" href="tencent://message/?uin=2880787009&Site=qq&Menu=yes">
+                          <span>
+                            <img border="0" src="/images/qq_online.gif" alt="客服二" />&nbsp;客服二
+                          </span>
+                        </a>
+                      </li>
+                    </ul>&nbsp;&nbsp;
+                    <a class="weibo" target="_blank" href="http://weibo.com/u/5611368371" title="微博"></a>&nbsp;&nbsp; -->
+                    <a class="qr_new" title="微信" toggle-fade></a>
+                    <img src="images/wechat-qrcode.jpg" alt="" class="footer-weixin" width="172" height="172">
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid bg-white-l footer-down">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 icons">
+          <p class="text-center" id="copyright" style="color:#666666;"></p>
+        </div>
+        <div class="row col-md-4 col-xs-offset-3">
+          <table width="135" border="0" cellpadding="2" cellspacing="0" title="Click to Verify - This site chose Symantec SSL for secure e-commerce and confidential communications.">
+            <tr>
+              <td width="135" align="center" valign="top">
+                <script type="text/javascript" src="https://seal.websecurity.norton.com/getseal?host_name=www.hongcai.com&amp;size=L&amp;use_flash=NO&amp;use_transparent=NO&amp;lang=zh_cn"></script>
+                <a href="https://sealsplash.geotrust.com/splash?&dn=www.hongcai.com" target="_blank" style="color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;"  rel="nofollow"><img src="https://sealsplash.geotrust.com/images/ssl-valid-en-M.gif" class="display-bl margin-r-25" height="43px" width="110px">
+                </a>
+              </td>
+              <td>
+                <a id="_pingansec_bottomimagesmall_p2p" target="_blank" href="http://sealinfo.trustutn.org/info?sn=138170327000572766785"><img src="images/main/unity.jpg" class="display-bl margin-r-25"/></a>
+              </td>
+              <td>
+                <a target="_blank" href="https://credit.szfw.org/CX20170405033527381657.html"><img src="images/main/cert-min.png" class="display-bl margin-r-25"/></a>
+              </td>
+              <td>
+                <script src="https://kxlogo.knet.cn/seallogo.dll?sn=e17040711010767295ggzi000000&size=4"></script>
+                <a target="_blank" href="https://ss.knet.cn/verifyseal.dll?sn=e17040711010767295ggzi000000&comefrom=trust"><img src="images/main/kexin.png" height="44px"/></a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end footer -->
+<script type="text/javascript">
+  $('#copyright').html('&copy; 2014-' + new Date().getFullYear() + ' 宏财 All rights reserved &nbsp;&nbsp; 北京竞财投资服务有限公司 &nbsp;&nbsp; 京ICP备15025477号-1 &nbsp;&nbsp; 出借有风险 选择需谨慎')
+</script>

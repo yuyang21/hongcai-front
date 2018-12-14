@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="row margin-b-10">
+      <div class="col-xs-1 text-nowrap margin-r-20" style="padding: 0px; padding-top: 7px;">排　　序：</div>
+      <div class="text-nowrap">
+        <div class="col-xs-1" style="margin-top:7px;">
+          <a ui-sref="root.assignments({sortOrder:sortOrder, sortType: 1})" ng-click="toggleSort()">
+            发布时间
+            <i style="color: #e94828;" class="fa " ng-class="{'fa-angle-up': (sortType === 1 && sortOrder === true) , 'fa-angle-down': (sortType == 1 && sortOrder === false) }"></i>
+          </a>
+        </div>
+        <div class="col-xs-1 project-stl">
+          <a ui-sref="root.assignments({sortOrder:sortOrder, sortType: 2})" ng-click="toggleSort()">
+            剩余期限
+            <i style="color: #e94828;" class="fa" ng-class="{'fa-angle-up': (sortType === 2 && sortOrder === true), 'fa-angle-down': (sortType === 2 && sortOrder === false)}">
+            </i>
+          </a>
+        </div>
+        <div class="col-xs-1 project-stl">
+          <a ui-sref="root.assignments({sortOrder:sortOrder, sortType: 3})" ng-click="toggleSort()">
+            可出借金额
+            <i style="color: #e94828;" class="fa" ng-class="{'fa-angle-up': sortType === 3 && sortOrder === true , 'fa-angle-down': sortType === 3 && sortOrder === false}">
+            </i>
+          </a>
+        </div>
+        <div class="col-xs-1 project-stl">
+          <a ui-sref="root.assignments({sortOrder:sortOrder, sortType: 4})" ng-click="toggleSort()">
+            年化利率
+            <i style="color: #e94828;" class="fa" ng-class="{'fa-angle-up': (sortType === 4 && sortOrder === true), 'fa-angle-down': (sortType === 4 && sortOrder === false)}"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

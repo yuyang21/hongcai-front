@@ -1,0 +1,16 @@
+<div class="alert" ng-class="[type ? 'alert-' + type : null]">
+  <button type="button" class="close" ng-if="dismissable" ng-click="$hide()">&times;</button>
+  <div class="title">
+    <strong >温馨提示：</strong>
+  </div>
+
+  <div class="content">
+    <p>{{msg}}</p>
+  </div>
+
+  <div class="bottom col-xs-10 col-xs-offset-1">
+    <a class="btn btn-danger btn-block pull-left margin-l" ui-sref="root.userCenter.security-settings" ng-click="$hide()">立即开通</a>
+  </div>
+
+</div>
+<div class="mask_layer"></div>

@@ -1,0 +1,122 @@
+<div ui-view="project-sponsor-details" class="project-list-all bg-offWhite ng-scope">
+  <div class="container page-container sponsorInstitution bg-white">
+    <div class="row">
+      <div class="col-md-12 sponsor-description">
+        <div class="row">
+          <img class="margin-l-15" src="{{baseFileUrl + guarantee.url}}" width="90" height="30" alt="logo">
+          <!-- 数据绑定 -->
+          <label>{{guarantee.name}}</label>
+          <hr>
+        </div>
+        <div class="col-md-4" style="float:right;">
+          <div class="row">
+            <label>合作数据</label>
+          </div>
+          <hr>
+          <div class="row data">
+            <div class="col-md-4 border-r">
+              <span>{{guaranteeProjectStat.totalCount}}</span>
+              <br> 合作项目
+            </div>
+            <div class="col-md-4 border-r">
+              <span>{{guaranteeProjectStat.returningCount}}</span>
+              <br> 还款中
+            </div>
+            <div class="col-md-4">
+              <span>{{guaranteeProjectStat.retrunedCount}}</span>
+              <br> 还款完成
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row padd"><span>{{guaranteeProjectStat.totalCapital}}</span>万元合作金额</div>
+              <div class="row padd"><span>{{guaranteeProjectStat.returningCapital}}</span>万元还款中</div>
+              <div class="row padd"><span>{{guaranteeProjectStat.returnedCapital}}</span>万元还款完成</div>
+            </div>
+          </div>
+        </div>
+        <i class="fa fa-arrow-down" ng-click="changeScale()">展开</i>
+        <div class="description"> {{guarantee.description}}</div>
+      </div>
+      <!-- /.col-md-12 -->
+
+      <div class="col-md-12 margin-t-15">
+        <div class="">
+          <!-- <slick settings="slickConfig" control="slickHandle" media="media" src="views/modal/slick_slider_guarantee.html"></slick> -->
+          <div style="width:100%; background:#eee;">
+            <div class="slideshow">
+              <div class="slick-item" ng-repeat="card in files" style="width:25%;">
+                <!-- <a href="{{ card.href }}" class="grouped_elements" rel="group1">
+                  <img fancybox hc-preview-url="{{card.href}}" ng-src="{{ card.src }}" alt="" style="width:100%;height:125px;">
+                </a> -->
+                <!-- fancybox single play start -->
+                <a class="grouped_elements" rel="group1" href="javascript:;" ng-click="openFancybox()">
+                  <img style="width:100%;height:125px;" hc-preview-url="{{card.href}}" ng-src="{{baseFileUrl + card.src }}">
+                </a>
+                <div class="wrapper" fancybox style="display: none;">
+                  <div class="future_fancybox_content">
+                    <img src="{{baseFileUrl + card.href }}" />
+                  </div>
+                </div>
+                <!-- fancybox single play end-->
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 padding-l-0">
+        <div class="table-responsive">
+          <ul class="projects-list">
+            <li class="project-item bg-row-success" ng-repeat="project in projectList | startFrom:currentPage * pageSize | limitTo:pageSize" style="list-style:none;">
+              <div class="col-md-8">
+
+                <div class="row">
+                  <div class="col-md-1">
+                    <a ui-sref="root.project-details({number: project.number})" style="padding-left:15px;"><img ng-src="{{baseFileUrl + project.image}}" width="100%" />
+                    </a>
+                    <!-- <a><img ng-src="{{project.image}}" width="100%"/></a> -->
+                  </div>
+                  <div class="col-md-11">
+                    <div class="row">
+                      <div class="col-lg-12"><a ui-sref="root.project-details({number: project.number})"><strong>{{project.name}}</strong></a>
+                      </div>
+                    </div>
+                    <div class="row" style="margin-left:15px;margin-top:10px;">
+                      <div class="col-md-4">项目规模：<span>{{project.total}}</span>
+                      </div>
+                      <div class="col-md-4">年均收益：<span class="ft-red">{{project.annualEarnings}}%</span>
+                      </div>
+                      <div class="col-md-4">项目期限：<span class="">{{project.cycle}} 个月</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-md-4" style="padding:0;">
+                <div>
+                  <div class="col-lg-12" style="padding:0;">
+                    <a class="btn btn-danger btn-lg btn-block" ui-sref="root.project-details({number: project.number})">了解详情</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <ul class="pager ng-binding">
+            <li>
+              <button class="btn btn-default btn-sm" ng-disabled="currentPage == 0" ng-click="currentPage = currentPage - 1" disabled="disabled">上一页</button>
+            </li>
+            {{currentPage + 1 }} / {{numberOfPages()}} 共 {{data.length}} 条
+            <li>
+              <button class="btn btn-default btn-sm" ng-disabled="currentPage >= data.length / pageSize - 1" ng-click="currentPage = currentPage + 1" disabled="disabled">下一页</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

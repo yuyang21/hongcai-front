@@ -1,0 +1,76 @@
+<div class="container-fluid invest-verify bg-offWhite">
+  <div class="container border bg-white">
+    <div class="row list-item border-b">
+      <div class="col-xs-12"><strong>&nbsp;&nbsp;项目信息确认</strong>
+      </div>
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4">项目编号：{{project.number}}
+          </div>
+          <div class="col-xs-4"><a href="javascript:;" title="{{project.name}}">项目名称：{{project.name}}<!-- 数据绑定 --></a>
+          </div>
+          <div class="col-xs-4" ng-if="categoryCode !== '0112'"><a href="javascript:;" title="{{project.enterpriseName}}">借款企业：{{project.enterpriseName}}<!-- 数据绑定 --></a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4" ng-if="categoryCode !== '0112'"><a href="javascript:;" title="{{project.guaranteeName}}">担保机构：{{project.guaranteeName}}<!-- 数据绑定 --></a>
+          </div>
+          <div class="col-xs-4">年化利率：{{project.annualEarnings}}%
+          </div>
+          <div class="col-xs-4">还款方式：{{project.repaymentName == 1 ? '按月付息到期还本' : '按月返还等额本息'}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row list-item border-b">
+      <div class="col-xs-12"><strong>&nbsp;&nbsp;投资信息确认</strong>
+      </div>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-xs-4">投资金额：{{investAmount| number:2}}元</div>
+          <div class="col-xs-4">账户余额：{{capital.balance | number:2}}元
+          </div>
+          <div class="col-xs-4" ng-if="investAmount > capital.balance">还需金额：{{investAmount - capital.balance | number:2}}元
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row list-item border-b">
+      <div class="col-xs-12"><strong>&nbsp;&nbsp;宏包信息确认</strong>
+      </div>
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-12">您当前的投资额度为：{{investAmount| number:2}} 元，最多可以使用{{giftCount}}个宏包</div>
+          <div class="col-xs-3">宏包金额：{{selectedIcon*100}}元</div>
+          <div class="col-xs-6">
+            <p class="col-xs-4 col-lg-3">宏包数量：</p>
+            <select class="col-xs-4 col-lg-5" class="form-control" ng-init="selectedIcon = 0" ng-model="selectedIcon" ie-select-fix="icons" ng-options="icon.value as icon.label for icon in icons">
+              <option value="">请选择宏包数量</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row list-item border-b" ng-switch="investAmount - capital.balance <= 0">
+      <div class="col-xs-12" ng-switch-when="true">
+        <input type="checkbox" ng-checked="true" ng-model="$parent.checkInvFlag" />同意<a ui-sref="root.loan-security-agreement" class="loan-stl" target="_blank">《借款及担保协议》</a>
+      </div>
+    </div>
+    <div class="row list-item" ng-switch="investAmount - capital.balance <= 0">
+      <div class="col-md-12" ng-switch-when="false">
+        <div class="form-group mgn-top">您的余额不足</div>
+        <input type="button" value="充值" class="btn-primary-orange col-md-1 col-lg-1" ui-sref="root.userCenter.recharge" />
+        <input type="button" class="white-button" value="修改投资金额" ng-click="showModal()" style="margin-left:10px;">
+      </div>
+      <div class="col-md-12" ng-switch-when="true">
+        <form>
+          <div class="form-group mgn-top">
+            您将要支付<span class="ftw-b ft-red">{{investAmount | number:2}}</span>元，核实信息无误后请确认
+          </div>
+          <input type="button" value="确认" class="col-md-1 col-lg-1" ng-class="{'btn-primary-orange': checkInvFlag}" ng-disabled="!checkInvFlag" ng-click="transfer(project, investAmount, selectedIcon)" />
+          <input type="button" value="取消" class="white-button col-md-1 col-lg-1" style="margin-left:10px;" ng-click="backTo()" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

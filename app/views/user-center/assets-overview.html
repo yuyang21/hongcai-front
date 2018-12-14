@@ -1,0 +1,43 @@
+<!-- 资产总览 -->
+<div class="right-area col-md-8 col-lg-9 bg-offWhite" style="padding-bottom:50px;">
+  <div class="currency-style">
+    <div class="title">
+      <span class="tip tip2">资产总览</span>
+    </div>
+    <div class="main bg-white padding-t-50 padding-b-50">
+      <div class="col-md-6">
+        <div class="bank-bg set-position">
+          <div class="avail-balance"><span class="avail-balance1 pull-left"></span><strong class="ft-14 margin-l-20 fl">可用余额(元)</strong></div>
+          <div class="avail-money ft-red ft-30">{{account.balance | number:2}}</div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="account-right-bank">
+          <p class="margin-l-20 "><span class="coll-money"></span>待收本金： <strong class="ft-24 ft-red">{{account.waitingCapital | number:2}}</strong>元</p>
+        </div>
+        <div class="account-right-bank margin-t-40">
+          <p class="margin-l-20 "><span class="freeze-money display-inbl"></span>冻结资金： <strong class="ft-24 ft-red">{{account.freezeCapital | number:2}}</strong>元</p>
+        </div>
+        <div class="account-right-bank margin-t-40">
+          <p class="margin-l-20 "><span class="uncoll-money"></span>待收利息： <strong class="ft-24 ft-red"> {{account.waitingProfit | number:2}}</strong>元</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="currency-style border-t-none">
+    <div class="title">
+      <span class="tip">利息曲线</span>
+    </div>
+    <div class="row text-center bg-white padding-t-56 padding-b-20 ft-18">
+      <div class="tip_title">每日利息曲线图</div>
+    </div>
+    <div class="main col-md-12" style="min-height:425px;">
+      <div class="col-md-10 col-md-offset-1 text-center">
+        <canvas id="line" class="chart-line" chart-data="data"
+        chart-labels="labels" chart-options="options"
+        chart-click="onClick" height="346" width="700">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>

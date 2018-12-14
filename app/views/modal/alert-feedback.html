@@ -1,0 +1,25 @@
+<div class="alert" ng-class="[type ? 'alert-' + type : null]" id="Feedback" ng-controller="ServiceCtrl">
+  <button type="button" class="close" ng-if="dismissable" ng-click="$hide()">&times;</button>
+  <div class="title">
+    <p class=" margin-b-0">意见反馈</p>
+  </div>
+  
+  <form name="feedbackForm">
+    <div class="content">
+      <p class="tip1">尊敬的用户：为了给您更好的服务，请详细描述您的问题或建议，我们将及时跟进解决，不断优化产品！</p>
+      <textarea ng-model='user.feedbackInfo'>sdhfhhhh</textarea>
+      <p class="tip2 ft-14 text-center">请留下您的联系方式，我们将第一时间为您解决</p>
+    </div>
+
+    <div class="mobile position-re">
+      <input type="mobile" name="contactWay" placeholder="手机号(选填)" ng-model="user.contactWay">
+      <p class="text-center position-ab ft-red4 ft-12 error" ng-show="msg">{{msg}}</p>
+    </div>
+
+    <div class="bottom">
+      <button type="submit" class="btn btn-primary-orange btn-block pull-left margin-l {{user.feedbackInfo && !msg ? '':'not-alow'}}" href="javascript:;" ng-click="submitFeedback(user,$hide)" ng-disabled="!user.feedbackInfo || msg || busy">提交</button>
+    </div>
+  </form>
+  
+</div>
+<div class="mask_layer"></div>

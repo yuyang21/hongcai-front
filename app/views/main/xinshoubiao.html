@@ -1,0 +1,71 @@
+<div id="best-profit" class="panel panel-default">
+  <div class="col-md-12 bg-white main-new-w padding-0 border-t-orange border-rb-grey5">
+    <div class="col-md-2 linear-gradient padding-0 left-new-w">
+      <!-- <h3 class="ft-30 padding-l-20 margin-t-20">零存宝</h3> -->
+      <!-- <p class="ft-18 padding-l-20 margin-b-0">零钱好管家</p> -->
+      <h3 class="ft-30 padding-l-20 margin-t-20">新手标</h3>
+      <p class="ft-18 padding-l-20 margin-b-0">投资有惊喜</p>
+      <img src="/images/index/cut.png" alt="">
+      <div class="ft-16 padding-l-20 margin-t-40 padding-b-21 ft-white1">
+        <p>新手专享投资</p>
+        <p>特权加息项目</p>
+      </div>
+      <button class="ft-14 ft-white1 border-none margin-l-20 margin-t-30 cursor-pointer" ui-sref="root.guaranteepro-list-query-no" href="/guaranteepro-list">查看更多&nbsp;&gt;</button>
+      <img src="/images/index/project01.png" alt="" class="pull-right margin-r-5">
+    </div>
+    <div class="col-md-6 border-r-5 padding-b-46">
+      <div class="ft-orange margin-t-50 margin-b-30 margin-l-24">
+        <span class="ft-20 ftw-b ft-black2">{{newbieBiaoProject.name}}</span>
+        <span class="ft-orange ft-14 border-orange margin-l-10 padding-5 padding-tb-3">100元起投</span>
+        <span class="ft-orange ft-14 border-orange margin-l-10 padding-5 padding-tb-3">无投资上限</span>
+      </div>
+      <div class="col-md-7 col-md-offset-4 padding-l-0">
+        <div class="row">
+          <span class="col-md-2 ft-72 ft-orange">8</span>
+          <span class="fl ft-48 ft-red7 margin-t-25 padding-l-0 margin-r-10">+{{newbieBiaoProject.annualEarnings-8 || 0 }}</span>
+          <div class="col-md-5 ft-grey666 margin-t-35 padding-l-0">
+            <p class="ft-18 margin-b-0">%</p>
+            <p class="ft-14">年化利率</p>
+          </div>
+        </div>
+        <div class="row margin-t-10 margin-b-30">
+          <div class="col-md-12 ft-14 ft-grey1 padding-l-20">投资期限:
+            <span class="ft-orange">{{ newbieBiaoProject.projectDays || 0}} </span>天&nbsp; &nbsp;可投金额:
+            <span class="ft-orange">{{ (newbieBiaoProject.total - (newbieBiaoProject.soldStock + newbieBiaoProject.occupancyStock) * newbieBiaoProject.increaseAmount) | noFractionCurrency:"":0 || 0}} </span>
+            元
+          </div>
+        </div>
+        <div class="row margin-l-5">
+          <a class="btn btn-primary-orange ft-18 btn-ljtz" ui-sref="root.project-details({number: newbieBiaoProject.number})" ng-show="newbieBiaoProject.status === 7">立即投资&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
+          <a class="btn btn-primary-orange ft-18 btn-ljtz" ui-sref="root.project-details({number: newbieBiaoProject.number})" ng-show="newbieBiaoProject.status === 6">{{newbieBiaoProject._timeDown.hour}}:{{newbieBiaoProject._timeDown.min}}:{{newbieBiaoProject._timeDown.seconds}}&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
+          <a class="btn btn-grey-spirit2 ft-18 btn-ljtz" ui-sref="root.project-details({number: newbieBiaoProject.number})" role="button" ng-show="newbieBiaoProject.status > 7 && newbieBiaoProject.status != 11">{{projectStatusMap[newbieBiaoProject.status]}}&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 bg-grey-fd index-experience-w">
+      <div class="ft-orange margin-b-30 margin-l-40 margin-t-32">
+        <span class="ftw-b ft-20">体验金专享标</span>
+        <span class="tiyanbiao"></span>
+      </div>
+      <div class="col-md-12 margin-l-20 padding-b-40">
+        <div class="row margin-l-5">
+          <p class="ft-16 ft-black2">我出本金你赚收益</p>
+        </div>
+        <div class="row margin-t-20 margin-b-30 padding-l-5">
+          <div class="col-md-5 ft-24 ft-orange ftw-b">9.6%</div>
+          <div class="col-md-3 ft-18 ft-black2">{{(experienceInvestCount || 0  )/10000 | number:2}}万</div>
+          <div class="col-md-3 ft-18 ft-black2">1天</div>
+        </div>
+        <div class="row margin-t-10 margin-b-30 ft-14 ft-grey666 padding-l-5">
+          <div class="col-md-5">年化利率</div>
+          <div class="col-md-3">投资人数</div>
+          <div class="col-md-3">投资期限</div>
+        </div>
+        <div class="row margin-l-5">
+          <a class="btn btn-primary-orange ft-18 btn-ljtz" ui-sref="root.experience-project">立即投资&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

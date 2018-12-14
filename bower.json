@@ -1,0 +1,40 @@
+{
+  "name": "p2p-site-web",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "~1.2.0",
+    "bootstrap": "~3.3.0",
+    "angular-resource": "~1.2.0",
+    "angular-touch": "~1.2.0",
+    "ui-router": "~0.2.18",
+    "fontawesome": "~4.2.0",
+    "angular-strap": "~2.1.1",
+    "angular-moment": "~0.8.2",
+    "bower-angular-placeholders": "~0.0.2",
+    "fancybox": "^2.1.5",
+    "jquery": "^1.11.1",
+    "angular-loading-bar": "~0.6.0",
+    "angular-slick-carousel": "~2.0.2",
+    "ngSticky": "~1.7.5",
+    "angular-cookie": "~4.0.6",
+    "angularjs-toaster": "~0.4.16",
+    "angular-md5": "~0.1.7",
+    "textAngular": "~1.2.2",
+    "angular-google-analytics": "~0.0.9",
+    "angular-paginate-anything": "~3.1.1",
+    "angular-ui-slider": "~0.1.0",
+    "angular-seo": "*",
+    "angular-chart.js": "~0.8.5",
+    "angular-svg-round-progressbar": "~0.3.8",
+    "jquery.placeholder": "~0.2.4",
+    "cropper":"2.3.4",
+    "ng-file-upload": "~1.6.12",
+    "jlaydate": "0.0.1"
+  },
+  "devDependencies": {
+    "firebug-lite": "~1.5.1",
+    "angular-mocks": "~1.2.0",
+    "angular-scenario": "~1.2.0"
+  },
+  "appPath": "app"
+}

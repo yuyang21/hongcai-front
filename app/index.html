@@ -1,0 +1,389 @@
+<!doctype html>
+<html class="no-js" lang="zh-cn" xmlns:ng="http://angularjs.org" id="ng-app" ng-app="hongcaiApp">
+    <!-- 百度统计 -->
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        hm.src = _bdhmProtocol + "hm.baidu.com/hm.js?6f5c59f1c6d58e6768671fc0254d72f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <!-- 百度链接自动推送 start -->
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        bp.src = '//push.zhanzhang.baidu.com/push.js';
+        var s1 = document.getElementsByTagName("script")[0];
+        s1.parentNode.insertBefore(bp, s1);
+    })();
+    </script>
+    <!-- 百度链接自动推送 end -->
+
+    <script type="text/javascript">
+        if(!document.documentMode){
+            var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1261671116'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1261671116' type='text/javascript'%3E%3C/script%3E"));
+        }
+    </script>
+    
+  <head>
+    <meta charset="utf-8">
+    <title ng-bind="pageTitle">宏财网-值得信赖的P2P网贷平台 互联网金融平台</title>
+    <base href="/">
+    <meta name="fragment" content="!">
+    <meta name="title" content="{{pageTitle}}">
+    <meta name="keywords" content="宏财网, 互联网金融平台, P2P网贷平台">
+    <meta name="description" content="宏财网，专注于汽车金融及小微企业金融的互联网金融信息服务平台。精选优质小额分散理财项目，年化利率8%-11%">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/angular-motion/dist/angular-motion.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css" />
+    <link rel="stylesheet" href="bower_components/angularjs-toaster/toaster.css" />
+    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
+    <link rel="stylesheet" href="bower_components/cropper/dist/cropper.css" />
+    <!-- endbower -->
+    <link rel="stylesheet" href="bower_components/fancybox/source/jquery.fancybox.css" />
+    <link rel="stylesheet" href="bower_components/cropper/dist/cropper.min.css" />
+    <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.css" />
+
+    <!-- endbuild -->
+    <script src="scripts/util/fundebug.1.1.2.min.js" apikey="7528d50ad946d68775db958491a772302cf35c2da7eb225c9a5f07252a176078"></script>
+    <script src="scripts/util/modernizr.min.js"></script>
+    <script src="scripts/push.js"></script>
+
+    <!--[if lt IE 9]>
+      <script type='text/javascript'>
+        document.createElement('aboutsidebar');
+        document.createElement('helpsidebar');
+        document.createElement('slick');
+      </script>
+    <script type='text/javascript' src="scripts/util/html5shiv.min.js"></script>
+    <script type='text/javascript' src="scripts/util/respond.min.js"></script>
+    <script type='text/javascript' src="scripts/util/json3.min.js"></script>
+    <link href="views/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+    <link href="scripts/util/respond.proxy.gif" id="respond-redirect" rel="respond-redirect">
+    <script type='text/javascript' src="scripts/util/respond.proxy.js"></script>
+
+    <style>
+        .slick-prev{
+            left:0;
+        }
+        .slick-next{
+            right:0;
+        }
+        .dis-none{
+            display:none;
+        }
+    </style>
+
+    <![endif]-->
+
+    <!--[if IE 8]>
+    <style type="text/css">
+        .result {
+            top: -42%;
+        }
+        .rotate {
+            line-height: 260px;
+        }
+    </style>
+    <![endif]-->
+
+
+    <!-- build:css(.tmp) styles/main.css -->
+    <!-- online css start -->
+    <!-- online css end -->
+    <!-- 重构 css start -->
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/commonq.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/user_center.css">
+    <link rel="stylesheet" href="styles/about_help_partner.css">
+    <link rel="stylesheet" href="styles/template.css">
+    <link rel="stylesheet" href="styles/agreement.css">
+    <link rel="stylesheet" href="styles/login_and_register.css">
+    <link rel="stylesheet" href="styles/safe.css">
+    <link rel="stylesheet" href="styles/banner.css">
+    <link rel="stylesheet" href="styles/project.css">
+    <link rel="stylesheet" href="styles/order.css">
+    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="styles/load_page.css">
+    <link rel="stylesheet" href="styles/suning.css">
+    <link rel="stylesheet" href="styles/main_new.css">
+    <link rel="stylesheet" href="styles/activity.css">
+    <link rel="stylesheet" href="styles/experience-project.css">
+    <link rel="stylesheet" href="styles/invite-landing.css">
+    <link rel="stylesheet" href="styles/novice-guide.css">
+    <link rel="stylesheet" href="styles/novice-activity.css">
+    <link rel="stylesheet" href="styles/activate-landing.css">
+    <link rel="stylesheet" href="styles/dual-eleven-activities.css">
+    <link rel="stylesheet" href="styles/questionnaire.css">
+    <link rel="stylesheet" href="styles/assignments.css">
+    <link rel="stylesheet" href="styles/disclosure.css">
+
+    <!-- 重构 css end -->
+
+    <!-- endbuild -->
+    <link rel="stylesheet" href="styles/un-min/main_new.css">
+    <link rel="stylesheet" href="styles/un-min/laydate.css">
+  </head>
+  <body class="index bg-white">
+
+
+    <!-- Add your site or application content here -->
+
+    <section ui-view="header"></section>
+    <section ui-view class="bg-white8 overflow-hi" autoscroll="true"></section>
+    <section ui-view="service" class="hidden-xs hidden-sm"></section>
+    <section ui-view="footer"></section>
+
+    <toaster-container toaster-options="{
+      'limit':1,
+      'close-button': true,
+      'debug': false,
+      'position-class': 'toast-top-center',
+      'onclick': null,
+      'show-duration': '200',
+      'hide-duration': '1000',
+      'time-out': '5000',
+      'extended-timeOut': '1000',
+      'show-easing': 'swing',
+      'hide-easing': 'linear',
+      'show-method': 'fadeIn',
+      'hide-method': 'fadeOut'
+    }"></toaster-container>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
+    <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.js"></script>
+    <script src="bower_components/bower-angular-placeholders/angular-placeholders.js"></script>
+    <script src="bower_components/jquery-mousewheel/jquery.mousewheel.js"></script>
+    <script src="bower_components/fancybox/source/jquery.fancybox.pack.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/slick-carousel/slick/slick.min.js"></script>
+    <script src="bower_components/angular-slick-carousel/dist/slick.js"></script>
+    <script src="bower_components/matchmedia/matchMedia.js"></script>
+    <script src="bower_components/ngSticky/lib/sticky.js"></script>
+    <script src="bower_components/angular-cookie/angular-cookie.js"></script>
+    <script src="bower_components/angularjs-toaster/toaster.js"></script>
+    <script src="bower_components/angular-md5/angular-md5.js"></script>
+    <script src="bower_components/textAngular/dist/textAngular.min.js"></script>
+    <script src="bower_components/angular-google-analytics/dist/angular-google-analytics.min.js"></script>
+    <script src="bower_components/angular-paginate-anything/src/paginate-anything.js"></script>
+    <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+    <script src="bower_components/angular-ui-slider/src/slider.js"></script>
+    <script src="bower_components/angular-seo/angular-seo.js"></script>
+    <script src="bower_components/Chart.js/Chart.js"></script>
+    <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+    <script src="bower_components/angular-svg-round-progressbar/build/roundProgress.min.js"></script>
+    <script src="bower_components/jquery.placeholder/jquery.placeholder.js"></script>
+    <script src="bower_components/cropper/dist/cropper.js"></script>
+    <script src="bower_components/jlaydate/laydate.js"></script>
+    <!-- endbower -->
+    <script src="bower_components/fancybox/source/jquery.fancybox.js"></script>
+    <script src="bower_components/cropper/dist/cropper.min.js"></script>
+    <script src="bower_components/ng-file-upload/angular-file-upload.js"></script>
+    <!-- endbuild -->
+
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/app_run.js"></script>
+    <script src="scripts/config.js"></script>
+    <script src="scripts/controller/main/main-ctrl.js"></script>
+    <script src="scripts/controller/main/slider-ctrl.js"></script>
+    <script src="scripts/controller/main/service-ctrl.js"></script>
+    <script src="scripts/controller/main/banner-investmentplan-ctrl.js"></script>
+    <script src="scripts/controller/project/guaranteepro-list-ctrl.js"></script>
+    <script src="scripts/controller/project/investmentplan-list-ctrl.js"></script>
+    <script src="scripts/controller/project/fundsproject-list-ctrl.js"></script>
+    <script src="scripts/controller/project/appointment-project-ctrl.js"></script>
+    <script src="scripts/controller/project/project-category-ctrl.js"></script>
+    <script src="scripts/controller/project/project-activity-group-ctrl.js"></script>
+    <script src="scripts/controller/project/activity-details-ctrl.js"></script>
+    <script src="scripts/controller/activity/lucky-draw-ctrl.js"></script>
+    <script src="scripts/controller/activity/invite-landing-ctrl.js"></script>
+    <script src="scripts/controller/activity/send-money-ctrl.js"></script>
+    <script src="scripts/controller/activity/novice-activity-ctrl.js"></script>
+    <script src="scripts/controller/activity/newInvite-landing-ctrl.js"></script>
+
+    <script src="scripts/controller/project/project-details-ctrl.js"></script>
+    <script src="scripts/controller/project/investmentplan-details-ctrl.js"></script>
+    <script src="scripts/controller/project/project-sponsorInstitution-ctrl.js"></script>
+    <script src="scripts/controller/project/safe-ctrl.js"></script>
+    <script src="scripts/controller/register/register-mail-ctrl.js"></script>
+    <script src="scripts/controller/register/no-found-ctrl.js"></script>
+    <script src="scripts/controller/register/register-mobile-ctrl.js"></script>
+    <script src="scripts/controller/register/register-mobile-sanGuo-ctrl.js"></script>
+    <script src="scripts/controller/register/register-mobile-success-ctrl.js"></script>
+    <script src="scripts/controller/register/register-success-ctrl.js"></script>
+    <script src="scripts/controller/register/active-email-ctrl.js"></script>
+    <script src="scripts/controller/user-center/login-ctrl.js"></script>
+    <script src="scripts/controller/user-center/user-center-ctrl.js"></script>
+    <script src="scripts/controller/user-center/bankcard-management-ctrl.js"></script>
+    <script src="scripts/controller/user-center/security-settings-ctrl.js"></script>
+    <script src="scripts/controller/user-center/withdraw-ctrl.js"></script>
+    <script src="scripts/controller/user-center/recharge-ctrl.js"></script>
+    <script src="scripts/controller/user-center/account-overview-ctrl.js"></script>
+    <script src="scripts/controller/user-center/assets-overview-ctrl.js"></script>
+    <script src="scripts/controller/user-center/user-order-ctrl.js"></script>
+    <script src="scripts/controller/user-center/user-gift-ctrl.js"></script>
+    <script src="scripts/controller/user-center/user-deal-ctrl.js"></script>
+    <script src="scripts/controller/user-center/yeepay-success-ctrl.js"></script>
+    <script src="scripts/controller/user-center/activate-landing-ctrl.js"></script>
+    <script src="scripts/controller/user-center/questionnaire-ctrl.js"></script>
+    <script src="scripts/controller/yeepay/yeepay-ctrl.js"></script>
+    <script src="scripts/controller/order/invest-verify-ctrl.js"></script>
+    <script src="scripts/controller/order/hongbao-verify-ctrl.js"></script>
+    <script src="scripts/controller/order/invplan-verify-ctrl.js"></script>
+    <script src="scripts/controller/order/unfinishedOrder-ctrl.js"></script>
+    <script src="scripts/controller/about-us/about-us-ctrl.js"></script>
+    <script src="scripts/controller/get-pwd-back/get-pwd-back-ctrl.js"></script>
+    <script src="scripts/controller/enterprise/guarantee-list-ctrl.js"></script>
+    <script src="scripts/controller/about-us/media-report-ctrl.js"></script>
+    <script src="scripts/controller/about-us/web-site-notice-ctrl.js"></script>
+    <script src="scripts/controller/about-us/hongcai-trends-ctrl.js"></script>
+    <script src="scripts/controller/about-us/hongcai-trends-detail-ctrl.js"></script>
+
+    <script src="scripts/controller/help-center/help-center-ctrl.js"></script>
+    <script src="scripts/controller/help-center/novice-guide-ctrl.js"></script>
+
+    <script src="scripts/controller/partner/partner-ctrl.js"></script>
+    <script src="scripts/controller/main/load-page-ctrl.js"></script>
+
+    <script src="scripts/controller/main/suning-success-ctrl.js"></script>
+
+    <script src="scripts/controller/user-center/gift-overview-ctrl.js"></script>
+    <script src="scripts/controller/user-center/invite-rebate-ctrl.js"></script>
+    <script src="scripts/controller/user-center/reservation-success-ctrl.js"></script>
+    <script src="scripts/controller/user-center/message-ctrl.js"></script>
+    <script src="scripts/controller/user-center/reservation-ctrl.js"></script>
+    <script src="scripts/controller/user-center/experience-money-ctrl.js"></script>
+    <script src="scripts/controller/user-center/increase-coupon-ctrl.js"></script>
+    <script src="scripts/controller/user-center/cash-coupon-ctrl.js"></script>
+    <script src="scripts/controller/user-center/assignments-ctrl.js"></script>
+    <script src="scripts/controller/user-center/assignments-transfer-details-ctrl.js"></script>
+    <script src="scripts/controller/user-center/bank-custody-ctrl.js"></script>
+
+    <!-- 债券转让 -->
+    <script src="scripts/controller/project/experience-project-ctrl.js"></script>
+    <script src="scripts/controller/assignment/assignment-list-ctrl.js"></script>
+    <script src="scripts/controller/assignment/assignment-detail-ctrl.js"></script>
+    <script src="scripts/controller/order/credit-verify-ctrl.js"></script>
+    <script src="scripts/controller/project/credit-assignment-ctrl.js"></script>
+    <script src="scripts/controller/project/credit-success-ctrl.js"></script>
+    <script src="scripts/controller/user-center/credit-ctrl.js"></script>
+    <script src="scripts/controller/user-center/credit-security-details-ctrl.js"></script>
+    <script src="scripts/controller/user-center/credit-profit-details-ctrl.js"></script>
+    <script src="scripts/controller/user-center/credit-create-ctrl.js"></script>
+    <!-- 跳转易宝中间页 -->
+    <script src="scripts/controller/user-center/recharge-transfer-ctrl.js"></script>
+    <script src="scripts/controller/user-center/transfer-transfer-ctrl.js"></script>
+    <script src="scripts/controller/user-center/rights-transfer-ctrl.js"></script>
+    <script src="scripts/controller/user-center/withdraw-transfer-ctrl.js"></script>
+    <script src="scripts/controller/user-center/bankcard-transfer-ctrl.js"></script>
+    <script src="scripts/controller/user-center/user-order-transfer-ctrl.js"></script>
+    <script src="scripts/controller/order/invest-verify-transfer-ctrl.js"></script>
+    <script src="scripts/controller/order/invplan-verify-transfer-ctrl.js"></script>
+
+    <script src="scripts/controller/appview/app-view-ctrl.js"></script>
+
+    <script src="scripts/controller/banner/friend-link-ctrl.js"></script>
+    <script src="scripts/controller/system-update-ctrl.js"></script>
+    <script src="scripts/controller/disclosure/disclosure-ctrl.js"></script>
+    <script src="scripts/controller/user-center/postLoanManagementInfo.js"></script>
+    <script src="scripts/controller/user-center/auto-reservation-ctrl.js"></script>
+    <script src="scripts/controller/assignment-agreement-ctrl.js"></script>
+
+    <script src="scripts/service/main/main-service.js"></script>
+    <script src="scripts/service/project/project-service.js"></script>
+    <script src="scripts/service/credit/credit-service.js"></script>
+    <script src="scripts/service/register/register-service.js"></script>
+    <script src="scripts/service/user-center/user-center-service.js"></script>
+    <script src="scripts/service/user-center/session-service.js"></script>
+    <script src="scripts/service/user-center/security-setting-service.js"></script>
+    <script src="scripts/service/user-center/login-service.js"></script>
+    <script src="scripts/service/yeepay/yeepay-service.js"></script>
+    <script src="scripts/service/order/order-service.js"></script>
+    <script src="scripts/service/about-us/about-us-service.js"></script>
+    <script src="scripts/service/enterprise/guarantee-service.js"></script>
+    <script src="scripts/service/banner/friend-link-service.js"></script>
+
+    <script src="scripts/service/user-center/voucher-service.js"></script>
+
+    <script src="scripts/service/activity/activity-service.js"></script>
+
+    <script src="scripts/service/DateUtils.js"></script>
+    <script src="scripts/service/ProjectUtils.js"></script>
+    <script src="scripts/service/ShareUtils.js"></script>
+    <script src="scripts/service/PayUtils.js"></script>
+    <script src="scripts/service/cropper.js"></script>
+    <script src="scripts/service/checkPwdUtil.js"></script>
+    <script src="scripts/service/exceptionOverwrite.js"></script>
+
+
+    <script src="scripts/directives/check-password.js"></script>
+    <script src="scripts/directives/ensure-captcha.js"></script>
+    <script src="scripts/directives/ensure-unique-name.js"></script>
+    <script src="scripts/directives/ensure-unique-email.js"></script>
+    <script src="scripts/directives/ensure-unique-mobile.js"></script>
+    <script src="scripts/directives/password-match.js"></script>
+    <script src="scripts/directives/ng-focus.js"></script>
+    <script src="scripts/directives/find-account.js"></script>
+    <script src="scripts/directives/about-sidebar.js"></script>
+    <script src="scripts/directives/help-sidebar.js"></script>
+    <script src="scripts/directives/disclosure-sidebar.js"></script>
+    <script src="scripts/directives/check-invite-code.js"></script>
+    <script src="scripts/directives/check-mobile-captcha.js"></script>
+    <script src="scripts/directives/real-mix-min-length.js"></script>
+    <script src="scripts/directives/ieselectfix.js"></script>
+    <script src="scripts/directives/auto-fill-sync.js"></script>
+    <script src="scripts/directives/fancybox.js"></script>
+    <script src="scripts/directives/ng-clipboard.js"></script>
+    <script src="scripts/directives/ng-echarts.js"></script>
+    <script src="scripts/directives/toggle-fade.js"></script>
+    <script src="scripts/directives/focus-blur.js"></script>
+    <script src="scripts/directives/capcha-countdown.js"></script>
+
+    <script src="scripts/filters/startfrom.js"></script>
+    <script src="scripts/filters/menoyformat.js"></script>
+    <script src="scripts/filters/addbracket.js"></script>
+    <script src="scripts/filters/invamountformat.js"></script>
+    <script src="scripts/filters/moremillion.js"></script>
+    <script src="scripts/filters/addprezero.js"></script>
+    <script src="scripts/filters/nofractioncurrency.js"></script>
+    <script src="scripts/filters/Carousel.js"></script>
+    <script src="scripts/filters/trustHtml.js"></script>
+    <!-- endbuild -->
+
+    <script src="scripts/templates.min.js"></script>
+    <script src="scripts/filters/echarts.min.js"></script>
+    <script src="scripts/filters/jquery-qrcode.min.js"></script>
+    
+</body>
+</html>
+

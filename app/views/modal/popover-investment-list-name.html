@@ -1,0 +1,15 @@
+<div id="investment-name" ng-app class="popover">
+  <div class="arrow"></div>
+  <h5 class="popover-title" ng-if="item.order.type !== 4">投资项目: {{ item.order.projectName }}</h5>
+  <h5 class="popover-title" ng-if="item.order.type === 4">投资项目: {{ productsMap[item.fundsProject.productId].name + item.order.projectName }}</h5>
+  <div class="popover-content" style="font-size:12px;">
+    <table class="table table-hover">
+      <tbody>
+        <tr> <td>回报率：{{ item.order.projectAnnualEarnings }}%</td> </tr>
+        <!-- <tr> <td>状态：{{ item.statusText }}</td> </tr> -->
+<!--         <tr> <td ng-if="item.status <= 3">合同：<a ng-click="generateContractPDF(item.projectId, item.orderId, item.status);" href="#" >下载合同模板</a></td> </tr>
+        <tr> <td ng-if="item.status > 3 && item.status <= 6">合同：<a ng-click="generateContractPDF(item.projectId, item.orderId, item.status);" href="#">下载合同</a></td> </tr> -->
+      </tbody>
+    </table>
+  </div>
+</div>

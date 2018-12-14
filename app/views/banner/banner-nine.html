@@ -1,0 +1,67 @@
+<div style="background:white;">
+  <div class="banner-bg">
+    <img src="/images/bannerNine/banner-nine.png">
+  </div>
+  <div class="nine-bg">
+    <div class="step-area ab step-one">
+      <div class="step-area-tips">
+        <strong>第一重：优质担保机构担保</strong>
+        <p>产品推出之前，宏财网对担保机构的背景及资质进行详细调查，实地考察担保机构的经营状况，对其业绩及偿付能力进行全面分析，保证担保机构在极端情况下对可能发生的代偿顺利实施</p>
+      </div>
+    </div>
+    <div class="step-area ab step-two">
+      <div class="step-area-tips">
+        <strong>第二重：国有大型担保公司再担保</strong>
+        <p>独创再担保模式，由国有大型担保公司对优质担保公司进行再担保，对担保公司应对突发事件的能力进行安全保障</p>
+      </div>
+    </div>
+    <div class="step-area ab step-three">
+      <div class="step-area-tips">
+        <strong>第三重：严格的项目审查</strong>
+        <p>由宏财网审核团队会同专业会计师事务所和担保机构各自独立进行审核并出具审核报告，三方全部通过审核则项目立项。宏财网评审会对项目进行二次审核陈述，并投票表决，评审专家全票通过，则项目通过最终审核</p>
+      </div>
+    </div>
+    <div class="step-area ab step-four">
+      <div class="step-area-tips">
+        <strong>第四重：完善的风控流程</strong>
+        <p>经过层层风控筛选，确定宏财网特有的多重风控方案，由宏财网站自有资深律师团队起草合同，资深律所对合同进行复议，保障合同的有效性和完整性</p>
+      </div>
+    </div>
+    <div class="step-area ab step-five">
+      <div class="step-area-tips">
+        <strong>第五重：第三方支付</strong>
+        <p>由获得央行发放牌照的第三方支付机构进行账户存管，平台不设资金池，资金与平台严格分离，保障您的资金安全</p>
+      </div>
+    </div>
+    <div class="step-area ab step-six">
+      <div class="step-area-tips">
+        <strong>第六重：安全的交易系统</strong>
+        <p>专业防火墙拦截黑客攻击，国际安全机构认证系统加强防御入侵能力，加固边界安全。隐私信息经过多种技术加密处理，防止任何人获取用户信息或未经授权地不正当使用。自有团队与三方安全机构对网站实施双重防护</p>
+      </div>
+    </div>
+    <div class="step-area ab step-seven">
+      <div class="step-area-tips">
+        <strong>第七重：严谨的贷后管理</strong>
+        <p>发放贷款后，平台定期获取借款人经营与财务状况。贷后管理团队对借款人运营状况进行跟踪并定期监督。完整保存底稿交易材料、贷后资产运作情况等信息</p>
+      </div>
+    </div>
+    <div class="step-area ab step-eight">
+      <div class="step-area-tips">
+        <strong>第八重：足额风险保障金</strong>
+        <p>宏财网在三方银行设立足额风险保障金账户，与平台自有资金分离，当担保公司无法偿付时，启动风险保障金偿付机制</p>
+      </div>
+    </div>
+    <div class="step-area ab step-nine">
+      <div class="step-area-tips">
+        <strong>第九重：专业的律师团队</strong>
+        <p>来自四大、顶级律所的专业人员，依靠多年的行业经验和专业的职业素养，为您的资金保驾护航</p>
+      </div>
+    </div>
+    <div ng-if="isLogged !== true">
+      <a ui-sref="root.register" class="green-button ab">立即注册</a>
+    </div>
+    <div ng-if="isLogged === true">
+      <a ui-sref="root.project-list-query({status: '6,7,8,9,10,11,12', minCycle: 0, maxCycle: 100, minEarning: 0, maxEarning: 100, minTotalAmount: 0, maxTotalAmount: 200000000, sortCondition:'release_start_time', sortType: false })" class="green-button ab">查看投资项目</a>
+    </div>
+  </div>
+</div>

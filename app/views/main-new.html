@@ -1,0 +1,31 @@
+
+<div class="container">
+  <!-- 自身特色 -->
+  <div class="col-md-12 margin-b-30 bg-white margin-t-30 margin-l--15 main-new-w" ng-include src='"views/main/_self_feature.html"' style="border-radius: 10px;box-shadow: 0 0 13.5px 0 rgba(204, 204, 204, 0.65);"></div>
+  <!-- 最新公告 -->
+    <div class="row" id="announcement" ng-include src='"views/main/_announcement.html"'></div>
+  <div class="main">
+
+    <!-- 新手标 -->
+    <div class="row  margin-t-20" ng-include src='"views/main/xinshoubiao.html"' ng-if="false"></div>
+    <!-- 微信托 -->
+    <div class="row  margin-t-0 border-total" ng-include src='"views/main/weixintuo.html"' ng-if="false"></div>
+    <!-- 宏财精选 -->
+    <div class="row  margin-t-0 " ng-include src='"views/main/jingxuan.html"'></div>
+    <!-- new-宏金保－－》改名宏财尊贵 border-total-->
+    <div class="row  margin-t-0 " ng-include src='"views/main/jigoubao.html"'></div>
+    <!-- new-zhaiquanzhuanrang -->
+    <div class="row " ng-include src='"views/main/zhaiquanzhuanrang.html"'></div>
+    <!-- 统计数据信息 -->
+    <div class="row" ng-include></div>
+    <div class="row" ng-include></div>
+  </div>
+</div>
+<!-- new-hongcaiyanjiuyuan -->
+<div class="block__yanjiuyuan bg-white8">
+  <div class="row main" style="width: 1200px;margin:0 auto;">
+    <div class="row container-new" ng-include src='"views/main/hongcaiyanjiuyuan.html"'></div>
+  </div>
+</div>
+<!-- 合作伙伴 -->
+<div class="container-fluid index-cooperation" ng-include src='"views/main/_cooperation_agency.html"'></div>

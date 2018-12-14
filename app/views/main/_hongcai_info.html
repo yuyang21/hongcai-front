@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-xs-12 col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4><i class="fa fa-bullhorn fa-color-red"></i> 媒体报道 <small><a class="more-info-link" href="/media-reports">更多<i class="fa fa-angle-right"></i></a></small></h4>
+      </div>
+      <div class="panel-body">
+        <div class="row mediaList" ng-repeat="item in mediaList">
+          <div class="col-xs-12 col-md-12 col-lg-9"><a ui-sref="root.us.media-reports-detail({textId: item.id})" title="{{item.title}}">{{item.title}}</a>
+          </div>
+          <div class="hidden-xs hidden-md col-xs-3 text-right">{{item.createTime | date:'MM-dd'}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4><i class="fa fa-plane fa-color-red"></i> 宏财动态 <small><a class="more-info-link" href="/hongcai-trends">更多<i class="fa fa-angle-right"></i></a></small></h4>
+      </div>
+      <div class="panel-body">
+        <div class="row trendList" ng-repeat="item in trendList track by $index">
+          <div class="col-xs-12 col-md-12 col-lg-9"><a ui-sref="root.us.hongcai-trends-detail({textId: item.id})" title="{{item.title}}">{{item.title}}</a>
+          </div>
+          <div class="hidden-xs hidden-md col-xs-3 text-right">{{item.createTime | date:'MM-dd'}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4><i class="fa fa-question-circle fa-color-red"></i> 常见问题 <small><a class="more-info-link" ui-sref='root.help-center.introduce'>更多<i class="fa fa-angle-right"></i></a></small></h4>
+      </div>
+      <div class="panel-body help">
+        <div class="row">
+          <div class="col-xs-12 col-md-12 col-lg-12"><a ui-sref='root.help-center.introduce'>宏财网是做什么的网站？</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-12 col-lg-12"><a ui-sref='root.help-center.investors'>在宏财网投资需要什么费用？</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-12 col-lg-12"><a ui-sref='root.help-center.account-management'>忘记登录用户名，密码如何找回？</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-12 col-lg-12"><a ui-sref='root.help-center.account-management'>申请提现后，多久能够到银行卡？</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

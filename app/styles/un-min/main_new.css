@@ -1,0 +1,57 @@
+
+.linear-gradient{
+  background-image:linear-gradient(to bottom,#fd6f10 0%, #ff7d26 100%);
+  background:-webkit-gradient(linear, 0 0, 0 bottom, from(#fd6f10), to(#ff7d26));
+  background-image:-o-linear-gradient(to bottom,#fd6f10 0%, #ff7d26 100%);
+  background-image:-ms-linear-gradient(to bottom,#fd6f10 0%, #ff7d26 100%);
+  background-image:-moz-linear-gradient(to bottom,#fd6f10 0%, #ff7d26 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#fd6f10,endcolorstr=#ff7d26,gradientType=1);
+  color:#fff;
+}
+
+.linear-gradient button{
+    width:83px;
+    height:22px;
+    border-radius:3px;
+    background-color:#ff954e;
+    display:block;
+}
+
+.linear-gradient1{
+  background-image:linear-gradient(to bottom,#3286f0 0%,#36a4f4 100%);
+  background-image: -o-linear-gradient(to bottom,#3286f0 0%, #36a4f4 100%);
+  background-image:-ms-linear-gradient(to bottom,#3286f0 0%,#36a4f4 100%);
+  background-image:-moz-linear-gradient(to bottom,#3286f0 0%,#36a4f4 100%);
+  background:-webkit-gradient(linear, 0 0, 0 bottom, from(#3286f0), to(#36a4f4));
+  filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#3286f0,endcolorstr=#36a4f4,gradientType=1);
+  color:#fff;
+
+}
+
+.linear-gradient1 button{
+  background-color:#5db1fc;
+  color:#d5ebfd;
+}
+
+.linear-gradient2{
+  background-image:linear-gradient(to bottom,#fe624e 0%,#fd6d5a 100%);
+  color:#fff;
+}
+
+.linear-gradient2   button{
+  background-color:#fd8979;
+  color:#ffe8e5;
+}
+.linear-gradientRed {
+  background-image:linear-gradient(to bottom,#fe624e 0%,#fd6d5a 100%);
+  background-image: -o-linear-gradient(to bottom,#fe624e 0%, #fd6d5a 100%);
+  background-image:-ms-linear-gradient(to bottom,#fe624e 0%,#fd6d5a 100%);
+  background-image:-moz-linear-gradient(to bottom,#fe624e 0%,#fd6d5a 100%);
+  background:-webkit-gradient(linear, 0 0, 0 bottom, from(#fe624e), to(#fd6d5a));
+  filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#fe624e,endcolorstr=#fd6d5a,gradientType=1);
+  color:#ffe8e5 ;
+}
+.linear-gradientRed button{
+  background-color:#fd8979;
+  color:#ffe8e5;
+}

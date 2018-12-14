@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-cn" class="bg-white">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+        <title>宏财网 hongcai.com - 宏财网</title>
+        <style type="text/css">
+        	html,body{
+			    margin: 0;
+			    padding: 0;
+			    font-family: Helvetica, Tahoma, Arial, "Hiragino Sans GB", "冬青黑体", "Microsoft YaHei", "微软雅黑", "WenQuanYi Micro Hei", SimSun, "宋体", Heiti, "黑体", sans-serif;
+			    background-color: #f5f5f5;
+			    color: #5b5b5b;
+			    font-size: 14px;
+			    width: 100%;
+			}
+			h2,p{
+			    text-align: center;
+			}
+			.bg-white{
+			    background-color: white;
+			}
+			.ft-16{
+			    font-size: 16px;
+			}
+			.success-img{
+				margin: 15% auto;
+				width: 161px;
+				height: 161px;
+				background: url(/images/app-success.png);
+			}
+			.success-area{
+				width: 80%;
+				margin: 0 auto;
+				display: none;
+			}
+			.active{
+				display: block;
+			}
+			.red{
+				background-color: #e94a28;
+			}
+			.yellow{
+				background-color: #ff9400;
+			}
+			.btn{
+				width: 39%;
+				height: 50px;
+				margin: 20% 5%;
+				color: white;
+				text-align: center;
+				border-radius: 5px;
+				border: 0px solid #fff;
+				font-size: 1.3em;
+			}
+        </style>
+    </head>
+    <body class="bg-white">
+    	<div class="success-img"></div>
+    	<div id="BIND_BANK_CARD" class="success-area">
+    		<h2>提交成功</h2>
+    		<hr>
+    		<p>恭喜您，绑卡申请已成功提交！
+    		<br>银行卡审核需要1个工作日，请您耐心等待！
+    		</p>
+    		<button class="red btn" onclick="window.local.toProjectList()">浏览项目</button>
+    		<button class="yellow btn" onclick="window.local.toAsset()" >个人中心</button>
+    	</div>
+    	<div id="WITHDRAW" class="success-area">
+    		<h2>提现成功</h2>
+    		<hr>
+    		<p>恭喜您，成功提现！
+    		<br>继续在宏财投资，获得更多收益吧！
+    		</p>
+    		<button class="red btn"  onclick="window.local.closeActivity()">继续投资</button>
+    		<button class="yellow btn" onclick="window.local.toAsset()" >个人中心</button>
+    	</div>
+    	<div id="REGISTER" class="success-area">
+    		<h2>开通易宝成功</h2>
+    		<hr>
+    		<p>恭喜您，成功开通易宝资金托管账户！
+    		<br>可以开始投资啦！
+    		</p>
+    		<button class="red btn" onclick="window.local.toProjectList()">浏览项目</button>
+    		<button class="yellow btn" onclick="window.local.toAsset()" >个人中心</button>
+    	</div>
+    	<div id="RECHARGE" class="success-area">
+    		<h2>充值成功</h2>
+    		<hr>
+    		<p>恭喜您，成功充值！
+    		<br>赶快去投资吧！
+    		</p>
+    		<button class="red btn"  onclick="window.local.closeActivity()">继续投资</button>
+    		<button class="yellow btn" onclick="window.local.toAsset()" >个人中心</button>
+    	</div>
+    	<div id="TRANSFER" class="success-area">
+    		<h2>投资成功</h2>
+    		<hr>
+    		<p>恭喜您，成功投资项目！
+    		<br>继续投资，通过宏财网赚取更多回报吧！
+    		</p>
+    		<button class="red btn" onclick="window.local.toProjectList()">浏览项目</button>
+    		<button class="yellow btn" onclick="window.local.toAsset()" >个人中心</button>
+    	</div>
+    	<script type="text/javascript">
+    		var businessType = window.location.href.split('business=')[1];
+    		function show(){
+    			document.getElementById(businessType).className = 'success-area active';
+    		}
+    		window.onload = show;
+    	</script>
+    </body>
+</html>

@@ -1,0 +1,124 @@
+<!--账户总览-->
+<div class="right-area account-overview fl padding-b-30 bg-offWhite">
+  <!-- 可用余额模块 -->
+  <div class="avails-balance margin-b-30">
+    <div class="col-md-4 clearfix">
+      <div class="balance-txt fl ft-16">可用余额 :</div>
+      <div class="balance-amount fl ft-orange6 ft-30 ft-Arial">{{account.balance| number:2}}</div>
+    </div>
+    <div class="col-md-4 shortcut-key">
+      <span class="invest invest-default" ui-sref="root.guaranteepro-list-query({status: '7,8,9,10,11,12', minCycle: '0', maxCycle: '100', minEarning: '0', maxEarning: '100', minTotalAmount: '0', maxTotalAmount: 200000000, sortCondition: 'release_start_time', sortType: false, type: 5 })">出借</span>
+      <span class="recharge" ui-sref="root.userCenter.recharge">充值</span>
+      <span class="withdraw margin-r-0" ui-sref="root.userCenter.withdraw">提现</span>
+    </div>
+    <div class="col-md-4 ft-14 coupons">
+      <div class="cash-coupon margin-l-30 margin-r-30" ui-sref="root.userCenter.cash-coupon">
+          <span class="cash-icon"></span>
+          <span class="ft-grey666 cash-txt">现金券 <span class="ft-orange6 ft-Arial"> {{unUsedCashCoupon || 0}} </span>张</span>
+      </div>
+      <div class="rate-coupon" ui-sref="root.userCenter.rate-coupon">
+          <span class="rate-icon"></span>
+          <span class="ft-grey666 rate-txt">加息券 <span class="ft-orange6 ft-Arial"> {{unUsedRateCoupon || 0}} </span>张</span>
+      </div>
+    </div>
+  </div>
+  <!-- 昨日利息、累计利息、资产总额统计 -->
+  <div class="account-profit margin-b-30">
+    <div class="earnings-yesterday col-md-4 border-r-e">
+      <div class="ft-36 ft-grey1 margin-b-20 margin-t-50 ft-Arial">{{yestodayProfit || 0 | number: 2}}</div>
+      <div class="ft-14 ft-grey666">昨日利息（元） </div>
+    </div>
+    <div class="accumulated-income col-md-4 border-r-e">
+      <div class="ft-36 ft-grey1 margin-b-20 margin-t-50 ft-Arial">{{account.receivedProfit || 0 | number:2}}</div>
+      <div class="ft-14 ft-grey666">已收利息（元） </div>
+    </div>
+    <div class="total-assets col-md-4">
+      <div class="ft-36 ft-grey1 margin-b-20 margin-t-50 ft-Arial">{{account.balance + account.waitingCapital + account.waitingProfit + account.freezeCapital || 0 | number:2}}</div>
+      <div class="ft-14 ft-grey666">资产总额 ( 元 ) 
+        <div class="total-assets-tips" toggle-fade></div>
+        <div class="sidebar-tip-top">
+          <p><span class="fl margin-r-10">账户余额 ( 元 ) : </span><span class="fr">{{account.balance || 0 | number:2}}</span></p>
+          <p><span class="fl margin-r-10">待收本金 ( 元 ) : </span><span class="fr">{{account.waitingCapital + account.freezeCapital || 0 | number:2}}</span></p>
+          <p><span class="fl margin-r-10">待收利息（元） : </span><span class="fr">{{account.waitingProfit || 0 | number:2}}</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--资产利息走势图  -->
+  <div class="profit-chart margin-b-30">
+    <p class="chart-title ft-16 ft-grey666 margin-b-0">资产利息走势图</p>
+    <div class="tabs row margin-l-0 margin-r-0 position-re" ng-init = "tab = 0">
+      <div class="toggle-tab col-md-4 ft-b cursor-pointer margin-b-30 {{tab === 0 ? 'credit-toggle2' : ''}}" ng-click="tab = 0;currentYear = currentYearCopy;toReceiveTab()">已收利息</div>
+      <div class="toggle-tab col-md-4 ft-b cursor-pointer margin-b-30 {{tab === 1 ? 'credit-toggle2' : ''}}" ng-click="tab = 1;currentYear = currentYearCopy;toggleDate(2, 1)">每日
+        <div class="total-assets-tips" toggle-fade></div>
+        <div class="sidebar-tip-top">每日利息包括：投资利息、特权加息奖励、特权本金奖励及活动奖励</div>
+      </div>
+    </div>
+    <!-- 累计图 -->
+    <div class="main col-md-12" style="min-height:377px;" ng-if="tab === 0">
+       <div class="col-md-10 col-md-offset-1 text-center padding-0 ft-grey666">
+          <canvas id="line" class="chart-line display-bl margin-auto" chart-data="yearlyData"
+          chart-labels="labels" chart-options="options"
+          chart-click="onClick" chart-colours="medals_colours" data-dataset="datasets" height="346" width="700">
+          </canvas >
+          <div class="clearfix">
+            <img src="/images/user-center/pre.png" class="fl display-inbl margin-l--30 {{registerDiff > 180 && currentYear > registerYear || registerDiff <= 180 && n < xFrame ? 'cursor-pointer' : 'btn-disabled'}}" ng-click="toggleYear(0)">
+            <img src="/images/user-center/next.png" class="fr display-inbl margin-r--30 {{registerDiff > 180 && currentYear === currentYearCopy || registerDiff <= 180 && n <= 0 ? 'btn-disabled' : 'cursor-pointer'}}" ng-click="toggleYear(1)">
+          </div>
+          <p class="text-center ft-grey666 ft-14 margin-t-20"><!-- <span class="line margin-b-5"></span> -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- <span class="line margin-b-5"></span> --></p>
+       </div>
+    </div>  
+    <!-- 每日图 -->
+    <div class="main col-md-12" style="min-height:377px;" ng-if="tab === 1">
+       <div class="col-md-10 col-md-offset-1 text-center padding-0 ft-grey666">
+          <canvas id="line" class="chart-line display-bl margin-auto" chart-data="dailyData"
+          chart-labels="dailyLabels" chart-options="options"
+          chart-click="onClick" chart-colours="medals_colours" height="346" width="700">
+          </canvas >
+          <div class="clearfix">
+            <img src="/images/user-center/pre.png" class="fl display-inbl margin-l--30 {{n < xFrame && n !== -1 ? 'cursor-pointer' : 'btn-disabled'}}" ng-click="toggleDate(0)">
+            <img src="/images/user-center/next.png" class="fr display-inbl margin-r--30 {{n <= 0 ? 'btn-disabled' : 'cursor-pointer'}}" ng-click="toggleDate(1)">
+          </div>
+          <p class="text-center ft-grey666 ft-14 margin-t-20"><!-- <span class="line margin-b-5"></span> -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- <span class="line margin-b-5"></span> --></p>
+       </div>
+    </div>  
+  </div>
+  <!-- 回款日历 -->
+  <div class="return-calendar">
+    <h2 class="account-title">
+      <span class="fl c3">回款日历</span>
+    </h2>
+    <div class="profit-title">
+      <ul class="subTitle">
+        <li class="border-r-3">
+          <p>本月预计回款</p>
+          <p>{{month.anticipateAmount | number: 2}}元</p>
+        </li>
+        <li>
+          <p>本月待收回款</p>
+          <p>{{month.waitingAmount | number: 2}}元</p>
+        </li>
+      </ul>
+    </div>
+    <div class="clearfix text-center margin-auto margin-t-10">
+      <div class="f-btn-jian" ng-click="lastMonth();"></div><div class="f-riqi"><span class="f-year">{{calendar_year || '2017'}}</span>-<span class="f-month">{{calendar_month || '01'}}</span></div><div class="f-btn-jia" ng-click="nextMonth();"></div><!-- 一定不能换行-->
+    </div>
+    <div class="table-box margin-t-10">
+      <div class="f-rili-table">
+        <div class="f-rili-head celarfix">
+          <div class="f-rili-th">一</div>
+          <div class="f-rili-th">二</div>
+          <div class="f-rili-th">三</div>
+          <div class="f-rili-th">四</div>
+          <div class="f-rili-th">五</div>
+          <div class="f-rili-th">六</div>
+          <div class="f-rili-th">日</div>
+          <div class="clear"></div>
+        </div>
+        <div class="f-tbody clearfix">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

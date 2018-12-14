@@ -1,0 +1,76 @@
+<!-- start header -->
+<!-- Static navbar -->
+<div id="header" ng-show="showHeader">
+  <nav id="mini-bar" class="navbar navbar-default navbar-static-top hidden-xs" role="navigation" style="">
+    <div class="container padding-l-0">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <!--<p class="navbar-text">您好，欢迎来到宏财！<i class="fa fa-phone"></i>400-990-7626</p>-->
+          <p class="navbar-text ftw-b">
+            <span class="header_phone"></span>
+            <span class="margin-t--10">&nbsp;&nbsp;客服热线：400-990-7626</span>
+          </p>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li ng-if="isLogged === true">
+            <span>
+              <a class="ft-black" ui-sref="root.userCenter.account-overview">{{loginUser.nickName ||( loginUser.mobile || loginUser.name)}}</a>
+              <a ng-click="logout();" class="logout ft-black">退出 </a>
+              <a ui-sref="root.userCenter.account-overview" class="ft-black msg"><span class="header_money"></span> 可用余额：{{account.balance | number: 2}}元</a>
+              <a class="ft-black msg" ui-sref="root.userCenter.message({status:'0,1'})">消息(<span ng-bind="unreadCount || 0 "></span>)</a>
+            </span>
+          </li>
+          <li ng-if="isLogged !== true">
+            <a ui-sref="root.login" rel="nofollow" class="header_lg padding-r-0">请登录<i class="margin-l-15 ft-inherit">|</i></a>
+          </li>
+          <li ng-if="isLogged !== true">
+            <a ui-sref="root.register" rel="nofollow" class="header_rg padding-r-0">注册<i class="margin-l-15 ft-inherit">|</i></a>
+          </li>
+          <li ng-show="false"><a href="newbie-guide.html" target="_blank" rel="nofollow">新手引导</a>
+          </li>
+          <li><a ui-sref="root.help-center.introduce" class="help margin-r-0 padding-r-0 {{isLogged == true ? 'margin-l-15':''}}" rel="nofollow">帮助</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <nav id="major-bar" class="navbar navbar-default navbar-static-top border-b-none" role="navigation" ng-hide="isNoviceGuide">
+    <div class="container padding-l-10">
+      <ul class="nav navbar-nav">
+        <a class="navbar-brand logo-img-2 hidden-xs position-re margin-t-20 margin-b-20" href="/"></a>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right margin-t-20">
+        <li><a ui-sref="root.main" ng-class="{'toggle-navbar' : firstPath == ''}" >首页</a>
+        </li>
+        <li class="dropdown border-lr-transparent" ng-class="{'toggle-navbar' : (firstPath == 'guaranteepro-list' || firstPath == 'assignments')}"><a class=" margin-r-0">我要出借<i class="fa fa-sort-desc sortselect" aria-hidden="true"></i></a>
+          <div id="dropdown">
+           <div>
+            <a ui-sref="root.guaranteepro-list-query({status: '7,8,9,10,11,12', projectDays: '0_1000', earning: '0_100', total: '0_1000', minCycle: '0', maxCycle: '100', minEarning: '0', maxEarning: '100', minTotalAmount: '0', maxTotalAmount: 200000000, sortCondition: 'release_start_time', sortType: false, type: 5 })">宏财精选</a>
+            <a ui-sref="root.guaranteepro-list-query({status: '7,8,9,10,11,12', projectDays: '0_1000', earning: '0_100', total: '0_1000', minCycle: '0', maxCycle: '100', minEarning: '0', maxEarning: '100', minTotalAmount: '0', maxTotalAmount: 200000000, sortCondition: 'release_start_time', sortType: false, type: 6 })">宏财尊贵</a>
+            <a ui-sref="root.assignments({sortType:1,remainDays:'1_1000',annualEarnings:'0_1000',currentStocks:'0_1000000',sortOrder:false})">债权转让</a>
+           </div>
+          </div>
+        </li>
+        <li><a ui-sref="root.safe" ng-class="{'toggle-navbar': firstPath == 'safe' }" rel="nofollow" class="ft-grey1 margin-l-20">安全保障</a>
+        </li>
+        <li><a ui-sref="root.novice-guide" ng-class="{'toggle-navbar': firstPath == 'banner-partner' }" rel="nofollow" class="ft-grey1 ">新手引导</a>
+        </li>
+        <li><a ui-sref="root.us.platform" ng-class="{'toggle-navbar': firstPath == 'us' }" rel="nofollow" class="ft-grey1">关于我们</a>
+        </li>
+        <li><a ui-sref="root.disclosure.bank-disclosure" ng-class="{'toggle-navbar': firstPath == 'disclosure' }" rel="nofollow" class="ft-grey1 padding-r-35">信息披露</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+

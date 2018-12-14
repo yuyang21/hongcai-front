@@ -1,0 +1,90 @@
+<!-- 我的现金券 -->
+<div class="right-area col-md-8 col-lg-9">
+  <div class="currency-style cash-coupon positon-re">
+    <div class="title">
+      <span class="tip">现金券</span>
+    </div>
+    <div class="main padding-b-30">
+      <div class="padd">
+        <div class="margin-l-30 rule-icon" toggle-fade></div>
+        <!-- 现金券提现规则悬浮框 -->
+        <div class="rules-show">
+          <p>1、使用现金券进行出借时，根据使用条件，单笔出借金额达到规定额度即可获得相应面值的现金奖励；</p>
+          <p>2、出借成功后，现金奖励将直接发放至账户余额，可用于出借或提现；</p>
+          <p>3、单笔出借仅可使用一张现金券，且现金券不可与加息券同时使用；</p>
+          <p>4、现金券应在有效期内使用，过期作废。</p>
+        </div>
+        <div class="col-md-11 bg-grey6 padding-30 margin-l-40 margin-t-20">
+          <div class="col-xs-4">
+            <div class="fl available-cash"></div>
+            <div class="record-text">
+              <p>未使用现金券（元）</p>
+              <p class="ft-red5"><strong class="ft-24">{{unGotAmount}}</strong>.00</p>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="fl margin-l-20 used-cash1"></div>
+            <div class="record-text">
+              <p>已使用现金券（元）</p>
+              <p class="ft-red5"><strong class="ft-24">{{gotAmount}}</strong>.00</p>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="fl margin-l-30 rules"></div>
+            <div class="record-text">
+              <p class="margin-b-0 ft-blue0">现金券使用规则</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-1 row"></div>
+      </div>
+    </div>
+    <div class="main padding-t-0 padding-l-15 margin-b-80">
+      <div class="fl col-md-12 ft-14 margin-l-28 padding-l-0 margin-b-30 cash-state">
+        <div class="padding-b-5 display-inbl unused-cash margin-r-5 cursor-pt uc-bgorange {{usedStatus === '1' ? 'uc-bgorange' : 'uc-bggrey'}}" ng-click="userCashCoupons(1,pageSize,'1')">未使用</div>
+        <div class="padding-b-5 display-inbl used-cash cursor-pt {{usedStatus === '2,4' ? 'uc-bgorange' :'uc-bggrey'}}"  ng-click="userCashCoupons(1,pageSize,'2,4')">已使用</div>
+      </div>
+      <!-- 未使用现金券  -->
+      <!-- 暂无未使用现现金券 & 还没有提取过-->
+      <div class="no-cash text-center ft-16 ft-grey59" ng-show="(unGotAmount === 0 &&usedStatus === '1') || (gotAmount === 0 && usedStatus === '2,4')">
+        <img src="/images/user-center/no-cash.png">
+        <p ng-show="usedStatus === '1'">暂无可使用现金券噢~</p>
+        <p ng-show="usedStatus === '2,4'">您还没有使用过现金券</p>
+      </div>
+      <!-- 列表 -->
+      <div class="cash-coupon-list">
+        <!-- 未使用 -->
+        <div class="col-md-5 display-inbl single-coupon" ng-repeat='cashCoupon in datas | orderBy : "-value"' ng-show="usedStatus === '1' && unGotAmount > 0">
+          <div class="col-md-3 single single-l text-center display-inbl font-white ft-18">￥<span class="ft-36">{{cashCoupon.value}}</span></div>
+          <div class="col-md-9 single single-r display-inbl">
+             <p>使用范围：{{ cashCoupon.investProductType == 5 ? '宏财精选' : cashCoupon.investProductType == 6 ? '宏财尊贵' : '宏财精选、宏财尊贵'}}</p>
+             <p>使用条件：出借&ge;{{cashCoupon.minInvestAmount}}元</p>
+             <p>有效期：{{cashCoupon.createTime | date: 'yyyy.MM.dd'}}-{{cashCoupon.endTime | date: 'yyyy.MM.dd'}}</p>
+              <button class="btn-carry" ng-click="toProjectList(cashCoupon.investProductType, $index)">马上使用</button>
+          </div>
+        </div>
+        <!-- 已使用 -->
+        <div class="col-md-5 display-inbl single-coupon" ng-repeat='cashCoupon in datas' ng-show="usedStatus !== '1' && gotAmount > 0">
+          <div class="col-md-3 single single-l text-center display-inbl font-white ft-18">￥<span class="ft-36">{{cashCoupon.value}}</span></div>
+          <div class="col-md-9 single single-r display-inbl">
+             <p class="fl">出借项目：</p>
+             <span class="text-left display-inbl">{{cashCoupon.order.projectName}}</span>
+             <p>使用时间：{{cashCoupon.usedTime | date: 'yyyy-MM-dd'}}</p>
+             <!-- 已使用现标志 -->
+             <div class="fr used-icon"></div>
+          </div>
+        </div>
+
+        <ul class="pager margin-r-20" ng-hide="datas.length <= 0">
+          <li class="fr">
+            <button class="btn btn-default btn-sm" ng-disabled="currentPage >= totalPage" ng-click="userCashCoupons(currentPage+1, pageSize, usedStatus)">下一页</button>
+          </li>
+          <div class="fr height-30">&nbsp;&nbsp;{{currentPage}} / {{totalPage }} 共 {{total}} 条&nbsp;&nbsp;</div>
+          <li class="fr">
+            <button class="btn btn-default btn-sm" ng-disabled="currentPage == 1" ng-click="userCashCoupons(currentPage - 1, pageSize, usedStatus)">上一页</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

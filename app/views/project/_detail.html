@@ -1,0 +1,240 @@
+<div class="col-xs-12 padding-r-0 padding-l-0">
+    <div class="panel panel-default project-info" ng-init="toggle.activeTab=0;">
+        <ul class="clearfix nav-orange2-project margin-l--15 margin-t-10">
+            <li ng-class="{active: toggle.activeTab===$index}" ng-repeat="tab in tabs" class="pull-left"><a class="ft-16 ft-grey1" ng-click="toggle.switchTab($index)">{{tab.title}}</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane" ng-class="{active: toggle.activeTab===$index}" ng-repeat="tab in tabs">
+                <section ng-if="tab.title==='项目信息'">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h4 class="page-header ft-14 ft-grey1 ftw-b">项目简介</h4>
+                            </div>
+                            <div class="col-xs-12">
+                                <div ng-bind-html="projectInfo.description | trustHtml" class="line-h-30"></div>
+                            </div>
+                            <div class="col-xs-12">
+                                <h4 class="page-header ft-14 ft-grey1 ftw-b">借款用途</h4>
+                            </div>
+                            <div class="col-xs-12">
+                                <div ng-bind-html="projectInfo.financingPurpose | trustHtml"></div>
+                            </div>
+                            <div class="col-xs-12">
+                                <h4 class="page-header ft-14 ft-grey1 ftw-b">还款来源</h4>
+                            </div>
+                            <div class="col-xs-12">
+                                <div ng-bind-html="projectInfo.repaymentSource | trustHtml"></div>
+                            </div>
+                            <div class="col-xs-12" ng-hide="categoryCode === '0115' || categoryCode === '0119'">
+                                <h4 class="page-header ft-14 ft-grey1 ftw-b">项目评级
+                                    <span ng-if="projectRank.symbol !== ''" ng-class="{'a3' : projectRank.symbol==='AAA','a2' : projectRank.symbol==='AA','a1' : projectRank.symbol==='A','b3' : projectRank.symbol==='BBB','b2' : projectRank.symbol==='BB','b1' : projectRank.symbol==='B','c' : projectRank.symbol==='C'}" class="project-rate">&nbsp;</span>
+                                </h4>
+                            </div>
+                            <div class="col-xs-12" ng-hide="categoryCode === '0115' || categoryCode === '0119'">
+                                <p>{{projectRank.description}}</p>
+                            </div>
+                            <div class="col-xs-12" ng-show="categoryCode === '0115' || categoryCode === '0119'">
+                                <h4 class="page-header  ft-14 ft-grey1 ftw-b">还款保障措施</h4>
+                            </div>
+                            <div class="col-xs-12" ng-show="categoryCode === '0115' || categoryCode === '0119'">
+                                <div ng-bind-html="projectInfo.riskManagementInfo | trustHtml"></div>
+                            </div>
+                            <div class="col-xs-12">
+                                <h4 class="page-header ft-14 ft-grey1 ftw-b">风险评估</h4>
+                            </div>
+                            <div class="col-xs-12" ng-show="riskAssessment !== null">
+                                <div ng-bind-html="projectInfo.riskAssessment | trustHtml"></div>
+                            </div>
+                </section>
+                <section ng-if="tab.title==='企业信息'">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h4 class="page-header ft-14 ft-grey1 ftw-b">企业背景</h4>
+                            </div>
+                            <div class="col-xs-12">
+                                <p class="line-h-30">{{enterprise.background}}</p>
+                            </div>
+                            <div class="col-xs-12">
+                                <h4 class="page-header ft-14 ft-grey1 ftw-b">营业范围</h4>
+                            </div>
+                            <div class="col-xs-12">
+                                <p class="line-h-30">{{enterprise.businessScope}}</p>
+                            </div>
+                            <div class="col-xs-12">
+                                <h4 class="page-header ft-14 ft-grey1 ftw-b">经营状况</h4>
+                            </div>
+                            <div class="col-xs-12">
+                                <p class="line-h-30">{{enterprise.businessState}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section ng-if="tab.title==='风控信息'">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div ng-hide="categoryCode==='016'">
+                                <div class="col-xs-12">
+                                    <h4 class="page-header ft-14 ft-grey1 ftw-b">担保机构</h4>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="line-h-30" ng-bind-html="projectInfo.guaranteeSuggestion | trustHtml"></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <h4 class="page-header ft-14 ft-grey1 ftw-b">担保措施</h4>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="line-h-30" ng-bind-html="projectInfo.riskManagementInfo | trustHtml"></div>
+                            </div>
+                            <div class="col-xs-12" ng-show="riskControl.length > 0">
+                                <h4 class="page-header ft-14 ft-grey1 ftw-b">风控审核</h4>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="line-h-30">
+                                  <p class="margin-b-0" ng-repeat="data in riskControl"><i class="fa fa-check-circle ft-green0 margin-r-5" aria-hidden="true"></i>{{data.name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section ng-if="tab.title==='相关文件'">
+                  <div class="container-fluid">
+                    <div class="row" ng-hide="categoryCode === '0115' || categoryCode === '0119'">
+                        <div class="col-xs-12">
+                            <h4 class="page-header ft-14 ft-grey1 ftw-b">合同协议</h4>
+                        </div>
+                        <div class="col-xs-6 col-sm-4 file-padding" ng-repeat="contract in contractThumbnailFileList">
+                            <div class="thumbnail">
+                                <a class="grouped_elements" rel="group1" href="javascript:;" ng-click="openFancybox()">
+                                    <img width="175" height="125" style="height:125px;width:100%;" ng-src="{{baseFileUrl + contract.uploadFile.url}}" alt="{{contract.uploadFile.originalName.split('.')[0]}}">
+                                </a>
+                                <div class="caption">
+                                    <h5 class="file-head">{{contract.uploadFile.originalName.split('.')[0]}}</h5>
+                                </div>
+                                <div class="wrapper" fancybox style="display: none;">
+                                    <div class="future_fancybox_content">
+                                        <img ng-src="{{baseFileUrl + contractOriginalFileList[$index].uploadFile.url}}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" ng-hide="categoryCode==='0112' || categoryCode === '0115' || categoryCode === '0116' || categoryCode === '0119'">
+                        <div class="col-xs-12">
+                            <h4 class="page-header ft-14 ft-grey1 ftw-b">企业相关照片</h4>
+                        </div>
+                          <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 file-padding" ng-repeat="enterPrise in enterpriseThumbnailFileList">
+                              <div class="thumbnail">
+                                  <a class="grouped_elements" rel="group1" href="javascript:;" ng-click="openFancybox()">
+                                      <img width="175" height="125" style="height:125px;width:100%;" ng-src="{{baseFileUrl + enterPrise.uploadFile.url}}" alt="{{enterPrise.uploadFile.originalName.split('.')[0]}}">
+                                  </a>
+                                  <div class="caption">
+                                      <h5 class="file-head">{{enterPrise.uploadFile.originalName.split('.')[0]}}</h5>
+                                  </div>
+                                  <div class="wrapper" fancybox style="display: none;">
+                                      <div class="future_fancybox_content">
+                                          <img ng-src="{{baseFileUrl + enterpriseOriginalFileList[$index].uploadFile.url}}" />
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                    </div>
+                    <div class="row" ng-show="projectThumbnailFileList.length >0">
+                      <div class="col-xs-12">
+                          <h4 class="page-header ft-14 ft-grey1 ftw-b">企业文件</h4>
+                      </div>
+                      <div class="col-xs-6 col-sm-4 file-padding" ng-repeat="project in projectThumbnailFileList">
+                          <div class="thumbnail">
+                              <a class="grouped_elements" rel="group1" href="javascript:;" ng-click="openFancybox()">
+                                  <img width="175" height="125" style="height:125px;width:100%;" ng-src="{{baseFileUrl + project.uploadFile.url}}" alt="{{project.uploadFile.originalName.split('.')[0]}}">
+                              </a>
+                              <div class="caption">
+                                  <h5 class="file-head">{{project.uploadFile.originalName.split('.')[0]}}</h5>
+                              </div>
+                              <div class="wrapper" fancybox style="display: none;">
+                                  <div class="future_fancybox_content">
+                                      <img ng-src="{{baseFileUrl + projectOriginalFileList[$index].uploadFile.url}}" />
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section ng-if="tab.title==='项目历程'">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h4 class="page-header ft-14 ft-grey1 ftw-b">项目历程</h4>
+                                <ul class="timeline">
+                                    <li>
+                                        <div class="timeline-badge primary"><!-- <i class="fa fa-rocket"></i> -->
+                                        </div>
+                                        <div style="position:absolute;top:32px;left:53%;"><i class="fa fa-rocket fa-2x ft-orange"></i></div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title"><b class="ft-30">01</b>&nbsp;项目上线</h4>
+                                            </div>
+                                            <div class="timeline-body">
+                                                <p>上线时间：{{project.publishTime || 0 | amDateFormat: 'YYYY-M-D日'}}</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-inverted">
+                                        <div class="timeline-badge info"><!-- <i class="fa fa-users"></i> -->
+                                        </div>
+                                        <div style="position:absolute;top:32px;left:43%;"><i class="fa fa-users fa-2x ft-orange"></i></div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title"><b class="ft-30">02</b>&nbsp;项目募集</h4>
+                                            </div>
+                                            <div class="timeline-body">
+                                                <p>开始时间：{{project.releaseStartTime || 0 | amDateFormat: 'YYYY-M-D日'}}</p>
+                                                <p>结束时间：{{project.releaseEndTime || 0 | amDateFormat: 'YYYY-M-D日'}}</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="timeline-badge warning"><!-- <i class="fa fa-tree"></i> -->
+                                        </div>
+                                        <div style="position:absolute;top:32px;left:53%;"><i class="fa fa-tree fa-2x ft-orange"></i></div>
+
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title"><b class="ft-30">03</b>&nbsp;项目放款</h4>
+                                            </div>
+                                            <div class="timeline-body">
+                                                放款时间：<span ng-show="project.loanTime > 0">{{project.loanTime | date : "yyyy-MM-dd HH:mm:ss"}}</span>
+                                                <span ng-show="project.loanTime <= 0">未放款</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-inverted">
+                                        <div class="timeline-badge success"><!-- <i class="fa fa-list-ol"></i> -->
+                                        </div>
+                                        <div style="position:absolute;top:32px;left:43%;"><i class="fa fa-list-ol fa-2x ft-orange"></i></div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title"><b class="ft-30">04</b>&nbsp;项目还款
+                                                  <span class="ft-12" ng-hide="projectPrepayment != null && project.status == 10 && projectPrepayment.status == 1">（{{billCount}}&nbsp;/&nbsp;{{project.cycle}}期）</span>
+                                                </h4>
+                                            </div>
+                                            <div class="timeline-body">
+                                              <p>完结时间：<span ng-hide="project.status == 10">预计</span>{{projectPrepayment != null && project.status == 10 && projectPrepayment.status == 1 ? projectPrepayment.realRepaymentTime : project.repaymentDate || 0 | amDateFormat: 'YYYY-M-D日'}}</p>
+                                              <p>已还金额：{{projectInfo.projectBackTotal - (remainPrincipal + remainInterest) | number:2 }}<span ng-hide="projectPrepayment != null && project.status == 10">（{{billCount}}期）</span></p>
+                                              <p>待还金额：<span ng-hide="project.status == 10">预计</span>{{remainPrincipal + remainInterest | number:2 }}</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                </div>
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,49 @@
+<!--账户管理-->
+<div class="col-md-12 col-lg-12 right-area" style="margin-left:0;padding:10%;">
+  <div class="row">
+    <div class="help-ico {{changeAccountQ1 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeAccountQ1 =! changeAccountQ1"></div>
+    <p class="p-click" ng-click="changeAccountQ1 =! changeAccountQ1">&nbsp;注册成功后，用户名是否可以修改？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeAccountQ1 == true">注册成功后，用户名是不可以修改的哦！</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeAccountQ2 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeAccountQ2 =! changeAccountQ2"></div>
+    <p class="p-click" ng-click="changeAccountQ2 =! changeAccountQ2">&nbsp;注册时，进行手机验证，收不到短信怎么办？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeAccountQ2 == true">请确认手机是否安装短信拦截或者过滤软件；
+    <br>请确认手机是否能够正常接收短信（信号问题，欠费停机，关机等）；
+    <br>短信收发过程中可能会存在延迟，请耐心等待，短信在30分钟内均有效；
+    <br>您还可以联系客服帮助，客服电话：4009007626。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeAccountQ3 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeAccountQ3 =! changeAccountQ3"></div>
+    <p class="p-click" ng-click="changeAccountQ3 =! changeAccountQ3">&nbsp;忘记登录用户名,密码如何找回？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeAccountQ3 == true">您可以在登录页面处点击“找回密码”按钮，然后在弹出窗口内填写注册时的手机号或绑定的电子邮箱，并点击获取验证码。在收到短信或邮件后，请将验证码填写至相应位置，或点击邮件中的重新设置密码链接，设置新的登录密码。这样就可以用新的密码登录宏财网平台了</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeAccountQ4 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeAccountQ4 =! changeAccountQ4"></div>
+    <p class="p-click" ng-click="changeAccountQ4 =! changeAccountQ4">&nbsp;通过邮箱找回登录密码时，收不到邮件怎么办？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeAccountQ4 == true">首先检查邮箱绑定是否正确，其次可能是系统延迟收发的影响，也有可能是被邮箱拦截过滤掉了，可以在垃圾邮箱中寻找。如果没有请联系客服，客服电话：4009907626</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeAccountQ5 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeAccountQ5 =! changeAccountQ5"></div>
+    <p class="p-click" ng-click="changeAccountQ5 =! changeAccountQ5">&nbsp;为什么充值不成功？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeAccountQ5 == true">首先确定是否开通网上银行等功能。
+    <br>可能存在充值超过限额：（充值限额，是银行，第三方支付平台，和用户您自己设定的支付限额决定的，取三者最小值）</p>
+  </div>  
+  <div class="row">
+    <div class="help-ico {{changeAccountQ6 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeAccountQ6 =! changeAccountQ6"></div>
+    <p class="p-click" ng-click="changeAccountQ6 =! changeAccountQ6">&nbsp;提现手续费是多少？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeAccountQ6 == true">目前提现手续费是三方支付机构收取，按2元每笔进行收费。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeAccountQ7 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeAccountQ7 =! changeAccountQ7"></div>
+    <p class="p-click" ng-click="changeAccountQ7 =! changeAccountQ7">&nbsp;申请提现后，多久能够到银行卡？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeAccountQ7 == true">三方支付平台收到用户提现申请即对提现进行转账操作，由于不同银行处理速度不同，提现资金将会当天或下个工作日到账（如遇双休日或法定节假日顺延）。如果用户迟迟未收到提现资金，可能为银行卡信息填写有误，银行做正在退票操作，预计会在7个工作日内完成退票，请用户耐心等候。用户还可以联系客服（400-990-7626），寻求帮助。</p>
+  </div>
+  <div class="row">
+    <div class="help-ico {{changeAccountQ8 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeAccountQ8 =! changeAccountQ8"></div>
+    <p class="p-click" ng-click="changeAccountQ8 =! changeAccountQ8">&nbsp;提现不成功的几种情况？</p>
+    <p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeAccountQ8 == true">银行账号/户名错误，或者是账号与户名不符；银行账户冻结或者正在办理挂失；
+    <br>银行卡开户行信息错误；由于信息校验不正确而导致的提现失败，
+    <br>如果遇到提现不成功，请不要着急，我们在收到支付机构转账失败通知后解除您的资金冻结，请您不必担心资金安全。</p>
+  </div>
+</div>

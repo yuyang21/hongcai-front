@@ -1,0 +1,58 @@
+<div class="lucky-draw">
+  <div class="main">
+    <div class="change-area get-bg" ng-show="status === 0">
+      <a class="get-lucky ab" ng-click="luckyDraw();"></a>
+      <div class="right-bg ab"></div>
+    </div>
+    <div class="change-area hongbao-bg" ng-show="status === 1">
+      <p class="p-red ab">建议立即使用，宏包可用于以下内容</p>
+      <p class="p-grey ab">*使用期限：自抽取之日起三个月以内</p>
+      <a ui-sref="root.activity-details({activityId:hongYunProject.id,type:hongYunProject.type})" class="a-red-button ab hongBao"></a>
+      <a ui-sref="root.project-list-query({status: '6,7,8,9,10', minCycle: 0, maxCycle: 100, minEarning: 0, maxEarning: 100, minTotalAmount: 0, maxTotalAmount: 200000000, sortCondition:'release_start_time', sortType: false })" class="a-red-button ab liCai"></a>
+    </div>
+    <div class="change-area tuhao-bg" ng-show="status === 2">
+      <p class="p-red ab">建议立即使用，宏包可用于以下内容</p>
+      <p class="p-grey ab">*使用期限：自抽取之日起三个月以内</p>
+      <a ui-sref="root.activity-details({activityId:tuhaoProject.id,type:tuhaoProject.type})" class="a-red-button ab tuHao"></a>
+      <!-- <a ui-sref="root.project-list-query({status: '6,7,8,9,10', minCycle: 0, maxCycle: 100, minEarning: 0, maxEarning: 100, minTotalAmount: 0, maxTotalAmount: 200000000, sortCondition:'release_start_time', sortType: false })" class="a-red-button ab liCai"></a> -->
+    </div>
+    <div class="share-area ab">
+      <p>分享给好友：</p>
+      <div class="jiathis_style_32x32">
+        <a class="jiathis_button_qzone"></a>
+        <a class="jiathis_button_tsina"></a>
+        <a class="jiathis_button_tqq"></a>
+        <a class="jiathis_button_renren"></a>
+      </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1407332092939656" charset="utf-8"></script>
+    </div>
+    <div class="winners ab">
+      <strong class="winners-tit">最新中奖名单：</strong>
+      <div id="gongao"> 
+        <div style="width:620px;height:30px;margin:0 auto;white-space: nowrap;overflow:hidden;" id="scroll_div" class="scroll_div"> 
+          <div id="scroll_begin"> 
+            <span ng-repeat="winner in lotteryRecords">
+              恭喜<strong>{{winner.userName}}</strong>抽中<strong ng-if="winner.prizeLevel===0">10000</strong><strong ng-if="winner.prizeLevel===1">100</strong>元宏包！
+            </span>
+          </div> 
+          <div id="scroll_end"></div> 
+        </div> 
+      </div>
+    </div>
+    <div class="tips-area ab">
+      <p>抽奖活动时间：2014年12月29日至2015年01月03日</p>
+      <p>参与对象：宏财网注册用户</p>
+      <p>每个用户每天仅能抽取1次，每日0:00后可以再次抽取</p>
+      <p>获得10,000元宏包的用户推荐投入 <a ui-sref="root.activity-details({activityId:tuhaoProject.id,type:tuhaoProject.type})" class="get-rule-inline">土豪标</a>；获得100元宏包的<br>用户推荐投资 <a ui-sref="root.project-list-query({status: '6,7,8,9,10', minCycle: 0, maxCycle: 100, minEarning: 0, maxEarning: 100, minTotalAmount: 0, maxTotalAmount: 200000000, sortCondition:'release_start_time', sortType: false })" class="get-rule-inline">投资项目</a></p>
+      <br>
+      <p>宏包不可转赠他人使用，且不能与其他优惠同享</p>
+      <p>10,000元宏包中奖概率为1%</p>
+      <p>10,000元宏包共30名中奖用户，100元宏包在活动期限内不限数量</p>
+      <p>宏包为虚拟体验金，不可提现，不可转账 。</p>
+      <p>宏包使用规则请查看“<a href="javascript:;" class="get-rule-inline" ng-click="goToRule()">宏包使用规则</a>”</p>
+      <p>在法律允许的范围内，宏财网拥有对本活动的解释权</p>
+
+      <a ui-sref="root.activity-details({activityId:tuhaoProject.id,type:tuhaoProject.type})" class="get-rule ab">&nbsp;</a>
+    </div>
+  </div>
+</div>

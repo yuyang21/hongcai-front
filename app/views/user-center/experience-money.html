@@ -1,0 +1,50 @@
+<!--体验金-->
+<div class="uc-experience right-area bg-offWhite fl border-l border-r">
+  <!-- 数据统计 -->
+  <div class="data-statistics row padding-t-50">
+    <div class="col-md-6 border-r-e padding-tb-10">
+      <p class="ft-36 ft-grey1 ft-Arial">{{privilegedCapital.amount || 0 | number : 2}}</p>
+      <p class="ft-grey666 margin-t-20">特权本金金额（ 元 ）</p>
+    </div>
+    <div class="col-md-6 padding-tb-10">
+      <p class="ft-36 ft-orange6 ft-Arial">{{privilegedCapital.profit || 0 | number : 2}}</p>
+      <p class="ft-grey666 margin-t-20">累计赚取奖励（元）</p>
+    </div>
+  </div>
+
+  <div class="margin-t-30">
+    <table class="table-solid">
+      <thead>
+        <tr>
+          <th class="padding-t-15">金额（元）</th>
+          <th class="width-2p padding-t-15">年化利率(％)</th>
+          <th class="padding-t-15">到账时间</th>
+          <th class="padding-t-15">来源</th>
+          <th class="padding-t-15">有效期</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-show="datas.length <= 0">
+          <td colspan="7" class="line-h-0 padding-t-50 padding-b-30">
+            <div>
+              <p class="ft-18 ft-grey666">暂无记录</p>
+            </div>
+          </td>
+        </tr>
+        <tr ng-show="datas.length > 0" ng-repeat="data in datas" class="assignment-left">
+          <td class="text-center">{{data.amount - data.settleInvestAmount | number : 0}}</td>
+          <td>{{8 | number:1}}%</td>
+          <td>{{data.createTime | date: 'yyyy-MM-dd'}}</td>
+          <td>{{data.description}}</td>
+          <td>{{data.dueTime | date: 'yyyy-MM-dd'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>  
+  <ul class="pager padding-30 margin-t-0 ft-14 ft-white4" ng-if="datas.length > 0">
+    <li class="display-inbl"><button class="btn btn-orange6 {{currentPage == 1 ? 'btn-disabled6' : ''}}" ng-disabled="currentPage == 1" ng-click="loadDetails(currentPage-1, pageSize)">上一页</button></li>
+    <div class="display-inbl current-page">&nbsp;&nbsp;{{ currentPage }}&nbsp;&nbsp;</div><div class="dot">...</div>
+    <div class="display-inbl total-page">&nbsp;&nbsp;{{ numberOfPages }}&nbsp;&nbsp;</div>
+    <li class="display-inbl"><button class="btn btn-orange6 {{currentPage >= numberOfPages ? 'btn-disabled6' : ''}}" ng-disabled="currentPage >= numberOfPages " ng-click="loadDetails(currentPage+1, pageSize)">下一页</button></li>
+  </ul>
+</div>

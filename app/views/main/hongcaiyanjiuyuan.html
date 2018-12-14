@@ -1,0 +1,67 @@
+<div class="container container-new">
+  <div class="news__wrapper">
+    <div class="news__item">
+      <div class="block__head ft-16 ft-grey1">宏财动态<a class="more-info-link cursor-pointer" ui-sref="root.us.hongcai-trends" href="/us/hongcai-trends">更多></a></div>
+      <div class="news__media">
+        <div class="news__img news__img1"></div>
+        <div class="news__list">
+          <p ng-repeat="item in searchList">
+            <a ng-if="item.title.length < 30" ui-sref="root.us.hongcai-trends-detail({textId: item.id})" target="_blank" title="{{item.title}}">{{item.title}}</a>
+            <a ng-if="item.title.length >= 30" ui-sref="root.us.hongcai-trends-detail({textId: item.id})" target="_blank" title="{{item.title}}">{{item.title | limitTo:30 }}...</a>
+            <span>{{item.createTime | date: 'yyyy-MM-dd'}}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="news__item margin-t-20">
+      <div class="block__head ft-16 ft-grey1">媒体报道<a class="more-info-link cursor-pointer" ui-sref="root.us.media-reports" href="/us/media-reports">更多></a></div>
+      <div class="news__media">
+        <div class="news__img news__img2"></div>
+        <div class="news__list">
+          <p ng-repeat="item in mediaList">
+            <a ng-if="item.title.length < 30" ui-sref="root.us.media-reports-detail({textId: item.id})" target="_blank" title="{{item.title}}">{{item.title}}</a>
+            <a ng-if="item.title.length >= 30" ui-sref="root.us.media-reports-detail({textId: item.id})" target="_blank" title="{{item.title}}">{{item.title | limitTo:30 }}...</a>
+           <span>{{item.createTime | date: 'yyyy-MM-dd'}}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rand__wrapper">
+    <div class="block__head ft-16 ft-grey1">30天出借排行榜</div>
+    <div class="rand__outer">
+      <table>
+        <thead>
+          <tr>
+            <td>排名</td>
+            <td>用户名</td>
+            <td>出借金额(元)</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rand__span_top">1</span></td>
+            <td>{{monthInvestList[0].name || '无名'}}</td>
+            <td>{{monthInvestList[0].totalAmount | number:2}}</td>
+          </tr>
+          <tr>
+            <td><span class="rand__span_top">2</span></td>
+            <td>{{monthInvestList[1].name || '无名'}}</td>
+            <td>{{monthInvestList[1].totalAmount | number:2}}</td>
+          </tr>
+          <tr>
+            <td><span class="rand__span_top">3</span></td>
+            <td>{{monthInvestList[2].name || '无名'}}</td>
+            <td>{{monthInvestList[2].totalAmount | number:2}}</td>
+          </tr>
+
+          <tr ng-repeat="item in monthInvestList.slice(3) | limitTo:5">
+            <td><span class="rand__span_default">{{$index + 4}}</span></td>
+            <td>{{item.name || '无名'}}</td>
+            <td>{{item.totalAmount | number:2}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

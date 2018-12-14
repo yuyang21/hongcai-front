@@ -1,0 +1,77 @@
+<!--提现-->
+<div class="right-area withdraw col-md-8 col-lg-9">
+  <div class="currency-style">
+    <div class="title">
+      <span class="tip text-center" ng-click="showTransferDetail();">提现</span>
+    </div>
+
+    <div class="main user-right-h" ng-show="securityStatus.realNameAuthStatus === 1">
+      <form class="col-md-10 col-md-offset-1 bg-grey6 margin-t-20 record-w margin-l-40" name="withdrawForm" >
+        <p class="verify-tip col-md-9 col-md-offset-2 margin-t-20" ng-show="cardStatus === 'VERIFY_NOT' || cardStatus === 'FAILED'">提现需要绑定提现银行卡，请您前往<a ui-sref="root.userCenter.bankcard-management">【银行卡管理】</a>完成绑卡操作</p>
+        <p class="verify-tip col-md-9 col-md-offset-2" ng-show="cardStatus === 'VERIFYING'">您的提现银行卡正在认证中，暂时无法进行提现操作，请耐心等待</p>
+        <div ng-show="cardStatus === 'VERIFIED'">
+          <div class="row padding-t-10">
+            <div class="margin-b-15 mgn-top text-recharge-tip">
+              <div class="col-md-2 text-right"><b>可提余额：</b></div>
+              <div class="col-md-5 text-left"><span class="ft-red4 ft-24">{{ availableCashRealNo || "0" | number:2}}</span>&nbsp;&nbsp;元</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="margin-b-15">
+              <div class="col-md-2 text-right text-recharge-tip"><b>提现金额：</b></div>
+              <input name="amount" type="text" class="verify-input fl mgn-top7" ng-model="amount" ng-pattern="/^[0-9]*(\.[0-9]{1,2})?$/" ng-focus ng-disabled="availableCashRealNo <= 0" required autofocus/>
+              <span class="span-money fl">元</span>
+              <div class="col-md-7 text-recharge-tip">预计<span class="ft-red5">&nbsp;{{nextDay | date:'yyyy-MM-dd'}} 24时前&nbsp;</span>到账（具体时间以银行操作为准）</div>
+            </div>
+          </div>
+          <div class="row col-md-10 col-md-offset-1 text-left ft-12 ft-red4" ng-show="withdrawForm.amount.$dirty">
+            <p class="padding-l-45">
+              <span ng-show="withdrawForm.amount.$error.pattern">请输入数字(最多精确到小数点后两位)</span>
+              <span ng-show="checkLargestAmount(amount)">不能大于可提现金额</span>
+              <span ng-show="checkMinAmount(amount)">提现金额不能小于1元</span>
+              <span ng-show="withdrawForm.amount.$error.required && !withdrawForm.amount.$focused">提现金额不能为空</span>
+            </p>
+          </div>
+          <div class="row col-md-10 col-md-offset-1 text-left ft-red5 padding-t-10">
+            <p class="padding-l-45" ng-show="freeWithdrawCount <=0">手续费：2元（前往app可查看您的当前会员等级哦）</p>
+            <p class="padding-l-45" ng-show="freeWithdrawCount >0">手续费：（本次免手续费，本月还剩{{freeWithdrawCount - 1}}次免费提现，前往app可查看您的当前会员等级哦）</p>
+          </div>
+          <div class="col-md-4 col-md-offset-4 margin-t-15 padding-b-20">
+            <div class="form-group col-xs-12">
+              <input type="button" value="确认提现" class="border-half cursor-pointer ft-16 text-center" ng-click="withdraw(amount, captcha)" ng-disabled="withdrawForm.$invalid || checkLargestAmount(amount)" ng-class="{'btn-recharge-grey':withdrawForm.$invalid || checkLargestAmount(amount) || checkMinAmount(amount), 'btn-recharge-orange':!withdrawForm.$invalid && !checkLargestAmount(amount) && !checkMinAmount(amount)}" />
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="col-md-10 col-md-offset-1 border-bd-grey margin-t-40 margin-b-20 record-w margin-l-40"></div>
+      <div class="col-md-10 col-md-offset-1 bg-yellow margin-t-20 record-w margin-l-40">
+        <div class="ft-14 margin-b-30 padding-20">
+          <p class="ft-red4"><i class="fa fa-tint" style="margin-right:15px;"></i><b>温馨提示:</b></p>
+          <div class="padding-l-20">
+            <p ng-if="pay_company === 'yeepay'" class=" ft-red4"><b>1. 目前提现收取2元每笔的提现费用。提现金额的最小额度为1元，即额度大于或等于1元。宏财网平台不收取任何提现费用；</b></p>
+            <p ng-if="pay_company === 'yeepay'" >2. 银行存管机构收到用户提现申请即对提现进行转账操作，提现资金将会在下个工作日到账（如遇双休日或法定节假日顺延）。</p>
+
+            <p ng-if="pay_company === 'cgt'" class=" ft-red4"><span class="ft-grey">1.</span> <b>目前提现收取2元每笔的提现费用。提现金额的最小额度为1元，即额度大于或等于1元。宏财网平台不收取任何提现费用；</b></p>
+            <p ng-if="pay_company === 'cgt'">2. 银行存管系统收到用户提现申请即对提现进行转账操作，提现资金将会在下个工作日到账（如遇双休日或法定节假日顺延）。</p>
+            <p>3. 如果用户迟迟未收到提现资金，可能为银行卡信息填写有误，银行正在做退款操作，预计会在1个工作日内完成退款，请用户耐心等候。用户还可以联系客服（400-990-7626），寻求帮助；</p>
+            <p>4. 禁止洗钱、信用卡套现、虚假交易等行为，一经发现并确认，将终止该账户的使用；</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--start 安全认证提示 -->
+    <div class="main" ng-show="!securityStatus.realNameAuthStatus || !securityStatus.realNameAuthStatus === 1">
+      <div class="col-md-12 text-center">
+        <img src="/images/unbind.png" alt="" class="margin-t-20">
+        <!-- <p class="margin-t-20">您尚未绑定银行卡</p> -->
+        <p class="margin-t-20">您尚未开通银行存管账户！</p>
+        <p class="padding-b-30"><button class="btn btn-primary-orange ft-18 margin-t-10 bg-btn-red padding-l-45 padding-r-45" ng-click="toRealNameAuth()">开通银行存管账户</button></p>
+        <!-- <button class="col-md-4 col-md-offset-4 btn-recharge-red margin-t-20" ui-sref="root.userCenter.security-settings">开通银行存管账户</button> -->
+      </div>
+    </div>
+
+
+  </div>
+</div>

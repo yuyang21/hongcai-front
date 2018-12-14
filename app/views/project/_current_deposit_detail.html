@@ -1,0 +1,382 @@
+<div class="col-xs-12">
+    <div class="row project-info bg-white" ng-init="toggle.activeTab=0;">
+        <div class="col-xs-12 margin-t-15">
+            <div class="col-xs-12 padding-r-0">
+                <ul class="clearfix nav-orange2-project margin-l-60 margin-t-10 margin-b-20" style="width: 100%;">
+                    <li class="pull-left margin-r-80" ng-class="{'active': toggle.activeTab===$index}" ng-repeat="tab in tabs | limitTo:3"  >
+                    <a class="ft-16 ft-grey1" ng-click="toggle.switchTab($index)" >{{tab.title}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <hr width="1124px" class="margin-auto border-t-greyd">
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane margin-t-30 padding-b-50" ng-class="{active: toggle.activeTab===$index}" ng-repeat="tab in tabs">
+                <section ng-if="tab.title==='计划简介'">
+                    <div class="col-xs-12 margin-b-30">
+                        <div class="row">
+                            <div class="col-xs-4 text-center padding-b-30 ft-14 ft-grey555 line-h-24">
+                                <img src="/images/project/product01.png" class="margin-t-30">
+                                <p class="ft-16 ft-grey1 margin-t-30">短期投资 存取灵活</p>
+                                <p class="margin-b-0">7日封闭期 存取灵活的投资工具</p>
+                                <p class="margin-b-0">自动续投保证您的资金不站岗</p>
+                                <p class="margin-b-0">每周更新额度 让您的资金有计划</p>
+                            </div>
+                            <div class="col-xs-4 text-center padding-b-30 ft-14 ft-grey555 line-h-24">
+                                <img src="/images/project/product02.png" class="margin-t-30">
+                                <p class="ft-16 margin-t-30">收益高 续投递增</p>
+                                <p class="margin-b-0">年均收益6%起 远超货币基金</p>
+                                <p class="margin-b-0">续投收益递增 让您的钱生钱</p>
+                                <p class="margin-b-0">每周更新额度 让您的资金有计划</p>
+                            </div>
+                            <div class="col-xs-4 text-center padding-b-30 ft-14 ft-grey555 line-h-24">
+                                <img src="/images/project/product03.png" class="margin-t-30">
+                                <p class="ft-16 margin-t-30">多重安全保障措施</p>
+                                <p class="margin-b-0">精英团队 为您的投资保驾护航</p>
+                                <p class="margin-b-0">三方托管 多家金融机构信用背书</p>
+                                <p class="margin-b-0">获得人民网及政府网站认可</p>
+                            </div>
+                        </div>
+                    </div>
+                    <table width="85%" class="margin-auto border-collapse">
+                        <thead>
+                            <th width="23%"></th><th width="79%"></th>
+                        </thead>
+                        <tbody>
+                            <tr class="">
+                                <td class="bg-grey-f tab-left text-right ft-grey1padding-t-10 padding-b-10">名称</td><td class="bg-grey-f tab-right ft-grey555">{{fundsProduct.name}}{{fundsProject.name}}</td>
+                            </tr>
+                            <tr class="">
+                                <td class="bg-white tab-left text-right ft-grey1">计划介绍</td>
+                                <td class="bg-white tab-right ft-grey555 line-h-27">零存宝是宏财网推出的针对宏财网投资人债权进行自动投资及定时自动转让的投资计划，多种期限可选，满足出借人不同的流动性需要。出借人出借的本金将在投资期限到达后一次性返回其账户，利息收益每月(期)发放，并由系统实现自动化的分散投资，更好的满足了出借人的需求</td>
+                            </tr>
+                            <tr class="">
+                                <td class="bg-grey-f tab-left text-right ft-grey1">投标范围</td>
+                                <td class="bg-grey-f tab-right ft-grey555">宏金保、宏财网投资人债权转让、宏财网优选债权</td>
+                            </tr>
+                            <tr class="">
+                                <td class="bg-white tab-left text-right ft-grey1">回报率</td>
+                                <td class="bg-white tab-right ft-grey555">递增收益，{{fundsProduct.baseRate}}%-{{fundsProduct.maxRate}}%，每期递增{{fundsProduct.riseRate}}%</td>
+                            </tr>
+                            <!-- <tr class="">
+                                <td class="bg-grey-f tab-left text-right ft-grey1">最高续投次数</td>
+                                <td class="bg-grey-f tab-right ft-grey555">{{fundsProduct.repeatInvestMaxCount}}次</td>
+                                <td class="bg-grey3 tab-right">{{(fundsProduct.maxRate - fundsProduct.baseRate) / fundsProduct.riseRate | number: 0}}次</td>
+                            </tr>-->
+                            <tr class="">
+                                <td class="bg-grey-f tab-left text-right ft-grey1">锁定期</td>
+                                <td class="bg-grey-f tab-right ft-grey555">{{fundsProduct.sealingDays || 0}}日</td>
+                            </tr>
+                            <!--<tr class="">
+                                <td class="bg-grey-f tab-left text-right ft-grey1">开放加入时间</td>
+                                <td class="bg-grey-f tab-right ft-grey555">{{fundsProject.releaseStartTime  | date: 'yyyy年MM月dd日'}} 00:10</td>
+                            </tr>-->
+                            <tr class="">
+                                <td class="bg-white tab-left text-right ft-grey1">退出日期</td>
+                                <td class="bg-white tab-right ft-grey555">{{ fundsProject.repaymentDate | date: 'yyyy年MM月dd日' }}</td>
+                            </tr>
+                            <tr class="">
+                                <td class="bg-grey-f tab-left text-right ft-grey1">加入条件</td>
+                                <td class="bg-grey-f tab-right ft-grey555">100元起，100元整数倍递增</td>
+                            </tr>
+                            <!-- <tr class="">
+                                <td class="bg-white tab-left text-right ft-grey1">退出日期</td>
+                                <td class="bg-white tab-right ft-grey555">{{ fundsProject.repaymentDate | date: 'yyyy年MM月dd日' }}</td>
+                            </tr> -->
+                            <tr class="">
+                                <td class="bg-white tab-left text-right ft-grey1">加入上限</td>
+                                <td class="bg-white tab-right ft-grey555">每人上限10000元</td>
+                            </tr><!--
+                            <tr class="">
+                                <td class="bg-grey-f tab-left text-right ft-grey1">保障方式</td>
+                                <td class="bg-grey-f tab-right ft-grey555">100%本金+利息保障</td>
+                            </tr> -->
+                            <!--<tr class="">
+                                <td class="bg-grey-f tab-left text-right ft-grey1">到期退出方式</td>
+                                <td class="bg-grey-f tab-right ft-grey555">系统通过债权转让方式自动完成退出</td>
+                            </tr>
+                            <tr class="">
+                                <td class="bg-white tab-left text-right ft-grey1">续投方式</td>
+                                <td class="bg-white tab-right ft-grey555">按周期自动续投</td>
+                            </tr>
+                            <tr class="">
+                                <td class="bg-grey-f tab-left text-right ft-grey1">赎回方式</td>
+                                <td class="bg-grey-f tab-right ft-grey555">在周期内提前1个工作日取消自动续投，计划结束后自动赎回。</td>
+                            </tr>-->
+                            <tr class="">
+                                <td class="bg-grey-f tab-left text-right ft-grey1">服务协议</td>
+                                <td class="bg-grey-f tab-right ft-grey555"><a class="ft-orange3 text-unline" ng-click="showCurrentDepositAgreement();">零存宝计划协议范本</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--<table class="container-fluid border">
+                        <thead>
+                            <th width="16%"></th>
+                            <th width="84%"></th>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b-da">
+                                <td class="bg-grey5 tab-left text-right">名称</td>
+                                <td class="bg-white tab-right">{{fundsProduct.name}}{{fundsProject.name}}</td>
+                            </tr>
+                            <tr class="border-b-da">
+                                <td class="bg-grey5 tab-left text-right">计划介绍</td>
+                                <td class="bg-white tab-right">零存宝是宏财网推出的针对宏财网投资人债权进行自动投资及定时自动转让的投资计划，满足投资人短期资金流动性需要。投资本金将在投资期限到达后一次性返回其账户，利息收益每期发放，并实现自动续投。</td>
+                            </tr>
+                            <tr class="border-b-da">
+                                <td class="bg-grey5 tab-left text-right">投标范围</td>
+                                <td class="bg-white tab-right">基金公司、信托公司及担保公司的优质项目。</td>
+                            </tr>
+                            <tr class="border-b-da">
+                                <td class="bg-grey5 tab-left text-right">年化利率及计算方式</td>
+                                <td class="bg-white tab-right">递增收益，{{fundsProduct.baseRate}}%-{{fundsProduct.maxRate}}%，每期递增{{fundsProduct.riseRate}}%。</td>
+                            </tr>
+                            <tr class="border-b-da">
+                                <td class="bg-grey5 tab-left text-right">最高续投次数</td>
+                                <td class="bg-white tab-right" ng-if="fundsProduct.type === 1">7次</td>
+                                <td class="bg-white tab-right" ng-if="fundsProduct.type === 2">5次</td>
+                                <td class="bg-white tab-right" ng-if="fundsProduct.type === 3">3次</td>
+                                <td class="bg-white tab-right" ng-if="fundsProduct.type === 4">3次</td>
+                                <!-- <td class="bg-grey3 tab-right">{{(fundsProduct.maxRate - fundsProduct.baseRate) / fundsProduct.riseRate | number: 0}}次</td>
+                            </tr>
+                            <tr class="border-b-da">
+                                <td class="bg-grey5 tab-left text-right">锁定期</td>
+                                <td class="bg-white tab-right">{{fundsProduct.sealingDays || 0}}日</td>
+                            </tr>
+                            <tr class="border-b-da">
+                                <td class="bg-grey5 tab-left text-right">开放加入时间</td>
+                                <td class="bg-white tab-right">{{fundsProject.releaseStartTime  | date: 'yyyy年MM月dd日'}} 00:10</td>
+                            </tr>
+                            <tr class="border-b-da">
+                                <td class="bg-grey5 tab-left text-right">退出日期</td>
+                                <td class="bg-white tab-right">{{ fundsProject.repaymentDate | date: 'yyyy年MM月dd日' }}</td>
+                            </tr>
+                            <tr class="border-b-da">
+                                <td class="bg-grey5 tab-left text-right">加入条件</td>
+                                <td class="bg-white tab-right">100元起，100元整数倍递增。</td>
+                            </tr>
+                            <tr class="border-b-da">
+                                <td class="bg-grey5 tab-left text-right">加入上限</td>
+                                <td class="bg-white tab-right">累计投资不能超过20000元</td>
+                            </tr>
+                            <tr class="border-b-da">
+                                <td class="bg-grey5 tab-left text-right">保障方式</td>
+                                <td class="bg-white tab-right">100%本金+利息保障</td>
+                            </tr>
+                            <tr class="border-b-da">
+                                <td class="bg-grey5 tab-left text-right">到期退出方式</td>
+                                <td class="bg-white tab-right">系统通过债权转让方式自动完成退出。</td>
+                            </tr>
+                            <tr class="border-b-da">
+                                <td class="bg-grey5 tab-left text-right">续投方式</td>
+                                <td class="bg-white tab-right">按周期自动续投。</td>
+                            </tr>
+                            <tr class="border-b-da">
+                                <td class="bg-grey5 tab-left text-right">赎回方式</td>
+                                <td class="bg-white tab-right">在周期内提前1个工作日取消自动续投，计划结束后自动赎回。</td>
+                            </tr>
+                            <tr class="border-b-da">
+                                <td class="bg-grey5 tab-left text-right">服务协议</td>
+                                <td class="bg-white tab-right"><a class="ft-red text-unline" ng-click="showCurrentDepositAgreement();">零存宝协议范本</a></td>
+                            </tr>
+                        </tbody>
+                    </table>-->
+                </section>
+                <section ng-if="tab.title==='加入记录'" class="padding-l-50 padding-r-60">
+                    <div ng-show="isLogged">
+                        <table class="table table-hover tab-w  margin-auto ">
+                            <!-- 兼容 firefox -->
+                            <thead>
+                                <tr>
+                                    <th class="text-center">序号</th>
+                                    <th class="text-center">投资人</th>
+                                    <th class="text-center">投标金额</th>
+                                    <th class="text-center">成交时间</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="order in data | startFrom:currentPage * pageSize | limitTo:pageSize">
+                                    <td align="center">{{order.id}}</td>
+                                    <td align="center">{{order.userName}}</td>
+                                    <td align="center">{{order.orderAmount| number : 0}}元</td>
+                                    <td align="center">{{order.createTime | date: "yy-MM-dd"}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <ul ng-show="isLogged" class="list-group">
+                        <li>
+                            <div class="row">
+                                <div class="col-sx-12 text-center">
+                                    <button class="btn btn-sm" ng-disabled="currentPage == 0" ng-click="currentPage = currentPage - 1" disabled="disabled">上一页</button>
+                                    {{currentPage + 1 }} / {{numberOfPages()}} 共 {{data.length}} 条
+                                    <button class="btn btn-sm" ng-disabled="currentPage >= data.length / pageSize - 1" ng-click="currentPage = currentPage + 1" disabled="disabled">下一页</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="row text-center padding-t-30 padding-b-30" ng-if="!isLogged">
+                        <h4 class="margin-t-30 padding-t-30">请<a ng-click="tologin()" class="ft-red">登录</a>后查看信息</h4>
+                    </div>
+                </section>
+                <section ng-if="tab.title==='常见问题'">
+                    <div class="container-fluid">
+                        <div class="row ft-14">
+                            <div class="ask-area col-xs-12">
+                                <h4>一、宏金盈有哪些特点？</h4>
+                                <ol>
+                                    <li>真实安全：加入宏金盈的资金，全部用于投资真实、提供100%本息担保的小额借款项目。</li>
+                                    <li>超低门槛：100元即可以加入，以100元倍数递增。</li>
+                                    <li>多样选择：多种期限搭配，满足不同流动性需求。</li>
+                                    <li>省心优利：一次投入，按月（期）付息，到期还本；七日盈、月月盈、季度盈、半年盈可选择自动续投。</li>
+                                    <li>零手续费：加入和到期赎回全免费。</li>
+                                    <li>分散投资：一份投资对应多份债权，降低投资风险。</li>
+                                    <li>递增收益：6%-14.5%，七日盈、月月盈、季度盈、半年盈每期分别递增0.3%、0.4%、0.5%、1.5% 。</li>
+                                </ol>
+                            </div>
+                            <div class="ask-area col-xs-12">
+                                <h4>二、宏金盈的收益是如何递增的？最多可续投多少期？</h4>
+                                <div class="col-xs-12">
+                                    <div class="row">
+                                        <div class="col-xs-1 double-line no-border-r col-xs-offset-2">宏金盈</div>
+                                        <div class="col-xs-1 double-line no-border-r">投资</div>
+                                        <div class="col-xs-7 single-line">续投</div>
+                                        <div class="col-xs-1" style="height:30px;"></div>
+                                        <li class="col-xs-1 single-line no-border-t no-border-r">第一次</li>
+                                        <li class="col-xs-1 single-line no-border-t no-border-r">第二次</li>
+                                        <li class="col-xs-1 single-line no-border-t no-border-r">第三次</li>
+                                        <li class="col-xs-1 single-line no-border-t no-border-r">第四次</li>
+                                        <li class="col-xs-1 single-line no-border-t no-border-r">第五次</li>
+                                        <li class="col-xs-1 single-line no-border-t no-border-r">第六次</li>
+                                        <li class="col-xs-1 single-line no-border-t">第七次</li>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-1 double-line single-line no-border-t no-border-r col-xs-offset-2">七日盈</div>
+                                        <div class="col-xs-1 double-line single-line no-border-t no-border-r">6%</div>
+                                        <li class="col-xs-1 double-line single-line no-border-t no-border-r">6.3%</li>
+                                        <li class="col-xs-1 double-line single-line no-border-t no-border-r">6.6%</li>
+                                        <li class="col-xs-5 double-line single-line no-border-t">6.9%</li>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-1 double-line single-line no-border-t no-border-r col-xs-offset-2">月月盈</div>
+                                        <div class="col-xs-1 double-line single-line no-border-t no-border-r">7%</div>
+                                        <li class="col-xs-1 double-line single-line no-border-t no-border-r">7.4%</li>
+                                        <li class="col-xs-1 double-line single-line no-border-t no-border-r">7.8%</li>
+                                        <li class="col-xs-3 double-line single-line no-border-t no-border-r">8.2%</li>
+                                        <li class="col-xs-2 double-line single-line no-border-t">不再续投，自动退出</li>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-1 double-line single-line no-border-t no-border-r col-xs-offset-2">季度盈</div>
+                                        <div class="col-xs-1 double-line single-line no-border-t no-border-r">8.5%</div>
+                                        <li class="col-xs-1 double-line single-line no-border-t no-border-r">9%</li>
+                                        <li class="col-xs-1 double-line single-line no-border-t no-border-r">9.5%</li>
+                                        <li class="col-xs-1 double-line single-line no-border-t no-border-r">10%</li>
+                                        <li class="col-xs-4 double-line single-line no-border-t">不再续投，自动退出</li>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-1 double-line single-line no-border-t no-border-r col-xs-offset-2">半年盈</div>
+                                        <div class="col-xs-1 double-line single-line no-border-t no-border-r">10%</div>
+                                        <li class="col-xs-1 double-line single-line no-border-t no-border-r">11.5%</li>
+                                        <li class="col-xs-1 double-line single-line no-border-t no-border-r">13%</li>
+                                        <li class="col-xs-1 double-line single-line no-border-t no-border-r">14.5%</li>
+                                        <li class="col-xs-4 double-line single-line no-border-t">不再续投，自动退出</li>
+                                    </div>
+                                </div>
+                                <p>举例说明：
+                                    <br>投资七日盈10000元，锁定周期为7日，到期结息。首次投资年均收益为 6%，第一次续投年均收益为6.3%，第二次续投年均收益为：6.6%，第三次续投年均收益为：6.9%，第四、五、六、七次续投收益不再递增，按照年均6.9%计息，完成第七次续投结束后，资金自动赎回至投资人易宝账户内，可再次投资或提现。即：七日盈最多可续投七次。</p>
+                            </div>
+                            <div class="ask-area col-xs-12">
+                                <h4>三、宏金盈的债权类别是什么？</h4>
+                                <p>宏金保、宏财网投资人债权转让、宏财优选债权。</p>
+                            </div>
+                            <div class="ask-area col-xs-12">
+                                <h4>四、自动续投是本金+利息复投吗？</h4>
+                                <p>不是。宏金盈每期的债权数固定，只续投本金部分，利息按月（期）发放到投资人易宝账户中，投资人可选择再次投资或者提取利息进行消费。</p>
+                            </div>
+                            <div class="ask-area col-xs-12">
+                                <h4>五、宏金盈是否允许提前赎回？</h4>
+                                <p>可按投放周期赎回，在投放期限内取消自动续投，到期后自动退出。例如投资月月盈用户可在投资到期前在“我的账户”-“我的债权”订单中点击“取消续投”后，本次投资到期自动退出，如想再次续投，可点击“自动续投”赚取更高收益。</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section ng-if="tab.title==='计划进程'">
+                    <div class="container-fluid">
+                        <div class="row project-bg-area">
+                            <div class="col-xs-8 col-xs-offset-2">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="row">
+                                            <img class="pull-right" src="/images/investmentplan/plan_mid_left.png">
+                                            <div class="col-xs-12 ft-right ft-14" style="margin-top:-390px;">
+                                                <div class="plan-info">
+                                                    <div class="row info-row">
+                                                        <span class="col-xs-9">发布时间</span>
+                                                        <span class="col-xs-9 ft-20">{{fundsProject.releaseStartTime | date: "yy-MM-dd"}}</span>
+                                                        <span class="col-xs-1">
+                              <img src="/images/investmentplan/releaseTime.png">
+                            </span>
+                                                    </div>
+                                                    <div class="row info-row">
+                                                        <span class="col-xs-9">预计规模</span>
+                                                        <span class="col-xs-9 ft-20">{{fundsProject.total}}元</span>
+                                                        <span class="col-xs-1">
+                              <img src="/images/investmentplan/projecteSize.png">
+                            </span>
+                                                    </div>
+                                                </div>
+                                                <div class="plan-info" style="margin-top:93px;">
+                                                    <div class="row info-row">
+                                                        <span class="col-xs-9">退出时间</span>
+                                                        <span class="col-xs-9 ft-20">{{fundsProject.repaymentDate | date: "yy-MM-dd"}}</span>
+                                                        <span class="col-xs-1">
+                              <img src="/images/investmentplan/OutTime.png">
+                            </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="row">
+                                            <img class="pull-left" src="/images/investmentplan/plan_mid_right.png">
+                                            <div class="col-xs-12 ft-14" style="margin-top:-390px;">
+                                                <div class="plan-info" style="margin-top:55px;">
+                                                    <div class="row info-row">
+                                                        <span class="col-xs-3">
+                              <img src="/images/investmentplan/addNum.png">
+                            </span>
+                                                        <span class="col-xs-9">加入人数</span>
+                                                        <span class="col-xs-9 ft-20">{{investorCount}}人</span>
+                                                    </div>
+                                                    <div class="row info-row">
+                                                        <span class="col-xs-3">
+                              <img src="/images/investmentplan/automatic.png">
+                            </span>
+                                                        <span class="col-xs-9">自动续投</span>
+                                                        <span class="col-xs-9 ft-20">{{repeatCount}}人</span>
+                                                    </div>
+                                                </div>
+                                                <div class="plan-info" style="margin-top:93px;">
+                                                    <div class="row info-row">
+                                                        <span class="col-xs-3">
+                              <img src="/images/investmentplan/earn.png">
+                            </span>
+                                                        <span class="col-xs-9">为用户赚取</span>
+                                                        <span class="col-xs-9 ft-20">{{fundsProject.projectBackProfit || 0}}元</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

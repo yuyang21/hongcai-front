@@ -1,0 +1,99 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h5 class="text-nowrap"><i class="fa fa-shield fa-color-red"></i>&nbsp;{{ item.name }}</h5>
+  </div>
+  <div class="panel-body">
+    <div class="row" ng-hide="item.categoryCode === '0112' || item.categoryCode === '0113' || item.categoryCode === '0114' || item.categoryCode === '0115'">
+      <div class="col-xs-9" style="padding-right:0px" >
+        <a ui-sref="root.project-sponsorInstitution({guaranteeId: item.guaranteeId})"><img src="{{baseFileUrl + item.guaranteeUrl}}" width="15" height="15" alt="logo">
+          <span>{{item.guaranteeName | limitTo: 10}}</span>
+        </a>
+      </div>
+      <!-- 为了编译，迫不得已用这么low的写法 -->
+      <div class="col-xs-5" style="float:right;margin-top:-22px;">
+        <img class="status_flag" src="images/project/status_6.png" ng-show="item.status === 6">
+        <img class="status_flag" src="images/project/status_7.png" ng-show="item.status === 7">
+        <img class="status_flag" src="images/project/status_8.png" ng-show="item.status === 8">
+        <img class="status_flag" src="images/project/status_9.png" ng-show="item.status === 9">
+        <img class="status_flag" src="images/project/status_10.png" ng-show="item.status === 10">
+        <img class="status_flag" src="images/project/status_11.png" ng-show="item.status === 11">
+      </div>
+    </div>
+    <div class="row" ng-show="item.categoryCode === '0112' || item.categoryCode === '0113' || item.categoryCode === '0114' || item.categoryCode === '0115'">
+      <div class="col-xs-9" style="padding-right:0px"></div>
+      <!-- 为了编译，迫不得已用这么low的写法 -->
+      <div class="col-xs-5" style="float:right;margin-top:-22px;">
+        <img class="status_flag" style="padding-top:19px;" src="images/project/status_6.png" ng-show="item.status === 6">
+        <img class="status_flag" style="padding-top:19px;" src="images/project/status_7.png" ng-show="item.status === 7">
+        <img class="status_flag" style="padding-top:19px;" src="images/project/status_8.png" ng-show="item.status === 8">
+        <img class="status_flag" style="padding-top:19px;" src="images/project/status_9.png" ng-show="item.status === 9">
+        <img class="status_flag" style="padding-top:19px;" src="images/project/status_10.png" ng-show="item.status === 10">
+        <img class="status_flag" style="padding-top:19px;" src="images/project/status_11.png" ng-show="item.status === 11">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-offset-1 col-xs-10 margin-t-m24">
+        <div class="row margin-b-m8">
+          <span class="ft-grey6">投资期限</span>
+          <span class="padding-l-15 ft-24 ft-red">{{item.cycle}}</span>
+          <span class="ft-grey6 ft-12">&nbsp;(月)</span>
+        </div>
+        <div class="row margin-b-m8">
+          <span class="ft-grey6">年均收益</span>
+          <span class="padding-l-15 ft-24 ft-red">{{item.annualEarnings | number : 2}}</span>
+          <span class="ft-grey6 ft-12">&nbsp;%</span>
+        </div>
+        <div class="row" ng-show="item.status === 11">
+          <span class="ft-grey6">预约金额</span>
+          <span class="padding-l-15 ft-24 ft-black">{{item.reserveAmount | noFractionCurrency:"":0 || 0 }}</span>
+          <span class="ft-grey6 ft-12">&nbsp;(元)</span>
+        </div>
+        <div class="row" ng-show="item.status !== 11 && item.progress < 100">
+          <span class="ft-grey6">可投金额</span>
+          <span class="padding-l-15 ft-24 ft-black">{{item.currentStock * item.increaseAmount | noFractionCurrency:"":0 || 0 }}</span>
+          <span class="ft-grey6 ft-12">&nbsp;(元)</span>
+        </div>
+        <div class="row" ng-show="item.status !== 11 && item.progress >= 100">
+          <span class="ft-grey6">项目规模</span>
+          <span class="padding-l-15 ft-24 ft-black">{{item.total | noFractionCurrency:"":0 || 0}} </span>
+          <span class="ft-grey6 ft-12">&nbsp;(元)</span>
+        </div>
+
+        <div class="row margin-t-20" ng-hide="item.status === 6">
+          <div class="progress">
+            <div class="progress-bar" ng-class="{'progress-bar-warning': item.status === 8 || item.status === 9 || item.status === 10, 'progress-bar-success progree-bar-green': item.status === 5, 'progress-bar-info': item.status === 11}" role="progressbar" aria-valuenow="{{item.progress || 0 }}" aria-valuemin="0" aria-valuemax="100" style="width: {{item.progress||0 }}%"></div>
+          </div>
+        </div>
+
+        <div class="row ft-12 ft-grey6 margin-t-m15" ng-hide="item.status === 6">
+          <span class="pull-left" ng-show="item.progress >= 100">{{ item.investUserCount || 0 }}人已投</span>
+          <span class="pull-left" ng-show="item.progress <100">项目规模:{{item.total | noFractionCurrency:"":0 || 0}}元</span>
+          <span class="pull-right" ng-hide="item.status === 11">{{item.progress || 0 | number : 0}}%</span>
+        </div>
+        <div class="row margin-t-20" ng-show="item.status !== 6">
+          <div class="col-xs-12 padding-l-0 padding-r-0" ng-show="item.progress < 100">
+            <a class="btn btn-primary-orange btn-block" ui-sref="root.project-details({number: item.number})" ng-show="item.status !== 6 && item.status !== 11">立即投资</a>
+            <a class="btn btn-default btn-block bg-grey4 ft-white" ui-sref="root.project-details({number: item.number})" ng-show="item.status === 11 && item.reserveAmount === 0"><i class="fa fa-info-cart" style="margin-top: -1px;"></i>查看详情</a>
+            <a class="btn btn-primary-orange btn-block" style="margin-top: -1px;" ui-sref="root.project-details({number: item.number})" ng-show="item.status === 11 && item.reserveAmount !== 0">立即预约</a>
+          </div>
+          <div class="col-xs-12 padding-l-0 padding-r-0" ng-show="item.progress >= 100">
+            <a class="btn btn-default btn-block bg-grey4 ft-white" ui-sref="root.project-details({number: item.number})"><i class="fa fa-info-cart"></i> 查看详情</a>
+          </div>
+        </div>
+        <div class="row margin-t-20" ng-show="item.status === 6">
+          <div class="col-xs-12 padding-l-0 padding-r-0 text-center" style="margin-top: -1px;">
+            <i class="fa fa-minus ft-grey6 margin-r-15"></i>
+            <span class="border bg-grey4 ft-white ft-20 padding-t-4">{{ _timeDown[$index].day | addPreZero }}</span><span class="ft-grey7">&nbsp;天</span>
+            <span class="border bg-grey4 ft-white ft-20 padding-t-4">{{ _timeDown[$index].hour }}</span><span class="ft-grey7 ft-16">:</span>
+            <span class="border bg-grey4 ft-white ft-20 padding-t-4">{{ _timeDown[$index].second }}</span><span class="ft-grey7 ft-16">:</span>
+            <span class="border bg-grey4 ft-white ft-20 padding-t-4">{{ _timeDown[$index].min }}</span>
+            <i class="fa fa-minus ft-grey6 margin-l-15"></i>
+          </div>
+          <div class="col-xs-12 padding-l-0 padding-r-0">
+            <a class="btn btn-default btn-block margin-t-20 bg-grey4 ft-white" ui-sref="root.project-details({number: item.number})"><i class="fa fa-info-cart"></i> 查看详情</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

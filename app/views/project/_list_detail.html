@@ -1,0 +1,12 @@
+<div class="col-md-12 col-lg-12" ng-repeat="item in data">
+  <div ng-if="!isLogged">
+    <div ng-hide="item.id === 120 && item.showByStatus">
+      <div ng-include src='"views/project/_institution_detail.html"'></div>
+    </div>
+  </div>
+  <div ng-if="isLogged">
+    <div ng-hide="item.id === 120 && loginName !== 'Lisa_Xu' && item.showByStatus">
+      <div ng-include src='"views/project/_institution_detail.html"'></div>
+    </div>
+  </div>
+</div>

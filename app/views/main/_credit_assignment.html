@@ -1,0 +1,28 @@
+<div id="credit-main" class="panel panel-default">
+  <div class="panel-heading">
+    <h4>
+      <i class="fa fa-retweet fa-color-red"></i>&nbsp;债权转让
+      &nbsp;<span class="border-r-2"></span>&nbsp;
+      <span><a class="more-info-link">更多<i class="fa fa-angle-right"></i></a></span>
+    </h4>
+  </div>
+  <div class="panel-body">
+    <div class="col-xs-12 col-md-4"  ng-class="{ 'main-border-right-dotted': $index === 0 || $index === 1}" ng-repeat="item in creditRightList | limitTo: 3">
+      <div class="col-xs-offset-2 col-xs-8">
+        <div class="row margin-b-10">
+          <a href=""><h3 class="real-type-name">{{ item.name }} <span class="real-type-date">20150101期</span></h3></a>
+        </div>
+        <div class="row margin-b-10">
+          <div class="col-xs-12 text-nowrap">年均收益：<span style="font-size: 24px; color: red;">{{ item.annualEarnings }}</span><span style="font-size: 16px;">&nbsp;%</span>
+          </div>
+          <div class="col-xs-12 text-nowrap">剩余期限：<span>{{ item.remainDay }} </span><span style="font-size: 14px;">&nbsp;天</span>
+          </div>
+          <div class="col-xs-12 text-nowrap">可投金额：<span style="font-size: 18px; color: black;"> {{ item.currentStock * 100 }}</span> <span style="font-size: 16px;">&nbsp;元</span>
+          </div>
+        </div>
+        <div class="row">`
+          <a class="col-xs-10 btn btn-primary">立即认购</a>
+        </div>
+      </div>
+    </div>
+</div>

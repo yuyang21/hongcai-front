@@ -1,0 +1,177 @@
+<!-- 新手活动落地页 -->
+<div class="novice-activity">
+  <div class="header">
+  	<!-- //顶部图片 -->
+	  <div class="col-md-12 text-center top"></div>
+	  <!-- 活动时间 -->
+	  <div class="endTime">活动时间:2016年12月01日——2016年12月31日</div>
+  </div>
+  <!-- 688元现金 · 注册立拿 -->
+  <div class="col-md-12 part1">
+  	<div class="title">
+	  	<img src="/images/activity/title-line.png" alt="">
+	  	<div class="text">688元现金 · 注册立拿</div>
+	  </div>
+	  <div class="content margin-auto text-center">
+	  	<ul class="row margin-b-100">
+	  		<img class="col-3" src="/images/activity/10.png"/>
+	  		<img class="col-3" src="/images/activity/35.png"/>
+	  		<img src="/images/activity/40.png"/>
+	  	</ul>
+	  	<ul class="row">
+	  		<img class="col-3" src="/images/activity/80.png"/>
+	  		<img class="col-3" src="/images/activity/135.png"/>
+	  		<img src="/images/activity/388.png"/>
+	  	</ul>
+	  	<div class="margin-t-70 margin-b-40">
+	  		<img class="cursor-pt" ui-sref="root.register" src="/images/activity/novice-btn1.png" alt="">
+	  	</div>
+	  	<div class="rules">
+	  		<p class="rule-left pull-left">活动规则：</p>
+	  		<div class="rule-right text-left">
+	  			<p>1、活动期间，新用户注册即送688元现金。</p>
+	  			<p>2、用户投资满足相关条件时，可提取对应现金。</p>
+	  			<p>3、奖励详情及提现规则，请在"我的账户—奖励信息—奖金"中查看。</p>
+	  		</div>
+	  	</div>
+	  </div>
+  </div>
+  <!-- 3%加息券 · 注册立领 -->
+  <div class="col-md-12 part2">
+		<div class="title">
+	  	<img class="img" src="/images/activity/title-line.png" alt="">
+	  	<div class="text">3%加息券 · 注册立领</div>
+	  </div>
+	  <div class="top2">
+	  	<p class="explain margin-b-0">注册即获3%加息券一张，可用于投资宏金保项目</p>
+	  	<div class="example">
+				<p>举个栗子：<br>	王先生在12月12日注册，使用获赠的加息券投资宏金保30天项目3万元，王先生本次投资将获得271.23元：</p>
+	  	</div>
+	  </div>
+	  <div class="rate-example-img ft-white4">
+      <ul>
+        <li class="width-35 fl">
+          <div class="red-packets1 fl text-center ft-20">
+            <p class="ftw-b rate-example-title">原始收益</p>
+            <p class="margin-t-137 margin-b-0">30000×8%÷365×30</p>
+            <p class="margin-b-0">＝</p>
+            <p>197.26 元</p>
+          </div>
+          <img src="/images/activity/yellow-plus.png" alt="">
+        </li>
+        <li class="width-35 fl" >
+          <div class="red-packets1 fl text-center ft-20">
+            <p class="ftw-b rate-example-title">加息收益</p>
+            <p class="margin-t-137 margin-b-0">30000×3%÷365×30</p>
+            <p class="margin-b-0">＝</p>
+            <p>73.97 元</p>
+          </div>
+          <img src="/images/activity/equal.png" alt="">
+        </li>
+        <li class="width-30 fl text-center">
+          <div class="red-packets1 ft-20">
+            <p class="ftw-b rate-example-title">全部收益</p>
+            <p class="margin-t-137 margin-b-0">197.26+73.97</p>
+            <p class="margin-b-0">＝</p>
+            <p>271.23元</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="margin-t-50 margin-b-50">
+  		<img class="cursor-pt" ui-sref="root.register" src="/images/activity/novice-btn2.png" alt="">
+  	</div>
+  	<div class="rules">
+			<p class="rule-left pull-left">活动规则：</p>
+			<div class="rule-right text-left">
+				<p>1、注册立领3%加息券一张，有效期为15天；</p>
+				<p>2、加息券仅限投资宏金保项目，不可叠加使用；</p>
+				<p>3、加息券详细信息及使用规则，请在"我的账户—奖励信息—加息券"中查看；</p>
+			</div>
+		</div>
+	</div>
+	<!-- 14%收益 · 新手专享 -->
+  <div class="col-md-12 part3">
+		<div class="title">
+	  	<img class="img" src="/images/activity/title-line.png" alt="">
+	  	<div class="text">14%收益 · 新手专享</div>
+	  </div>
+	  <div class="top3">用户首次投资一周内均可参与，不限金额，不限次数！</div>
+	  <div class="newbie">
+	  	<div class="clearfix">
+	  		<span class="newbie-header">新手标</span>
+	  		<span class="newbie-tip">100元起投，无投资上限</span>
+	  	</div>
+
+	  	<ul class="newbie-content">
+	  		<li class="text-left">
+	  			<div class="top">
+	  				<span>{{ newbieBiaoProject.annualEarnings ||0 }}</span>
+		  			<p>年化利率<br>%</p>
+	  			</div>
+	  			<p class="bottom">项目期限{{ newbieBiaoProject.projectDays}}天，可投金额{{(newbieBiaoProject.total - (newbieBiaoProject.soldStock + newbieBiaoProject.occupancyStock) * newbieBiaoProject.increaseAmount) | noFractionCurrency:"":0 || 0 }}元</p>
+	  		</li>
+	  		<li>
+	  			<div class="newbie-progress">
+            <div class="progress-bar2" role="progressbar" aria-valuenow="{{ progress  || 0 }}" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: progress +'px'}"></div>
+          </div>
+          <span class="percent">{{ progress || 0 | number : 2 }}%</span>
+          <div class="newbie-btn">
+          	<img class="cursor-pt" ui-sref="root.project-details({number: newbieBiaoProject.number})" src="/images/activity/novice-btn3.png" alt="">
+          </div>
+	  		</li>
+	  	</ul>
+	  </div>
+	  <!-- 宏财投资 · 关于我们 -->
+	  <div class="title height-100">
+	  	<img class="img" src="/images/activity/title-line.png" alt="">
+	  	<div class="text">宏财投资 · 关于我们</div>
+	  </div>
+	  <div class="send-money-aboutus clearfix">
+      <ul>
+        <li class="fl mar-r">
+          <img class="fl" src="../images/activity/introduction.png" alt="">
+          <div class="col-8">
+          <p>宏财介绍</p>
+            <span>宏财网是一家国有企业战略投资的互联网金融平</span>
+            <span>台，2016年A轮融资达1亿元。是国内极少数由上</span><br>
+            <span>市金融集团提供专业安全金融资产的平台之一。</span>
+          </div>
+        </li>
+        <li class="fl">
+          <img  class="fl" src="../images/activity/safe.png" alt="">
+          <div ng-if="pay_company === 'cgt'" class="col-8"><p>资金安全</p>
+            <span>宏财网联合海口联合农商银行打造了一套完善的风险</span><br>
+            <span>监控及资金存管系统，一人一户且每笔资金的流动</span><br>
+            <span>都可追查记录。</span>
+          </div>
+          <div ng-if="pay_company === 'yeepay'" class="col-8"><p>资金安全</p>
+            <span>宏财网联合知名支付平台“易宝支付”打造了一</span><br>
+            <span>套完整的资金支付存管账户体系，一人一户且</span><br>
+            <span>每笔资金的流动都可追查记录。</span>
+          </div>
+        </li>
+        <li class="fl mar-r mar-t">
+          <img  class="fl" src="../images/activity/origin.png" alt="">
+          <div class="col-8"><p>项目来源</p>
+            <span>项目由鑫融基金控集团推荐，是新三板“金控”</span><br>
+            <span>第一股和首家金牌照民间金融服务商，股本规模</span><br>
+            <span>全国第四。</span>
+          </div>
+        </li>
+        <li class="fl mar-t">
+          <div class="fl"><img  src="../images/activity/ensure.png" alt=""></div>
+          <div class="col-8"><p>项目保障</p>
+            <span>项目由政府参与出资、全国排名前三的民营担</span>
+            <span>保机构提供担保。如果项目方违约，担保公司</span>
+            <span>先行垫付。</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="text-center ft-16 ft-white">
+      <p>本活动最终解释权归宏财网所有 &nbsp;服务热线：400-990-7626</p>
+      <p class="ft-16">北京竞财投资服务有限公司 &nbsp;京ICP备15025477号-1</p>
+    </div>
+	</div>
+</div>

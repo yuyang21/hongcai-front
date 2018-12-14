@@ -1,0 +1,113 @@
+<div class="col-xs-12 padding-r-0 padding-l-0 margin-l-45">
+  <div class="panel panel-default" ng-init="toggle.activeTabRight=0;" ng-show="project.status !== 6 && project.status !== 11">
+    <ul class="nav nav-pills nav-justified border-b nav-orange-project">
+      <li ng-class="{active: toggle.activeTabRight===$index}" ng-repeat="tab_right in tabsRight"><a ng-click="toggle.switchTabRight($index)">{{tab_right.title}}</a>
+      </li>
+
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane" ng-class="{active: toggle.activeTabRight===$index}" ng-repeat="tab_right in tabsRight">
+        <section ng-if="tab_right.title==='出借记录'">
+          <div ng-if="isLogged" class="panel-body">
+            <table class="table table-hover ft-12 text-center">
+              <thead class="thead_center">
+                <tr>
+                  <th>成交时间</th>
+                  <th>出借人</th>
+                  <th>出借金额</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="ft-12" ng-repeat="order in orderList | startFrom:currentPage * pageSize | limitTo:pageSize">
+                  <td>{{order.createTime | date: "yy-MM-dd"}}</td>
+                  <td>{{order.userName}}</td>
+                  <td>{{order.orderAmount| number : 0}}元</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <ul ng-show="isLogged" class="list-group">
+            <!-- <li class="list-group-item"> -->
+              <div class="row">
+                <div class="col-sx-12 text-center">
+                  <button class="btn btn-sm" ng-disabled="currentPage == 0" ng-click="currentPage = currentPage - 1" disabled="disabled">上一页</button>
+                  {{currentPage + 1 }} / {{numberOfPages()}} 共 {{data.length}} 条
+                  <button class="btn btn-sm" ng-disabled="currentPage >= data.length / pageSize - 1" ng-click="currentPage = currentPage + 1" disabled="disabled">下一页</button>
+                </div>
+              </div>
+            <!-- </li> -->
+          </ul>
+        </section>
+        <section ng-if="tab_right.title==='还款计划'">
+          <div ng-if="isLogged" class="panel-body">
+            <table class="table table-hover ft-12 text-center">
+              <thead class="thead_center">
+                <tr>
+                  <th>期望还款时间</th>
+                  <th>类型</th>
+                  <th>还款金额</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="ft-12" ng-repeat="preRepayment in preRepaymentList">
+                  <td>{{preRepayment.repaymentTime | date: "yy-MM-dd"}}</td>
+                  <td ng-show="preRepayment.type==1">利息</td>
+                  <td ng-show="preRepayment.type==2">本金</td>
+                  <td ng-show="preRepayment.type==3">本金+利息</td>
+                  <td>{{preRepayment.repaymentAmount| number:2}}元</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <div ng-if="!isLogged" class="panel-body text-alg-c margin-t-15 margin-b-15">
+          请<a ng-click="tologin()" class="ft-red">登录</a>后查看信息
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="panel panel-default" ng-init="toggle.activeTabRightReserve=0;" ng-show="project.status === 6 || project.status === 11">
+    <ul class="nav nav-pills nav-justified border-b nav-orange-project">
+      <li ng-class="{active: toggle.activeTabRightReserve===$index}" ng-repeat="tab_rightReserve in tabsRightReserve"><a ng-click="toggle.switchTabRightReserve($index)">{{tab_rightReserve.title}}</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane" ng-class="{active: toggle.activeTabRightReserve===$index}" ng-repeat="tab_rightReserve in tabsRightReserve">
+        <section ng-if="tab_rightReserve.title==='当前预约'">
+          <div ng-if="isLogged" class="panel-body">
+            <span>您<span ng-if="singleReserveCounts !==0">是第<strong class="ft-red">{{reserveData.ranking}}</strong>位出借者，</span>当前预约金额如下：</span>
+            <p class="margin-t-15"><i class="fa fa-asterisk fa-gray"></i>&nbsp;预付金额：{{reserveData.userReserveOrder.totalFreezeAmount}}元</p>
+            <p><i class="fa fa-asterisk fa-gray"></i>&nbsp;预约总额：{{reserveData.userReserveOrder.totalReserveAmount}}元</p>
+            <p><i class="fa fa-asterisk fa-gray"></i>&nbsp;预约期收益：{{reserveData.userReserveOrder.totalReturnProfit}}元</p>
+          </div>
+        </section>
+        <section ng-if="tab_rightReserve.title==='我的预约记录'">
+          <div ng-if="isLogged" class="panel-body text-alg-c">
+            <i class="fa fa-asterisk fa-gray"></i>
+            <span>您共有<strong class="ft-red">{{singleReserveCounts || 0}}</strong>次预约</span>
+            <table class="table table-hover ft-12" ng-show="singleReserveCounts">
+              <thead>
+                <tr>
+                  <th width="25%" class="margin-t-30 text-left" style="padding-left: 0;">预约时间</th>
+                  <th width="48%" class="text-center" style="padding-left: 0;">预付金额/预约总额</th>
+                  <th width="32%" class="text-right" style="padding-right: 0;">预约状态</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="item in reserveData.reserveOrders | startFrom:currentPage * pageSize | limitTo:pageSize">
+                  <td style="padding-left: 0;text-align: left;">{{item.createTime | amDateFormat: 'YYYY/MM/DD hh:mm:ss'}}</td>
+                  <td>{{item.freezeAmount}}/{{item.reserveAmount}}</td>
+                  <td style="padding-right: 0;text-align: right;">{{item.statusTxt}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <div ng-if="!isLogged" class="panel-body text-alg-c margin-t-15 margin-b-15">
+          请<a ng-click="toLogin()" class="ft-red">登录</a>后查看信息
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

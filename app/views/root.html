@@ -1,0 +1,47 @@
+<section ui-view="slider"></section>
+<section class="{{selectSide == 'questionnaire'? 'bg-offgrey':'bg-offWhite user-center'}}">
+	<div class="container">
+		<div class="row">
+			<div ui-view="sidebar"></div>
+			<div ui-view="user-center"></div>
+		</div>
+	</div>
+</section>
+<section class="about-us">
+	<div class="container">	
+		<div class="row">
+			<div ui-view="about-sidebar"></div>
+			<div ui-view="about-us-right"></div>
+		</div>
+	</div>
+</section>
+
+<section class="disclosure-root">
+	<div class="container">	
+		<div class="row">
+			<div ui-view="disclosure-sidebar"></div>
+			<div ui-view="disclosure-right"></div>
+		</div>
+	</div>
+</section>
+
+<section class="partner">
+  <div class="container">
+    <div class="row">
+      <div ui-view="partner-sidebar"></div>
+      <div ui-view="partner-right"></div>
+    </div>
+  </div>
+</section>
+
+<section class="help-center">
+	<div class="container">
+		<div class="row">
+			<div ui-view="help-sidebar"></div>
+			<div ui-view="help-center-right"></div>
+		</div>
+	</div>
+</section>
+<section ui-view autoscroll="true"></section>
+<section ui-view='sponsor'ng-show="sponsorsIsShowedFlAG"></section>
+

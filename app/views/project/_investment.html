@@ -1,0 +1,235 @@
+<div class="col-xs-12 padding-l-0 padding-r-0 margin-l-45">
+  <div class="form-horizontal">
+    <div class="panel panel-default status" style="height:334px;">
+      <div class="panel-heading ft-16 padding-tAb bg-white padding-l-15">
+        <strong class="ft-grey666">出借状态</strong>
+        <span class="ft-14 ft-grey666">（账户余额：</span>
+        <span class="ft-14 ft-grey666 cursor-pointer" ng-if="!isLogged">
+          登录后查看)
+          <a class="ft-orange pull-right ft-14 padding-t-3" ng-click="tologin()">登录</a>
+        </span>
+        <span ng-if="isLogged">
+          <span class="ft-14 ft-orange">{{account.balance | currency:"":2 || 0 }}</span><span class="investment-fontblack">元）</span>
+          <a class="ft-orange pull-right ft-14 padding-t-3" ng-click="toRecharge();">充值</a>
+        </span>
+      </div>
+      <div class="padding-circle padding-b-0" ng-class="{ 'padding-b-0': project.status === 6 && countdown >= 0 }">
+        <div class="row">
+          <div class="col-xs-12 negative-margin" ng-show="project.status !== 11">
+            <span class="pull-left ft-14 ft-grey666 margin-b-20">出借进度：</span>
+            <div class="progress progress-h">
+              <div class="progress-bar progress-bar-info hc-bg-orange" role="progressbar" aria-valuenow="{{project.progress || 0}}" aria-valuemin="0" aria-valuemax="100" ng-style=" {width:project.progress +'%'}"></div>
+            </div>
+            <span class="pull-right margin-t--24">{{project.progress || 0 | number : 2}}%</span>
+          </div>
+          <div class="col-xs-12 negative-margin">
+            <span class="ft-14 ft-grey666">{{totalType}}：</span>
+            <span class="ft-16 ft-orange3">{{(project.status === 11 ? project.reserveAmount : projectInvestNum) || 0 | currency:"":2}}</span><span class="investment-fontblack  ft-14 ft-grey666">元</span>
+          </div>
+          <div class="col-xs-12 positive-margin" ng-show="project.status === 11">
+            <span class="ft-14 ft-grey666">预约截止日：</span><span class="ft-orange ft-16">{{ project.reserveEndTime | amDateFormat: 'YYYY/MM/DD HH:mm'}}</span>
+          </div>
+        </div>
+
+        <div class="col-xs-12 padding-0 positive-margin" >
+
+        </div>
+
+
+        <!-- 倒计时展示 -->
+        <div class="col-xs-12 padding-0" ng-show="isLogged && project.status === 6">
+          <div class="row padding-t-0">
+            <div class="col-timer project-timer countdown-background height-timer margin-t-30">
+              <p class="countdown-fontsize">开标倒计时：{{ project._timeDown.hour }}时，{{ project._timeDown.min }}分，{{ project._timeDown.seconds }}秒</p>
+            </div>
+          </div>
+        </div>
+        <!-- 未登录状态下 -->
+        <div ng-if="!isLogged">
+          <!-- 未登录状态 可用余额展示-->
+          <!-- 未登录状态 输入框及提示语展示 -->
+          <div class="col-xs-12 padding-0 margin-t-10" ng-class="{'margin-t-0':project.status ===6 && countdown >= 0}">
+            <div class="margin-t-0">
+              <span class="ft-grey666">出借金额：</span>
+              <input type="number" placeholder="请输入{{project.status === 11 ? '预约' : '出借'}}总额" disabled='disabled' class="form-control margin-b-15 btn-76">
+            </div>
+            <div class="margin-t-0">
+              <span class="ft-grey666">预计利息：</span>
+              <span class="ft-orange ft-16">0</span> 元
+            </div>
+            <div class="margin-t-20">
+              <a ng-click="tologin()" class="btn btn-total-orange btn-lg btn-block"><i class="fa fa-user project-leftmargin"></i>请先登录</a>
+            </div>
+            <div class="margin-t-20 text-center">
+              <i class="fa fa-info-circle fa-lg fa-gray i-rightmargin"></i>
+              <span class="spangray">请先登录，再进行{{project.status === 11 ? '预约' : '出借'}}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 已登陆 且项目预发布状态 -->
+        <div ng-if="isLogged && project.status === 6">
+          <button class="col-xs-12 btn btn-total-orange btn-lg" disabled="disabled"><i class="fa fa-clock-o fa-lg project-leftmargin"></i>预发布</button>
+          <div class="positive-margin1 text-center">
+            <i class="fa fa-info-circle fa-lg fa-gray i-rightmargin positive-margin1"></i><span class="spangray">优质项目，敬请期待</span>
+          </div>
+        </div>
+        </div>
+
+        <!-- 登录已满标状态 -->
+        <div class="col-xs-12 padding-l-25 padding-r-25" ng-if="isLogged && project.progress >= 100" ng-switch="project.status">
+            <button class="btn btn-total-orange btn-lg btn-block positive-bottommargin margin-t-35" disabled="disabled"><i class="fa fa-lg project-leftmargin"></i>
+              <span>{{projectStatusMap[project.status]}}</span>
+            </button>
+            <div class="margin-t-40 text-center"><i class="fa fa-info-circle fa-lg fa-gray i-rightmargin"></i>
+              <span class="spangray">
+              <span ng-switch-when="8">
+                项目已融资成功，等待放款
+              </span>
+              <span ng-switch-when="10">
+                企业已完成项目还款
+              </span>
+              <span ng-switch-when="9">
+                企业按照计划，正常还款中
+              </span>
+              <span ng-switch-when="7" ng-if="project.currentStock == 0">
+                当前其他人有订单尚未支付，您仍有机会出借
+              </span>
+              </span>
+            </div>
+        </div>
+
+
+        <!-- 登录且可投资或者预约 -->
+        <div class="row padding-t-0" ng-if="isLogged && project.progress < 100 && project.status !== 6">
+
+          <!-- 未开通易宝 -->
+          <div class="col-xs-12 padding-l-40 padding-r-40" ng-if="securityStatus.realNameAuthStatus !== 1">
+            <div>
+              <span class="ft-grey666">出借金额：</span>
+              <input type="number" placeholder="请输入{{project.status === 11 ? '预约' : '出借'}}金额" disabled='disabled' class="form-control margin-b-15 btn-76">
+            </div>
+            <div class="margin-b-15 ft-grey666" ng-show="!newbieBiaoErrorMsg" ng-click="checkeCoupon()">
+              可用奖励：
+              <span class="spangray" ng-show="selectedCoupon.type === 2 && selectedCoupon !==null">
+                现金<span class="ft-orange ft-16">{{selectedCoupon.value}}</span>元 (需出借金额&ge;{{selectedCoupon.minInvestAmount}})
+              </span>
+              <span class="spangray" ng-show="selectedCoupon.type === 1 && selectedCoupon !==null">
+                <span class="ft-orange ft-16">{{selectedCoupon.value}}%</span>加息券 (有效期至{{selectedCoupon.endTime | date: "yyyy-MM-dd"}})
+              </span>
+              <span class="spangray" ng-show="selectedCoupon.amount >0 && selectedCoupon !==null">
+                {{welfaresLevel}}会员加息<span class="ft-orange ft-16">{{selectedCoupon.amount}}%</span>
+              </span>
+              <span class="spangray" ng-show="selectedCoupon === null">暂不使用<span class="ft-white ft-16">0</span></span>
+              <span class="spangray" ng-show="!selectedCoupon && coupons.length == 0">暂无可用奖励<span class="ft-white ft-16">0</span></span>
+              <span class="menu-down fr"></span>
+              <ul class="award-list spangray" ng-show="showCoupons">
+                <li ng-click="selectCoupon(coupon)" ng-repeat="coupon in coupons | orderBy : '-profit'">
+                  <p class="padding-l-3" ng-show="coupon.type === 1 && coupon.status === 1"><span class="ft-orange padding-l-5">{{coupon.value}}%</span>加息券 (有效期至{{coupon.endTime | date: "yyyy-MM-dd"}})</p>
+                  <p class="padding-l-3" ng-show="coupon.amount >0">{{welfaresLevel}}会员加息<span class="ft-orange">{{coupon.amount}}%</span></p>
+                  <p class="padding-l-5" ng-show="coupon.type === 2 && coupon.status === 1">现金<span class="ft-orange">{{coupon.value}}</span>元 (需出借金额&ge;{{coupon.minInvestAmount || 0}})</p>
+                </li>
+                <li class="text-center" ng-click="unUseCoupon()">暂不使用</li>
+                <!-- <li class="text-center" ng-click="loadMore()" ng-if="initLimit < coupons.length">查看更多</li> -->
+              </ul>
+            </div>
+            <button class="btn btn-total-orange btn-lg btn-block positive-bottommargin" ng-click="toRealNameAuth()"><i class="fa fa-lg project-leftmargin"></i>立即出借</button>
+            <div class="positive-margin1 text-center">
+              <i class="fa fa-info-circle fa-lg fa-gray i-rightmargin"></i>
+              <span class="spangray" >请先<a class="ft-red" ng-click="toRealNameAuth()">完善资料</a>，再进行{{project.status === 11 ? '预约' : '出借'}}</span>
+            </div>
+          </div>
+
+          <!-- 开通易宝可投资，需判断是否有未支付订单-->
+          <div class="col-xs-12 padding-l-25 padding-r-25" ng-if="securityStatus.realNameAuthStatus === 1 && project.status !== 11">
+            <div ng-switch on="isAvailable">
+              <div class="col-xs-12" ng-switch-when="1">
+                <!-- 有未完成的订单时展示 -->
+                <button class="btn btn-lg btn-total-orange btn-block positive-margin1 margin-b-30" ng-click="toFinishOrder();">立即出借</button>
+              </div>
+              <form class="padding-l-15 padding-r-15" name="investForm" class="padding-t-10" ng-switch-default>
+                <span class="ft-grey666">出借金额：</span>
+                <p class="text-center text text-danger invest_tip error-msg" ng-show="errorMsg">
+                  <span class="ft-14">{{errorMsg}}</span>
+                  <a class="ft-14 ftw-b text-danger" style="text-decoration: underline !important;" ng-click="alertQuestion()" ng-if="symbolLimitsErr">查看原因</a>
+                </p>
+                <input type="number" name="investAmount" ng-model="project.amount" class="form-control margin-b-10 btn-76" placeholder="请输入出借金额（元）" ng-disabled="!questionnareStatus || account.balance <= 0 || !newbieBiaoInvestFlag" step="{{project.increaseAmount}}"  ng-switch-default>
+                <input type="hidden" name="project.id" ng-model="project.id" value="{{project.id}}">
+                <div class="margin-b-10 ft-grey666" ng-show="!newbieBiaoErrorMsg" ng-click="checkeCoupon()">
+                  可用奖励：
+                  <span class="spangray" ng-show="selectedCoupon.type === 2 && selectedCoupon !==null">
+                    现金<span class="ft-orange ft-16">{{selectedCoupon.value}}</span>元 (需出借金额&ge;{{selectedCoupon.minInvestAmount}})
+                  </span>
+                  <span class="spangray" ng-show="selectedCoupon.type === 1 && selectedCoupon !==null">
+                    <span class="ft-orange ft-16">{{selectedCoupon.value}}%</span>加息券 (有效期至{{selectedCoupon.endTime | date: "yyyy-MM-dd"}})
+                  </span>
+                  <span class="spangray" ng-show="selectedCoupon.amount >0 && selectedCoupon !==null">
+                    {{welfaresLevel}}会员加息<span class="ft-orange ft-16">{{selectedCoupon.amount}}%</span>
+                  </span>
+                  <span class="spangray" ng-show="selectedCoupon === null">暂不使用<span class="ft-white ft-16">0</span></span>
+                  <span class="spangray" ng-show="!selectedCoupon && coupons.length === 0">暂无可用奖励<span class="ft-white ft-16">0</span></span>
+                  <span class="menu-down fr"></span>
+                  <ul class="award-list spangray" ng-show="showCoupons">
+                    <!-- <li ng-click="selectCoupon(coupon)" ng-repeat="coupon in coupons | orderBy : 'value'" ng-show="coupon.type === 2 && coupon.status === 1">
+                        <p class="padding-l-5"> 现金<span class="ft-orange">{{coupon.value}}</span>元 (需投资金额&ge;{{coupon.minInvestAmount || 0}})</p>
+                    </li>
+                    <li ng-click="selectCoupon(coupon)" ng-repeat="coupon in coupons | orderBy : '-value'" ng-show="coupon.type === 1 && coupon.status === 1">
+                        <p class="padding-l-3"><span class="ft-orange padding-l-5">{{coupon.value}}%</span>加息券 (有效期至{{coupon.endTime | date: "yyyy-MM-dd"}})</p>
+                    </li> -->
+                    <li ng-click="selectCoupon(coupon)" ng-repeat="coupon in coupons | orderBy : '-profit'">
+                        <p class="padding-l-3" ng-show="coupon.type === 1 && coupon.status === 1"><span class="ft-orange padding-l-5">{{coupon.value}}%</span>加息券 (有效期至{{coupon.endTime | date: "yyyy-MM-dd"}})</p>
+                        <p class="padding-l-3" ng-show="coupon.amount >0">{{welfaresLevel}}会员加息<span class="ft-orange">{{coupon.amount}}%</span></p>
+                        <p class="padding-l-5" ng-show="coupon.type === 2 && coupon.status === 1">现金<span class="ft-orange">{{coupon.value}}</span>元 (需出借金额&ge;{{coupon.minInvestAmount || 0}})</p>
+                    </li>
+                    <li class="text-center" ng-click="unUseCoupon()">暂不使用</li>
+                    <!-- <li class="text-center" ng-click="loadMore()" ng-if="initLimit < coupons.length">查看更多</li> -->
+                  </ul>
+                </div>
+                <div class="margin-b-10 ft-grey666" ng-hide="project.status ===7 && project.currentStock === 0 || newbieBiaoErrorMsg">
+                  预计利息：
+                  <span class="spangray" ng-model="profit">
+                    <span class="ft-16">{{project.amount && project.repaymentType === 1 ? profit : profit.profit || 0 | number: 2}}</span>元
+                    <span class="ft-orange" ng-show="selectedCoupon.type === 1 || selectedCoupon.amount > 0"><span class="ft-16">+{{project.amount && project.repaymentType === 1 ? increaseProfit : increaseProfit.profit || 0 | number: 2}}</span>元</span>
+                    <span class="ft-orange" ng-show="selectedCoupon.type === 2"><span class="ft-16">+{{project.amount? increaseProfit : 0 | number:2}}</span>元</span>
+                  </span>
+                </div>
+                <button class="btn btn-total-orange btn-lg btn-block margin-b-10" ng-class="{'margin-t-30':newbieBiaoErrorMsg}" ng-switch-default ng-click="transfer(project, project.amount, 0, selectedCoupon)" ng-disabled="!project.amount || !newbieBiaoInvestFlag || errorMsg || project.amount < 0" ng-show="questionnareStatus && account.balance > 0"><i class="fa project-leftmargin"></i>立即出借</button>
+                <button class="btn btn-total-orange btn-lg btn-block margin-b-10" ng-switch-default ng-click="toRecharge()" ng-show="questionnareStatus && account.balance <= 0"><i class="fa"></i>请先充值</button>
+                <button class="btn btn-total-orange btn-lg btn-block margin-b-10" ng-switch-default ng-click="toQuestion()" ng-show="!questionnareStatus"><i class="fa"></i>请先完成风险测评</button>
+              </form>
+              <div class="row text-left padding-t-0 padding-lr-30 ft-13" ng-if="questionnareStatus && !signFlag">出借即表明您已阅读并确认签署 <a ui-sref="root.investment-agree" class="ft-blue0" target="_blank">《出借风险及禁止性行为告知书》</a>及<a ng-click="downContracts()" class="ft-blue0">《借款合同》</a>。</div>
+              <div class="row text-left padding-t-0 padding-lr-30 ft-13" ng-if="questionnareStatus && signFlag">出借即表明您已阅读 <a ui-sref="root.investment-agree" class="ft-blue0" target="_blank">《出借风险及禁止性行为告知书》</a>，并确认签署<a ng-click="downContracts()" class="ft-blue0">《借款合同》</a>。</div>
+              <div class="margin-t-10 text-center" ng-if="!questionnareStatus">
+                <i class="fa fa-info-circle fa-lg fa-gray i-rightmargin"></i>
+                <span  ng-show="!newbieBiaoErrorMsg && questionnareStatus" class="spangray">优质项目，抓紧时间出借吧~~</span>
+                <span class="spangray" ng-if="!questionnareStatus">请先完成<a class="ft-red" ng-click="toQuestion()">风险测评</a>，再进行认购~</span>
+                <span ng-show="newbieBiaoErrorMsg" class="spangray ft-red7">{{newbieBiaoErrorMsg}}</span>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 可预约 -->
+          <div class="row padding-l-40 padding-r-25 padding-t-0 col-xs-12" ng-if="securityStatus.realNameAuthStatus === 1 && project.status === 11">
+            <div>
+              <div class="col-xs-12 positive-bottommargin positive-margin pull-n">
+                <span class="ft-14 ft-grey666">预付金额：</span><span class="ft-16 ft-orange">{{project.toReserveAmount/10 || 0 | number:2}}</span>元
+              </div>
+              <form ng-submit="getProfit(project);"class="padding-l-15" name="reserveForm">
+                <span class="ft-grey666">出借金额：</span>
+                <input type="number" min="{{project.minInvest}}" max="{{userCanInvestNum}}" step="{{project.increaseAmount}}" name="project.toReserveAmount" ng-model="project.toReserveAmount" class="form-control margin-b-15 btn-76" placeholder="请输入预约总额（元）" required disabled="disabled" ng-if="userCanInvestNum === 0">
+                <input type="number" min="{{project.minInvest}}" step="{{project.increaseAmount}}" name="project.toReserveAmount" ng-model="project.toReserveAmount" class="form-control margin-b-20 btn-76" placeholder="请输入预约总额（元）" required ng-if="userCanInvestNum !== 0">
+                <input type="hidden" name="project.id" ng-model="project.id" value="{{project.id}}">
+                <button class="btn btn-total-orange btn-lg btn-block" ng-if="userCanInvestNum !== 0"><i class="fa project-leftmargin"></i>立即预约</button>
+                <button class="btn btn-total-orange btn-lg btn-block" ng-if="account.balance === 0" disabled="disabled"><i class="fa project-leftmargin"></i>立即预约</button>
+                <button class="btn btn-total-orange btn-lg btn-block" ng-if="project.reserveAmount === 0" disabled="disabled"><i class="fa project-leftmargin"></i>预约已满</button>
+              </form>
+              <div class="margin-t-15 text-center">
+                <span><input class="rule-check" type="checkbox" ng-model="chk" ng-click="check(chk)">我已阅读并同意<a ng-click="showAgreement();" class="ft-red">《项目预约规则》</a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

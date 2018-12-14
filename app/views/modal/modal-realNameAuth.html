@@ -1,0 +1,41 @@
+<div class="alert" ng-class="[type ? 'alert-' + type : null]" ng-controller="SecuritySettingsCtrl">
+  <button type="button" class="close" ng-click="$hide()">&times;</button>
+  <div ng-if="pay_company === 'cgt'" class="title">开通海口联合农商银行资金存管系统账户</div>
+  <div ng-if="pay_company === 'yeepay'" class="title">
+    <strong>开通银行存管账户</strong>
+  </div>
+  <div class="content">
+    <div class="row">
+      <form class="form-login col-xs-12 padding-b-30" role="form" name="loginForm" ng-submit="realNameAuth(user);$hide();">
+        <div class="form-group col-xs-12">
+          <label for="realName" class="col-xs-3">姓名：</label>
+          <input type="text" class="col-xs-6" id="realName" name="realName" ng-model="user.realName" required auto-fill-sync autofocus />
+          <div ng-if="loginForm.realName.$dirty && loginForm.realName.$invalid" class="form-div col-xs-offset-3 col-xs-9">
+            <div ng-if="loginForm.realName.$error.required" class="row">
+              <i class="fa fa-times-circle-o login-check-img"></i>
+              <span class="input-tips">姓名不能为空</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-xs-12">
+          <label for="idCardNo" class="col-xs-3">身份证号：</label>
+          <input type="text" class="col-xs-6" name="idCardNo" ng-model="user.idCardNo" ng-pattern="/^\d{6}(18|19|20)?\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/i"  required auto-fill-sync autofocus />
+          <div ng-if="loginForm.idCardNo.$dirty && loginForm.idCardNo.$invalid" class="col-xs-9 col-xs-offset-3 form-div">
+            <div ng-if="loginForm.idCardNo.$error.required" class="row">
+              <i class="fa fa-times-circle-o login-check-img"></i>
+              <span class="input-tips">身份证号码不能为空</span>
+            </div>
+            <div ng-if="loginForm.idCardNo.$error.pattern" class="row">
+              <i class="fa fa-times-circle-o login-check-img"></i>
+              <span class="input-tips">身份证号码格式不对</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-xs-12">
+          <input type="submit" class="btn-primary-orange col-xs-6 col-xs-offset-3" ng-disabled="loginForm.$invalid" value="立即开通" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="mask_layer"></div>

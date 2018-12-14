@@ -1,0 +1,100 @@
+<div class="container-fluid invest-verify bg-white ft-16">
+    <div class="container bg-white border" style="padding-top:0;">
+        <div class="row border">
+            <div class="col-xs-12" style="background-color:#eee;padding-top:15px;padding-bottom:15px;">&nbsp;&nbsp;<b>项目信息确认</b>
+            </div>
+            <div class="col-xs-12">
+                <div class="row margin-t-15">
+                    <div class="col-xs-4">项目编号：{{project.number}}</div>
+                    <div class="col-xs-4"><a href="javascript:;" title="{{project.name}}">项目名称：{{fundsProduct.name}}{{project.name}}</a>
+                    </div>
+                    <div class="col-xs-4" ng-if="categoryCode !== '0112'"><a href="javascript:;" title="{{project.guaranteeName}}">债权来源：{{'宏金保、宏财优选债权'}}</a>
+                    </div>
+                </div>
+                <div class="row margin-t-15 margin-b-30">
+                    <div class="col-xs-4">年化利率：{{fundsProduct.baseRate}}%</div>
+                    <div class="col-xs-4">投资期限：{{ fundsProduct.sealingDays || 0}}天</div>
+                    <div class="col-xs-4">还款方式：{{ '到期还本还息' }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="row border border">
+            <div class="col-xs-12" style="background-color:#eee;padding-top:15px;padding-bottom:15px;">&nbsp;&nbsp;<b>投资信息确认</b>
+            </div>
+            <div class="col-md-12  margin-t-15 margin-b-30">
+                <div class="row">
+                    <div class="col-xs-4">投资金额：<b class="ft-orange ft-20">{{investAmount| number:2}}</b>元</div>
+                    <div class="col-xs-4">账户余额：<b class="ft-bold">{{capital.balance | number:2}}</b>元</div>
+                    <div class="col-xs-4" ng-if="payAmount > capital.balance">还需金额：{{payAmount - capital.balance | number:2}}元</div>
+                </div>
+                <div class="row margin-t-10">
+                    <div class="col-xs-4">现金金额：<b class="ft-orange ft-20">{{payAmount| number:2}}</b>元</div>
+                    <!-- <div class="col-xs-4" ng-show="fundsProduct.type === 1">体验金余额：<b class="ft-bold">{{capital.experienceAmount | number:2}}</b>元</div> -->
+                    <div class="col-xs-4" ng-if="payAmount > capital.balance">还需金额：{{payAmount - capital.balance | number:2}}元</div>
+                </div>
+                <!-- <div class="row margin-t-10" ng-show="fundsProduct.type === 1">
+                    <div class="col-xs-4">体验金额：<b class="ft-orange ft-20">{{experienceAmount| number:2}}</b>元</div>
+                </div> -->
+            </div>
+        </div>
+        <div class="row border-b-da" ng-show="fundsProduct.type !== 1 && selectCoupon !== null">
+            <div class="col-xs-12" style="background-color:#eee;padding-top:15px;padding-bottom:15px;">&nbsp;&nbsp;<b>奖励信息确认</b>
+            </div>
+            <div class="col-xs-12 margin-b-30 margin-t-15">
+                <div class="row margin-t-15">
+                   <!-- <div class="col-xs-4" ng-show="experienceAmount > 0">
+                        <input type="checkbox">体验金 <span class="ft-orange">{{experienceAmount| number:2}}</span>元
+                   </div> -->
+                   <div class="col-xs-4">
+                        <select type="button" class="btn btn-default" ng-model="selectCoupon" data-html="1" data-animation="am-flip-x" ng-options="coupon as coupon.rateText for coupon in increaseRateCoupons" required>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row list-item border-b-da" ng-show="fundsProduct.type === 1" >
+            <div class="col-xs-9 col-xs-offset-3 text-right" >
+                累积最大投资金额：{{maxInvestAmount| number:2}}元，已投金额：{{totalPayAmount | number:2}}元
+            </div>
+        </div>
+        <div class="row list-item border-b-da" ng-switch="payAmount - capital.balance <= 0">
+            <div class="col-xs-3 col-xs-offset-4" ng-switch-when="true">
+                <input type="checkbox" ng-checked="true" ng-model="$parent.checkInvFlag" />同意<a class="ft-red" ng-click="showAgreement(fundsProduct.type);" ng-show="fundsProduct.type !== 1">《宏金盈委托投资协议》</a>
+                <a class="ft-red" ng-click="showAgreement(fundsProduct.type);" ng-show="fundsProduct.type === 1">《零存宝委托投资协议》</a>
+            </div>
+            <div class="col-xs-3" ng-switch-when="true">
+                <input class="rule-check" type="checkbox" ng-model="project.isRepeatFlag" ng-click="checkAutoTransfer(project);" ng-disabled="payAmount <= 0">自动续投
+            </div>
+        </div>
+        <div class="row list-item" ng-switch="payAmount - capital.balance <= 0">
+            <div class="col-md-12" ng-switch-when="false">
+                <div class="form-group mgn-top">您的余额不足</div>
+                <input type="button" value="充值" class="red-button col-md-1 col-lg-1" ui-sref="root.userCenter.recharge" />
+                <input type="button" class="white-button" value="修改投资金额" ng-click="showModal()" style="margin-left:10px;">
+            </div>
+            <div class="col-md-12 text-center" ng-switch-when="true">
+                <form>
+                    <div class="form-group mgn-top ft-24" ng-show="experienceAmount > 0 && selectCoupon != null && selectCoupon.rate > 0">
+                        您将要支付<span class="ftw-b ft-orange">{{payAmount | number:2}}</span>元
+                        <span>，并使用<b class="ft-orange">{{experienceAmount| number:2}}</b>元体验金</span>
+                        <span ng-show="fundsProduct.type !== 1">和<b class="ft-orange">+{{selectCoupon.rate}}%</b>加息券</span>，核实信息无误后请确认
+                    </div>
+                    <div class="form-group mgn-top ft-24" ng-show="experienceAmount > 0 && selectCoupon.rate <= 0">
+                        您将要支付<span class="ftw-b ft-orange">{{payAmount | number:2}}</span>元
+                        <span>，并使用<b class="ft-orange">{{experienceAmount| number:2}}</b>元体验金</span>，核实信息无误后请确认
+                    </div>
+                    <div class="form-group mgn-top ft-24" ng-show="experienceAmount <= 0 && selectCoupon != null && selectCoupon.rate > 0">
+                        您将要支付<span class="ftw-b ft-orange">{{payAmount | number:2}}</span>元
+                        <span ng-show="fundsProduct.type !== 1">，并使用<b class="ft-orange">+{{selectCoupon.rate}}%</b>加息券</span>，核实信息无误后请确认
+                    </div>
+                    <div class="form-group mgn-top ft-24" ng-show="experienceAmount <= 0 && (selectCoupon == null || selectCoupon.rate <= 0)">
+                        您将要支付<span class="ftw-b ft-orange">{{payAmount | number:2}}</span>元，核实信息无误后请确认
+                    </div>
+                    <a class="btn btn-default col-xs-2 ft-18 col-xs-offset-4" ng-class="{'btn-orange': checkInvFlag}" ng-disabled="!checkInvFlag" ng-click="transfer(project, investAmount, payAmount, selectCoupon)">确认提交</a>
+                    <a class="btn btn-default col-xs-2 ft-18 col-xs-offset-1" ui-sref="root.current-deposit-details({number: project.number})" style="margin-left:40px;" ng-show="fundsProduct.type === 1">取消</a>
+                    <a class="btn btn-default col-xs-2 ft-18 col-xs-offset-1" ui-sref="root.investmentplan-details({number: project.number})" style="margin-left:40px;"ng-show="fundsProduct.type !== 1">取消</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,111 @@
+<div class="col-xs-12 padding-l-0 padding-r-0 margin-l-45">
+  <div class="form-horizontal">
+    <div class="panel panel-default status" style="height:334px;">
+      <div class="panel-heading ft-16 padding-tAb bg-white padding-l-15">
+        <strong class="ft-grey666">出借状态</strong>
+        <span class="ft-14 ft-grey666">（账户余额：</span>
+        <span class="ft-14 ft-grey666 cursor-pointer" ng-if="!isLogged">
+          登录后查看)
+          <a class="ft-orange pull-right ft-14 padding-t-3" ng-click="tologin()">登录</a>
+        </span>
+        <span ng-if="isLogged">
+          <span class="ft-14 ft-orange">{{account.balance | currency:"":2 || 0 }}</span><span class="investment-fontblack">元）</span>
+          <a class="ft-orange pull-right ft-14 padding-t-3" ng-click="toRecharge();">充值</a>
+        </span>
+      </div>
+      <div class="padding-circle padding-b-0" ng-class="{ 'padding-b-0': project.status === 6 && countdown >= 0 }">
+        <div class="row">
+          <div class="col-xs-12 negative-margin">
+          </div>
+        </div>
+
+        <!-- 未登录状态下 -->
+        <div ng-if="!isLogged">
+          <!-- 未登录状态 可用余额展示-->
+          <!-- 未登录状态 输入框及提示语展示 -->
+          <div class="col-xs-12 padding-0">
+            <div class="margin-t-10">
+              <span class="ft-grey666">认购金额：</span>
+              <input type="number" placeholder="请输入出借份额（元）" disabled='disabled' step="100" class="form-control margin-b-15 btn-76">
+            </div>
+            <div class="margin-t-0" >
+              <span class="ft-grey666">{{project.repaymentType === 1 ? '预计利息' : '预计每期还款金额'}}：</span>
+              <span class="ft-orange ft-16">0</span> 元
+            </div>
+            <div class="margin-t-20">
+              <a ng-click="tologin()" class="btn btn-total-orange btn-lg btn-block"><i class="fa fa-user project-leftmargin"></i>请先登录</a>
+            </div>
+            <div class="margin-t-20 text-center">
+              <i class="fa fa-info-circle fa-lg fa-gray i-rightmargin"></i>
+              <span class="spangray">请先登录，再进行认购</span>
+            </div>
+          </div>
+        </div>
+        <!-- 已登录 -->
+        <form name="assignmentForm">
+          <div ng-if="isLogged"> 
+            <div class="col-xs-12 padding-0" ng-class="{'margin-t-0':project.status ===6 && countdown >= 0}">
+              <img src="/images/sold.png" class="display-bl margin-auto" ng-show="creditProject.status === 4 || (creditProject.status === 3 && creditProject.soldStock !== 0)">
+              <div class="margin-t-5" ng-hide="creditProject.status === 4 || (creditProject.status === 3 && creditProject.soldStock !== 0)">
+                 <p class="text-center text text-danger invest_tip error-msg error-msg1" ng-show="errMsg">
+                  <span class="ft-14">{{errMsg}}</span>
+                  <a class="ft-14 ftw-b text-danger" style="text-decoration: underline !important;" ng-click="alertQuestion()" ng-if="symbolLimitsErr">查看原因</a>
+                  <span class="ft-14" ng-if= "amount == 0">'出借金额必须大于等于100'</span>
+                </p>
+                <span class="ft-grey666">认购金额：</span>
+                <!-- 未认证，撤销中，冻结中不可输入 --> 
+                <input type="number" placeholder="请输入出借份额（元）" step="100" min="0" class="form-control margin-b-15 btn-76" name="assignmentForm" ng-model="amount" ng-change="watchInvestAmount(amount)" ng-disabled="!questionnareStatus || securityStatus.realNameAuthStatus !== 1 || account.balance <= 0 || creditProject.status === 2 || creditProject.status === 3 || creditProject.status === 5 || (creditProject.status === 1 && creditProject.currentStock === 0)" ng-hide="creditProject.status === 4 || (creditProject.status === 3 && creditProject.soldStock !== 0)">
+              </div>
+                <!-- 未认证，冻结中，撤销中显示0 -->
+              <div class="margin-t-10" ng-hide="creditProject.status === 4 || (creditProject.status === 3 && creditProject.soldStock !== 0)">
+                <span class="ft-grey666">实际支付：</span>
+                <span class="ft-orange ft-16">{{amount ? realPayAmount : 0 | number:2}}</span> 元
+                <i class="fa fa-question-circle ft-orange ft-16 margin-l-10" aria-hidden="true" toggle-fade ng-if="amount && exProfit !== 0"></i>
+                <div class="ft-grey666 explain1" ng-if="exProfit > 0">
+                您需先行垫付出借人该笔债权当期已产生利息{{amount ? exProfit : 0 | number:2}}元，该部分资金会在下个还款日归还给您。
+                </div>
+                <div class="ft-grey666 text-center explain2 explain1"  ng-if="exProfit < 0">
+                该笔债权当期已产生利息{{amount ? -exProfit : 0 | number:2}}元。
+                </div>
+              </div>
+              <div class="margin-t-20" ng-hide="creditProject.status === 4 || (creditProject.status === 3 && creditProject.soldStock !== 0)">
+                <span class="ft-grey666">{{project.repaymentType === 1 ? '预计收益' : '预计每期还款金额'}}：</span>
+                <span class="ft-orange ft-16">{{amount ? profit : 0 | number:2}}</span> 元
+              </div>
+              <div class="margin-t-20">
+              <!-- 可转让，认证过|| 可转让，未认证点击torealnameauth || 转让中，已认证，余额充值，有未支付订单点击提示有未支付订单-->
+                <button class="btn btn-total-orange btn-lg btn-block positive-bottommargin" ng-click="toInvest(amount);" ng-if="questionnareStatus && (creditProject.status === 1 && securityStatus.realNameAuthStatus === 1 && account.balance > 0)" disabled ng-disabled="!amount || errMsg || anount<= 0 || (creditProject.status === 1 && creditProject.currentStock === 0) || assignmentForm.$invalid|| assignmentForm.$pending || !clicked" type="submit" ></i>立即认购</button>
+                <button class="btn btn-total-orange btn-lg btn-block positive-bottommargin" ng-click="toRealNameAuth();" ng-if="(creditProject.status === 1 && securityStatus.realNameAuthStatus !== 1)"  type="submit" ></i>立即认购</button>
+                <button class="btn btn-total-orange btn-lg btn-block" ng-click="toQuestion()" ng-show="creditProject.status === 1 && !questionnareStatus && securityStatus.realNameAuthStatus === 1"><i class="fa"></i>请先完成风险测评</button>
+                <!-- 有未完成的订单时展示 -->
+                
+                <button class="btn btn-total-orange btn-lg btn-block positive-bottommargin" disabled ng-if="creditProject.status === 5"><i class="fa fa-lg project-leftmargin"></i>冻结中</button>
+                <button class="btn btn-grey-spirit2 btn-lg btn-block positive-bottommargin" disabled ng-if="creditProject.status === 4 || (creditProject.status === 3 && creditProject.soldStock !== 0)"><i class="fa fa-lg project-leftmargin"></i>已转让</button>
+                <!-- 转让中，已认证，余额不足，点击显示充值弹窗    -->
+                <button class="btn btn-total-orange btn-lg btn-block positive-bottommargin" ng-if="creditProject.status === 1 && securityStatus.realNameAuthStatus === 1 && account.balance <= 0" ng-click="toRecharge();"><i class="fa fa-lg project-leftmargin" ></i>请先充值</button>
+              </div>
+              <div class="margin-t-15 text-center">
+                <i class="fa fa-info-circle fa-lg fa-gray i-rightmargin" ng-hide="(creditProject.status === 1 && securityStatus.realNameAuthStatus === 1) || creditProject.status === 5"></i>
+                <!-- 可转让，认证过，或者冻结中 -->
+                <span class="spangray ft-13 text-left dis-inblock" ng-if="((creditProject.status === 1 && securityStatus.realNameAuthStatus === 1 && creditProject.currentStock > 0) || creditProject.status === 5) && questionnareStatus && !signFlag">认购即表明您已阅读并确认签署 <a ui-sref="root.investment-agree" class="ft-blue0" target="_blank">《出借风险及禁止性行为告知书》</a>及<a ui-sref="root.assignment-agreement({assignmentType: assignmentType})" href="/assignment-agreement" target="_blank" class="ft-blue0">《债权转让及受让协议》</a>。</span>
+                <span class="spangray ft-13 text-left dis-inblock" ng-if="((creditProject.status === 1 && securityStatus.realNameAuthStatus === 1 && creditProject.currentStock > 0) || creditProject.status === 5) && questionnareStatus && signFlag">认购即表明您已阅读 <a ui-sref="root.investment-agree" class="ft-blue0" target="_blank">《出借风险及禁止性行为告知书》</a>，并确认签署<a ui-sref="root.assignment-agreement({assignmentType: assignmentType})" href="/assignment-agreement" target="_blank" class="ft-blue0">《债权转让及受让协议》</a>。</span>
+                <!-- <div class=" text-center">
+                  <p class="ft-12 spangray" >认购即表示您已阅读并同意 <a ui-sref="root.assignment-agreement" href="/assignment-agreement" target="_blank" class="ft-blue0">《债权认购协议》</a> </p>
+                </div> -->
+                <!-- 可转让，未认证 -->
+                <span class="spangray" ng-if="creditProject.status === 1 && securityStatus.realNameAuthStatus !== 1">请先<a class="ft-red" ng-click="toRealNameAuth()">完善资料</a>，再进行认购~</span>
+                <span class="spangray" ng-if="creditProject.status === 1 && securityStatus.realNameAuthStatus === 1 && !questionnareStatus">请先完成<a class="ft-red" ng-click="toQuestion()">风险测评</a>，再进行认购~</span>
+                <span class="spangray" ng-if="creditProject.status === 1 && creditProject.currentStock === 0">当前其他人有订单尚未支付，您仍有机会出借~</span>
+                <span class="spangray" ng-if="creditProject.status === 2 ">债券正在撤销中~~</span> 
+                <span class="spangray" ng-if="creditProject.status === 4 || (creditProject.status === 3 && creditProject.soldStock !== 0)">债权已转让，请浏览其他项目~</span>
+              </div>
+              </div>
+            </div>
+          </div> 
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+

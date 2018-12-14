@@ -1,0 +1,80 @@
+<div class="container-fluid invest-verify bg-white ft-16">
+  <div class="container bg-white border" style="padding-top:0;">
+    <div class="row border">
+      <div class="col-xs-12" style="background-color:#eee;padding-top:15px;padding-bottom:15px;">&nbsp;&nbsp;<b>项目信息确认</b>
+      </div>
+      <div class="col-xs-12">
+        <div class="row margin-t-15">
+          <div class="col-xs-4">项目编号：{{project.number}}</div>
+          <div class="col-xs-4"><a href="javascript:;" title="{{project.name}}">项目名称：{{project.name}}</a>
+          </div>
+          <div class="col-xs-4" ng-if="categoryCode !== '0112'"><a href="javascript:;" title="{{project.guaranteeName}}">担保机构：{{project.guaranteeName}}</a>
+          </div>
+        </div>
+        <div class="row margin-t-15 margin-b-30">
+          <div class="col-xs-4">年化利率：{{project.annualEarnings}}%</div>
+          <div class="col-xs-4">投资期限：{{project.projectDays || 0}}天</div>
+          <div class="col-xs-4">还款方式：{{project.repaymentType === 1 ? '按月付息到期还本' : '按月返还等额本息'}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="row border border">
+      <div class="col-xs-12" style="background-color:#eee;padding-top:15px;padding-bottom:15px;">&nbsp;&nbsp;<b>投资信息确认</b>
+      </div>
+      <div class="col-md-12  margin-t-15 margin-b-30">
+        <div class="row">
+          <div class="col-xs-4">投资金额：<b class="ft-orange ft-20">{{investAmount| number:2}}</b>元</div>
+          <div class="col-xs-4">账户余额：<b class="ft-bold">{{account.balance | number:2}}</b>元</div>
+          <div class="col-xs-4" ng-if="investAmount > account.balance">还需金额：{{payAmount - account.balance | number:2}}元</div>
+        </div>
+        <div class="row margin-t-10">
+          <div class="col-xs-4">现金金额：<b class="ft-orange ft-20">{{payAmount| number:2}}</b>元</div>
+          <div class="col-xs-4" ng-if="investAmount > account.balance">还需金额：{{payAmount - account.balance | number:2}}元</div>
+        </div>
+      </div>
+    </div>
+    <div class="row border-b-da" ng-show=" selectCoupon !== null">
+      <div class="col-xs-12" style="background-color:#eee;padding-top:15px;padding-bottom:15px;">&nbsp;&nbsp;<b>奖励信息确认</b>
+      </div>
+      <div class="col-xs-12 margin-b-30 margin-t-15">
+        <div class="row margin-t-15">
+          <div class="col-xs-4" ng-show="experienceAmount > 0">
+              <input type="checkbox">体验金 <span class="ft-orange">{{experienceAmount| number:2}}</span>元
+         </div>
+         <div class="col-xs-4">
+            <button type="button" ng-change="selectRateCoupon()" class="btn btn-default" ng-model="selectCoupon" data-html="1" data-animation="am-flip-x" ng-options="coupon as coupon.rateText for coupon in increaseRateCoupons" bs-select required>
+            </button>
+        </div>
+        </div>
+      </div>
+    </div>
+<!--     <div class="row list-item border-b-da" ng-switch="payAmount - account.balance <= 0">
+      <div class="col-xs-3 col-xs-offset-5" ng-switch-when="true">
+        <input type="checkbox" ng-checked="true" ng-model="$parent.checkInvFlag" />同意<a ng-click="showAgreement();" class="loan-stl">《借款及担保协议》</a>
+      </div>
+    </div> -->
+    <div class="row list-item" ng-switch="payAmount - account.balance <= 0">
+      <div class="col-md-12" ng-switch-when="false">
+        <div class="form-group mgn-top">您的余额不足</div>
+        <input type="button" value="充值" class="red-button col-md-1 col-lg-1" ui-sref="root.userCenter.recharge" />
+        <input type="button" class="white-button" value="修改投资金额" ng-click="showModal()" style="margin-left:10px;">
+      </div>
+      <div class="col-md-12 text-center" ng-switch-when="true">
+        <form>
+          <div class="form-group mgn-top ft-24" ng-show="selectCoupon != null && selectCoupon.value > 0">
+              您将要支付<span class="ftw-b ft-orange">{{payAmount | number:2}}</span>元
+              <span>，并使用<b class="ft-orange">+{{selectCoupon.value}}%</b>加息券</span>，期望收益{{profit || 0 | number : 2}}元 <b class="ft-orange">+ {{increaseRateProfit || 0 | number : 2}}元</b>
+              <div class="form-group mgn-top ft-24">
+                核实信息无误后请确认
+              </div>
+          </div>
+          <div class="form-group mgn-top ft-24" ng-show="selectCoupon == null || selectCoupon.value <= 0">
+              您将要支付<span class="ftw-b ft-orange">{{payAmount | number:2}}</span>元，期望收益{{profit || 0 | number : 2}}元，核实信息无误后请确认
+          </div>
+          <a class="btn btn-default col-xs-2 ft-18 col-xs-offset-4" ng-class="{'btn-orange': checkInvFlag}" ng-disabled="!checkInvFlag"ng-click="transfer(project, payAmount, 0, selectCoupon)">确认提交</a>
+          <a class="btn btn-default col-xs-2 ft-18 col-xs-offset-1"  ui-sref="root.project-details({number: project.number})" style="margin-left:40px;" >取消</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

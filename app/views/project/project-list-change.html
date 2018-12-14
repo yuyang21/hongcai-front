@@ -1,0 +1,196 @@
+<div id="project-list" class="container">
+  <div class="project-list-area">
+    <div class="select-area">
+      <div class="select-show">
+        <p>项目状态：</p>
+        <ul>
+          <li>
+            <a ui-sref="root.project-list-query({status:'6,7,8,9,10', minCycle: minCycle, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:sortCondition, sortType: sortType })">
+            <i class="fa" ng-class="{'fa-check-square-o': status === '6,7,8,9,10', 'fa-square-o': status !== '6,7,8,9,10'}"></i>
+            全部项目
+            </a>
+          </li>
+          <li>
+            <a ui-sref="root.project-list-query({status:'7', minCycle: minCycle, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:sortCondition, sortType: sortType })">
+            <i class="fa" ng-class="{'fa-check-square-o': status === '7', 'fa-square-o': status !== '7'}"></i>
+            现投标中
+            </a>
+          </li>
+          <li>
+            <a ui-sref="root.project-list-query({status:'8', minCycle: minCycle, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:sortCondition, sortType: sortType })">
+            <i class="fa" ng-class="{'fa-check-square-o': status === '8', 'fa-square-o': status !== '8'}"></i>
+            投标结束
+            </a>
+          </li>
+          <li>
+            <a ui-sref="root.project-list-query({status:'9', minCycle: minCycle, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:sortCondition, sortType: sortType })">
+            <i class="fa" ng-class="{'fa-check-square-o': status === '9', 'fa-square-o': status !== '9'}"></i>
+            现还款中
+            </a>
+          </li>
+          <li>
+            <a ui-sref="root.project-list-query({status:'10', minCycle: minCycle, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:sortCondition, sortType: sortType })">
+            <i class="fa" ng-class="{'fa-check-square-o': status === '10', 'fa-square-o': status !== '10'}"></i>
+            还款完成
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="select-show">
+        <p>项目期限：</p>
+        <ul>
+          <li>
+            <a ui-sref="root.project-list-query({status: status, minCycle: 0, maxCycle: 100, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:sortCondition, sortType: sortType })" >
+            <i class="fa" ng-class="{'fa-check-square-o': minCycle==0 && maxCycle==100, 'fa-square-o': !(minCycle==0 && maxCycle==100)}"></i>
+            全部期限
+            </a>
+          </li>
+          <li>
+            <a ui-sref="root.project-list-query({status: status, minCycle: 3, maxCycle: 6, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:sortCondition, sortType: sortType })" >
+            <i class="fa" ng-class="{'fa-check-square-o': minCycle==3 && maxCycle==6, 'fa-square-o': !(minCycle==3 && maxCycle==6)}"></i>
+            3 - 6个月
+            </a>
+          </li>
+          <li>
+            <a ui-sref="root.project-list-query({status: status, minCycle: 6, maxCycle: 12, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:sortCondition, sortType: sortType })" >
+            <i class="fa" ng-class="{'fa-check-square-o': minCycle==6 && maxCycle==12, 'fa-square-o': !(minCycle==6 && maxCycle==12)}"></i>
+            6 - 12个月
+            </a>
+          </li>
+          <li>
+            <a ui-sref="root.project-list-query({status: status, minCycle: 12, maxCycle: 100, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:sortCondition, sortType: sortType })" >
+            <i class="fa" ng-class="{'fa-check-square-o': minCycle==12 && maxCycle==100, 'fa-square-o': !(minCycle==12 && maxCycle==100)}"></i>
+            12个月以上
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="select-show">
+        <p>项目收益：</p>
+        <ul>
+          <li>
+            <a ui-sref="root.project-list-query({status: status, minCycle: minCycle, maxCycle: maxCycle, minEarning: 0, maxEarning: 100, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:sortCondition, sortType: sortType})" >
+            <i class="fa" ng-class="{'fa-check-square-o': minEarning==0 && maxEarning==100, 'fa-square-o': !(minEarning==0 && maxEarning==100)}"></i>
+            全部范围
+            </a>
+          </li>
+          <li>
+            <a ui-sref="root.project-list-query({status: status, minCycle: minCycle, maxCycle: maxCycle, minEarning: 8, maxEarning: 10, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:sortCondition, sortType: sortType})" >
+            <i class="fa" ng-class="{'fa-check-square-o': minEarning==8 && maxEarning==10, 'fa-square-o': !(minEarning==8 && maxEarning==10)}"></i>
+            8 - 10%
+            </a>
+          </li>
+          <li>
+            <a ui-sref="root.project-list-query({status: status, minCycle: minCycle, maxCycle: maxCycle, minEarning: 10, maxEarning: 12, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:sortCondition, sortType: sortType})" >
+            <i class="fa" ng-class="{'fa-check-square-o': minEarning==10 && maxEarning==12, 'fa-square-o': !(minEarning==10 && maxEarning==12)}"></i>
+            10 - 12%
+            </a>
+          </li>
+          <li>
+            <a ui-sref="root.project-list-query({status: status, minCycle: minCycle, maxCycle: maxCycle, minEarning: 12, maxEarning: 100, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:sortCondition, sortType: sortType})" >
+            <i class="fa" ng-class="{'fa-check-square-o': minEarning==12 && maxEarning==100, 'fa-square-o': !(minEarning==12 && maxEarning==100)}"></i>
+            12%以上
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="select-show">
+        <p>项目规模：</p>
+        <ul>
+          <li>
+            <a ui-sref="root.project-list-query({status: status, minCycle: minCycle, maxCycle: maxCycle, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: 0, maxTotalAmount: 200000000, sortCondition:sortCondition, sortType: sortType})" >
+            <i class="fa" ng-class="{'fa-check-square-o': minTotalAmount==0 && maxTotalAmount==200000000, 'fa-square-o': !(minTotalAmount==0 && maxTotalAmount==200000000)}"></i>
+            全部规模
+            </a>
+          </li>
+          <li>
+            <a ui-sref="root.project-list-query({status: status, minCycle: minCycle, maxCycle: maxCycle, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: 0, maxTotalAmount: 2000000, sortCondition:sortCondition, sortType: sortType})" >
+            <i class="fa" ng-class="{'fa-check-square-o': minTotalAmount==0 && maxTotalAmount==2000000, 'fa-square-o': !(minTotalAmount==0 && maxTotalAmount==2000000)}"></i>
+            200万以下
+            </a>
+          </li>
+          <li>
+            <a ui-sref="root.project-list-query({status: status, minCycle: minCycle, maxCycle: maxCycle, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: 2000000, maxTotalAmount: 5000000, sortCondition:sortCondition, sortType: sortType})" >
+            <i class="fa" ng-class="{'fa-check-square-o': minTotalAmount==2000000 && maxTotalAmount==5000000, 'fa-square-o': !(minTotalAmount==2000000 && maxTotalAmount==5000000)}"></i>
+            200 - 500万
+            </a>
+          </li>
+          <li>
+            <a ui-sref="root.project-list-query({status: status, minCycle: minCycle, maxCycle: maxCycle, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: 5000000, maxTotalAmount: 10000000, sortCondition:sortCondition, sortType: sortType})" >
+            <i class="fa" ng-class="{'fa-check-square-o': minTotalAmount==5000000 && maxTotalAmount==10000000, 'fa-square-o': !(minTotalAmount==5000000 && maxTotalAmount==10000000)}"></i>
+            500 - 1000万
+            </a>
+          </li>
+          <li>
+            <a ui-sref="root.project-list-query({status: status, minCycle: minCycle, maxCycle: maxCycle, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: 10000000, maxTotalAmount: 200000000, sortCondition:sortCondition, sortType: sortType})" >
+            <i class="fa" ng-class="{'fa-check-square-o': minTotalAmount==10000000 && maxTotalAmount==200000000, 'fa-square-o': !(minTotalAmount==10000000 && maxTotalAmount==200000000)}"></i>
+            1000万以上
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <div class="sort-area">
+      <p>排&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;序：</p>
+      <ul>
+        <li>
+          <a ui-sref="root.project-list-query({status: status, minCycle: minCycle, maxCycle: maxCycle, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:'release_start_time', sortType: sortType})" ng-click="toggleSort()">
+          发布时间 
+          <i class="fa" ng-class="{'fa-angle-up': (sortCondition ==='release_start_time' && sortType === true) , 'fa-angle-down': (sortCondition === 'release_start_time' && sortType === false) }"></i>
+          </a>
+        </li>
+        <li>
+          <a ui-sref="root.project-list-query({status: status, minCycle: minCycle, maxCycle: maxCycle, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:'total', sortType: sortType})" ng-click="toggleSort()">
+          项目规模 
+          <i class="fa" ng-class="{'fa-angle-up': (sortCondition ==='total' && sortType === true), 'fa-angle-down': (sortCondition === 'total' && sortType === false)}"></i>
+          </a>
+        </li>
+        <li>
+          <a ui-sref="root.project-list-query({status: status, minCycle: minCycle, maxCycle: maxCycle, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:'annual_earnings', sortType: sortType})" ng-click="toggleSort()">
+          年均收益 
+          <i class="fa" ng-class="{'fa-angle-up': (sortCondition === 'annual_earnings' && sortType === true), 'fa-angle-down': (sortCondition === 'annual_earnings' && sortType === false)}"></i>
+          </a>
+        </li>
+        <li>
+          <a ui-sref="root.project-list-query({status: status, minCycle: minCycle, maxCycle: maxCycle, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:'repayment_date', sortType: sortType})" ng-click="toggleSort()" class="no-border-r">
+          还款日期
+          <i class="fa" ng-class="{'fa-angle-up': (sortCondition ==='repayment_date' && sortType === true) , 'fa-angle-down': (sortCondition === 'repayment_date' && sortType === false)}"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <hr>
+    <div class="project-show-area" ng-repeat="item in data | startFrom:currentPage * pageSize | limitTo:pageSize">
+      <img ng-src={{item.image}} width="210" height="210">
+      <div class="show-mid-area">
+        <h3><a ui-sref="root.project-details({projectId: item.id})" title="{{item.name}}">{{item.name}}</a></h3>
+        <a ui-sref="root.project-sponsorInstitution({guaranteeId: item.guaranteeId})" target="_blank">保荐机构：{{item.guaranteeName}}</a>
+        <p>还款方式：{{item.repaymentName}}</p>
+        <p>100%本息担保</p>
+        <p>项目规模：<strong class="ft-18">{{item.total/10000 | number : 0}}</strong>万元</p>
+        <p>可投金额：<strong class="ft-18">{{item.currentStock * item.increaseAmount || 0 | number : 0}}</strong>元</p>
+        <p>年均收益：<strong class="ft-red ft-24">{{item.annualEarnings | number : 2}}%</strong></p>
+        <p>项目期限：<strong class="ft-24">{{item.cycle}}</strong>个月</p>
+        
+        
+      </div>
+      <div>
+        <p>项目状态：{{ item.statusText }}</p>
+        <p><span class="pull-left">投资进度：</span><p role="progressbar" aria-valuenow="{{item.progress || 0}}" aria-valuemin="0" aria-valuemax="100" style="width: {{item.progress||0}}%;">{{item.progress||0 | number : 2}}%</p></p>
+        <div class="col-xs-12" ng-show="item.progress < 100">
+                    <a class="btn btn-danger btn-lg btn-block" ui-sref="root.project-details({projectId: item.id})" ng-show="item.status != '6'"><i class="fa"></i> 立即投资</a>
+                    <a class="btn btn-danger btn-lg btn-block" ui-sref="root.project-details({projectId: item.id})" ng-show="item.status == '6'"><i class="fa"></i> 了解详情</a>
+                  </div>
+                  <div class="col-xs-12" ng-show="item.progress >= 100">
+                    <a class="btn list-btn-default btn-lg btn-block" ui-sref="root.project-details({projectId: item.id})"><i class="fa"></i> 了解详情</a>
+                  </div>
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-default btn-sm" ng-disabled="currentPage == 0" ng-click="currentPage = currentPage - 1" disabled="disabled">上一页</button>
+      {{currentPage + 1 }} / {{numberOfPages()}} 共 {{data.length}} 条
+      <button class="btn btn-default btn-sm" ng-disabled="currentPage >= data.length / pageSize - 1" ng-click="currentPage = currentPage + 1" disabled="disabled">下一页</button>
+    </div>
+  </div>
+</div>

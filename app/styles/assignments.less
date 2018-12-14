@@ -1,0 +1,447 @@
+
+// 个人中心－改版2017.03
+.userCenter-assignments, .userCenter-credit, .uc-experience, .record, .invite-rebate, .userMessage, .account-overview{
+	// 数据统计
+  .data-statistics {
+    background-color: #fff;
+    height: 210px;
+    text-align: center;
+    padding: 20px 15px;
+    .col-md-4 {
+      padding-top: 34px;
+      padding-bottom: 34px;
+      border-right: 1px solid #eeeeee;
+    }
+  }
+    
+  .invite-data-h118 {
+    height: 118px;
+  }
+  .width-title {
+    width: 25% !important;
+  }
+
+  //个人中心 新改版 table 表格公用样式
+  .table-solid {
+    color: #666;
+    font-size: 16px;
+    background-color: #fff;
+    width: 100%;
+    max-width: 100%;
+    thead {
+      th {
+        font-weight: normal;
+        padding: 50px 0px 10px;
+        border-bottom: 1px solid #666;
+      }
+      .th-first {
+        text-align: left !important;
+        padding-left: 30px;
+      }
+    }
+    tbody {
+      td {
+        height: 90px;
+        line-height: 90px;
+        border-bottom: 1px solid #eee;
+      }
+    }
+    .th-last {
+      text-align: right !important;
+      padding-right: 30px;
+    }
+    .invment-blue5 {
+      color: #3793df !important;
+    }
+  }
+  .ulTable-solid, .ulTable2-solid {
+    color: #666;
+    font-size: 16px;
+    background-color: #fff;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    .tip {
+      position: absolute;
+      right: 30px;
+      bottom: 0;
+      color: #ff611d;
+      font-size: 13px;
+      line-height: 32px;
+    }
+    .th-first {
+      text-align: left !important;
+      padding-left: 30px;
+      vertical-align: middle;
+      width: 32% !important;
+    }
+    .th-last {
+      text-align: right !important;
+      padding-right: 30px !important;
+      vertical-align: middle;
+      width: 14% !important;
+    }
+    li {
+      width: 18%;
+    }
+    .table-thead {
+      li {
+        border-bottom: 1px solid #ddd!important;
+        font-weight: 400;
+        padding: 25px 0 10px 0;
+        float: left;
+      }
+      li:nth-child(1) {
+        padding-left: 30px;
+      }
+    }
+    .table-tbody {
+      ul {
+        font-weight: normal;
+        position: relative;
+      }
+      .list-ul {
+        height: 90px;
+        line-height: 90px;
+        border-bottom: 1px solid #eee;
+      }
+      li {
+        float: left;
+      }
+    }
+    .invment-blue5 {
+      color: #3793df !important;
+    }
+  }
+  .ulTable2-solid {
+    li {
+      width: 15.87%;
+    }
+    .th-first {
+      width: 29.5% !important;
+    }
+    .th-last {
+      width: 7% !important;
+    }
+  }
+
+  //个人中心 新改版  分页button 公用样式
+  .btn-orange6 {
+    background-color: #f9721f;
+    width: 90px;
+    height: 36px;
+  }
+  .btn-orange6:hover {
+    color: #fff !important;
+  }
+  .btn-disabled6 {
+    background-color: #e5e4e2 !important;
+    cursor: not-allowed;
+    opacity: 1 !important;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .current-page, .total-page {
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    border: 1px solid #F9721B;
+    background: #fff;
+    color: #f9721f;
+    line-height: 33px;
+    margin: 0 6px;
+  }
+  .total-page {
+    border: 1px solid #666;
+    color: #666;
+  }
+  .dot {
+    display: inline-block;
+    font-size: 18px;
+    color: #666;
+    vertical-align: text-bottom;
+  }
+
+  //个人中心 新改版  切换tab 公用样式
+  .tabs {
+    .toggle-tab {
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      background-color: #fafafa;
+    }
+    .tab-two {
+      width: 25%;
+    }
+    .tab-two2 {
+      width: 33.33%;
+    }
+  }
+  .credit-toggle2 {
+    border-top: 4px solid #f9721f;
+    color: #f9721f;
+    background-color: #fff !important;
+  }
+}
+
+//我的投资
+.userCenter-credit {
+  ul {
+    margin-bottom: 0;
+  }
+  .border-b-d {
+    thead {
+      th {
+       border-bottom: 1px solid #ddd !important;
+       padding-top: 25px !important;
+      }
+    }  
+  }
+  .tabs-two {
+    height: 72px;
+    border-bottom: 1px solid #666;
+    margin: 0;
+    padding-top: 35px;
+    background-color: #fff;
+  }
+  .assetDetail {
+    padding: 66px;
+    padding-right: 0;
+    height: 362px;
+    width: 100%;
+    background: #fff;
+    margin: 30px auto 0;
+    font-size: 16px;
+    overflow: hidden;
+    .holding {
+      top: 46%;
+      left: 4%;
+      color: #ff5400;
+      font-size: 16px;
+      width: 22%;
+      text-align: center;
+    }
+    .assetDetailTable {
+      width: 614px;
+      text-align: center;
+      float: right;
+      line-height: 65px;
+      position: relative;
+      overflow: hidden;
+      dt {
+        text-align: center;
+        line-height: 63px;
+        color: #444444;
+        font-size: 14px;
+        font-weight: normal;
+      }
+      dd {
+        color: #666666;
+        height: 63px;
+        line-height: 42px;
+      }
+      .asset-info {
+        position: relative;
+        cursor: pointer;
+        width: 100%;
+      }
+      .asset-type {
+        text-align: left;
+        span {
+          position: relative;
+          margin-left: 19px;
+        }
+      }
+      .totalIncome {
+        color: #f9721f;
+        // text-align: right;
+      }
+      .dot-1, .dot-2, .dot-3, .dot-4, .dot-5 {
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        margin-left: 30px !important;
+      }
+      .dot-1 {
+        background-color: #0460cd;
+      }
+      .dot-2 {
+        background-color: #2b8bf1;
+      }
+      .dot-3 {
+        background-color: #ffc435;
+      }
+      .dot-4 {
+        background-color: #ffaa25;
+      }
+      .dot-5 {
+        background-color: #f9721f;
+      }
+      li {
+        display: inline-block;
+        width: 150px;
+        color: #666666;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.line-h-0 {
+  line-height: 0 !important;
+}
+
+.pager {
+  background: #fff;
+}
+
+//资金流水
+.record {
+  // 筛选条件
+  .screening-conditions {
+    font-size: 16px;
+    padding: 54px 30px 72px;
+    background-color: #fff;
+    margin-top: 30px;
+    .ft-grey59 {
+      color: #595656;
+    }
+    .conditions-date {
+      margin-right: 12px;
+      float: left;
+      white-space: nowrap;
+    }
+    .input-date {
+      width: 170px;
+      height: 25px;
+      line-height: 25px;
+      border: 1px solid #cacaca;
+      padding: 0;
+      position: relative;
+      .startTime, .endTime {
+        width: 168px;
+        padding: 1px !important; 
+        padding-left: 30px !important; 
+        background: #fff !important;
+        height: 21px;
+        border: none !important;
+        color: #999 !important;
+      } 
+      .fa-calendar {
+        position: absolute;
+        top: 5px;
+        left:5px;
+        color: #999;
+      }
+    }  
+  }
+
+  .record-table {
+    thead {
+      th {
+        padding: 0 50px !important;
+        background-color: #fafafa;
+        height: 50px;
+        line-height: 50px;
+        border-bottom: none;
+      }
+    }
+    .tip-icon {
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      background: url('/images/user-center/bgIcons.png') no-repeat 3px 2px;
+      background-size:  441%;
+      vertical-align: middle;
+      position: absolute;
+      border-radius: 50%;
+    }
+    .icon-box {
+      height: 20px;
+      display: inline-block;
+      vertical-align: inherit;
+    }
+    .tip-500 {
+      width: 500px;
+    }
+    .tip-350 {
+      width: 350px;
+    }
+    .tip-160 {
+      width: 160px;
+    }
+    .tip-100 {
+      width: 90px;
+    }
+  }
+    
+}
+
+//我的邀请
+.invite-rebate {
+  .my-channel {
+    background-color: #fff;
+    height: 229px;
+    text-align: center;
+    padding: 45px 70px 20px;
+    .invite-code-img, .invite-qrcode-img, .invite-copy-img {
+      height: 138px;
+      width: 138px;
+      line-height: 138px;
+      margin: 0 auto;
+    }
+    .invite-code-img {
+      border: 1px solid #fadf89;
+      border-radius: 5px;
+      color: #e8bf3a;
+      cursor: text;
+    }
+    .invite-qrcode-img {
+      background: url('/images/user-center/invite-qrcode-img.png') no-repeat center center;
+      background-size: cover;
+    }
+    .invite-copy-img {
+      background: url('/images/user-center/invite-copy-img.png') no-repeat center center;
+      background-size: cover;
+    }
+  }
+  .invite-table {
+    thead {
+      th {
+        padding: 28px 60px 7px;
+        height: 60px;
+      }
+      .first-w {
+        width: 265px;
+      }
+      .last-padding {
+        padding-left: 140px;
+      }
+    }
+    tbody {
+      td {
+        padding: 0 60px;
+      }
+    }
+  }
+} 
+
+//债权转让
+.userCenter-assignments {
+  .line-h-10 {
+    line-height: 10px;
+  }
+  .line-h-30 {
+    line-height: 30px;
+  }
+  .used-rate2 {
+    display: inline-block;
+    width: 14%;
+    height: 30px;
+    background: url('/images/user-center/rate-coupon.png') no-repeat center center;
+    background-size: 100%;
+  }
+}
+
+

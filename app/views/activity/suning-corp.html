@@ -1,0 +1,200 @@
+<div class="col-xs-12 col-lg-12" style="margin:0;padding:0;">
+	<img src="images/suning-corp/suning_01.png" alt="" width="100%">
+</div>
+<div class="suning-bg col-ld-12">
+	<p class="font-yellow text-center suning-tip1">宏财为回馈广大用户，联袂苏宁“818全民发烧节”活动，18亿红包抢不停！</p>
+	<div class="suning-step ft-34 font-yellow2">参与流程:</div>
+	<div class="suning-step-detail ft-14">
+		<div class="pos-rel">
+			<img src="/images/suning-corp/suning_04.png" alt="" class="tip1 img_pos">
+			<p class="padding-t-50 ft-18">1.注册宏财账号，进入活动页面，扫描<span class="font-yellow2">二维码关注宏财微信公众账号。</span></p>
+		</div>
+		<div class="pos-rel">
+			<img src="/images/suning-corp/suning_05.png" alt="" class="tip2 img_pos">
+			<p class="padding-t-50 ft-18">2.用户关注微信公众账号后，会自动收到活动推送链接。</p>
+		</div>
+		<div class="pos-rel">
+			<img src="/images/suning-corp/suning_06.png" alt="" class="tip3 img_pos">
+			<p class="padding-t-50 ft-18">3.点击链接后进入活动画面，输入自己<span class="font-yellow2">绑定的手机</span>号码，就能<span class="font-yellow3">免费领取一张6元红包券，</span>优惠券需要在苏宁易购客户端进行使用。</p>
+		</div>
+		<div class="pos-rel">
+			<img src="/images/suning-corp/suning_07.png" alt="" class="tip4 img_pos">
+			<p class="padding-t-50 ft-18">4.具体细则可领取红包后至我的易购-我的<span class="font-yellow2">易购券</span>查看。</p>
+		</div>
+		<div class="dotted-1"></div>
+		<div class="dotted-2"></div>
+		<div>
+		<p class="ft-30 font-yellow4 padding-b-10 padding-t-50 text-center" style="font-size:30px;">苏宁易购全品类无门槛优惠卷，18亿巨额优惠，等你来拿。</p>
+		<p class="ft-30 ft-bold font-yellow4 padding-t-10 padding-l-20 text-center" style="font-size:30px;">心动吗？小伙伴们赶紧行动吧！</p>
+		</div>
+		<img src="/images/suning-corp/suning_09.png" alt="">
+		<div class="dotted3  margin-t-30">
+			<div class="form-tab">
+				<img  ng-src="{{regImgUrl}}" alt="" class="re-img" ng-click="selectTab(1)">
+				<img  ng-src="{{loginImgUrl}}" alt="" class="re-img-2" ng-click="selectTab(2)">
+				<form action="" name="registerForm" ng-submit="submitSuningRegisterMobile(user);" ng-show="showRegister && !showLogin">
+					<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 margin-t-30">
+						<div class="col-md-9 margin-t-30">
+		                  <label for="userName" class="col-md-4 col-lg-4 col-xs-4 font-grey-sn ft-18">用户名：</label>
+		                  <input type="text" class="col-md-8 col-lg-8 bordergrey-1" id="name" name="name" ng-model="user.name" real-mix-min-length="4" ng-maxlength="15" ng-pattern="/^[\u4e00-\u9fa5|a-z|A-Z][\u4e00-\u9fa5|a-z|A-Z|_|0-9|\-]{0,}$/" ensure-unique-name="name" ng-class="{'borderred':registerForm.name.$dirty && registerForm.name.$invalid && !registerForm.name.$focused}" required ng-focus autofocus/>
+		                </div>
+		                <div ng-if="registerForm.name.$dirty && registerForm.name.$invalid && !registerForm.name.$focused" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 form-div1 ft-14 margin-t-30">
+		                  <div ng-if="registerForm.name.$error.unique" class="row lp-nomargin">
+		                    <p class="input-tips regist-input-tips">用户名已被占用</p>
+		                  </div>
+		                  <div ng-if="registerForm.name.$error.minlength" class="row lp-nomargin">
+		                    <p class="input-tips regist-input-tips">不能小于4个字符</p>
+		                  </div>
+		                  <div ng-if="registerForm.name.$error.maxlength" class="row lp-nomargin">
+		                    <p class="input-tips regist-input-tips">不能大于15个字符</p>
+		                  </div>
+		                  <div ng-if="registerForm.name.$error.pattern" class="row lp-nomargin">
+		                    <p class="input-tips regist-input-tips">4-15位，以字母、中文开头，支持中文、字母、数字以及下划线</p>
+		                  </div>
+		                  <div ng-if="registerForm.name.$error.required" class="row lp-nomargin">
+		                    <p class="input-tips regist-input-tips">4-15位，以字母、中文开头，支持中文、字母、数字以及下划线</p>
+		                  </div>
+		                </div>
+					</div>
+					<div class="col-md-12 col-lg-12 col-xs-11 col-sm-12 margin-t-30">
+		                <div class="col-md-9">
+		                  <label for="password" class="col-md-4 col-lg-4 col-xs-4 font-grey-sn ft-18">密码：</label>
+		                  <input type="password" class="col-md-8 col-lg-8 bordergrey-1" id="password" name="password" ng-model="user.password" ng-minlength="6" ng-maxlength="22" ng-pattern="/^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,22}$/" ng-class="{'borderred':registerForm.password.$dirty && registerForm.password.$invalid && !registerForm.password.$focused,'borderwhite':!registerForm.password.$dirty || !registerForm.password.$invalid || registerForm.password.$focused}" required ng-focus />
+		                </div>
+		                <div ng-if="registerForm.password.$dirty && registerForm.password.$invalid && !registerForm.password.$focused" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 form-div1 ft-14">
+		                  <div ng-if="registerForm.password.$error.minlength" class="row lp-nomargin">
+		                    <p class="input-tips regist-input-tips">不能小于6个字符</p>
+		                  </div>
+		                  <div ng-if="registerForm.password.$error.maxlength" class="row lp-nomargin">
+		                    <p class="input-tips regist-input-tips">不能大于22个字符</p>
+		                  </div>
+		                  <div ng-if="registerForm.password.$error.pattern" class="row lp-nomargin">
+		                    <p class="input-tips regist-input-tips">6-22位，数字或字母组合，可包含特殊字符</p>
+		                  </div>
+		                </div>
+	              	</div>
+
+	              	<div class="col-md-12 col-lg-12 col-xs-11 col-sm-12 margin-t-30">
+		                <div class="col-md-9">
+		                  <label for="mobile" class="col-md-4 col-lg-4 col-xs-4 font-grey-sn ft-18">手机号：</label>
+		                  <input type="text" class="col-md-8 col-lg-8 bordergrey-1" id="mobile" name="mobile" ng-model="user.mobile" ng-pattern="mobilePattern" ensure-unique-mobile="mobile" ng-class="{'borderred':registerForm.mobile.$dirty && registerForm.mobile.$invalid && !registerForm.mobile.$focused,'borderwhite':!registerForm.mobile.$dirty || !registerForm.mobile.$invalid || registerForm.mobile.$focused}" required ng-focus />
+		                </div>
+		                <div ng-if="registerForm.mobile.$dirty && registerForm.mobile.$invalid && !registerForm.mobile.$focused" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 form-div1 ft-14">
+		                  <div ng-if="registerForm.mobile.$error.unique" class="row lp-nomargin">
+		                    <p class="input-tips regist-input-tips">手机号码已被占用</p>
+		                  </div>
+		                  <div ng-if="registerForm.mobile.$error.pattern" class="row lp-nomargin">
+		                    <p class="input-tips regist-input-tips">手机号码格式不正确</p>
+		                  </div>
+		                </div>
+	              	</div>
+
+	              	<div class="col-md-12 col-lg-12 col-xs-11 col-sm-12 margin-t-30">
+		                <div class="col-md-9">
+		                  <label for="mobileCaptcha" class="col-md-4 col-lg-4 col-xs-4 font-grey-sn ft-18">验证码：</label>
+		                  <input type="text" class="col-md-4 col-lg-4 bordergrey-1 borderheight" id="mobileCaptcha" check-mobile-captcha="mobileCaptcha" name="mobileCaptcha" ng-model="user.mobileCaptcha" ng-class="{'borderred':registerForm.mobileCaptcha.$dirty && registerForm.mobileCaptcha.$invalid && registerForm.mobileCaptcha.$error.check && !registerForm.mobileCaptcha.$focused}" required ng-focus />
+		                  <input type="button" class="borderheight bg-red1 col-md-4 col-lg-4 font-white {{registerForm.mobile.$invalid ? 'bg-red1' : 'bg-red1'}}" value="获取验证码" onclick="countDown(this,60);" ng-click="sendMobileCaptcha();" ng-disabled="registerForm.mobile.$invalid" style="color:white;"/>
+		                </div>
+		                <div ng-if="registerForm.mobileCaptcha.$dirty && registerForm.mobileCaptcha.$invalid && registerForm.mobileCaptcha.$error.check && !registerForm.mobileCaptcha.$focused" class="col-lg-3 col-md-3  col-sm-3 col-xs-3 form-div1">
+		                  <div class="row lp-nomargin ft-14">
+		                    <p class="input-tips regist-input-tips">验证码错误</p>
+		                  </div>
+		                </div>
+	              	</div>
+	              	<div class="col-md-9 col-sm-12 col-xs-10 col-md-offset-2 col-xs-offset-2 margin-t-30">
+	              		<div class="col-md-9">
+			                <button type="submit" class="col-md-10 col-xs-10 col-md-offset-2 col-xs-offset-2 btn-red" ng-disabled="registerForm.$invalid || user.checkFlag == false" style="cursor: pointer"><span class="whitelogin">立即注册</span>
+			                </button>
+		                </div>
+	              </div>
+				</form>
+				<div ng-show="showLogin && !showRegister">
+					<form class="form-login col-md-12 col-lg-12  margin-t-30" role="form" name="loginForm" ng-submit="login(user)" >
+						<div class="form-group col-md-12 col-lg-12">
+							<label for="account" class="col-md-3 col-lg-3 font-grey-sn ft-18">账户：</label>
+							<input type="text"
+								class="col-md-6 col-lg-6"
+								id="account"
+								name="account"
+								ng-model="user.account"
+								required
+	              auto-fill-sync
+								autofocus />
+							<div ng-if="loginForm.account.$dirty && loginForm.account.$invalid" class="form-div col-lg-9 col-md-9 col-md-offset-3 col-lg-offset-3">
+								<div ng-if="loginForm.account.$error.required" class="row">
+									<i class="fa fa-times-circle-o login-check-img"></i>
+									<p class="input-tips login-input-tips ft-14" style="padding-left:0;">账号不能为空</p>
+								</div>
+							</div>
+						</div>
+						<div class="form-group col-md-12 col-lg-12">
+							<label for="password" class="col-md-3 col-lg-3  font-grey-sn ft-18">密码：</label>
+							<input type="password"
+								class="col-md-6 col-lg-6"
+								name="password"
+								ng-model="user.password"
+								required
+	              auto-fill-sync
+								autofocus />
+							<div ng-if="loginForm.password.$dirty && loginForm.password.$invalid" class="col-lg-9 col-md-9 col-md-offset-3 col-lg-offset-3 form-div ft-14">
+								<div ng-if="loginForm.password.$error.required" class="row">
+									<i class="fa fa-times-circle-o login-check-img"></i>
+									<p class="input-tips login-input-tips" style="padding-left:0;">密码不能为空</p>
+								</div>
+							</div>
+							<div ng-if="isPasswordError" ng-init="isPasswordError=false" class="col-lg-9 col-md-9 col-md-offset-3 col-lg-offset-3 form-div">
+								<div class="row">
+									<i class="fa fa-times-circle-o login-check-img"></i>
+									<p class="input-tips login-input-tips" style="padding-left:0;">账号或密码错误</p>
+								</div>
+							</div>
+						</div>
+						<div class="form-group col-md-12 col-lg-12">
+							<label class="col-md-3 col-lg-3"></label>
+							<div class="col-md-6 col-lg-6">
+								<div class="row">
+									<a ui-sref="root.get-pwd-back" class="p-forget">忘记密码？</a>
+								</div>
+							</div>
+							<button type="submit"
+								class="col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3  btn-red"
+								ng-disabled="loginForm.$invalid && !isPasswordError"><span class="whitelogin">立即登录</span>
+			                </button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<script>
+function countDown(obj, second) {
+  // 如果秒数还是大于0，则表示倒计时还没结束
+  if (second >= 0) {
+    // 获取默认按钮上的文字
+    if (typeof buttonDefaultValue === 'undefined') {
+      buttonDefaultValue = obj.defaultValue;
+    }
+    // 按钮置为不可点击状态
+    obj.disabled = true;
+    // 按钮里的内容呈现倒计时状态
+    //obj.value = buttonDefaultValue + '(' + second + ')';
+    obj.value = "重新发送" + "(" + second + ")";
+    obj.className = 'col-md-4 col-lg-4 white-button grey';
+    // 时间减一
+    second--;
+    // 一秒后重复执行
+    setTimeout(function() {
+      countDown(obj, second);
+    }, 1000);
+    // 否则，按钮重置为初始状态
+  } else {
+    // 按钮置未可点击状态
+    obj.disabled = false;
+    // 按钮里的内容恢复初始状态
+    obj.className = 'col-md-4 col-lg-4 bg-red1';
+    obj.value = buttonDefaultValue;
+  }
+}
+</script>

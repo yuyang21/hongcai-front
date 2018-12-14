@@ -1,0 +1,115 @@
+<!-- 体验金项目专享详情页 -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 padding-t-20 padding-b-30 padding-l-0">
+			<a ui-sref="root.main">首页</a>  &gt;&nbsp; 体验金专享详情页
+		</div>
+	</div>
+	<div class="row experience-style margin-b-20">
+		<div class="col-md-12 title1 border-l-none border-r-none border-t-none">
+			<div class="col-md-2 ft-24 ftw-b ft-white margin-l--10">体验金专享标</div>
+			<div class="col-md-6 col-md-offset-3 ft-16 ft-white">
+				无风险体验投资流程 次日即得投资收益
+			</div>
+		</div>
+		<div class="col-md-12 main padding-b-0">
+			<div class="col-md-8 border-r-5 padding-t-35 padding-b-15">
+				<div class="row">
+					<div class="col-md-4 text-center">
+						<p class="ft-14 margin-b-5">投资人数</p>
+						<p class="ft-40 ft-offGrey margin-b-0 ftw-b">{{investCount}}<span class="ft-14">人</span></p>
+					</div>
+					<div class="col-md-4 text-center border-l-5 border-r-5">
+						<p class="ft-14 margin-b-5">年化利率</p>
+						<p class="ft-40 ft-offGrey margin-b-0 ftw-b">{{project.annualEarnings}}<span class="ft-14">%</span></p>
+					</div>
+					<div class="col-md-4 text-center">
+						<p class="ft-14 margin-b-5">封闭期限</p>
+						<p class="ft-40 ft-offGrey margin-b-0 ftw-b">1<span class="ft-14">天</span></p>
+					</div>
+				</div>
+				<div class="row border-t-d-e2 margin-t-30 padding-t-20">
+					<div class="col-md-4 text-center">
+            <span class="add-if display-inbl"></span>
+						<p class="ft-14 ft-offGrey padding-t-20">加入条件：体验金总额大于100</p>
+					</div>
+					<div class="col-md-4 text-center">
+            <span class="exit-date display-inbl"></span>
+						<p class="ft-14 ft-offGrey padding-t-20">退出日期：投资次日</p>
+					</div>
+					<div class="col-md-4 text-center">
+            <span class="safe-way display-inbl"></span>
+						<p class="ft-14 ft-offGrey padding-t-20">保障方式：无风险+收益保障</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 padding-l-35">
+				<div class="xs-11 padding-t-20">
+					<p class="ft-14">累计投资金额：<span class="ft-30 ftw-b ft-offGrey">{{project.soldStock | number:0}}</span>元</p>
+				</div>
+				<div class="col-xs-11 padding-t-10 padding-b-30 padding-l-0">
+					<input type="text" ng-value="(account.experienceAmount || 0)  + '元体验金'" class="border-grey1 input-bg-grey input-size" readonly="readonly">
+					<div class="hint text-center ft-red padding-t-0p5 padding-b-0p5 box-shadow" ng-show="showMsg">
+					  <i class="fa fa-info">&nbsp;</i>{{msg}}
+					</div>
+				</div>
+
+				<button class="col-xs-11 btn btn-invite-orange ft-white padding-0 ft-18" ng-click="quickInvest()" ng-disabled="isLogged && account.experienceAmount <= 0">{{isLogged ? '立即投资' : '请先登录' }}&nbsp;<i class="fa fa-chevron-circle-right"></i></button>
+				<a ng-show="false" class="col-xs-11 text-center ft-14 padding-t-20 padding-b-20 ft-red-0 text-unline">获得奖励?</a>
+			</div>
+		</div>
+	</div>
+	<div class="row experience-style margin-b-30">
+		<div class="col-md-12 title border-l-none border-r-none border-t-none padding-l-0">
+			<div class="col-md-2 ft-18 ftw-b ft-offGrey border-2 padding-l-65">平台流程</div>
+		</div>
+		<div class="col-md-12 main padding-t-20 padding-l-56 bg-size">
+			<img src="/images/experience-money/platform-flow.png" alt="">
+		</div>
+	</div>
+	<div class="row experience-style margin-b-20">
+		<div class="col-md-12 title border-l-none border-r-none border-t-none padding-l-0">
+			<div class="col-md-2 ft-18 ftw-b ft-offGrey border-2 padding-l-65">平台模式</div>
+		</div>
+		<div class="col-md-12 main padding-t-50 bg-size1">
+			<img src="/images/experience-money/platform-pattern.png" alt="">
+		</div>
+	</div>
+	<div class="row experience-style margin-b-30">
+		<div class="col-md-12 title border-l-none border-r-none border-t-none padding-l-0">
+			<div class="col-md-2 ft-18 ftw-b ft-offGrey border-2 padding-l-65">平台特点</div>
+		</div>
+		<div class="col-md-12 main padding-t-50 padding-l-40 bg-size2">
+			<div class="col-md-4">
+				<div class="col-md-6">
+					<img src="/images/experience-money/object01.png" alt="">
+				</div>
+				<div class="col-md-6 ft-18 ft-offGrey padding-t-27">
+					<p>金融机构</p>
+					<p>优质的债权来源</p>
+				</div>
+			</div>
+			<div class="col-md-4 border-l-d-6 border-r-d-6 padding-l-35">
+				<div class="col-md-6">
+					<img src="/images/experience-money/object02.png" alt="">
+				</div>
+				<div class="col-md-6 ft-18 ft-offGrey padding-t-27">
+					<p>三方存管</p>
+					<p>安全的信息中介</p>
+				</div>
+			</div>
+			<div class="col-md-4 padding-l-35">
+				<div class="col-md-6">
+					<img src="/images/experience-money/object03.png" alt="">
+				</div>
+				<div class="col-md-6 ft-18 ft-offGrey padding-t-27">
+					<p>层层把关</p>
+					<p>优秀的风控团队</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 main padding-30 ft-16 bg-size3 text-justify">
+			宏财网是国有企业战略投资1亿元的互联网金融平台，是唯一一家在中国工信部主管的中国中小企业信息网建立战略合作和链接关系的p2p平台，是首家入选人民日报社、人民网等评选的“中小企业服务典型”。宏财网的项目均来自有着10年风控经验，政府出资引导、民企主导的新三板挂牌金融服务机构。宏财网的资金均由知名支付平台“易宝支付”进行存管，平台不会触碰资金，保证资金的绝对安全。体验金专享项目给投资人一个无风险体验宏财网投资流程的机会，无需资金，使用体验金即可获得收益。
+		</div>
+	</div>
+</div>

@@ -1,0 +1,33 @@
+<!--项目介绍-->
+<div class="col-md-9 col-lg-9 right-area">
+	<div class="row">
+		<div class="right-title">项目介绍</div>
+	</div>
+	<div class="row">
+		<div class="p-click" ng-click="showOrHide($event);"><p class="help-ico col-md-offset-1 col-lg-offset-1"></p>&nbsp;出借项目的来源有哪些？</div>
+		<p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 help-content">
+			宏财网凭借广泛的金融资源及项目方十多年积累的优质资产，打造了一个相对封闭的金融生态圈，主要由国信卓越信息咨询有限公司、北京青铜资产管理有限公司提供。精选小微产业金融、汽车金融及个人信用贷款等项目，提供方信息透明，知根知底。
+			<br>	未来我们也将接入更多类型的项目，以满足广大用户多样的出借需求。
+		</p>
+	</div>
+	<div class="row">
+		<div class="p-click" ng-click="showOrHide($event);"><p class="help-ico col-md-offset-1 col-lg-offset-1"></p>&nbsp;出借项目的类型有哪些？</div>
+		<p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 help-content">
+			1）宏财精选：主要为180天以内(含180天)的中短期项目，灵活稳健，具有一定流动性。
+			<br>	2）宏财尊贵：主要为180天以上的中长期项目，回报更丰厚。
+			<br>	3）债权转让：为出借人提高资金流动性，回报稳健，期限更短。
+		</p>
+	</div>
+	<div class="row">
+		<div class="p-click" ng-click="showOrHide($event);"><p class="help-ico col-md-offset-1 col-lg-offset-1"></p>&nbsp;出借项目的安全等级是什么含义？</div>
+		<div class="help-content">
+			<p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">宏财网对所有借款人进行风险等级评定，对借款项目安全等级分为4类，由高到低分别为A、B、C、D四个等级。不同风险等级具体含义请见下表：</p>
+			<ul class="risk-table">
+				<li ng-repeat="item in risk">
+					<p class="ft-bold">{{item.name}}</p>
+					<p class="level" ng-repeat="level in item.level">{{level}}</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,21 @@
+<div class="modal ng-scope top am-fade-and-slide-top" tabindex="-1" role="dialog" style="display: block;">
+  <div class="modal-dialog1">
+    <div class="modal-bg">
+      <div class="modal-body">
+        <div class="connect margin-t-15">
+          <!-- <img src="/images/user-center/activate-logo.png" alt="" class="hongcai"> -->
+          <div class="text">
+            尊敬的宏财用户，您的账户已经升级为银行资金存管账户，</br>
+            请点击下方按钮，尽享安全出借。</br>
+          </div>
+          <div class="btns clearfix">
+            <button class="btn1 pull-left" ui-sref="root.activate-landing" ng-click="$hide();toNotice();">了解详情</button>
+            <button class="btn2 pull-left" ui-sref="root.recharge-transfer({amount:0, business: 'ACTIVE'})" ng-click="$hide()">立即开通</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="/images/user-center/close.png" class="display-bl margin-47 margin-t-50 cursor-pointer" ng-click="$hide();toNotice();"> 
+  </div>
+</div>
+

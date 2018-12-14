@@ -1,0 +1,175 @@
+<!-- 出借产品 -->
+<div class="right-area investment col-md-8 col-lg-9" >
+  <div class="currency-style">
+    <div class="title">
+      <span class="tip">我的订单</span>
+    </div>
+    <!-- 已开通银行存管账户 -->
+    <div class="main padding-t-0" ng-show="securityStatus.realNameAuthStatus === 1">
+      <div ng-show="orderStatistics.allInve > 0">
+        <div>
+          <div class="notPayOrder" ng-show="notPayOrder">
+            <p class="border padding-l-15 padding-t-5 padding-b-5 bg-offPink ft-red">您有订单尚未支付，请尽快完成支付操作<i class="fa fa-times pull-right ft-20 ft-grey4" ng-click="removeWarning()">&nbsp;</i></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="panel panel-default no-border padding-l-15 no-box-shadow">
+              <ul class="list-group margin-l--40">
+                <li class="list-group-item projects-filter no-border margin-t-20">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class="row">
+                        <div class="col-xs-2 text-right text-nowrap ft-bold">订单类型：</div>
+                        <div class="col-xs-2 text-nowrap">
+                          <a ng-click="type='0';loadOrders(1);" class="project-noncheck" ng-class="{'project-check': type === '0', 'project-noncheck': type !== '0'}">
+                            全部
+                          </a>
+                        </div>
+                        <div class="col-xs-2">
+                          <a ng-click="type='1';loadOrders(1);" class="project-noncheck" ng-class="{'project-check': type === '1', 'project-noncheck': type !== '1'}">
+                            宏金保
+                          </a>
+                        </div>
+                        <!-- <div class="col-xs-2">
+                          <a ng-click="type='4';loadOrders(1);"  class="project-noncheck" ng-class="{'project-check': type === '4', 'project-noncheck': type !== '4'}">
+                            宏金盈
+                          </a>
+                        </div> -->
+                        <div class="col-xs-2">
+                          <a ng-click="type=2;loadOrders(1);"  class="project-noncheck" ng-class="{'project-check': type === '2', 'project-noncheck': type !== '2'}">
+                            债权转让
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class="row">
+                        <div class="col-xs-2 text-right text-nowrap ft-bold">订单状态：</div>
+                        <div class="col-xs-2 text-nowrap">
+                          <a ng-click="status='0';loadOrders(1);" class="project-noncheck" ng-class="{'project-check': status === '0', 'project-noncheck': status !== '0'}">
+                            全部
+                          </a>
+                        </div>
+                        <div class="col-xs-2">
+                          <a ng-click="status='2,3,4,5,6';loadOrders(1);" class="project-noncheck" ng-class="{'project-check': status === '2,3,4,5,6', 'project-noncheck': status !== '2,3,4,5,6'}">
+                            已完成
+                          </a>
+                        </div>
+                        <div class="col-xs-2">
+                          <a ng-click="status='97,99';loadOrders(1);" class="project-noncheck" ng-class="{'project-check': status === '97,99', 'project-noncheck': status !== '97,99'}">
+                            已取消
+                          </a>
+                        </div>
+                        <!-- 新添加 -->
+                        <div class="col-xs-2">
+                          <a ng-click="status='1';loadOrders(1);" class="project-noncheck" ng-class="{'project-check': status === '1', 'project-noncheck': status !== '1'}">
+                            未支付
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class="row">
+                        <div class="col-xs-2 text-right text-nowrap ft-bold">订单时间：</div>
+                        <div class="col-xs-2">
+                          <a ng-click="dateInterval=0;loadOrders(1);" class="project-noncheck" ng-class="{ 'project-check': dateInterval === 0, 'project-noncheck': dateInterval !== 0 }">
+                            全部
+                          </a>
+                        </div>
+                        <div class="col-xs-2">
+                          <a ng-click="dateInterval=7;loadOrders(1);" class="project-noncheck" ng-class="{ 'project-check': dateInterval === 7, 'project-noncheck': dateInterval !== 7 }">
+                            近七天
+                          </a>
+                        </div>
+                        <div class="col-xs-2">
+                          <a ng-click="dateInterval=30;loadOrders(1);" class="project-noncheck" ng-class="{'project-check': dateInterval === 30, 'project-noncheck': dateInterval !== 30 }">
+                            一个月
+                          </a>
+                        </div>
+                        <div class="col-xs-2">
+                          <a ng-click="dateInterval=90;loadOrders(1);" class="project-noncheck" ng-class="{'project-check': dateInterval === 90, 'project-noncheck': dateInterval !== 90 }">
+                            三个月
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <table class="table table-dashed">
+          <thead>
+            <tr>
+              <th>订单编号</th>
+              <th>出借金额（元）</th>
+              <th>项目名称</th>
+              <th>下单时间</th>
+              <th>订单状态</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-show="data.length<=0">
+              <td colspan="6" class="border-0">
+                <div>
+                  <p class="ft-18 ft-grey margin-t-20">暂无记录</p>
+                  <p><a class="btn btn-primary-orange ft-18 margin-t-10 bg-btn-red padding-l-45 padding-r-45" ui-sref="root.main">浏览项目</a></p>
+                </div>
+              </td>
+            </tr>
+            <tr ng-show="data.length > 0" ng-repeat="item in data" class="">
+              <td>{{ item.number}}</td>
+              <td>{{ item.orderAmount | number: 2 }}</td>
+              <td class="padding-l-45 assignment3-left">
+                <!-- <button ng-click="showListNameInfo();" style="padding:0px;outline:none;"type="button" class="btn btn-link" data-placement="bottom" data-template="views/modal/popover-investment-list-name.html" data-trigger="focus" bs-popover><i style="color: #e94828;" class="fa fa-caret-square-o-down"></i></button> -->
+                <a ui-sref="root.project-details({number: item.projectNumber})" title="{{item.projectName}}" class="invment-blue special-recommend" ng-if="item.type !== 4"><span class="assignmentsZhuan text-center" ng-if="item.type === 2">转</span>{{ item.projectName | limitTo: 15 }}{{item.projectName.length > 15 ? '...':''}}</a>
+
+                <a ui-sref="root.investmentplan-details({number: item.projectNumber})" class="invment-blue special-recommend" ng-if="item.type === 4"><span class="assignmentsZhuan text-center" ng-if="item.type === 2">转</span>{{ item.projectName | limitTo: 15 }}{{item.projectName.length > 15 ? '...':''}}
+                </a>
+                <br>
+              </td>
+              <td>{{ item.createTime | date: 'yyyy-MM-dd' }}</td>
+              <td>
+              <span ng-show="item.status !== 1 && item.status !== 97 && item.status !== 99" class="status-tip-green border-half area-center width-58">已完成</span>
+              <span ng-show="item.status === 97 || item.status === 99" class="status-tip-grey border-half area-center width-58">已取消</span>
+              <span ng-show="item.status === 1" class="status-tip-green bg-btn-red border-half width-58 area-center">未支付</span>
+              </td>
+              <!-- <td><a ng-click="generateContractPDF(item.projectId, item.orderId, item.status);">123</a></td> -->
+              <td>
+                <button ng-show="item.status === 1 " type="button" class="btn btn-primary-orange btn-xs bg-btn-orange" ng-click="toPay(item);">继续支付</button>
+                <button ng-show="item.status === 1 " type="button" class="btn btn-default bg-btn-grey btn-xs" ng-click="cancelOrder(item.number);">取消</button>
+                <!-- <button ng-show="item.status === 1 " type="button" title="项目放款后生成协议" class="btn btn-info btn-xs" ng-click="generateContractPDF(item.projectId, item.orderId, item.status);">合同模板</button> -->
+                <button ng-show="item.status === 2" type="button" class="btn btn-primary-orange bg-btn-orange btn-xs" ng-click="generateContractPDF(item.projectId, item.id, item.status, item.type);">下载合同</button>
+                <button ng-show="item.status >= 3 && item.status <=6" type="button" class="btn btn-primary-orange btn-xs bg-btn-orange" ng-click="generateContractPDF(item.projectId, item.id, item.status, item.type);">下载合同</button>
+                <!-- <i ng-show="item.order.status >= 3 && item.order.status <=6" class="fa fa-info-circle ft-grey6" data-template="views/modal/popover-investment-contract.html" data-animation="am-flip-y" data-trigger="hover" bs-popover></i> -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <ul class="pager margin-r-20" ng-hide="data.length<=0">
+          <li class="fr"><button class="btn btn-default btn-sm" ng-disabled="currentPage >= count / pageSize" ng-click="loadOrders(currentPage + 1)">下一页</button></li>
+          <div class="fr height-30">&nbsp;&nbsp;{{currentPage}} / {{numberOfPages()}} &nbsp;共 {{count}} 条&nbsp;&nbsp;</div>
+          <li class="fr"><button class="btn btn-default btn-sm" ng-disabled="currentPage == 1" ng-click="loadOrders(currentPage - 1)">上一页</button></li>
+        </ul>
+      </div>
+      <div class="main text-center margin-t-50" ng-show="orderStatistics.allInve <= 0">
+        <p>亲，您尚未在宏财网出借，建议您浏览项目列表，购买感兴趣的债权吧~</p>
+        <p><a class="btn btn-primary-orange ft-18 margin-t-10 bg-btn-red padding-l-45 padding-r-45" ui-sref="root.main">浏览项目</a></p>
+      </div>
+    </div>
+    <!-- 未开通银行存管账户 -->
+    <div class="text-center main" ng-show="securityStatus.realNameAuthStatus !== 1">
+      <p class="padding-t-50">亲，您尚未开通银行存管账户，因此无法出借购买债权，建议您尽快开通哦~</p>
+      <p class="padding-b-30"><a class="btn btn-primary-orange ft-18 margin-t-10 bg-btn-red padding-l-45 padding-r-45" ui-sref="root.userCenter.security-settings">开通银行存管账户</a></p>
+    </div>
+  </div>
+</div>

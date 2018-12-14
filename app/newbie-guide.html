@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-cn">
+	<head>
+	    <meta charset="utf-8">
+	    <title>新手引导 - 宏财网</title>
+	    <base href="/">
+	    <meta name="fragment" content="!">
+	    <meta name="keywords" content="P2P, P2B, P2P网贷, P2B投资, P2P投资, 互联网金融, 宏财网, 投资, 高收益低风险, 安全投资"/>
+	    <meta name="description" content="宏财网，高效、透明、增值、创新的互联网金融平台。严格的风控体系，100%本息担保，第三方资金托管，为用户提供全方位的安全投资服务。
+	">
+	    <meta name="renderer" content="webkit">    
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    	<link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+	    <link rel="stylesheet" href="styles/jquery.fullPage.css">
+
+    <!-- build:css(.tmp) styles/main.css -->
+	    <!-- <link rel="stylesheet" href="styles/main_leo.css"> -->
+	<!-- endbuild -->
+	    <link rel="stylesheet" href="styles/newbie_guide.css">
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->    		
+	    <script src="scripts/util/jquery-ui.min.js"></script>
+    	<script src="scripts/util/jquery.fullPage.min.js"></script>
+
+	</head>
+	<body>
+
+		<div class="section section2">
+			<div class="bg"><img src="images/newbie/section2.jpg" alt=""></div>
+			<div class="bg21"><img src="/images/newbie/bg21.png" alt="" width="100%"></div>
+			<div class="bg22"><img src="/images/newbie/bg22.png" alt="" width="100%"></div>
+			<div class="bg23"><img src="/images/newbie/bg23.png" alt="" width="100%"></div>
+			<h3><img src="/images/newbie/t2.png" alt="" width="100%"></h3>
+			<p class="p1"><strong>在乱象纷生的互联网金融领域，宏财网摈弃传统的P2P高收益的道路，从风险控制入手选择P2F模式。
+作为知名的P2F平台，宏财网首次提出高标准、严要求挑选合作伙伴，只接受优质金融机构（公募基金，私募基金，信托公司，融资性担保公司）推荐的银行级投资项目。严格的风控体系，金融机构黑白名单制度，为投资者提供100%本息保障、最高超过银行活期同期存款40倍的高收益投资项目。通过宏财网，您可以将手中富余资金出借给由优质担保公司担保的盈利能力强的中小企业，并获得高收益的利息回报，分享企业高速发展的红利。</strong></p>
+		</div>
+
+		<div class="section section3">
+			<div class="bg"><img src="images/newbie/section3.jpg" width="100%" alt=""></div>
+			<div class="bg31"><img src="/images/newbie/bg31.png" width="100%" alt=""></div>
+			<div class="bg32"><img src="/images/newbie/bg32.png" width="100%" alt=""></div>
+			<div class="bg33"><img src="/images/newbie/bg33.png" width="100%" alt=""></div>
+			<h3><img src="/images/newbie/t3.png" alt="" width="100%"></h3>
+		</div>
+
+		<div class="section section4">
+			<div class="bg"><img src="images/newbie/section4.jpg" width="100%" alt=""></div>
+			<div class="bg41"><img src="/images/newbie/bg41.png" width="100%" alt=""></div>
+			<div class="bg42"><img src="/images/newbie/bg42.png" width="100%" alt=""></div>
+			<div class="bg43"><img src="/images/newbie/bg43.png" width="100%" alt=""></div>
+			<h3><img src="/images/newbie/t4.png" alt="" width="100%"></h3>
+		</div>
+
+		<div class="section section5">
+			<div class="bg"><img src="images/newbie/section5.jpg" alt=""></div>
+			<h3><img src="/images/newbie/t5.png" alt="" width="100%"></h3>
+			<div class="bg51">
+				<img src="/images/newbie/bg51.png" width="100%" alt="">
+			</div>
+			<div class="bg52">
+				
+				<a href="javascript:;"><img src="/images/newbie/bg52.png" width="100%" alt=""></a>
+				
+			</div>
+			<div class="bg53">
+				<img src="/images/newbie/bg53.png" width="100%" alt="">
+			</div>
+		</div>
+
+		<script>
+		$(function(){
+			
+			$.fn.fullpage({
+				verticalCentered: false,
+				anchors: ['page1', 'page2', 'page3', 'page4'],
+				navigation: true,
+				navigationTooltips: ['了解宏财', '了解P2B', '选择宏财', '立即投资']
+			});
+
+			$('.bg52 a').on('click',function(){
+				window.location.href = "/";
+			});
+
+			var targetDom = $('#fullPage-nav ul');
+			$('<a class="returnHome" href="javascript:;" title="返回首页"><i class="fa fa-home"></i></a>').insertBefore(targetDom);
+
+			$('.returnHome').on('click',function(){
+				window.location.href = "/";
+			})
+
+		});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!-- start banner-轮播 -->
+<div class="container-fluid" ng-controller="MainCtrl">
+    <div style="position: relative;overflow:hidden">
+      <slick settings="slickConfig" control="slickHandle" media="media" src="views/modal/slick_slider.html" style="overflow:hidden"></slick>
+      <a class="left carousel-control" style="height: 94%;" role="button" ng-click="slickHandle.slickPrev()">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" style="height: 94%;" role="button" ng-click="slickHandle.slickNext()">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+      <div ng-if="isLogged === true" class="fixedBox">
+        <div class="ft-18">
+          <p><span>欢迎回来，<a ui-sref="root.userCenter.account-overview" class="ft-red">{{loginName}}</a></span></p>
+          <p><span class="ft-14">账户可用余额</span></p>
+          <p class="ft-16"><span>{{account.balance || 0 | number : 0}}</span>元<a class="ft-red right" ui-sref="root.userCenter.recharge">充值</a></p>
+          <a class="ft-white yellow-button" ui-sref="root.userCenter.account-overview">我的账户</a>
+        </div>
+      </div>
+      <div ng-if="isLogged !== true" class="fixedBox">
+        <div class="ft-18">
+          宏财网历史年化利率
+          <p class="ft-16">最高<span class="ft-red ft-24">14.24%</span></p>
+          <p class="ft-16"><span class="ft-red">40</span>倍活期存款收益<span class="ft-red">3</span>倍货币基金收益</p>
+          <a class="ft-white yellow-button" ui-sref="root.register">立即注册</a>
+          <p class="right ft-16">已有账号？<a ui-sref="root.login" class="ft-red">立即登录</a></p>
+      </div>
+    </div>
+</div>
+<!-- end banner-轮播 -->

@@ -1,0 +1,160 @@
+<!--预约记录-->
+<div class="right-area reservation col-md-8 col-lg-9 padding-b-30 bg-offWhite" >
+  <div class="currency-style">
+    <div class="title">
+      <span class="tip">预约记录</span>
+    </div>
+    <div class="main">
+      <div class="padd row padding-b-30">
+        <div class="col-md-11 bg-grey6 padding-40 padding-r-0 record-w margin-l--20 margin-t-20">
+          <div class="col-xs-1 usermoney4"></div>
+          <div class="record-text col-xs-2 xs-width">
+            <p>出借总金额（元）</p>
+            <p class="text-nowarp"><strong class="ft-red5 ft-24">{{ statistics.reserveAmount || 0  | number: 2 }}</strong></p>
+          </div>
+          <div class="col-xs-1 margin-l-20 usermoney5"></div>
+          <div class="record-text col-xs-3">
+            <p>预约期累计利息（元）</p>
+            <p><strong class="ft-red5 ft-24">{{ statistics.returnProfit || 0  | number: 2 }}</strong></p>
+          </div>
+          <div class="col-xs-1 margin-l--20 usermoney6"></div>
+          <div class="record-text col-xs-3">
+            <p class="text-nowarp">超同期货币基金（元）</p>
+            <p><strong class="ft-red5 ft-24">{{ statistics.returnProfit * 0.1 || 0 | number: 2 }}</strong></p>
+          </div>
+        </div>
+        <div class="col-md-1 row"></div>
+      </div>
+      <div class="panel panel-defaul no-boxshadow">
+      <ul class="list-group">
+        <li class="list-group-item projects-filter border-b-none padding-b-20 padding-t-0 margin-l--56">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="row">
+                <div class="col-xs-2 text-right text-nowrap ft-bold">状态：</div>
+                <div class="col-xs-2 text-nowrap">
+                  <a ng-click="type='2,3,5,6';getReserveOrders()" ng-class="type === '2,3,5,6' ? 'project-check':'project-noncheck'">
+                    全部
+                  </a>
+                </div>
+                <div class="col-xs-2">
+                  <a ng-click="type='2';getReserveOrders()" ng-class="type === '2' ? 'project-check':'project-noncheck'">
+                    预约中
+                  </a>
+                </div>
+                <div class="col-xs-2">
+                  <a ng-click="type='3';getReserveOrders()"  ng-class="type === '3' ? 'project-check':'project-noncheck'">
+                    预约成功
+                  </a>
+                </div>
+                <div class="col-xs-2">
+                  <a ng-click="type='5,6';getReserveOrders()"  ng-class="type === '5,6' ? 'project-check':'project-noncheck'">
+                    已撤销
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="row">
+            <div class="col-xs-12">
+              <div class="row">
+                <div class="col-xs-2 text-right text-nowrap ft-bold">日期：</div>
+                <div class="col-xs-2">
+                  <a ng-click="getReserveOrders()" ng-class="dateIntervals.interval === 0 ? 'project-check':'project-noncheck'">
+                    全部
+                  </a>
+                </div>
+                <div class="col-xs-2">
+                  <a ng-click="getReserveOrders()" ng-class="dateIntervals.interval === 7 ? 'project-check':'project-noncheck'">
+                    最近七天
+                  </a>
+                </div>
+                <div class="col-xs-2">
+                  <a ng-click="getReserveOrders()" ng-class="dateIntervals.interval === 30 ? 'project-check':'project-noncheck'">
+                    一个月
+                  </a>
+                </div>
+                <div class="col-xs-2">
+                  <a ng-click="getReserveOrders()" ng-class="dateIntervals.interval === 90 ? 'project-check':'project-noncheck'">
+                    三个月
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="row">
+                <div class="col-xs-2 text-right text-nowrap ft-bold">日期：</div>
+                <div class="col-xs-2 text-nowrap">
+                  <span ng-click="dateInterval=0;getReserveOrders();" class="project-noncheck cursor-pointer" ng-class="{ true : 'project-yescheck', false : 'project-noncheck'}[dateInterval == 0]">
+                    全部
+                  </span>
+                </div>
+                <div class="col-xs-2 text-nowrap">
+                  <span ng-click="dateInterval=7;getReserveOrders();" class="project-noncheck cursor-pointer" ng-class="{ true: 'project-yescheck', false: 'project-noncheck'}[dateInterval == 7]">
+                    最近七天
+                  </span>
+                </div>
+                <div class="col-xs-2 text-nowrap">
+                  <span ng-click="dateInterval=30;getReserveOrders();" class="project-noncheck cursor-pointer" ng-class="{true: 'project-yescheck', false: 'project-noncheck' }[dateInterval == 30]">
+                    一个月
+                  </span>
+                </div>
+                <div class="col-xs-2 text-nowrap">
+                  <span ng-click="dateInterval=90;getReserveOrders();" class="project-noncheck cursor-pointer" ng-class="{true: 'project-yescheck', false: 'project-noncheck' }[dateInterval == 90]">
+                    三个月
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <table class="table table-dashed record-w">
+        <thead>
+          <tr>
+            <th>项目名称</th>
+            <th>预约起始日</th>
+            <th>预约截止日</th>
+            <th>预约金额(元)</th>
+            <th>预约期回报率</th>
+            <th>预约回报(元)</th>
+            <th>状态</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-show="orderList.length<=0">
+            <td colspan="7" class="border-0">
+              <div>
+                <p class="ft-18 ft-grey margin-t-20">暂无记录</p>
+                <p><a class="btn btn-primary-orange ft-18 margin-t-10 bg-btn-red padding-l-45 padding-r-45" ui-sref="root.main">浏览项目</a></p>
+              </div>
+            </td>
+          </tr>
+          <tr ng-repeat="item in orderList">
+            <td>{{ item.project.name }}</td>
+            <td>{{ item.reserveOrder.createTime | date: 'yyyy-MM-dd'}}</td>
+            <td>{{ item.project.reserveEndTime | date: 'yyyy-MM-dd'}}</td>
+            <td>{{ item.reserveOrder.reserveAmount | number:2}}</td>
+            <td>{{ item.reserveOrder.yuebaoRate | number:2}}%</td>
+            <td>{{ item.reserveOrder.returnProfit | number:2 }}</td>
+            <td ng-if="item.reserveOrder.status===1 || item.reserveOrder.status===2">
+            <span class="status-tip-grey bg-btn-pink border-half dis-inblock">预约中</span>
+            <span class="status-tip-blue border-half dis-inblock cursor-hand" ng-click="cancelReservation(item.reserveOrder)">撤销</span>
+            <!-- <button type="button" class="btn btn-info btn-xs" ng-click="cancelReservation(item.reserveOrder)">撤销</button> --></td>
+            <!-- {{statusMap[item.reserveOrder.status]}} -->
+            <td ng-if="item.reserveOrder.status===3"><span class="status-tip-green bg-tip-green border-half dis-inblock">预约成功</span></td>
+            <td ng-if="item.reserveOrder.status===5 || item.reserveOrder.status===6"><span class="status-tip-grey bg-tip-grey border-half dis-inblock">已撤销</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <ul class="pager margin-r-20" ng-hide="orderList.length<=0">
+        <li class="fr"><button class="btn btn-default btn-sm" ng-disabled="currentPage >= pageCount" ng-click="currentPage = currentPage + 1;getReserveOrders();">下一页</button></li>
+        <div class="fr height-30">&nbsp;&nbsp;{{currentPage}} / {{pageCount}} &nbsp;共 {{orderList.length}} 条&nbsp;&nbsp;</div>
+        <li class="fr"><button class="btn btn-default btn-sm" ng-disabled="currentPage <= 1" ng-click="currentPage = currentPage - 1;getReserveOrders();">上一页</button></li>
+      </ul>
+    </div>
+
+  </div>
+</div>

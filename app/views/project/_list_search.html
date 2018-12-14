@@ -1,0 +1,77 @@
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-1 pull-left text-nowrap col-100">项目状态：</div>
+      <div class="col-xs-2 text-nowrap col-100 padding-0 margin-r-20 margin-l-20">
+        <a ui-sref="root.guaranteepro-list-query({status:'7,8,9,10,11,12', projectDays: projectDays, earning: earning, total: total, sortCondition:sortCondition, sortType: sortType, showFlag: showFlag })" class="project-noncheck" ng-class="{'project-check': status === '7,8,9,10,11,12', 'project-noncheck': status !== '7,8,9,10,11,12'}">
+                        全部
+                      </a>
+      </div>
+      <div class="col-xs-2 col-100 padding-0 margin-r-20 margin-l-20">
+        <a ui-sref="root.guaranteepro-list-query({status:'7,11,12', projectDays: projectDays, earning: earning, total: total, sortCondition:sortCondition, sortType: sortType, showFlag: showFlag })" class="project-noncheck" ng-class="{'project-check': status === '7,11,12', 'project-noncheck': status !== '7,11,12'}">
+                        融资中
+                      </a>
+      </div>
+      <div class="col-xs-2 col-100 padding-0 margin-r-20 margin-l-20 margin-l-20">
+        <a ui-sref="root.guaranteepro-list-query({status:'8', projectDays: projectDays, earning: earning, total: total, sortCondition:sortCondition, sortType: sortType, showFlag: showFlag })" class="project-noncheck" ng-class="{'project-check': status === '8', 'project-noncheck': status !== '8'}">
+                        融资结束
+                      </a>
+      </div>
+      <div class="col-xs-2 col-100 padding-0 margin-r-20 margin-l-20">
+        <a ui-sref="root.guaranteepro-list-query({status:'9', projectDays: projectDays, earning: earning, total: total, sortCondition:sortCondition, sortType: sortType, showFlag: showFlag })" class="project-noncheck" ng-class="{'project-check': status === '9', 'project-noncheck': status !== '9'}">
+                        还款中
+                      </a>
+      </div>
+      <div class="col-xs-2 col-100 padding-0 margin-r-20 margin-l-20">
+        <a ui-sref="root.guaranteepro-list-query({status:'10', projectDays: projectDays, earning: earning, total: total, sortCondition:sortCondition, sortType: sortType, showFlag: showFlag })" class="project-noncheck" ng-class="{'project-check': status === '10', 'project-noncheck': status !== '10'}">
+                        还款完成
+                      </a>
+      </div>
+    </div>
+    <!-- </ul> -->
+  </div>
+</div>
+<!-- .row -->
+<div class="row">
+  <div class="col-xs-12">
+    <!-- <ul class="list-inline"> -->
+    <div class="row">
+      <div class="col-xs-1 text-nowrap col-100">项目期限：</div>
+      <div class="col-xs-2 text-nowrap col-100 padding-0 margin-r-20 margin-l-20" ng-repeat="cycleItem in searchCycle">
+        <a ui-sref="root.guaranteepro-list-query({status: status, projectDays: cycleItem.value, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:sortCondition, sortType: sortType })" class="project-noncheck" ng-class="{'project-check': projectDays == searchCycle[$index].value, 'project-noncheck': !(minCycle==0 && maxCycle==2)}">
+                        {{cycleItem.name}}
+        </a>
+      </div>
+      <div class="col-xs-2 col-100 padding-0 margin-r-20 margin-l-20">
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-1 text-nowrap col-100">年化利率：</div>
+      <div class="col-xs-2 text-nowrap col-100 padding-0 margin-r-20 margin-l-20" ng-repeat="item in searchAnnualEarings">
+        <a ui-sref="root.guaranteepro-list-query({status: status, earning: item.value, minCycle: minCycle, maxCycle: maxCycle, minEarning: 0, maxEarning: 100, minTotalAmount: minTotalAmount, maxTotalAmount: maxTotalAmount, sortCondition:sortCondition, sortType: sortType})" class="project-noncheck" ng-class="{'project-check': earning == searchAnnualEarings[$index].value, 'project-noncheck': !(minEarning==0 && maxEarning==100)}">
+                        {{item.name}}
+        </a>
+      </div>
+      <div class="col-xs-2 col-100 padding-0 margin-r-20 margin-l-20">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-1 text-nowrap col-100">项目规模：</div>
+      <div class="col-xs-2 text-nowrap col-100 padding-0 margin-r-20 margin-l-20" ng-repeat="item in searchTotals">
+        <a ui-sref="root.guaranteepro-list-query({status: status, total: item.value, minCycle: minCycle, maxCycle: maxCycle, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: 0, maxTotalAmount: 200000000, sortCondition:sortCondition, sortType: sortType})" class="project-noncheck" ng-class="{'project-check': total == searchTotals[$index].value, 'project-noncheck': !(minTotalAmount==0 && maxTotalAmount==200000000)}">
+                        {{item.name}}
+                      </a>
+      </div>
+    </div>
+  </div>
+</div>

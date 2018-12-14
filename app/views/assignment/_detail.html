@@ -1,0 +1,46 @@
+<div class="col-xs-12 padding-r-0 padding-l-0" id="credit-det">
+  <div class="panel panel-default padding-t-10" ng-init="toggle.activeTab=0;">
+    <ul class="clearfix nav-orange2-project margin-l--15 margin-t-10">
+      <li ng-class="{active: toggle.activeTab===$index}" ng-repeat="tab in tabs" class="pull-left"><a class="ft-16 ft-grey1" ng-click="toggle.switchTab($index)">{{tab.title}}</a>
+      </li>
+    </ul>
+    <div class="detail-list">
+      <div class="tab-pane" ng-class="{active: toggle.activeTab===$index}"> 
+        <ul ng-if="toggle.activeTab === 0" class="margin-b-80"> 
+          <li>
+            <p>期望还款日期</p><p>类型</p><p>金额</p>
+          </li>
+          <li ng-repeat="item in projectBills" ng-hide="item.status === 1" >
+            <p>{{item.repaymentTime | date: "yyyy-MM-dd"}}</p><p ng-if="item.type == 1">利息</p><p ng-if="item.type == 2">本金</p><p ng-if="item.type == 3">本金+利息</p><p>{{item.repaymentAmount*creditProject.amount/project.total| number:2}}</p>
+          </li>
+        </ul>
+      </div>
+      <ul ng-if="toggle.activeTab === 1 && isLogged && assignmentOrders.data.length > 0" class="margin-b-30">
+        <li>
+          <p>成交时间</p><p>受让人</p><p>受让金额（元）</p>
+        </li>
+        <li ng-repeat="item in assignmentOrders.data">
+          <p>{{item.createTime | date:'yyyy-MM-dd'}}</p><p>{{item.userName || '某用户'}}</p><p>{{item.payAmount || 0 | number:2}}</p>
+        </li>
+      </ul>
+      <ul ng-if="toggle.activeTab === 1 && isLogged && assignmentOrders.data.length === 0" >
+        <li>
+          <p>成交时间</p><p>受让人</p><p>受让金额（元）</p>
+        </li>
+        <p class="margin-t-70 margin-b-80 spangray margin-t-30 text-center">优质债权，抓紧时间出借吧~</p>
+      </ul>
+      <ul ng-if="toggle.activeTab === 1 && !isLogged">
+        <li>
+          <p>成交时间</p><p>受让人</p><p>受让金额（元）</p>
+        </li>
+        <p class="margin-t-70 margin-b-80 spangray margin-t-30 text-center">请<a ng-click="tologin()" class="ft-red">登录</a>后查看信息~</p>
+      </ul>
+      <ul class="pager margin-r-20"  ng-if="toggle.activeTab === 1">
+        <li class="display-inb margin-l-0"><button class="btn btn-default btn-sm ft-black2" ng-disabled="assignmentOrders.index === 1" ng-click="load(assignmentOrders.index - 1)">上一页</button></li>
+        <div class="display-inb margin-l-0 height-30 spangray" ng-if="isLogged">&nbsp;&nbsp;{{assignmentOrders.index}} / {{assignmentOrders.totalPage}} &nbsp;共 {{assignmentOrders.total}} 条&nbsp;&nbsp;</div>
+        <div class="display-inb margin-l-0 height-30 spangray" ng-if="!isLogged">&nbsp;&nbsp;1 / 1 &nbsp;共 0 条&nbsp;&nbsp;</div>
+        <li class="display-inb margin-l-0 border-b-none"><button class="btn btn-default btn-sm ft-black2" ng-disabled="assignmentOrders.index === assignmentOrders.totalPage || assignmentOrders.totalPage === 0" ng-click="load(assignmentOrders.index + 1)">下一页</button></li>
+      </ul>
+    </div>
+  </div>
+</div>

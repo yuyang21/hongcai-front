@@ -1,0 +1,23 @@
+<div class="right-area col-md-9 col-lg-9">
+  <div class="row">
+    <div class="right-title-about2"><p>媒体报道</p></div>
+  </div>
+  <div class="row">
+    <div class="introduction-area col-xs-12" ng-repeat="item in list.list">
+      <div class="dynamic-show">
+        <a ui-sref="root.us.media-reports-detail({textId: item.id})">
+          <img ng-src="{{list.data.baseFileUrl + item.image}}" width="120" height="120" class="details-img" alt="{{item.title}}">
+        </a>
+        <a class="p-title-dynamic col-xs-6 display-inbl" ui-sref="root.us.media-reports-detail({textId: item.id})" title="{{item.title}}">{{item.title}}</a>
+        <p class="col-xs-4 ft-12 ft-blue4 display-inbl">{{item.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+        <a ui-sref="root.us.media-reports-detail({textId: item.id})" class="p-dynamic-show col-xs-10">
+          <div ng-bind-html="item.content | trustHtml" class="news-details"></div>
+        </a>
+      </div>
+    </div>
+    <ul id="pagination-text">
+      <bgf-pagination page="page" per-page="perPage" client-limit="clientLimit" url="'hongcai/api/v1/siteText/getTextList'" url-params="urlParams" link-group-size="2" collection="list" template-url="/views/tpl/paginate-anything.html">
+      </bgf-pagination>
+    </ul>
+  </div>
+</div>

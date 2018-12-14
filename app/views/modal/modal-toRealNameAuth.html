@@ -1,0 +1,40 @@
+<div class="modal ng-scope top am-fade-and-slide-top" tabindex="-1" role="dialog" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="$hide()">×</button>
+        <h4 class="modal-title ng-binding">开通银行存管安全认证</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <form class="form-login col-xs-12" role="form" name="loginForm" ng-submit="$hide()">
+            <div class="form-group col-xs-12">
+              <label for="account" class="col-xs-3">手机号码：</label>
+              <input type="text" class="col-xs-6" id="account" name="account" ng-model="user.account" required auto-fill-sync autofocus />
+            </div>
+            <div class="form-group col-md-12 col-lg-12">
+              <label for="mobileCaptcha" class="col-md-3 col-lg-3">验证码：</label>
+              <input type="text" class="col-md-3 col-lg-3" id="mobileCaptcha" check-mobile-captcha="mobileCaptcha" name="mobileCaptcha" ng-model="user.mobileCaptcha" ng-class="{'borderred':registerForm.mobileCaptcha.$dirty && registerForm.mobileCaptcha.$invalid && registerForm.mobileCaptcha.$error.check && !registerForm.mobileCaptcha.$focused}" required ng-focus />
+              <input type="button" class="col-md-3 col-lg-3 {{registerForm.mobile.$invalid ? 'white-button grey' : 'white-button'}}" value="获取验证码" ng-click="sendMobileCaptcha();" ng-disabled="registerForm.mobile.$invalid" style="margin-left:5px" />
+            </div>
+            <div class="form-group col-xs-12">
+              <label for="password" class="col-xs-3">邮箱：</label>
+              <input type="password" class="col-xs-6" name="password" ng-model="user.password" required auto-fill-sync autofocus />
+            </div>
+            <div class="form-group col-xs-12">
+              <label for="password" class="col-xs-3">真实姓名：</label>
+              <input type="password" class="col-xs-6" name="password" ng-model="user.password" required auto-fill-sync autofocus />
+            </div>
+            <div class="form-group col-xs-12">
+              <label for="password" class="col-xs-3">身份证号码：</label>
+              <input type="password" class="col-xs-6" name="password" ng-model="user.password" required auto-fill-sync autofocus />
+            </div>
+            <div class="form-group col-xs-12">
+              <input type="submit" class="btn-primary-orange col-xs-6 col-xs-offset-3" ng-disabled="loginForm.$invalid && !isPasswordError" value="立即认证" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

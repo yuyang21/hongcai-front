@@ -1,0 +1,19 @@
+<div class="alert" ng-class="[type ? 'alert-' + type : null]">
+  <button type="button" class="close" ng-if="dismissable" ng-click="$hide()">&times;</button>
+  <div class="title">
+    <strong >亲爱的{{loginName}}，您是否要进行预约？</strong>
+  </div>
+
+  <div class="content">
+    <p>预付金额：<strong class="ft-red">{{alert.toReserveAmount/10 | number:2}}</strong>元，预约总额：<strong class="ft-red">{{alert.toReserveAmount | number:2}}</strong>元，您的预约期收益为：{{reserveProfit}}元。</p>
+    <p>您的账户余额：{{account.balance | number: 2}}元，请于<strong class="ft-red">{{ project.reserveEndTime | amDateFormat: 'YYYY/MM/DD HH:mm:ss'}}</strong>前按预约总额补足，</p>
+    <p>过期将自动取消您的订单。</p>
+  </div>
+
+  <div class="bottom col-xs-10 col-xs-offset-1">
+    <a class="btn btn-danger btn-block pull-left" ng-click="$hide()">取消</a>
+    <a class="btn btn-danger btn-block pull-left margin-l" href="javascript:;" ng-click="toInvest(project);">确认</a>
+  </div>
+
+</div>
+<div class="mask_layer"></div>

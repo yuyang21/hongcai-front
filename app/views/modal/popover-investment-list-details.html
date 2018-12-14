@@ -1,0 +1,27 @@
+<div id="investment-detail", class="popover right-fixed col-md-4 col-lg-5" >
+  <div class="arrow"></div>
+  <h5 class="popover-title">计划收益表</h5>
+  <div class="popover-content" style="font-size: 12px;">
+    <ul class="list-unstyled">
+      <li >已收益本息：{{ paid.toFixed(2) }}元</li>
+      <li >未收益本息：{{ unpaid.toFixed(2) }}元</li>
+    </ul>
+    <table class="table table-hover col-md-12">
+      <thead>
+        <tr>
+          <th class="col-md-4">预收益时间</th>
+          <th class="col-md-4">预收益金额</th>
+          <th class="col-md-4">实收益状态</th>
+        </tr>
+        <tbody ng-repeat="invInfo in listInvPond">
+          <tr>
+            <td>{{ invInfo.payDate }}</td>
+            <td>{{ invInfo.invEarnings.toFixed(2) }}</td>
+            <td>{{ typeInvStatus[invInfo.invStatus] }}</td>
+          </tr>
+        </tbody>
+      </thead>
+    </table>
+  </div>
+</div>
+

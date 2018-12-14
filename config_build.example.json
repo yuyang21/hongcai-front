@@ -1,0 +1,18 @@
+{
+  "YEEPAY_ADDRESS": "https://cg2.unitedbank.cn/bha-neo-app/lanmaotech/gateway",
+  "CGT_ADDRESS":"https://cg2.unitedbank.cn/bha-neo-app/lanmaotech/gateway",
+  "viewFlAG": {
+    "tuhaoIsShowedFlAG": false,
+    "sponsorsIsShowedFlAG": false,
+    "reservationIsShowedFlAG": true,
+    "newbieIsShowedFLAG": true,
+    "creditIsShowedFLAG": false
+  },
+  "jumpHttpsPath": ["/register-mobile", "/login", "/register-mail"],
+  "ignorePATH": ["/credit-list", "/credit-details", "/credit-verify", "/credit-assignment", "/credit-success", "/credit-create"],
+  "domain":"https://www.hongcai.com",
+  "en": "online",
+  "baseFileUrl": "https://www.hongcai.com/uploads/",
+  "pay_company": "cgt",
+  "isTest": false
+}

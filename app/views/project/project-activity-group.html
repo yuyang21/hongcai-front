@@ -1,0 +1,57 @@
+<div class="container">
+  <br>
+<!--   <div class="row">
+    <img src="/images/banner_advertising.png" style="width:100%;">
+  </div> -->
+  <br>
+  <div class="row">
+    <div class="panel panel-default hongbao-list">
+      <div class="panel panel-body">
+        <ul class="list-group">
+          <li class="list-group-item"  ng-repeat="item in projectList">
+            <div class="row">
+              <div class="col-xs-2">
+                <div class="row" ng-show="item.type===2">
+                  <img src="/images/main_hongbao_red.png" alt="宏运标" ng-if="item.status === 7" >
+                  <img src="/images/main_hongbao_gray.png" alt="宏运标" ng-if="item.status !== 7">
+                </div>
+                <div class="row" ng-show="item.type===3">
+                  <img src="/images/main_hao.png" alt="土豪标">
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="row">
+                  <h4>{{ item.name }}</h4>
+                </div>
+                <div class="row">
+                  <ul class="list-inline">
+                    <li>年均收益：10%+90% </li>
+                    <li>项目期限：3天</li>
+                    <li>项目规模：无上限</li>
+                  </ul>
+                </div>
+                <div class="row">
+                  还款方式：到期返息，可投资，可取现
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="row" ng-show="item.status === 6">
+                  <img style="float:right; width:20%;" src="/images/activity/activity_flag_2.png" alt="预发布">
+                </div>
+                <div class="row" ng-show="item.status === 7">
+                  <img style="float:right; width:20%;" src="/images/activity/activity_flag_1.png" alt="抢标中">
+                </div>
+                <div class="row" ng-show="item.status === 8 || item.status === 9 || item.status === 10">
+                  <img style="float:right; width:20%;" src="/images/activity/activity_flag_3.png" alt="已完成">
+                </div>
+                <div class="row col-xs-10" style="margin-top: -25px;">
+                  <a ui-sref="root.activity-details({number: item.number, type: item.type})" class="btn btn-lg btn-block" ng-class="{'btn-primary': item.status === 6|| item.status === 7, 'btn-default': item.status !== 7}">{{ valCategory[item.status] }}</a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

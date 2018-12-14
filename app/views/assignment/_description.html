@@ -1,0 +1,53 @@
+<div class="col-xs-12 padding-r-0 margin-r-20 padding-l-0">
+  <div class="panel panel-default" style="height:334px;">
+    <div class="panel-body">
+      <div class="row">
+        <div class="hidden-xs hidden-md col-lg-5">
+          <img ng-src="{{project ? baseFileUrl+project.image : null}}" width="256" height="278" class="img-rounded" alt="{{project.name}}">
+        </div>
+        <div class="col-lg-7">
+          <div class="row">
+            <div class="col-xs-12 under-margin margin-b-30">
+              <h1 class="project-name margin-t-15 ft-grey1 ft-18 cursor-pointer" ui-sref="root.project-details({number: projectNum})">
+                <!-- <span class="zhuan ft-white4 ft-12 margin-r-5 bg-orange">转</span> -->
+                {{ creditProject.name || '项目名称'}}</h1>
+            </div>
+          </div>
+          <div class="row margin-l--30" style="position: relative;">
+            <img src="images/stamp38.png" alt="{{ creditProject.name || '项目名称'}}" style="position:absolute; top:-40%; left:20%;" ng-show="project.floattingRate">
+            <div class="col-xs-12 col-sm-4 under-margin margin-t--2">
+              <h3 class="text-center text-nowrap ft-orange2 ft-30">{{creditProject.type === 1 ? creditProject.originalAnnualEarnings : creditProject.annualEarnings || 0 | number : 2}}<span class="ft-16 ft-grey1">%</span></h3>
+              <div class="text-center assignment-tip ft-14 ft-grey666 position-re">{{creditProject.type === 1 ? '原标' : ''}}年化利率 &nbsp;
+                <a class="project_desp display-inbl position-ab cursor-pt" ng-click="showTip = !showTip" href="javascript:;" focus-blur ng-show="creditProject.discountScale && creditProject.type === 1"></a>
+                <div class="pro_des_dot_tip ft-12" ng-show="showTip">债权人折价转让，您将按照{{(creditProject.annualEarnings - creditProject.originalAnnualEarnings) | number: 2}}%的年化收益率获得额外收益。</div>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 under-margin">
+              <h3 class="text-center text-nowrap ft-24 ft-grey1">{{(creditProject.status == 3 && creditProject.soldStock != 0) ? 0 : creditProject.currentStock * 100 | number: 0}}<span class="ft-16 ft-grey1">元<span></h3>
+              <p class="text-center text-nowrap ft-14 ft-grey666 margin-t-15">可出借金额</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 under-margin">
+              <h3 class="text-center text-nowrap ft-24 ft-grey1">{{creditProject.remainDay || 0 }}<span class="ft-16 ft-grey1">天<span></h3>
+              <p class="text-center text-nowrap ft-14 ft-grey666 margin-t-15">剩余期限</p>
+            </div>
+          </div>
+          <hr style="margin-top: 3px;margin-bottom: 12px;">
+          <div class="row margin-t-20">
+            <div class="col-xs-12 margin-t-10 margin-b-20">
+              <span class="project_dot">转让金额：{{ creditProject.amount || 0 | number:0 }}元</span>
+            </div>
+            <div class="col-xs-12 margin-b-20" ng-if="creditProject.type === 1">
+              <span class="project_dot">折让比例：{{ creditProject.discountScale || 0 | number:1 }}%</span>
+            </div>
+            <div class="col-xs-12" ng-class="{'under-margin1': project.status === 9 || project.status === 10}">
+              <span class="project_dot">发布日期：{{ creditProject.createTime || 0 | amDateFormat: 'YYYY-M-D日'}}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+

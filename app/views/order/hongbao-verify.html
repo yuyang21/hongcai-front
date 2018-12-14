@@ -1,0 +1,44 @@
+<div class="container-fluid invest-verify bg-offWhite">
+  <div class="container border bg-white">
+    <div class="row list-item border-b">
+      <div class="col-xs-12"><strong>&nbsp;&nbsp;<span>{{project.typeText}}</span>标信息确认</strong></div>
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4">项目编号：{{ project.number }}</div>
+          <div class="col-xs-4">项目名称：{{ project.name }}</div>
+          <div class="col-xs-4">项目类型：促销活动</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">年化利率：100%</div>
+          <div class="col-xs-8">还款方式：到期一次性返还利息</div>
+        </div>
+      </div>
+    </div>
+    <div class="row list-item border-b">
+      <div class="col-xs-12"><strong>&nbsp;&nbsp;投资信息确认</strong></div>
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4">投资宏包金额：{{investAmount| number:2}}元</div>
+          <div class="col-xs-8" ng-if="project.type===2">剩余宏包金额：{{capital | number:2}}元</div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row list-item border-b">
+      <div class="col-xs-12">
+        <input type="checkbox" ng-model="checkFlag" ng-checked="true">同意《投资协议》以及《隐私条款》
+      </div>
+    </div> -->
+    <div class="row list-item">
+      <div class="col-xs-12" >
+        <form>
+          <div class="form-group mgn-top">
+            您将要支付宏包<span class="ftw-b ft-red">{{investAmount | number:2}}</span>元，核实信息无误后请确认
+          </div>
+          <input type="button" value="确认" class="col-xs-1 col-lg-1" ng-class="{'red-button':checkFlag}" ng-disabled="!checkFlag" ng-click="saveHongYunOrder(project, investAmount)"/>
+          <input type="button" value="取消" class="white-button col-xs-1 col-lg-1" style="margin-left:10px;" ng-click="backTo()"/>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

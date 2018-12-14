@@ -1,0 +1,38 @@
+<div id="best-profit" class="assignments panel panel-default margin-t-30" ng-if="assignmentList.length>=3">
+  <div class="col-md-12 bg-white main-new-w padding-0 border-t-red border-r-grey5">
+    <div class="col-md-2 linear-gradient linear-gradientRed padding-0 left-new-w">
+      <h3 class="ft-30 padding-l-20 margin-t-20">债权转让</h3>
+      <p class="ft-18 padding-l-20 margin-b-0">即刻起息</p>
+      <img src="/images/index/cut.png" alt="">
+      <div class="ft-16 padding-l-20 margin-t-30 padding-b-36">
+        <p>自主选择优质债权</p>
+        <p>当日立享投资收益</p>
+      </div>
+      <button class="ft-14 border-none margin-l-20 margin-t-30 cursor-pointer" ui-sref="root.assignments({sortType:1,remainDays:'1_365',annualEarnings:'0_100',currentStocks:'0_1000000',sortOrder:false})">查看更多&nbsp;&gt;</button>
+      <img src="/images/index/project03.png" alt="" class="pull-right margin-r-5">
+    </div>
+    <div class="col-md-10 padding-r-0" ng-repeat="item in assignmentList track by $index | limitTo: 3">
+      <div class="row padding-30 border-b-grey5 padding-b-25 margin-r--10">
+        <div class="col-md-4 ft-16 ft-grey1 padding-r-0 margin-t-15"><span class="zhuan ft-white4 ft-12">转</span><a class="padding-l-5"  ui-sref="root.assignments-detail({number: item.number})">{{item.name | limitTo: 14 }}{{item.name.length > 14 ? '...':''}}</a></div>
+        <div class="col-md-2 padding-l-0 margin-l--30 margin-t--8">
+          <p class="ft-30 ft-orange margin-b-0">{{item.annualEarnings || 0 | number : 2}}<span class="ft-16">%</span></p>
+          <p class="ft-14 ft-grey666">年化利率</p>
+        </div>
+        <div class="col-md-2" >
+          <p class="ft-24 ft-grey1 margin-b-0">{{item.remainDay || 0}}<span class="ft-16">天</span></p>
+          <p class="ft-14 ft-grey666">剩余期限</p>
+        </div>
+        <div class="col-md-2">
+          <p class="ft-24 ft-grey1 margin-b-0">{{(item.status ==3 && item.soldStock != 0) ? 0 : item.currentStock * 100 | number:0}}<span class="ft-16">元</span></p>
+          <p class="ft-14 ft-grey666">可投金额</p>
+        </div>
+        <div class="col-md-2 margin-l--5">
+          <button class="btn btn-primary-orange ft-18 btn-ljtz" ng-if="item.status == 1" ui-sref="root.assignments-detail({number: item.number})">立即认购&nbsp;<i class="fa fa-chevron-circle-right"></i></button>
+          <button class="btn ft-18 btn-ljtz btn-grey-spirit2" ng-if="item.status ==2" ui-sref="root.assignments-detail({number: item.number})">撤销中&nbsp;<i class="fa fa-chevron-circle-right"></i></button>
+          <button class="btn ft-18 btn-ljtz btn-grey-spirit2" ng-if="item.status ==4 || (item.status ==3 && item.soldStock != 0)" ui-sref="root.assignments-detail({number: item.number})">已转让&nbsp;<i class="fa fa-chevron-circle-right"></i></button>
+          <button class="btn ft-18 btn-ljtz btn-grey-spirit2" ng-if="item.status ==5" ui-sref="root.assignments-detail({number: item.number})">冻结中&nbsp;<i class="fa fa-chevron-circle-right"></i></button>   
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

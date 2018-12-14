@@ -1,0 +1,16 @@
+<!-- start 保荐机构-轮播 -->
+<div class="container-fluid cooperation" ng-controller="GuaranteeListCtrl">
+  <div class="container bg-white sponsor-list panel">
+    <div class="row mgn-top ftw-b padding-l-30">保荐机构</div>
+    <div class="row mgn-top" style="position: relative;">
+      <!-- start sponsor-轮播 -->
+        <slick settings="slickConfig" control="slickHandle" media="media" src="views/modal/slick_slider_sponsor.html"></slick>
+        <span ng-if="guaranteeList.length > 9" class="glyphicon glyphicon-chevron-left" ng-click="slickHandle.slickPrev()"></span>
+        <span ng-if="guaranteeList.length > 9" class="glyphicon glyphicon-chevron-right" ng-click="slickHandle.slickNext()"></span>
+      <!-- end sponsor-轮播 -->
+    </div>
+  </div>
+</div>
+<!-- end 保荐机构-轮播 -->
+
+

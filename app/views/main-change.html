@@ -1,0 +1,240 @@
+<!-- start 主体 -->
+<div class="container main">
+  <ul class="three-safe">
+    <li>
+      <div class="security">
+        <h3>安全保障</h3>
+        <p>国有担保公司担保<br>或再担保9重风控，<br>36道安全认证</p>
+      </div>
+    </li>
+    <li>
+      <div class="investment">
+        <h3>投资收益</h3>
+        <p>100元起投轻松<br>完成40倍银行同期<br>活期收益</p>
+      </div>
+    </li>
+    <li>
+      <div class="convenient">
+        <h3>灵活便捷</h3>
+        <p>7×24小时全天候投资<br>服务随时随地完成<br>财富增值</p>
+      </div>
+    </li>
+  </ul>
+
+  <a ui-sref="root.lucky-draw" target="_blank">
+    <img src="images/banner_advertising.png" alt="土豪标" width="100%">
+  </a>
+
+  <div class="hongbao-show">
+    <p class="hongbao-title">宏包系列标<span>仅可用宏包投资  /  奖90%收益  /  每日更新</span></p>
+    <a ui-sref="root.project-activity-group">更多></a>
+    <ul>
+      <li ng-repeat="item in activityList | limitTo: 3">
+        <div class="hongbao-div bg-red-hongbao">
+          <a ui-sref="root.activity-details({activityId: item.id, type: 2})"><h4>{{ item.name | limitTo: 5}}</h4></a>
+          <p>2014-11-11</p>
+          <p class="percent">10% + <span>90%</span></p>
+          <p>年均收益</p>
+          <a ui-sref="root.activity-details({activityId: item.id, type: 2})" class="a-button">查看详情</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="main-left-area">
+    <div class="hot-sale-area">
+      <div class="hot-sale-logo"></div>
+      <a ui-sref="root.project-details({projectId: projectVo.id})">
+        <img ng-src="{{projectVo.image}}" alt="" class="img-rounded" width="250" height="250">
+      </a>
+      <div class="hot-sale-right" ng-if="projectVo">
+        <a ui-sref="root.project-details({projectId: projectVo.id})" title="{{projectVo.name}}">
+          <h3>{{projectVo.name | limitTo: 10 }}...</h3>
+        </a>
+        <h4>项目规模：{{projectVo.total/10000 || 0}}万</h4>
+        <div class="border-right">
+          <h3 class="ft-red">{{projectVo.annualEarnings || 0 | number : 2}}%</h3>
+          <h4>年均收益</h4>
+        </div>
+        <div class="border-right ft-center">
+          <h3>{{projectVo.progress || 0 | number : 2}}%</h3>
+          <h4>投资进度</h4>
+        </div>
+        <div class="ft-center last-div"> 
+          <h3>{{projectVo.cycle || 0}}月</h3>
+          <h4>按月付息</h4>
+        </div>
+        <!--不同情况button-->
+        <a class="btn-primary-orange" ui-sref="root.project-details({projectId: projectVo.id})" ng-show="projectVo.progress < 100">
+          <i class="fa"></i> 
+          立即投资
+        </a>
+        <a class="btn-primary-orange" ui-sref="root.project-details({projectId: projectVo.id})" ng-show="projectVo.progress >= 100">
+          <i class="fa"></i> 
+          融资完成
+        </a>
+        <!--end-->
+      </div>
+    </div>
+
+    <div class="recommended recommended-title">
+      <h4 class="ft-red">
+        <i class="fa fa-check-square"></i>推荐产品 
+        <a  ui-sref="root.project-list-query({status: [6,7,8,9], minCycle: 0, maxCycle: 100, minEarning: 0, maxEarning: 100, minTotalAmount: 0, maxTotalAmount: 200000000, sortCondition:'release_start_time', sortType: false})" >更多产品 &gt;</a>
+      </h4>
+    </div>
+
+    <div class="recommended-area" ng-repeat="project in projectList | orderBy:project.sort">
+      <a ui-sref="root.project-details({projectId: project.id})">
+        <img ng-src="{{project.image}}" alt="{{project.name}}" class="img-rounded" width="230" height="230">
+      </a>
+      <div class="recommended-area-right">
+        <a ui-sref="root.project-details({projectId: project.id})" title="{{projectVo.name}}">{{project.name | limitTo: 10 }}...</a>
+        <div class="recommended-area-show-up">
+          <a class="project-icon" ui-sref="root.project-sponsorInstitution({guaranteeId: item.guaranteeId})" title="{{project.guaranteeName}}" target="_blank">保</a>
+          <a class="project-icon cursor-d" href="javascript:;" title="{{project.repaymentName}}">月</a>
+          <a class="project-icon cursor-d" href="javascript:;" title="{{ project.statusText }}" ng-if="project.status == 6">预</a>
+          <a class="project-icon cursor-d" href="javascript:;" title="{{ project.statusText }}" ng-if="project.status == 7">融</a>
+          <a class="project-icon cursor-d" href="javascript:;" title="{{ project.statusText }}" ng-if="project.status == 8">满</a>
+          <a class="project-icon cursor-d" href="javascript:;" title="{{ project.statusText }}" ng-if="project.status == 9">还</a>
+          <a class="project-icon cursor-d" href="javascript:;" title="{{ project.statusText }}" ng-if="project.status == 10">结</a>
+          <a class="project-icon cursor-d" href="javascript:;">奖</a>
+          <div>年均收益：<span>{{project.annualEarnings | number : 2}}%</span></div>
+        </div>
+        <div class="recommended-area-show-down">
+          <p>投资进度：{{(project.progress) | number : 2}}%</p>
+          <p>可投资金：{{project.currentStock * project.countInvest | number : 0}}元</p>
+          <p>项目规模：{{project.total/10000 | number : 0}}万元</p>
+          <p>项目期限：{{project.cycle}}个月</p>
+        </div>
+        <a class="btn-primary-orange" ui-sref="root.project-details({projectId: project.id})" ng-show="project.progress < 100">
+          <i class="fa"></i> 
+          立即投资
+        </a>
+        <a class="btn-primary-orange" ui-sref="root.project-details({projectId: project.id})" ng-show="project.progress >= 100">
+          <i class="fa"></i> 
+          融资完成
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-right-area">
+    <div class="recommended-title">
+      <h4 class="ft-red">
+        <i class="fa fa-bar-chart"></i> 
+        统计数据
+      </h4>
+    </div>
+    <div class="statistical-area">
+      <div class="statistical-area-show">
+        <span><i class="fa fa-pie-chart ft-3em"></i></span>
+        <div>
+          <p>总投资额</p>
+          <h3>{{indexStatic.staticAmount  | number : 0}}<small>元</small></h3>
+        </div>
+      </div>
+      <div class="statistical-area-show">
+        <span><i class="fa fa-calculator ft-3em"></i></span>
+        <div>
+          <p>用户收益</p>
+          <h3>{{indexStatic.staticProfit  | number : 0}}<small>元</small></h3>
+        </div>
+      </div>
+      <div class="statistical-area-show">
+        <span><i class="fa fa-group ft-3em"></i></span>
+        <div>
+          <p>参与投资</p>
+          <h3>{{indexStatic.staticUser}}<small>人</small></h3></div>
+        </div>
+    </div>
+    <div class="recommended-title">
+      <h4 class="ft-red">媒体报道 
+        <small><a href="/media-reports">更多 &gt;</a></small>
+      </h4>
+    </div>
+    <div class="statistical-area">
+      <div class="media-report" ng-repeat="item in mediaList">
+        <a ui-sref="root.us.media-reports-detail({textId: item.id})">{{item.title | limitTo: 13}}...</a>
+        <p>{{item.createTime | date:'MM-dd'}}</p>
+      </div>
+    </div>
+
+    <div class="recommended-title">
+      <h4 class="ft-red">网站公告 
+        <small><a href="/web-site-notice">更多 &gt;</a></small>
+      </h4>
+    </div>
+
+    <div class="statistical-area">
+      <div class="media-report" ng-repeat="item in noticeList track by $index">
+        <a ui-sref="root.us.media-reports-detail({textId: item.id})">{{item.title | limitTo: 13}}...</a>
+        <p>{{item.createTime | date:'MM-dd'}}</p>
+      </div>
+    </div>
+    
+    <div class="recommended-title">
+      <h4 class="ft-red">新手引导</h4>
+    </div>
+
+    <div class="statistical-area new-guide">
+      <a href="newbie-guide.html" target="_blank">
+        <h3>
+          <i class="fa fa-credit-card ft-36"></i>
+          <i class="fa fa-arrow-right ft-30"></i>
+          <i class="fa fa-cloud-upload ft-36"></i>
+          <i class="fa fa-arrow-right ft-30"></i>
+          <i class="fa fa-rmb ft-36"></i>
+          <i class="fa fa-arrow-right ft-30"></i>
+          <i class="fa fa-calculator ft-36"></i>
+        </h3>
+      </a>      
+    </div>
+    
+    <div class="recommended-title">
+      <h4 class="ft-red">常见问题 
+        <small><a ui-sref='root.help-center.introduce'>更多&gt;</a></small>
+      </h4>
+    </div>
+
+    <div class="statistical-area" style="height:70px;">
+      <div class="media-report">
+        <a ui-sref='root.help-center.introduce'>宏财网是做什么的网站？</a>
+        <p>09-11</p>
+      </div>
+      <div class="media-report">
+        <a ui-sref='root.help-center.introduce'>宏财网安全吗？</a>
+        <p>09-11</p>
+      </div>
+      <div class="media-report">
+        <a ui-sref='root.help-center.introduce'>一旦借款人无法偿还怎么办？</a>
+        <p>09-11</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="container-fluid main-partner">
+    <p><strong>合作机构</strong></p>
+    <div class="">
+      <a><img src='images/hexing.png'></a>
+      <a><img src='images/tianchang_lawyer.png'></a>
+      <a><img src='images/partner_yeepay.png'></a>
+      <a><img src='images/zhaoshang_bank.png'></a>
+      <a><img src='images/hongshan.png'></a>
+      <a><img src='images/wangdaihome.png'></a>
+      <a><img src='images/wangdaieyes.png'></a>
+      <a><img src='images/minsheng_bank.png'></a>
+      <a><img src='images/gongshang_bank.png'></a>
+      <a><img src='images/jianshe_bank.png'></a>
+      <a><img src='images/youzheng_bank.png'></a>
+      <a><img src='images/china_bank.png'></a>
+      <a><img src='images/jiaotong_bank.png'></a>
+      <a><img src='images/nongye_bank.png'></a>
+      <a><img src='images/tencent_logo.png'></a>
+    </div>       
+</div>
+
+
+
+<!-- end 主体 -->

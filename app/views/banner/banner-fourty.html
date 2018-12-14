@@ -1,0 +1,80 @@
+<div class="banner-bg">
+  <img src="/images/banner/banner-2.png">
+</div>
+<div class="fourty-title">
+  <div class="fourty-title-show">
+    <div class="fourty-title-left"></div>
+    <div class="fourty-title-right">
+      <h2>为什么宏财网这么安全，产品收益却这么高？</h2>
+      <ul>
+        <li>像网购改变零售，撮合成交效率高，宏财网去掉投资中间环节，把收益还给投资人</li>
+        <li>没有大型金融机构的高成本，互联网模式简单高效，更多收益给投资人</li>
+        <li>银行借款流程复杂，审核繁琐，小微企业对借款需求更迫切，愿意高于银行利率成交</li>
+        <li>时间周期短，业务流程简单，小微企业愿意短期承受较高利息</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="fourty-area">
+  <div class="fourty-show first-area">
+    <div class="fourty-left">
+      <div class="left-one"></div>
+      <h3>担心平台安全性？</h3>
+      <p>项目安全吗？资金安全吗?信息安全吗？</p>
+    </div>
+    <div class="fourty-right">
+      <div class="right-one"></div>
+      <p>9重风控，36道安全屏障，为投资安全保驾护航！</p>
+    </div>
+  </div>
+  <div class="fourty-show">
+    <div class="fourty-left">
+      <div class="left-two"></div>
+      <h3>担心费用高？</h3>
+      <p>基金要收开户费，炒股都要收佣金，宏财网呢？</p>
+    </div>
+    <div class="fourty-right">
+      <div class="right-two"></div>
+      <p>免费充值，免费投资，免费返息</p>
+    </div>
+  </div>
+  <div class="fourty-show">
+    <div class="fourty-left">
+      <div class="left-three"></div>
+      <h3>担心投资门槛高？</h3>
+      <p>基金5万起，信托100万起，股票还要100股起那，宏财网呢？</p>
+    </div>
+    <div class="fourty-right">
+      <div class="right-three"></div>
+      <p>100元起投，上不封顶</p>
+    </div>
+  </div>
+  <div class="fourty-show">
+    <div class="fourty-left ">
+      <div class="left-four"></div>
+      <h3>担心操作复杂？</h3>
+      <p>银行排长队，基金信托电话多，宏财网呢？</p>
+    </div>
+    <div class="fourty-right ">
+      <div class="right-four"></div>
+      <p>完全网上操作，注册简便，10秒交易</p>
+    </div>
+  </div>
+  <div class="fourty-show">
+    <div class="fourty-left ">
+      <div class="left-five"></div>
+      <h3>担心借款企业违约？</h3>
+      <p>借款企业逾期，我们的钱咋办？</p>
+    </div>
+    <div class="fourty-right ">
+      <div class="right-five"></div>
+      <p>只选择优质大型担保公司本息保障，一旦逾期保障偿还</p>
+    </div>
+  </div>
+  <div ng-if="isLogged !== true">
+    <a ui-sref="root.register" class="banner-red-button" style="padding-bottom: 30px;">立即注册</a>
+  </div>
+  <div ng-if="isLogged === true">
+    <a ui-sref="root.project-list-query({status: '6,7,8,9,10,11,12', minCycle: 0, maxCycle: 100, minEarning: 0, maxEarning: 100, minTotalAmount: 0, maxTotalAmount: 200000000, sortCondition:'release_start_time', sortType: false })" class="banner-red-button" style="padding-bottom: 30px;">查看投资项目</a>
+  </div>
+</div>

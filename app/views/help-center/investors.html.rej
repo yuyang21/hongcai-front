@@ -1,0 +1,10 @@
+diff a/app/views/help-center/investors.html b/app/views/help-center/investors.html	(rejected hunks)
+@@ -6,7 +6,7 @@
+ 	<div class="row">
+ 		<div class="help-ico {{changeInvestorsQ1 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ1 =! changeInvestorsQ1"></div>
+ 		<p class="p-click" ng-click="changeInvestorsQ1 =! changeInvestorsQ1">&nbsp;æˆ‘åˆšåˆšæŽ¥è§¦å®è´¢ç½‘ï¼Œå¦‚ä½•æŠ•èµ„ï¼Ÿ</p>
+-		<p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ1 == true">æ‚¨éœ€è¦æ³¨å†Œå®è´¢ç½‘ï¼Œå®Œæˆæ‰‹æœºè®¤è¯ï¼Œé‚®ç®±è®¤è¯ï¼Œå®žåè®¤è¯ï¼Œå®Œæˆå……å€¼ï¼Œç„¶åŽè¿›è¡ŒæŠ•èµ„ã€‚å…·ä½“å¯ä»¥å‚è€ƒæ–°æ‰‹å¼•å¯¼çš„æ“ä½œæµç¨‹ã€‚</p>
++		<p class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" ng-if="changeInvestorsQ1 == true">æ‚¨éœ€è¦æ³¨å†Œå®è´¢ç½‘ï¼Œå¼€é€šå­˜ç®¡é€šèµ„é‡‘å­˜ç®¡è´¦æˆ·ï¼Œå®Œæˆå……å€¼ï¼Œç„¶åŽè¿›è¡ŒæŠ•èµ„ã€‚å…·ä½“å¯ä»¥å‚è€ƒæ–°æ‰‹å¼•å¯¼çš„æ“ä½œæµç¨‹ã€‚</p>
+ 	</div>
+ 	<div class="row">
+ 		<div class="help-ico {{changeInvestorsQ2 == true ? 'open' : ''}} col-md-offset-1 col-lg-offset-1" ng-click="changeInvestorsQ2 =! changeInvestorsQ2"></div>

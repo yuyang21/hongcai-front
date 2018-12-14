@@ -1,0 +1,41 @@
+<div ng-ctroller="assignmentsCtrl" style="z-index: 1000000;" id="trans-detail" class="trans-detail">
+    <div class="modal ng-scope top" tabindex="-1" role="dialog" style="display: block;">
+      <div class="modal-dialog1">
+        <div class="modal-bg0">
+          <div class="title">
+            <span class="tip">转让详情</span>
+            <i class="fa fa-times" aria-hidden="true" ng-click= "$hide()"></i>
+          </div>
+          <div class="main user-right-h">
+            <div class="top">
+              <p class="margin-l-20 display-inb"><i class="fa fa-circle ft-orange margin-r-5" aria-hidden="true"></i>转让金额:<span class="margin-l-10">{{amount || 0 | number:2}}元</span></p><p class="margin-l-20 display-inb"><i class="fa fa-circle  ft-orange margin-r-5" aria-hidden="true"></i>{{assignmentType === 0 ? '转让利率' : '折让比例'}}:<span class="margin-l-10">{{annual|| 0 | number:2}}%</span></p><p class="margin-l-20 display-inb"><i class="fa fa-circle  ft-orange margin-r-5" aria-hidden="true"></i>已转让金额:<span class="margin-l-10">{{soldStock * 100|| 0 | number:2}}元</span></p><p class="margin-l-20 display-inb"><i class="fa fa-circle  ft-orange margin-r-5" aria-hidden="true"></i>转让收入:<span class="margin-l-10">{{transIncome || 0 | number:2}}元</span></p>
+            </div>
+            <div class="padding-l-45 padding-r-45">
+              <hr>
+            </div>
+            <div class="table-list padding-l-45 padding-r-45">
+              <ul ng-if="assignmenrOrders.length > 0">
+                <li class="margin-t-15 margin-b-15">
+                  <p class="ft-13 display-inb">受让人</p><p class="ft-13 display-inb">转让本金（元）</p><p class="ft-13 display-inb">转让价格（元）</p><p class="ft-13 display-inb">转让时间</p>
+                </li>
+                <li ng-repeat="item in assignmenrOrders">
+                  <p class="ft-13 display-inb">{{item.userName || '某用户'}}</p><p class="ft-13 display-inb">{{item.orderAmount || 0 | number:2}}</p><p class="ft-13 display-inb">{{item.payAmount || 0 | number:2}}</p><p class="ft-13 display-inb">{{item.createTime || newDate() | date : 'yyyy-MM-dd HH:mm:ss'}}</p>
+                </li>
+              </ul>
+              <div ng-if="assignmenrOrders.length <= 0">
+                <img src="/images/user-center/no-cash.png" class="margin-auto display-bl margin-t-100" width="10%">
+                <p class="margin-t-20 text-center">暂时还未有人认购呢~</p>
+              </div>
+            </div>
+            <ul class="pager margin-r-20" ng-hide="datas.length<=0">
+              <li class="fr"><button class="btn btn-default btn-sm" ng-disabled="page0 >= totalPage0 " ng-click="getAssignmentDetail(page0 - 1, pageSize0)">下一页</button></li>
+              <div class="fr height-30">&nbsp;&nbsp;{{page0}} / {{ totalPage0 == 0 ? 1 : totalPage0}} &nbsp;共 {{total0}} 条&nbsp;&nbsp;</div>
+              <li class="fr"><button class="btn btn-default btn-sm" ng-disabled="page0 == 1" ng-click="getAssignmentDetail(page0 - 1, pageSize0)">上一页</button></li>
+            </ul>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+</div>

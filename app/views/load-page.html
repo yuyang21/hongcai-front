@@ -1,0 +1,245 @@
+<div class="container-fluid bg-white" id="lptop">
+  <div class="row">
+    <div class="lp-banner">
+      <img src="/images/load-page/lpbg-01-1.png" width="100%" class="lpbgbanner">
+      <div class="col-md-offset-7 col-md-5 col-sm-offset-5 col-sm-6 col-xs-12 lplogin ">
+        <div class="col-md-11 col-xs-11" ng-contrlller="LoadPageCtrl">
+          <div class="fast-login">
+            <img src="/images/load-page/lp-04.png"> 快速注册
+          </div>
+          <div class="row nomargin">
+            <form class="loadlogin-top" name="registerForm" ng-submit="submitRegisterMobile(user);">
+              <div class="loadformgrop col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                <div class="col-md-7">
+                  <label for="userName" class="col-md-4 col-lg-4 col-xs-4 nospace">用户名：</label>
+                  <input type="text" class="col-md-8 col-lg-8 borderwhite borderheight" id="name" name="name" ng-model="user.name" real-mix-min-length="4" ng-maxlength="15" ng-pattern="/^[\u4e00-\u9fa5|a-z|A-Z][\u4e00-\u9fa5|a-z|A-Z|_|0-9|\-]{0,}$/" ensure-unique-name="name" ng-class="{'borderred':registerForm.name.$dirty && registerForm.name.$invalid && !registerForm.name.$focused}" required ng-focus autofocus/>
+                </div>
+                <!-- <div ng-if="registerForm.name.$dirty && registerForm.name.$invalid && !registerForm.name.$focused" class="col-lg-9 col-md-9 col-md-offset-3 col-lg-offset-3 form-div"> -->
+
+
+
+
+                <div ng-if="registerForm.name.$dirty && registerForm.name.$invalid && !registerForm.name.$focused" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 form-div1">
+                  <div ng-if="registerForm.name.$error.unique" class="row lp-nomargin">
+                    <p class="input-tips regist-input-tips">用户名已被占用</p>
+                  </div>
+                  <div ng-if="registerForm.name.$error.minlength" class="row lp-nomargin">
+                    <p class="input-tips regist-input-tips">不能小于4个字符</p>
+                  </div>
+                  <div ng-if="registerForm.name.$error.maxlength" class="row lp-nomargin">
+                    <p class="input-tips regist-input-tips">不能大于15个字符</p>
+                  </div>
+                  <div ng-if="registerForm.name.$error.pattern" class="row lp-nomargin">
+                    <p class="input-tips regist-input-tips">4-15位字符，以字母、中文开头，支持中文、字母、数字以及下划线</p>
+                  </div>
+                  <div ng-if="registerForm.name.$error.required" class="row lp-nomargin">
+                    <p class="input-tips regist-input-tips">4-15位字符，以字母、中文开头，支持中文、字母、数字以及下划线</p>
+                  </div>
+                </div>
+              </div>
+              <div class="loadformgrop col-md-12 col-lg-12 col-xs-11 col-sm-12">
+                <div class="col-md-7">
+                  <label for="password" class="col-md-4 col-lg-4 col-xs-4 nospace">密码：</label>
+                  <input type="password" class="col-md-8 col-lg-8 borderwhite borderheight" id="password" name="password" ng-model="user.password" ng-minlength="6" ng-maxlength="22" ng-pattern="/^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,22}$/" ng-class="{'borderred':registerForm.password.$dirty && registerForm.password.$invalid && !registerForm.password.$focused,'borderwhite':!registerForm.password.$dirty || !registerForm.password.$invalid || registerForm.password.$focused}" required ng-focus />
+                </div>
+                <div ng-if="registerForm.password.$dirty && registerForm.password.$invalid && !registerForm.password.$focused" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 form-div1">
+                  <div ng-if="registerForm.password.$error.minlength" class="row lp-nomargin">
+                    <p class="input-tips regist-input-tips">不能小于6个字符</p>
+                  </div>
+                  <div ng-if="registerForm.password.$error.maxlength" class="row lp-nomargin">
+                    <p class="input-tips regist-input-tips">不能大于22个字符</p>
+                  </div>
+                  <div ng-if="registerForm.password.$error.pattern" class="row lp-nomargin">
+                    <p class="input-tips regist-input-tips">长度6-22，数字或字母的组合，可以包含特殊字符</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="loadformgrop col-md-12 col-lg-12 col-xs-11 col-sm-12">
+                <div class="col-md-7">
+                  <label for="repeatPassword" class="col-md-4 col-lg-4 col-xs-4 nospace">确认密码：</label>
+                  <input type="password" class="col-md-8 col-lg-8 borderwhite borderheight" name="repeatPassword" id="repeatPassword" ng-model="user.repeatPassword" password-match="password" ng-class="{'borderred':registerForm.repeatPassword.$dirty && registerForm.$error && registerForm.repeatPassword.$error.passwordmatch && !registerForm.password.$focused && !registerForm.repeatPassword.$focused, 'borderwhite':!registerForm.repeatPassword.$dirty || !registerForm.$error || !registerForm.repeatPassword.$error.passwordmatch ||registerForm.password.$focused || registerForm.repeatPassword.$focused}" required ng-focus/>
+                </div>
+                <div ng-if="registerForm.repeatPassword.$dirty && registerForm.$error && registerForm.repeatPassword.$error.passwordmatch && !registerForm.password.$focused && !registerForm.repeatPassword.$focused" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 form-div1">
+                  <div class="row lp-nomargin">
+                    <p class="input-tips regist-input-tips">密码不一致</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="loadformgrop col-md-12 col-lg-12 col-xs-11 col-sm-12">
+                <div class="col-md-7">
+                  <label for="mobile" class="col-md-4 col-lg-4 col-xs-4 nospace">手机号：</label>
+                  <input type="text" class="col-md-8 col-lg-8 borderwhite borderheight" id="mobile" name="mobile" ng-model="user.mobile" ng-pattern="mobilePattern" ensure-unique-mobile="mobile" ng-class="{'borderred':registerForm.mobile.$dirty && registerForm.mobile.$invalid && !registerForm.mobile.$focused,'borderwhite':!registerForm.mobile.$dirty || !registerForm.mobile.$invalid || registerForm.mobile.$focused}" required ng-focus />
+                </div>
+                <div ng-if="registerForm.mobile.$dirty && registerForm.mobile.$invalid && !registerForm.mobile.$focused" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 form-div1">
+                  <div ng-if="registerForm.mobile.$error.unique" class="row lp-nomargin">
+                    <p class="input-tips regist-input-tips">手机号码已被占用</p>
+                  </div>
+                  <div ng-if="registerForm.mobile.$error.pattern" class="row lp-nomargin">
+                    <p class="input-tips regist-input-tips">手机号码格式不正确</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="loadformgrop col-md-12 col-lg-12 col-xs-11 col-sm-12">
+                <div class="col-md-7">
+                  <label for="mobileCaptcha" class="col-md-4 col-lg-4 col-xs-4 nospace">验证码：</label>
+                  <input type="text" class="col-md-4 col-lg-4 borderheight" id="mobileCaptcha" check-mobile-captcha="mobileCaptcha" name="mobileCaptcha" ng-model="user.mobileCaptcha" ng-class="{'borderred':registerForm.mobileCaptcha.$dirty && registerForm.mobileCaptcha.$invalid && registerForm.mobileCaptcha.$error.check && !registerForm.mobileCaptcha.$focused}" required ng-focus />
+                  <input type="button" class="borderheight col-md-4 col-lg-4 {{registerForm.mobile.$invalid ? 'white-button grey' : 'white-button'}}" value="获取验证码" onclick="countDown(this,60);" ng-click="sendMobileCaptcha();" ng-disabled="registerForm.mobile.$invalid" />
+                </div>
+                <div ng-if="registerForm.mobileCaptcha.$dirty && registerForm.mobileCaptcha.$invalid && registerForm.mobileCaptcha.$error.check && !registerForm.mobileCaptcha.$focused" class="col-lg-5 col-md-5  col-sm-5 col-xs-5 form-div1">
+                  <div class="row lp-nomargin">
+                    <p class="input-tips regist-input-tips">验证码错误</p>
+                  </div>
+                </div>
+              </div>
+              <div class="loadformgrop1  col-md-9 col-sm-12 col-xs-10 col-md-offset-1 col-xs-offset-2">
+                <button type="submit" class="col-md-7 col-xs-7 red-button" ng-disabled="registerForm.$invalid || user.checkFlag == false" style="cursor: pointer"><span class="whitelogin">注册</span><!-- <span class="orange">领取300元宏包</span> -->
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="introuduce">
+      <div class="excellent col-md-2 col-md-offset-2 col-xs-3  col-sm-3">
+        <img src="/images/load-page/lp-05.png" class="lpborder">
+        <p>优质担保公司</p>
+        <span>A+级优质担保公司担保</span>
+        <br/>
+        <span>为您提供银行级投资项目</span>
+        <br/>
+      </div>
+      <div class="excellent col-md-2 col-xs-3 col-sm-3">
+        <img src="/images/load-page/lp-06.png" class="lpborder">
+        <p>还款快</p>
+        <span>按月付息到期还本</span>
+        <br/>
+        <span>提现T+1个工作日</span>
+        <br/>
+        <span>7X24小时在线客服</span>
+        <br/>
+      </div>
+      <div class="excellent col-md-2 col-xs-3 col-sm-3">
+        <img src="/images/load-page/lp-07.png" class="lpborder">
+        <p>高收益</p>
+        <span>10%-14%年化利率</span>
+        <br/>
+        <span>40倍活期存款收益</span>
+        <br/>
+        <span>3倍货币基金收益</span>
+        <br/>
+      </div>
+      <div class="excellent col-md-2 col-xs-3 col-sm-3">
+        <img src="/images/load-page/lp-08.png">
+        <p>低门槛</p>
+        <span>300元起投</span>
+        <br/>
+        <span>注册即送300元宏包</span>
+        <br/>
+        <span>邀请注册再送100元宏包</span>
+        <br/>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="lpinfomation">
+      <p class="platform">了解平台</p>
+      <p>宏财网致力于为个人、借款企业和担保公司搭建一个高效、安全的投融资桥梁，构筑更轻松自由、安全高收益的投融资环境，寻找个人与企业之间安全与效率的平衡点，实现投资人、借款企业和担保公司多方共赢。</p>
+      <span>以宏财为代表的P2B 2.0时代已经正式到来</span>
+      <div style="text-align:center">
+        <img src="/images/load-page/lp-03.png" width="60%">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-pink">
+  <div class="container">
+    <div class="lpinfomation">
+      <p class="platform lplearn-margin">了解项目</p>
+      <p>可观的投资收益，宏财网投资项目均为100元起投，年均收益区间为10%-14%，按月付息到期还本。低门槛，高收益，宏财网打造最安全的投资平台</p>
+      <div style="text-align:center">
+        <img src="/images/load-page/lp-01.png" width="60%">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-white">
+  <div class="container">
+    <div class="lpinfomation">
+      <p class="platform lplearn-margin">投资流程</p>
+      <p>1、您需要一张银行卡。 2、注册宏财网。 3、选择合适自己的投资项目进行投资。</p>
+      <div style="text-align:center">
+        <img src="/images/load-page/lp-02.png" width="60%">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="aadialog" class="row call-me">
+  <div class="col-md-12 col-lg-12">
+    <img src="/images/load-page/lp-09.png" class="col-md-2 col-xs-2 col-md-offset-1 col-lg-offset-1">
+    <ul class="col-md-4 col-xs-4 list-inline col-md-offset-2 col-lg-offset-2 lpbg">
+      <!-- <li class="lprightmargin">
+        <a target="_self" href="tencent://message/?uin=2981432700&Site=qq&Menu=yes">
+          <span>
+       <img border="0" src="/images/qq_online.gif" alt="客服一" />&nbsp;<span class="whitecolor">客服一</span>
+          </span>
+        </a>
+      </li> -->
+      <li class="lprightmargin">
+        <a target="_self" href="tencent://message/?uin=2880787006&Site=qq&Menu=yes">
+          <span>
+        <img border="0" src="/images/qq_online.gif" alt="客服二" />&nbsp;<span class="whitecolor">客服一</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a target="_self" href="tencent://message/?uin=2880787009&Site=qq&Menu=yes">
+          <span>
+        <img border="0" src="/images/qq_online.gif" alt="客服三" />&nbsp;<span class="whitecolor">客服二</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+    <button class="btn btn-danger btn-lg ft-white col-md-2 col-xs-2 lpmargintop" ng-click="backtop()">注册宏财网</button>
+    <span class="lpclose"><img src="/images/load-page/lp-close.png" id="lpclose"></span>
+  </div>
+</div>
+
+<script>
+function countDown(obj, second) {
+  // 如果秒数还是大于0，则表示倒计时还没结束
+  if (second >= 0) {
+    // 获取默认按钮上的文字
+    if (typeof buttonDefaultValue === 'undefined') {
+      buttonDefaultValue = obj.defaultValue;
+    }
+    // 按钮置为不可点击状态
+    obj.disabled = true;
+    // 按钮里的内容呈现倒计时状态
+    //obj.value = buttonDefaultValue + '(' + second + ')';
+    obj.value = second + "秒后重新发送";
+    obj.className = 'col-md-5 col-lg-5 white-button grey';
+    // 时间减一
+    second--;
+    // 一秒后重复执行
+    setTimeout(function() {
+      countDown(obj, second);
+    }, 1000);
+    // 否则，按钮重置为初始状态
+  } else {
+    // 按钮置未可点击状态
+    obj.disabled = false;
+    // 按钮里的内容恢复初始状态
+    obj.className = 'col-md-4 col-lg-4 white-button margin5';
+    obj.value = buttonDefaultValue;
+  }
+}
+</script>

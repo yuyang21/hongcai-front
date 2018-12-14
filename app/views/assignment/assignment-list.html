@@ -1,0 +1,23 @@
+<div id="credit-list" class="container">
+  <div class="col-md-12 margin-b-20 ft-14 margin-l--30 margin-t-20">
+    <a ui-sref="root.main">首页</a>  &gt;&nbsp; <a ui-sref="root.assignments({sortType:1,remainDays:'1_365',annualEarnings:'0_100',currentStocks:'0_1000000',sortOrder:false})">债权转让</a>
+  </div>
+  <div class="row bg-White">
+    <!-- 项目条件过滤 宏金保 + 债权转让 -->
+    <div class="panel panel-default border-none">
+
+      <div class="list-group">
+        <!-- 项目列表查询 -->
+        <div class="row list-group-item projects-filter" ng-include src='"views/assignment/_assignment_list_search.html"' style="margin-left: 20px;">
+          
+        </div>
+        <!-- 项目列表过滤 -->
+        <div class="row list-group-item wid-97" ng-include src='"views/assignment/_assignment_list_filter.html"' style="margin-left: 20px; width: 97%;"></div>
+      </div>
+    </div>
+    <!-- 项目列表展示详情 宏金保 + 债权转让 -->
+    <div ng-include src='"views/assignment/_assignment_list_detail.html"'></div>
+    <!-- 分页 -->
+    <div project-pagination></div>
+  </div>
+</div>

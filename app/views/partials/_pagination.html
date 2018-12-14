@@ -1,0 +1,7 @@
+<div class="row" style="margin-bottom: 20px;">
+  <div class="col-sx-12 text-center">
+    <button class="btn btn-default btn-sm" ng-disabled="currentPage == 1" ng-click="page(currentPage - 1);">上一页</button>
+    {{currentPage}} / {{numberOfPages()}} 共 {{data.length}} 条
+    <button class="btn btn-default btn-sm" ng-disabled="currentPage >= numberOfPages()" ng-click="page(currentPage + 1);">下一页</button>
+  </div>
+</div>

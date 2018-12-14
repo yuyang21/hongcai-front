@@ -1,0 +1,203 @@
+<!--安全设置-->
+<div class="right-area fl security-setting">
+	<!-- 头像信息 -->
+	<div class="avater">
+		<div class="avater-wrapper">
+			<div class="avater-l position-re display-inbl margin-r-30">
+				<div class="avater-img"></div>
+				<div  class="defaut position-ab" ng-show="!loginUser.portraitUrl"></div>
+				<img ng-src="{{baseFileUrl + loginUser.portraitUrl}}" class="newAvater position-ab" ng-show="loginUser.portraitUrl">
+			</div>
+			<div class="avater-r display-inbl ft-grey666">
+				<p class="ft-26 margin-t--5px">{{ loginName || "游客"}}</p>
+				<p class="ft-16" ng-switch="securityStatus.realNameAuthStatus + securityStatus.mobileStatus">安全等级：<span class="ft-orange6" ng-switch-when="1">较低</span><span class="ft-orange6" ng-switch-when="2">高</span></p>
+			</div>
+		</div>
+	</div>
+	<div class="set-items-wrapper ft-16">
+		<!-- 用户名 -->
+		<div class="set-items">
+			<div class="item">
+				<span class="ft-grey666">用户名</span>
+				<span class="ft-grey4">{{ loginName || "游客"}}</span>
+				<span class="ft-orange6 fr"><i class="fa fa-check-circle ft-green00" aria-hidden="true"></i>已确定</span>
+			</div>
+		</div>
+		<!-- 登录密码 -->
+		<div class="set-items {{changPwd==true?'border-0':''}}">
+			<div class="item">
+				<span class="ft-grey666">登录密码</span>
+				<span class="ft-grey4">已设置</span>
+				<span class="ft-blue5 cursor-pointer fr" ng-click="changPwd = !changPwd;changeEmail=false;changeMobile=false">修改</span>
+				<!-- <span class="ft-blue5 cursor-pointer fr">设置</span> -->
+			</div>
+		</div>
+		<!-- 密码修改校验 -->
+		<div class="set-items clearfix" ng-show="changPwd" ng-init="changPwd=false">
+			<div>
+				<form name="changePwdForm" ng-submit="changePassword(password)">
+					<div class="form-group">
+						<label>原始密码：</label>
+						<input type="password" class="verify-input" name="oldPwd" id="oldPwd" ng-model="password.oldPassword" check-password="oldPwd" required ng-focus autofocus/>
+						<div class="user-tips-area display-inbl safe-tips-area" ng-show="changePwdForm.oldPwd.$dirty && changePwdForm.oldPwd.$invalid && !changePwdForm.oldPwd.$focused && changePwdForm.oldPwd.$error.required">
+			            	<p class="input-tips user-input-tips security-stl"><i class="fa fa-times-circle-o login-check-img"></i>不能为空</p>
+			            </div>
+			            <div class="user-tips-area display-inbl safe-tips-area" ng-show="changePwdForm.oldPwd.$dirty && !changePwdForm.oldPwd.$focused && changePwdForm.oldPwd.$error.isPasswordTrue && !changePwdForm.oldPwd.$error.required">
+			              <p class="input-tips user-input-tips security-stl"><i class="fa fa-times-circle-o login-check-img"></i>密码错误</p>
+			            </div>
+					</div>
+					<div class="form-group position-re">
+						<span class="position-ab strength2 {{strength === 0 ? 'ex' : ''}}" ng-show="strength === 1 || strength === 0">弱</span>
+						<span class="position-ab strength2" ng-show="strength === 2">中</span>
+						<span class="position-ab strength2" ng-show="strength === 3">强</span>
+						<label>新密码：</label>
+						<input type="password" class="verify-input" name="newPwd" id="newPwd" ng-model="password.newPassword" ng-focus required/>
+				         <div class="user-tips-area display-inbl" ng-show=" !changePwdForm.newPwd.$focused && pwdErrMsg && changePwdForm.newPwd.$dirty">
+						    <p class="input-tips user-input-tips security-stl position-ab with-pull"><i class="fa fa-times-circle-o login-check-img"></i>{{pwdErrMsg}}</p>
+						 </div>
+					</div>
+					<div class="form-group">
+						<label>确认密码：</label>
+						<input type="password" class="verify-input" name="confirmPwd" id="confirmPwd" ng-focus ng-model="password.repeatNewPassword" required/>
+						<div class="user-tips-area display-inbl safe-tips-area" ng-show="changePwdForm.confirmPwd.$dirty && changePwdForm.confirmPwd.$invalid && !changePwdForm.confirmPwd.$focused">
+						  <p class="input-tips user-input-tips security-stl"><i class="fa fa-times-circle-o login-check-img"></i>不能为空</p>
+						</div>
+						<div class="user-tips-area display-inbl safe-tips-area" ng-show="changePwdForm.confirmPwd.$dirty && !checkTwoPassword(password) && !changePwdForm.confirmPwd.$focused && !changePwdForm.confirmPwd.$error.required">
+						  <p class="input-tips user-input-tips security-stl"><i class="fa fa-times-circle-o login-check-img"></i>密码不一致</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label></label>
+						<input type="submit" value="确定" class="btn-primary-orange" ng-disabled="changePwdForm.$invalid || pwdErrMsg" />
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- 手机号 -->
+		<div class="set-items {{resetMobile==true?'border-0':''}}">
+			<div class="item">
+				<span class="ft-grey666">手机号</span>
+				<span class="ft-grey4">{{mobile || '未设置'}}</span>
+				<span class="ft-blue5 cursor-pointer fr" ng-show="securityStatus.realNameAuthStatus === 1 && mobile" ng-click="resetMobile=!resetMobile">修改</span>
+				<span class="ft-blue5 cursor-pointer fr" ng-show="isLogged && securityStatus.realNameAuthStatus !== 1 && mobile" ng-click="toRealNameAuth()">修改</span>
+				<span class="ft-blue5 cursor-pointer fr" ng-show="!mobile" ng-click="resetMobile=!resetMobile" ng-click="changeMobile=!changeMobile;changeEmail=false;changPwd =false">设置</span>
+			</div>
+		</div>
+		<!-- 手机号修改校验 -->
+		<div class="set-items clearfix" ng-show="resetMobile">
+			<div>
+				<form name="resetMobileForm" ng-submit="resetMobilenum(user);" novalidate>
+					<div class="form-group">
+						<label>新手机号码：</label>
+						<input type="mobile" class="verify-input" id="mobile" name="mobile" ng-model="user.mobile" ng-pattern="mobilePattern" ensure-unique-mobile="mobile" ng-focus required autofocus/>
+						<div ng-if="resetMobileForm.mobile.$invalid" class="display-inbl" class="wid-20">
+						  <div class="user-tips-area display-inbl" ng-show="resetMobileForm.mobile.$dirty && resetMobileForm.mobile.$invalid && resetMobileForm.mobile.$error.required &&!resetMobileForm.mobile.$focused">
+						    <p class="input-tips user-input-tips security-stl"><i class="fa fa-times-circle-o login-check-img"></i>不能为空</p>
+						  </div>
+						  <div class="user-tips-area display-inbl" ng-show="resetMobileForm.mobile.$error.pattern &&!resetMobileForm.mobile.$focused">
+						    <p class="input-tips user-input-tips security-stl"><i class="fa fa-times-circle-o login-check-img"></i>格式错误</p>
+						  </div>
+						  <div class="user-tips-area display-inbl" ng-show="!resetMobileForm.mobile.$error.required && !resetMobileForm.mobile.$error.pattern && resetMobileForm.mobile.$error.unique &&!resetMobileForm.mobile.$focused">
+						    <p class="input-tips user-input-tips security-stl"><i class="fa fa-times-circle-o login-check-img"></i>已被占用</p>
+						  </div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label>图片验证码：</label>
+						<input type="text" class="verify-input flex-0p1" id="picCaptcha" name="picCaptcha" ng-model="user.picCaptcha" ensure-captcha="picCaptcha" ng-focus required/>
+						<img src="{{getPicCaptcha}}" id="checkCaptcha" class="pic-verify no-padding" ng-click="refreshCode()">
+						<div ng-if="!resetMobileForm.mobile.$focused" class="display-inbl wid-20">
+						  <div class="user-tips-area display-inbl safe-tips-area" ng-show="resetMobileForm.picCaptcha.$dirty && resetMobileForm.picCaptcha.$invalid && resetMobileForm.picCaptcha.$error.required &&!resetMobileForm.picCaptcha.$focused">
+						    <p class="input-tips user-input-tips security-stl"><i class="fa fa-times-circle-o login-check-img"></i>不能为空</p>
+						  </div>
+						  <div class="user-tips-area display-inbl safe-tips-area" ng-show="!piccha && !resetMobileForm.picCaptcha.$focused && !resetMobileForm.picCaptcha.$error.required">
+						    <p class="input-tips user-input-tips security-stl" ng-show="!piccha && !resetMobileForm.picCaptcha.$focused && !resetMobileForm.picCaptcha.$error.required"><i class="fa fa-times-circle-o login-check-img"></i>图形验证码错误</p>
+						  </div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label>短信验证码：</label>
+						<input type="text" class="verify-input flex-0p1" id="inputCaptcha" name="inputCaptcha" ng-model="user.inputCaptcha" ng-focus required/>
+						<button class="getVerify getVerify-org display-inbl" id="getVerify" ng-disabled="resetMobileForm.picCaptcha.$invalid || resetMobileForm.mobile.$invalid" capcha-countdown>获取验证码</button>
+						<div class="user-tips-area display-inbl safe-tips-area wid-20" ng-show="resetMobileForm.inputCaptcha.$dirty && resetMobileForm.inputCaptcha.$invalid && !resetMobileForm.inputCaptcha.$focused && resetMobileForm.inputCaptcha.$error.required">
+						  <p class="input-tips user-input-tips security-stl"><i class="fa fa-times-circle-o login-check-img"></i>不能为空</p>
+						</div>
+						<div class="user-tips-area display-inbl safe-tips-area wid-20" ng-show="!resetMobileForm.picCaptcha.$invalid && !resetMobileForm.mobile.$invalid && !resetMobileForm.inputCaptcha.$invalid && showMsg">
+						  <p class="input-tips user-input-tips security-stl"><i class="fa fa-times-circle-o login-check-img"></i>{{captchaErrMsg}}</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label></label>
+						<input type="submit" value="确定" class="btn-primary-orange" ng-disabled="resetMobileForm.$invalid" ng-click="resetMobilenum(user);" />
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- 第三方存管 -->
+		<div class="set-items {{openTrusteeshipAccount==true?'border-0':''}}">
+			<div class="item">
+				<span class="ft-grey666">银行存管账户</span>
+				<span class="ft-grey4">{{haveTrusteeshipAccount ? '已开通' : '未开通'}}</span>
+				<span class="ft-blue5 cursor-pointer fr" ng-show="!haveTrusteeshipAccount" ng-click="openTrusteeshipAccount = !openTrusteeshipAccount;changeMobile=false;changeEmail=false;changPwd =false;checkEmailAndMobile()">立即开通</span>
+				<span class="ft-orange6 fr" ng-show="haveTrusteeshipAccount"><i class="fa fa-check-circle ft-green00" aria-hidden="true" ng-show="haveTrusteeshipAccount"></i>已开通</span>
+			</div>
+		</div>
+		<!-- 开通存管通及校验 -->
+		<div class="set-items clearfix" ng-show="openTrusteeshipAccount">
+			<div>
+				<form name="openTrusteeshipAccountForm">
+					<div class="form-group">
+						<label>真实姓名：</label>
+						<input type="text" class="verify-input" name="realName" ng-model="user.realName" ng-focus required/>
+			            <div class="user-tips-area display-inbl safe-tips-area" ng-show="openTrusteeshipAccountForm.realName.$dirty && openTrusteeshipAccountForm.realName.$error.required">
+			              <p class="input-tips user-input-tips padding-l-10"><i class="fa fa-times-circle-o login-check-img"></i>不能为空</p>
+			            </div>
+					</div>
+					<div class="form-group">
+						<label>身份证号：</label>
+						<input type="text" ng-maxlength="18" class="verify-input" name="idCardNo" ng-pattern="/^\d{6}(18|19|20)?\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/i" ng-model="user.idCardNo" ng-focus required/>
+						<div class="user-tips-area display-inbl safe-tips-area wid-20" ng-if="openTrusteeshipAccountForm.idCardNo.$dirty && !openTrusteeshipAccountForm.idCardNo.$focused" >
+						  <p class="input-tips user-input-tips padding-l-10" ng-show="openTrusteeshipAccountForm.idCardNo.$error.required"><i class="fa fa-times-circle-o login-check-img"></i>不能为空</p>
+						  <p class="input-tips user-input-tips padding-l-10" ng-show="openTrusteeshipAccountForm.idCardNo.$error.pattern"><i class="fa fa-times-circle-o login-check-img"></i>身份证号码有误</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label></label>
+						<input type="submit" value="确定" class="btn-primary-orange" ng-disabled="openTrusteeshipAccountForm.$invalid" ng-click="realNameAuth(user)" />
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- 银行卡 -->
+		<div class="set-items">
+			<div class="item">
+				<span class="ft-grey666">银行卡</span>
+				<span class="ft-grey4">{{bankName || '未绑定'}}{{cardNo||''}}</span>
+				<span class="ft-blue5 cursor-pointer fr" ng-if="securityStatus.realNameAuthStatus == 1 && haveCard && !isVerifying && !unbinding" ng-click="confirmUnbindBankCard();">解绑</span>
+				<span class="ft-blue5 cursor-pointer fr" ng-if="securityStatus.realNameAuthStatus == 1 && !haveCard && !isVerifying && !unbinding" ng-click="bindBankCard();">绑定</span>
+				<span class="ft-blue5 cursor-pointer fr" ng-if="securityStatus.realNameAuthStatus !== 1" ng-click="toRealNameAuth()">绑定</span>
+			</div>
+		</div>
+		<!-- 自动投标 -->
+		<div class="set-items">
+			<div class="item">
+				<span class="ft-grey666">自动投标权限</span>
+				<!-- <span class="ft-grey4">{{openTrustReservation === 1 || openTrustReservation === 0 ?'已开启':'未开启'}}</span>
+				<span class="ft-blue5 cursor-pointer" ng-if="openTrustReservation === null" ng-click="openReservation()">立即开启</span>
+				<span class="ft-blue5 cursor-pointer"  ng-if="openTrustReservation !== null" ng-click="openReservation();">查看</span> -->
+				<span class="ft-grey4">{{securityStatus.autoTransfer !== 0 && (openTrustReservation === 1 || openTrustReservation === 0) ?'已开启':'未开启'}}</span>
+				<span class="ft-blue5 cursor-pointer" ng-click="openReservation();">{{securityStatus.autoTransfer !== 0 && (openTrustReservation === 1 || openTrustReservation === 0)  ? '查看' : '去开启'}}</span>
+			</div>
+		</div>
+		<!-- 风险测评 -->
+		<div class="set-items border-0">
+			<div class="item">
+				<span class="ft-grey666">风险测评</span>
+				<span class="ft-grey4">{{questionnareStatus}}</span>
+				<span class="ft-blue5 cursor-pointer" ui-sref="root.userCenter.questionnaire">{{questionnareStatus =='未测评' ? '去测评':'重测'}}</span>
+				<!-- <span class="ft-blue5 cursor-pointer">开启</span> -->
+			</div>
+		</div>
+	</div>
+
+</div>

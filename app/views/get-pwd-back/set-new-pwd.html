@@ -1,0 +1,97 @@
+<br>
+<br>
+<div class="container get-pwd-back">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel-body panel-get-pwd-back" >
+        <ul class="row">
+          <li class="col-xs-2 margin-l">
+            <span class="get-pwd-back-step-line"></span>
+            <span class="get-pwd-back-step"><i class="fa fa-user"></i></span>
+            <p class="get-pwd-back-step-text">输入帐号</p>
+          </li>
+
+          <li class="col-xs-2">
+            <span class="get-pwd-back-step-line"></span>
+            <span class="get-pwd-back-step">
+              <i class="fa fa-credit-card"></i>
+            </span>
+            <p class="get-pwd-back-step-text">验证身份</p>
+          </li>
+
+          <li class="col-xs-2">
+            <span class="get-pwd-back-step-line"></span>
+            <span class="get-pwd-back-step">
+              <i class="fa fa-key"></i>
+            </span>
+            <p class="get-pwd-back-step-text">修改密码</p>
+          </li>
+
+          <li class="col-xs-2">
+              <span class="get-pwd-back-step">
+                <i class="fa fa-check"></i>
+              </span>
+              <p class="get-pwd-back-step-text">完成</p>
+          </li>
+        </ul>
+        <ul class="row triangle-up">
+          <li class="col-xs-2 margin-l" ng-class="{'active': areaFlag == 1}">
+            <span class="get-pwd-back-step">
+              <i class="fa fa-sort-asc"></i>
+            </span>
+          </li>
+          <li class="col-xs-2" ng-class="{'active': areaFlag == 21 || areaFlag == 22 || areaFlag == 23 }">
+            <span class="get-pwd-back-step"><i class="fa fa-sort-asc"></i></span>
+          </li>
+          <li class="col-xs-2" ng-class="{'active': areaFlag == 3}">
+            <span class="get-pwd-back-step"><i class="fa fa-sort-asc"></i></span>
+          </li>
+          <li class="col-xs-2" ng-class="{'active': areaFlag == 4}">
+            <span class="get-pwd-back-step"><i class="fa fa-sort-asc"></i></span>
+          </li>
+        </ul>
+      </div>
+      <!-- STEP3 -->
+      <form class="form-horizontal" role="form" name="Step3SetPwd" ng-show="areaFlag == 3">
+        <div class="form-group">
+          <label for="password" class="col-xs-3 col-xs-offset-1 control-label">输入新密码:</label>
+          <div class="col-xs-5 position-re">
+            <span class="position-ab strength" ng-show="strength === 1">弱</span>
+            <span class="position-ab strength" ng-show="strength === 2">中</span>
+            <span class="position-ab strength" ng-show="strength === 3">强</span>
+            <input type="password" class="form-control" name="password" id="password" ng-model="user.password" ng-minlength="6" ng-maxlength="22" ng-pattern="/^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,22}$/" ng-class="{'borderred':Step3SetPwd.password.$dirty && Step3SetPwd.password.$invalid && !Step3SetPwd.password.$focused,'borderwhite':!Step3SetPwd.password.$dirty || !Step3SetPwd.password.$invalid || Step3SetPwd.password.$focused}" required ng-focus />
+            <div ng-if="Step3SetPwd.password.$dirty && Step3SetPwd.password.$invalid && !Step3SetPwd.password.$focused">
+              <div ng-if="Step3SetPwd.password.$error.pattern" class="row">
+                <p class="input-tips set-pwd-input-tips">长度6-22，数字或字母的组合，可以包含特殊字符</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="repeatPassword" class="col-xs-3 col-xs-offset-1 control-label">确定新密码:</label>
+          <div class="col-xs-5 position-re">
+            <span class="position-ab strength" ng-show="strength === 1">弱</span>
+            <span class="position-ab strength" ng-show="strength === 2">中</span>
+            <span class="position-ab strength" ng-show="strength === 3">强</span>
+            <input type="password" class="form-control" id="repeatPassword" name="repeatPassword" ng-model="user.repeatPassword" password-match="password" ng-class="{'borderred':Step3SetPwd.repeatPassword.$dirty && Step3SetPwd.$error && Step3SetPwd.repeatPassword.$error.passwordmatch && !Step3SetPwd.password.$focused && !Step3SetPwd.repeatPassword.$focused, 'borderwhite':!Step3SetPwd.repeatPassword.$dirty || !Step3SetPwd.$error || !Step3SetPwd.repeatPassword.$error.passwordmatch ||Step3SetPwd.password.$focused || Step3SetPwd.repeatPassword.$focused}" required ng-focus />
+            <div ng-if="Step3SetPwd.repeatPassword.$dirty && Step3SetPwd.$error && Step3SetPwd.repeatPassword.$error.passwordmatch && !Step3SetPwd.password.$focused && !Step3SetPwd.repeatPassword.$focused">
+              <div class="row">
+                <p class="input-tips set-pwd-input-tips">密码不一致</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-offset-3">
+            <button type="submit" class="col-xs-6 col-xs-offset-1 btn btn-primary btn-lg" ng-disabled="Step3SetPwd.$invalid" ng-click="setEmailNewPwd(user)">下一步</button>
+          </div>
+        </div>
+      </form>
+      <!-- STEP4 完成跳转-->
+      <div ng-show="areaFlag == 4" class="margin-b pwd-success col-xs-offset-3">
+        <h4>密码找回成功</h4>
+        <h4>{{ counter }} 秒后进入<a ui-sref="root.login" class="active">登录</a>页，请使用新密码进行登录</h4>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<!-- 其他信息 -->
+<div class="right-area policies-list col-md-9 col-lg-9">
+  <div class="row">
+    <div class="right-title-about2"><p>其他信息</p></div>
+  </div>
+  <!-- 重大事项 -->
+  <div class="import-info">
+    <img src="../images/disclosure/other-icon-01.png" alt="" width="10%">
+    <ul class="content">
+      <li ng-repeat="import in importList">
+        <p class="fl text-left" ng-class="{'line-h': $index == 4}">{{import}}</p>
+        <p class="fr text-left">无</p>
+      </li>
+    </ul>
+  </div>
+  <!-- 运营报告 -->
+  <div class="operating-info">
+    <img src="../images/disclosure/other-icon-02.png" alt="" width="11.5%">
+    <ul class="content">
+      <li class="fl" ui-sref="root.disclosure.operating-report-2017">
+        <img src="../images/disclosure/operating-2017.png" alt="">
+        <p>宏财网2017年年度运营报告</p>
+      </li>
+      <li class="fr" ui-sref="root.disclosure.operating-report-2016">
+        <img src="../images/disclosure/operating-2016.png" alt="">
+        <p>宏财网2016年年度运营报告</p>
+      </li>
+    </ul>
+  </div>
+  <!-- 政策法规 -->
+  <div class="policies-info">
+    <img src="../images/disclosure/other-icon-03.png" alt="" width="16%">
+    <div class="ft-14 ft-grey555 text-center margin-t-23">
+      <div class="commonBoxShadow cursor-pt" ng-repeat="polic in policiesList">
+        <p class="title cursor-pt" ng-click="gotopoliciesWeb(polic.link)">{{$index + 1}}.{{polic.title}}</p>
+      </div>
+    </div>
+  </div>
+  <!-- 收费标准 -->
+  <div class="pay-info">
+    <img src="../images/disclosure/other-icon-04.png" alt="" width="14%">
+    <ul class="content">
+      <li ng-repeat="pay in payList" ng-class="{'ftw-b': $index == 0}">
+        <p class="fl text-text">{{pay.type}}</p>
+        <p class="fr text-text">{{pay.txt}}</p>
+      </li>
+    </ul>
+  </div>
+  <div class="complaint-info">
+    <img src="../images/disclosure/other-icon-05.png" alt="" width="18.5%"/>
+    <ul class="content">
+      <li>
+        <img src="../images/disclosure/other-mobile.png" alt="">
+        <p>电话 <br>
+          400-9907626 <br>
+          （工作时间:9:00-18:00）
+        </p>
+      </li>
+      <li>
+        <img src="../images/disclosure/other-email.png" alt="">
+        <p>邮箱 <br>
+          hckf@hongcai.com
+        </p>
+      </li>
+      <li>
+        <img src="../images/disclosure/other-address.png" alt="">
+        <p>地址 <br>
+          北京市海淀区中关村南二条一号 <br>
+          中科院空间中心九章大厦B座
+        </p>
+      </li>
+    </ul>
+  </div>
+</div>

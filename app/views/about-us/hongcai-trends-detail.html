@@ -1,0 +1,17 @@
+<div class="right-area col-md-9 col-lg-9">
+	<div class="row">
+		<div class="right-title-about2"><p>宏财动态</p></div>
+	</div>
+	<div class="row">
+		<div class="introduction-area col-md-12 col-lg-12">
+			<h3 class="details-title">{{text.title}}</h3>
+			<p class="p-date">{{text.createTime | date:'yyyy-MM-dd'}}</p>
+			<div class="p-details" ng-bind-html="text.content | trustHtml"></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="introduction-area col-md-12 col-lg-12 margin-b-30">
+			<button class="btn about-btn-orange pull-right" ui-sref="root.us.hongcai-trends">返回</button>
+		</div>
+	</div>
+</div>

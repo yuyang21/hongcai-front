@@ -1,0 +1,108 @@
+<div class="container ">
+  <div class="panel panel-default appointment1">
+    <div class="panel-heading panel-head1">
+      <h4><img src="images/project/appoin_01.png" class="panel-head2">预约流程</h4>
+    </div>
+    <div class="panel-body">
+      <img src="images/project/appoint_process.png" width="100%" alt="项目流程">
+    </div>
+  </div>
+
+  <div class="row appointment2">
+    <div class="col-md-12"><img src="images/project/appointmentpic.png" width="100%">
+    </div>
+  </div>
+
+  <div class="row appointment2">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div id="app-list">
+          <div class="mar-2">
+            <div class="row">
+              <div class="hidden-md col-lg-2" style="margin-left: -15px;">
+                <img ng-src={{baseFileUrl}}{{project.image}} class="img-rounded" width="160" height="165">
+              </div>
+              <div class="col-xs-7 col-lg-7 app-col-7">
+                <div class="row">
+                  <div class="col-xs-12 app-col-12">
+                    <h3 class="app-h3"><a ui-sref="root.project-details({number: project.number})">{{project.name}}</a></h3>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 app-col-12"><a ui-sref="root.project-sponsorInstitution({guaranteeId: project.guaranteeId})" target="_blank">保荐机构：{{project.guaranteeName}}</a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 app-col-12 col-sm-6 text-nowrap">还款方式：{{repaymentName}}</div>
+                  <div class="col-xs-12 app-col-12 col-sm-6">100%本息担保</div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 app-col-12 col-sm-6">项目规模：<strong class="ft-18">{{project.total || 0 | menoyFormat}}</strong>元</div>
+                  <div class="col-xs-12 app-col-12 col-sm-6" ng-show="project.status != 11">可投金额：<strong class="ft-18">{{project.currentStock * project.increaseAmount || 0 | number : 0}}</strong>元</div>
+                  <div class="col-xs-12 app-col-12 col-sm-6" ng-show="project.status == 11">可预约额：<strong class="ft-18">{{project.reserveAmount}}</strong>元</div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 app-col-12 col-sm-6">年均收益：<strong class="ft-red ft-24">{{project.annualEarnings | number : 2}}%</strong>
+                  </div>
+                  <div class="col-xs-12 app-col-12 col-sm-6">项目期限：<strong class="ft-24">{{project.cycle}}</strong>个月</div>
+                </div>
+              </div>
+              <div class="col-xs-5 col-lg-3">
+                <div class="row">
+                  <div class="col-xs-12 app-col-12" ng-show="project.status === 6 || project.status === 11">
+                    <p class="text-left countdown-word" style="margin-top:12px;">{{ _timeDown }}</p>
+                  </div>
+                  <div class="col-xs-12" ng-show="project.status !== 6 && project.status !== 11"><h2>&nbsp;</h2></div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 app-col-12">项目状态：{{ statusText }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 app-col-12 padding-r-0">预约截止：{{ project.reserveEndTime | amDateFormat: 'YYYY/MM/DD HH:mm:ss'}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 app-col-12">
+                    <a class="btn btn-danger btn-lg btn-block" ui-sref="root.project-details({number: project.number})"><i class="fa"></i> {{statusText}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-11 end-line"></div>
+        <div class="row">
+          <div class="appointment3 appoint-1 col-md-3 col-md-offset-1 col-xs-10 col-xs-offset-3">
+            <img src="images/project/appoin_02.png">
+          </div>
+          <div class="appointment4 appoint-1 col-md-7 col-xs-10">
+            <h3 class="word-color1 word-mar word-mrl"><strong>什么是预约项目</strong></h3>
+            <ul class="word-color2 word-height">
+              <li>预约项目是宏财网打造的项目预约功能增值服务；</li>
+              <li>预约项目期间，投资人预约项目仅需预交10%的金额作为预付款；</li>
+              <li>参加预约项目后，宏财网根据预约金额自动对接货币基金（余额宝）上浮10%的收益，每天可以获得货币基金的收益；</li>
+              <li>预约项目期间，投资人可根据自身情况随时申请退出或者追加预约；</li>
+            </ul>
+          </div>
+          <div class="col-md-11 end-line"></div>
+          <div class="appointment4 col-md-7 col-md-offset-1 col-xs-10 col-xs-offset-1">
+            <h3 class="word-color1 word-mar"><strong>资金不站岗</strong></h3>
+            <p class="word-color2 word-height">预约金额享受货币基金（余额宝）上浮10%的收益</p>
+            <p class="word-color2 word-height">七日年化利率（2015/01/18）</p>
+            <p class="word-height ft-red"><strong>宏财网：4.701%（余额宝为4.274%）</strong>
+            </p>
+            <p class="word-color1"><strong>注：数据来源：余额宝。余额宝采用的是货币基金模式，不等同银行存款，过往业绩不预示其未来表现，市场有风险，投资需谨慎！</strong>
+            </p>
+          </div>
+          <div class="appointment3 appoint-1 col-md-4">
+            <img src="images/project/appoin_03.png">
+          </div>
+        </div>
+        <div class="appoint-rule">
+          <p class="panel-head1 apprule-stl">详细规则请见<a ui-sref="root.appointment-project-activityrule" target="_blank" class="word-color1">《预约项目规则》</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

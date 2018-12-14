@@ -1,0 +1,98 @@
+<div style="background:white;">
+  <div class="banner-bg">
+    <div id="jinying-step-1"></div>
+    <img src="/images/banner-7/banner.jpg">
+  </div>
+  <div class="jinying-guide ft-18 ft-white" sticky>
+    <div class="col-xs-8 col-xs-offset-1">
+      <div class="row">
+        <li><a href="/banner-investmentplan/#jinying-step-1" ng-click="addActive($event)" class="{{hsh=='jinying-step-1'||hsh==''?'active':''}} col-xs-2">宏金盈介绍</a></li>
+        <li><a href="/banner-investmentplan/#jinying-step-2" ng-click="addActive($event)" class="{{hsh=='jinying-step-2'?'active':''}} col-xs-2">宏金盈特点</a></li>
+        <li><a href="/banner-investmentplan/#jinying-step-3" ng-click="addActive($event)" class="{{hsh=='jinying-step-3'?'active':''}} col-xs-2">梯度收益</a></li>
+        <li><a href="/banner-investmentplan/#jinying-step-4" ng-click="addActive($event)" class="{{hsh=='jinying-step-4'?'active':''}} col-xs-2">加入流程</a></li>
+        <li><a href="/banner-investmentplan/#jinying-step-5" ng-click="addActive($event)" class="{{hsh=='jinying-step-5'?'active':''}} col-xs-2">常见问题</a></li>
+      </div>
+    </div>
+    <div class="col-xs-2">
+      <div class="row">
+        <a href="/" class="col-xs-8 active">宏财首页
+          <img src="images/banner-7/ico.png">
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="bg-2" style="background-image: url(/images/banner-7/bg.png);padding-bottom:130px;">
+    <div id="jinying-step-2"></div>
+    <div class="img-bg"></div>
+    <div class="btn-area">
+      <a ui-sref="root.current-deposit-details({number: item.number})" class="col-xs-2  jinying-btn ft-18" ng-class="{'seven-btn': item.fundsProduct.type === 1,'month-btn': item.fundsProduct.type === 2,'quarter-btn': item.fundsProduct.type === 3,'half-btn': item.fundsProduct.type === 4}" ng-repeat="item in fundsProjectProductList | limitTo: 1" ng-show="false">立即投资</a>
+      <a ui-sref="root.investmentplan-details({number: item.number})" class="col-xs-4  jinying-btn ft-18" ng-class="{'seven-btn': item.fundsProduct.type === 1,'month-btn': item.fundsProduct.type === 2,'quarter-btn': item.fundsProduct.type === 3,'half-btn': item.fundsProduct.type === 4}" ng-repeat="item in fundsProjectProductList | limitTo: -3">立即投资</a>
+    </div>
+  </div>
+  <div class="bg-2">
+    <div id="jinying-step-3"></div>
+    <img src="/images/banner-7/bg-2.png">
+  </div>
+  <div class="bg-2" style="background-color:white;">
+    <div id="jinying-step-4"></div>
+    <img src="/images/banner-7/bg-3.png">
+  </div>
+  <div class="bg-2" style="background-color:#fffae3;">
+    <div id="jinying-step-5"></div>
+    <img src="/images/banner-7/bg-4.png">
+  </div>
+  <div class="jinying-help ft-grey">
+    <p class="jinying-help-title ft-30">宏金盈帮助中心</p>
+    <div class="jinying-help-info">
+      <p class="help-Q ft-18" style="width:278px;">
+        <span class="Q-number ft-24">1</span>
+        <span class="Q-info">什么是宏金盈？</span>
+      </p>
+      <p class="help-A">
+        宏金盈是宏财网推出的针对宏财网优选债权进行自动投资及定时自动转让的投资计划，多种期限可选，满足出借人不同的流动性需要。出借人出借的本金将在投资期限到达后一次性返回其账户，利息收益每月发放，并由系统实现自动化的分散投资，更好的满足了出借人的需求。
+      </p>
+    </div>
+    <div class="jinying-help-info">
+      <p class="help-Q ft-18" style="width:305px;">
+        <span class="Q-number ft-24">2</span>
+        <span class="Q-info">宏金盈有哪些特点？</span>
+      </p>
+      <p class="help-A">
+        1)真实安全：加入宏金盈的资金，全部用于投资真实、提供100%本息担保的小额借款项目。
+        <br>2)超低门槛：100元即可以加入，以100元倍数递增。
+        <br>3)多样选择：多种期限搭配，满足不同流动性需求。
+        <br>4)省心优利：一次投入，按月（期）付息，到期还本；月月盈、季度盈、半年盈可选择自动续投。
+        <br>5)零手续费：加入和到期赎回全免费。
+        <br>6)分散投资：一份投资对应多份债权，降低投资风险。
+        <br>7)递增收益：6%-14.5%，月月盈、季度盈、半年盈每期分别递增0.4%、0.5%、1.5%。
+      </p>
+    </div>
+    <div class="jinying-help-info">
+      <p class="help-Q ft-18" style="width:581px;">
+        <span class="Q-number ft-24">3</span>
+        <span class="Q-info">宏金盈的自动续投利息如何计算？是否允许提前赎回？</span>
+      </p>
+      <p class="help-A">
+        递增收益，6%-14.5%，月月盈、季度盈、半年盈每期分别递增0.4%、0.5%、1.5%；可按投放周期赎回，在投放期限内取消自动续投到期后自动退出。
+      </p>
+    </div>
+    <div class="jinying-help-info">
+      <p class="help-Q ft-18" style="width:305px;">
+        <span class="Q-number ft-24">4</span>
+        <span class="Q-info">宏金盈的债权类别？</span>
+      </p>
+      <p class="help-A">
+        基金产品、信托产品、担保产品等优质债权。
+      </p>
+    </div>
+    <div class="jinying-help-info end-Q">
+      <p class="help-Q ft-18" style="width:390px;">
+        <span class="Q-number ft-24">5</span>
+        <span class="Q-info">自动续投是本金+利息复投吗？</span>
+      </p>
+      <p class="help-A">
+        不是。宏金盈每期的债权数固定，只续投本金部分，利息按月（期）发放到投资人易宝账户中，投资人可选择再次投资或者提取利息进行消费。
+      </p>
+    </div>
+  </div>
+</div>

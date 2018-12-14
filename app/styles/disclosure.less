@@ -1,0 +1,893 @@
+.disclosure-header {
+  p  {
+    text-decoration: none;
+    padding-left: 30px;
+    font-size: 16px;
+    height: 100%;
+    text-align: left;
+    padding-top: 25px;
+    color:#666;
+    cursor: default;
+  }
+}
+.dison-it {
+  p {
+    color: #f9721f;
+  }
+}
+p.margin {
+  margin-left: 6px;
+}
+.disclosure {
+	height: 330px;
+	background: url('../images/disclosure/disclosure.png') no-repeat center center;
+	img.title-text {
+		margin-left: 40px;
+		margin-top: 130px;
+	}
+}
+// 银行存管
+.bank-disclosure {
+	.contract {
+    margin: 0 6%;
+		border-radius: 23.5px;
+		background-color: #ffffff;
+    box-shadow: 0 0 6px 0 rgba(255, 75, 0, 0.69);
+    img {
+      border-radius: 12.5px;
+    }
+  }
+}
+// 备案信息
+.disclosure-information {
+  text-align: center;
+  .wrapper {
+    margin: 0 auto;
+    box-shadow: 0 0 2px 0 rgba(255, 77, 0, 0.69);
+    border-radius: 12.5px;
+    height: 300px;
+    width: 85%;
+    overflow-x: hidden;
+    -webkit-transform: rotate(0deg);
+    div {
+      overflow-y: hidden;
+      overflow-x: auto;
+    }
+  }
+  .record-info, .telecom-info, .bank-info {
+    padding-bottom: 20px;
+    table.info {
+      background: #fff;
+      border-radius: 20px;
+      width: 80%;
+      margin: 30px auto;
+      font-size: 13px;
+      box-shadow: 0 0 3.5px 0 rgba(80, 77, 75, 0.2);
+    }
+    table.info div {
+      padding: .1rem .15rem;
+    }
+    table.info tr {
+      height: 48px;
+      color: #666;
+      border-bottom: 1px solid #eee;
+      vertical-align: middle;
+    }
+    table.info tr:nth-child(even) {
+      background-color: #f3f6f8;
+    }
+    table.info td:nth-child(1) {
+      width: 31%;
+      text-align: left;
+      border-right: 1px solid #eee;
+      line-height: 50px;
+      padding-left: 50px;
+    }
+    table.info td:nth-child(2) {
+      width: 69%;
+      text-align: right;
+      line-height: 1.6;
+      padding: 0 130px;
+      font-size: 18px;
+    }
+  }
+  .telecom-info, .site-info {
+    background-color: #f4f6f8;
+    padding-top: 30px;
+  }
+  .bank-info {
+    padding-top: 30px;
+    .bank_name {
+      font-size: 13px !important;
+      text-align: center !important;
+    }
+    .contract {
+      width: 33%;
+      margin: 0 6%;
+      border-radius: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 0 2px 0 rgba(255, 75, 0, 0.69);
+      img {
+        border-radius: 20px;
+      }
+    }
+  }
+  .security-info {
+    padding-top: 30px;
+    .wrapper {
+      width: 49.5%;
+      margin: 0 auto;
+    }
+  }
+  .risk-info {
+    padding-top: 30px;
+    background-color: #f4f6f8;
+    .top-border {
+      width: 3.5%;
+      height: 5px;
+      background-color: #666666;
+      margin: 20px auto 3px;
+    }
+    .title {
+      letter-spacing: 0.6px;
+      color: #666666;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+    .part2 {
+      padding: 1px 0 20px;
+      background-color: #fff;
+      .content {
+        ul {
+          overflow: hidden;
+          margin: 0 auto;
+          margin-bottom: 40px;
+          li {
+            width: 20%;
+            float: left;
+            p:nth-child(1) {
+              color: rgba(102, 102, 102, 0.2);
+              font-size: 45.5px;
+              margin-bottom: 6px;
+              padding-top: 20px;
+              padding-bottom: 20px;
+            }
+            p:nth-child(2) {
+              width: 90px;
+              height: 45px;
+              line-height: 45px;
+              color: #fff;
+              border-radius: 1px;
+              background-image: linear-gradient(267deg, #fb9d1c, #ffc868);
+              position: relative;
+              margin: 0 auto;
+              font-size: 15px;
+            }
+            p:nth-child(2):before{
+              content: "";
+              display: block;
+              position: absolute;
+              top: 15px;
+              right: -14px;
+              font-size: 0;
+              line-height: 0;
+              width: 0;
+              height: 0;
+              border-width: 7px;
+              border-style: solid;
+              border-color: transparent transparent transparent #fb9c21;
+              z-index: 1;
+            }
+            p:nth-child(2):after {
+              width: 100px;
+              height: 1px;
+              content: "";
+              display: block;
+              position: absolute;
+              top: 21px;
+              right: -103px;
+              font-size: 0;
+              line-height: 0;
+              background-color: #e0dfde;
+            }
+          }
+          li:nth-child(5) {
+            p:nth-child(2):before {
+              border-width: 0;
+            }
+            p:nth-child(2):after {
+              width: 0;
+            }
+          }
+        }
+      }
+    }
+    .part2, .part3 {
+      .tips {
+        width: 70%;
+        margin: 10px auto 0;
+        text-align: justify;
+        color: #666;
+        font-size: 12px;
+      }
+    }
+    .part2 {
+      .tips{
+        width: 89%;
+        margin-bottom: 10px;
+      }
+    } 
+    .part3 {
+      padding: 1px 0 20px;
+      .content {
+        ul {
+          overflow: hidden;
+          width: 70%;
+          margin: 0 auto;
+          color: #fff;
+          li {
+            width: 42%;
+            height: 153px;
+            padding-top: 54px;
+            background: url('../images/disclosure/risk-part3.png') no-repeat center center;
+            background-size: 100% 100%;
+            p:nth-child(1) {
+              font-size: 32px;
+            }
+            p:nth-child(2) {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+    .part4 {
+      padding: 1px 0 0px;
+      background-color: #fff;
+      .content {
+        ul {
+          overflow: hidden;
+          margin-bottom: 0;
+          li {
+            width: 20%;
+            padding-top: 20px;
+            p {
+              margin-bottom: 0;
+            }
+            .num {
+              font-size: 45.5px;
+              height: 50px;
+              line-height: 61px;
+              background: linear-gradient(to left, #fb9d1c, #ffc868);
+              color: transparent;
+              -webkit-text-fill-color: transparent;
+              -webkit-background-clip: text;
+            }
+            .type {
+              color: #ffc868;
+              font-size: 13px;
+            }
+            .txt {
+              color: #666;
+              font-size: 12px;
+              text-align: justify;
+              height: 68px;
+              padding: 0 25px;
+              line-height: 1.8;
+            }
+            .bottom-line {
+              width: 100%;
+              height: 20px;
+              background-image: linear-gradient(to left, #fb9d1c, #ffc868), linear-gradient(#666666, #666666);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// 审核信息
+.disclosure-risk {
+  .shenji {
+    width: 60.7%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 23px;
+    background-color: #ffffff;
+    box-shadow: 0 0 2px 0 rgba(255, 75, 0, 0.69);
+  }
+  .other {
+    margin: 30px auto;
+    li {
+      height: 60px;
+      line-height: 60px;
+      overflow: hidden;
+      clear: both;
+      padding: 0 20%;
+      p {
+        width: 50%;
+        margin-bottom: 0px;
+      }
+      p:first-child {
+        text-align: left;
+        float: left;
+        color: #666;
+      }
+      p:last-child {
+        text-align: right;
+        float: right;
+        color: #333;
+        font-size: 18px;
+      }
+    }
+    li:first-child {
+      background-color: #fafafa;
+    }
+    li:last-child {
+      background-color: #fff5f1;
+    }
+  }
+}
+// 组织信息
+.disclosure-organizetion {
+  .bsuiness-info {
+    padding-bottom: 20px;
+    table.info {
+      background: #fff;
+      border-radius: 12px;
+      width: 80%;
+      margin: 30px auto;
+      font-size: 13px;
+      box-shadow: 0 0 3.5px 0 rgba(80, 77, 75, 0.2);
+    }
+    table.info div {
+      padding: .1rem .15rem;
+    }
+    table.info tr {
+      height: 48px;
+      color: #666;
+      border-bottom: 1px solid #eee;
+      vertical-align: middle;
+    }
+    table.info tr:nth-child(even) {
+      background-color: #f3f6f8;
+    }
+    table.info tr:last-child {
+      height: 130px;
+    }
+    table.info td:nth-child(1) {
+      width: 31%;
+      text-align: left;
+      border-right: 1px solid #eee;
+      line-height: 50px;
+      padding-left: 50px;
+    }
+    table.info td:nth-child(2) {
+      width: 69%;
+      text-align: left;
+      line-height: 1.6;
+      padding: 0 30px;
+    }
+    table.info li p {
+      line-height: 1.25;
+      text-align: center;
+    }
+  }
+  .shareholder-info {
+    padding: 30px 0 50px;
+    background-color:#f3f6f8;
+    .shareholder1, .shareholder2 {
+      width: 63.4%;
+      margin-left: 14%;
+      height: 90px;
+      border-radius: 25px;
+      background-color: #ffffff;
+      box-shadow: 0 1.5px 3.5px 0 rgba(80, 77, 75, 0.2);
+      margin-bottom: 25px;
+      text-align: left;
+      img {
+        float: left;
+        width: 23%;
+        margin-top: -123px;
+        margin-left: -40px;
+      }
+      .information {
+        color: #666;
+        padding-left: 25%;
+        padding-top: 3.2%;
+        span {
+          color: #ff611d;
+        }
+      }
+    }
+    .shareholder2 {
+      margin-left: 23%;
+      margin-bottom: 0;
+      img {
+        float: right;
+        margin-right: -40px;
+      }
+      .information {
+        padding-left: 15%;
+      }
+    }
+  }
+  .framework-info {
+    padding: 30px 0 20px;
+    .organiz-img {
+      position: relative;
+      width: 61.7%;
+      margin: 0 auto;
+      height: 250px;
+      background: url(../images/disclosure/organization.png) no-repeat center center;
+      background-size: contain;
+      span {
+        position: absolute;
+        width: 112px;
+        height: 40px;
+        font-size: 13px;
+        line-height: 3.2;
+        text-align: center;
+        color: #ffffff;
+        background-image: linear-gradient(to top, #4f94ff, #58bcfd);   
+        top: 82%;
+      }
+      span:nth-child(1), span:nth-child(2), span:nth-child(3){
+        top: 0%;
+        left: 41.5%;
+      }
+      span:nth-child(2){
+        top: 31.7%;
+      }
+      span:nth-child(3){
+        top: 82%;
+        left: -9%;
+      }
+      span:nth-child(4){
+        left: 11.6%;
+      }
+      span:nth-child(5){
+        left: 31.4%;
+      }
+      span:nth-child(6){
+        left: 52%;
+      }
+      span:nth-child(7){
+        left: 72%;
+      }
+      span:nth-child(8){
+        left: 92%;
+      }
+    }
+  }
+  .employees-profiles {
+    padding: 30px 0 30px;
+    background-color:#f3f6f8;
+    .profiles {
+      margin-bottom: 30px;
+      margin: 0 4%;
+      width: 92%;
+      .profiles1 {
+        margin-right: 2%;
+      }
+      .profiles1, .profiles2 {
+        width: 49%;
+        padding: 30px 0 20px;
+        margin-top: 30px;
+        float: left;
+        border-radius: 12.5px;
+        background-color: #ffffff;
+        box-shadow: 0 1.5px 3.5px 0 rgba(80, 77, 75, 0.2);
+        .agesList, .education{
+          li {
+            display: inline-block;
+            margin: 20px 0.5% 0;
+            width: 28.3%;
+            line-height: 25px;
+            height: 25px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            border: solid 1px #f18e01;
+            font-size: 12px;
+            span:nth-child(2){
+              height: 100%;
+              float: right;
+              width: 36%;
+              background-color: #f18e01;
+              border-top-right-radius: 8px;
+              border-bottom-right-radius: 8px;
+              color: #fff;
+            }
+          }
+          li:nth-child(2) {
+            border: solid 1px #4a75ff;
+            span:nth-child(2){
+              background-color: #4a75ff;
+            }
+          }
+          li:nth-child(3) {
+            border: solid 1px #ffd301;
+            span:nth-child(2){
+              background-color: #ffd301;
+            }
+          }
+        }
+        .education {
+          li {
+            width: 23%;
+            margin-top: 10px;
+          }
+          li:nth-child(1) {
+            border: solid 1px #a0dcff;
+            span:nth-child(2){
+              background-color: #a0dcff;
+            }
+          }
+          li:nth-child(2) {
+            border: solid 1px #7ac3ee;
+            span:nth-child(2){
+              background-color: #7ac3ee;
+            }
+          }
+          li:nth-child(3) {
+            border: solid 1px #338dc7;
+            span:nth-child(2){
+              background-color: #338dc7;
+            }
+          }
+          li:nth-child(4) {
+            border: solid 1px #2272b5;
+            span:nth-child(2){
+              background-color: #2272b5;
+              width: 27% !important;
+            }
+          }
+        }
+      }
+    }
+    .table-name {
+      span {
+        display: inline-block;
+        width: 46%;
+        color: #666;
+      }
+    }
+  }
+}
+//分支机构信息
+.complaint-info{
+  padding: 30px 0;
+}
+// 渠道信息
+.channels-info {
+  padding: 30px 0;
+  .channels-container{
+    margin-top: 30px;
+    padding: 0 60px;
+    ul li{
+      width: 23%;
+      padding: 30px 0 20px 0;
+      background: #589efe;
+      border-radius: 5px;
+      color: #ffffff;
+      margin: 0 1%;
+      .channels-container-img{
+        height: 78px;
+        img{
+          height: 100%;
+        }
+      }
+    }
+    ul li:nth-child(2){
+      background: #f18d01;
+      .channels-container-img{
+        margin-left: 17px;
+      }
+    }
+    ul li:nth-child(3){
+      background: #15dcef;
+    }
+    ul li:nth-child(4){
+      background: #4a75ff;
+    }
+  }
+}
+.channels-info { 
+  background-color:#f3f6f8;
+}
+//经营信息
+.business-infor {
+  .jy-header{
+    width: 100%;
+    height: 260px;
+    margin: 0 auto;
+    background: url('../images/disclosure/jy-banner.png') no-repeat center center;
+    background-size: cover;
+    p {
+      color: #fff;
+	    text-align: center;
+    }
+    p:first-child {
+      font-size: 18px;
+      padding-top: 60px;
+      padding-bottom: 14px;
+    }
+    p:nth-child(2) {
+      font-size: 40px;
+      padding-bottom: 17px;
+      border-bottom: 1px solid #ffffff;
+      width:90%;
+      margin: 0 auto;
+    }
+    p:last-child {
+      font-size: 30px;
+      margin-top: 30px;
+    }
+  }
+  //经营信息
+ .management-info{
+    table.info {
+      background: #fff;
+      border-radius: 12px;
+      width: 80%;
+      margin: 20px auto 0;
+      font-size: 13px;
+      box-shadow: 0 0 3.5px 0 rgba(80, 77, 75, 0.2);
+    }
+    table.info tr {
+      height: 48px;
+      color: #666;
+      border-bottom: 1px solid #eee;
+      vertical-align: middle;
+    }
+    table.info tr:nth-child(even) {
+      background-color: #f3f6f8;
+    }
+    table.info tr:last-child {
+      height: 130px;
+    }
+    table.info td:nth-child(1) {
+      width: 40%;
+      text-align: left;
+      border-right: 1px solid #eee;
+      line-height: 50px;
+      padding-left: 50px;
+    }
+    table.info td:nth-child(2) {
+      width: 60%;
+      text-align: left;
+      line-height: 1.6;
+      padding: 0 30px;
+    }
+    table.info li p {
+      line-height: 1.25;
+      text-align: center;
+    }
+  }
+  .dateTime {
+    width: 50%;
+    margin: 30px auto;
+    .years, .months {
+      position: relative;
+      width: 23%;
+      display: inline-block;
+      .yearBox, .monthBox {
+        display: inline-block;
+        border: 1px solid #eee;
+        width: 100%;
+        padding-right: 5px;
+        input {
+          border: none;
+          background: #fff;
+          width: 74%;
+          text-align: center;
+          height: 35px;
+        }
+        i {
+          font-size: 20px;
+          font-weight: bold;
+          color: #666;
+          vertical-align: middle;
+        }
+      }
+      .yearList, .monthList {
+        width: 100%;
+        position: absolute;
+        top: 36px;
+        background: #fff;
+        border: 1px solid #eee;
+        .disabled-month, .disabled-month:hover {
+          color: #999;
+          cursor: no-drop;
+          background: #fff;
+        }
+        li {
+          height: 30px;
+          line-height: 30px;
+        }
+        li:hover, li:hover {
+          background: #f8843d;
+          color: #fff;
+          cursor: pointer;
+        }
+      }
+    }
+    .search {
+      display: inline-block;
+      border: 1px solid #eee;
+      padding: 6px 10px;
+      cursor: pointer;
+      height: 37px;
+    }
+    .search:hover {
+      color: #fff;
+      background: #f8843d;
+    }
+  }
+}
+// 
+.policies-list {
+  text-align: center;
+  .import-info, .pay-info {
+    .line-h {
+      line-height: 1.6;
+      padding-top: 17px;
+    }
+    .content {
+      margin-top: 10px;
+      li {
+        height: 70px;
+        line-height: 70px;
+        color: #666;
+        font-size: 13px;
+        overflow: hidden;
+        p:nth-child(1) {
+          width: 70%;
+          padding-left: 3%;
+        }
+        p:nth-child(2) {
+          width: 15%;
+        }
+      }
+      li:nth-child(odd) {
+        background: #fafafa;
+      }
+      li:nth-child(even) {
+        background: #fff5f1;
+      }
+    }
+  }
+  .operating-info {
+    padding-top: 20px;
+    .content {
+      width: 80%;
+      margin: 20px auto;
+      overflow: hidden;
+      clear: both;
+      p {
+        color: #666;
+        font-size: 12px;
+        margin-top: 10px;
+        margin-bottom: 0;
+      }
+    }
+  }
+  .policies-info {
+    background-color: #fafafa;
+    padding: 20px 0;
+    .commonBoxShadow {
+      width: 85%;
+      margin: 10px auto;
+      text-align: left;
+      overflow: hidden;
+      color: #0865f5;
+      text-decoration: underline;
+    }
+  }
+  .pay-info {
+    padding: 20px 0 0;
+    .content li p:nth-child(1) {
+      width: 40%;
+    }
+    .content li p:nth-child(2) {
+      width: 46%;
+    }
+  }
+  .complaint-info {
+    padding: 15px 0;
+    .content {
+      overflow: hidden;
+      width: 70%;
+      margin: 20px auto;
+      li {
+        float: left;
+        width: 31.333%;
+        height: 210px;
+        text-align: center;
+        margin-right: 2%;
+        border-radius: 10px;
+        padding-top: 30px;
+        p {
+          height: 100px;
+          color: #fff;
+          font-size: 12px;
+          margin-bottom: 0;
+        }
+      }
+      li:nth-child(1) {
+        background-color: #589efe;
+      }
+      li:nth-child(2) {
+        background-color: #f18d01;
+        img {
+          margin-top: 13px;
+          margin-bottom: 7px;
+        }
+        p {
+          margin-top: 2px;
+        }
+      }
+      li:nth-child(3) {
+        background-color: #15dcef;
+      }
+    }
+    
+  }
+}
+.commonBoxShadow img.margin-6 {
+  margin-top: 25px;
+}
+
+// 运营年报2016
+.operating-2016, .operating-2017 {
+  background: #ffd4b8;
+  min-height: 600px;
+  _height: 600px;
+  .carousel-inner {
+    width: 80%;
+    margin: 0 auto;
+    .item {
+      margin-top: 65px;
+    }
+  }
+  .carousel-indicators {
+    bottom: -11%;
+    li {
+      background: #e80103;
+      border: 1px solid #e80103;
+      opacity: .3;
+      width: 15px;
+      height: 15px;
+      margin-right: 8px;
+    }
+    .active {
+      background: #e80103;
+      opacity: 1;
+    }
+  }
+  .carousel-control {
+    width: 10%;
+    img {
+      background: #fff;
+      border-radius: 10px;
+      height: 65px;
+      opacity: .9;
+    }
+  }
+  .carousel-control.right {
+    right: .6%;
+  }
+  .carousel-control.left {
+    left: 0%;
+  }
+}
+.operating-2017 {
+  background: url(../images/disclosure/bg.png) no-repeat 0 0;
+}
+.auditPDF {
+  width: 60%;
+  margin: 0 auto;
+  img {
+    width: 100%;
+  }
+}

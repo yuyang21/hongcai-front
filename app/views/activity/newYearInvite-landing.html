@@ -1,0 +1,70 @@
+<!-- 市场 新年邀请落地页 -->
+<div class="newYearInvite">
+  <img src="/images/activity/newYearIvt-bg01.png" alt="" width="100%">
+  <img src="/images/activity/newYearIvt-bg02.png" alt="" width="100%">
+  <div class="part1 position-re">
+    <div class="activity-time position-ab">活动时间:2017年1月15日——2017年3月15日</div>
+    <img src="/images/activity/newYearIvt-bg03.png" alt="" width="100%">
+  </div>
+  <img src="/images/activity/newYearIvt-bg04.png" alt="" width="100%">
+  <img src="/images/activity/newYearIvt-bg05.png" alt="" width="100%">
+  <img src="/images/activity/newYearIvt-bg06.png" alt="" width="100%">
+  <img src="/images/activity/newYearIvt-bg07.png" alt="" width="100%">
+  <img src="/images/activity/newYearIvt-bg08.png" alt="" width="100%">
+  <img src="/images/activity/newYearIvt-bg09.png" alt="" width="100%">
+  <img src="/images/activity/newYearIvt-bg10.png" alt="" width="100%">
+  <img src="/images/activity/newYearIvt-bg11.jpg" alt="" width="100%">
+  <img src="/images/activity/newYearIvt-bg12.png" alt="" width="100%">
+  <img src="/images/activity/newYearIvt-bg13.png" alt="" width="100%">
+  <img src="/images/activity/newYearIvt-bg14.png" alt="" width="100%">
+  <img src="/images/activity/newYearIvt-bg15.png" alt="" width="100%">
+  <img src="/images/activity/newYearIvt-bg16.png" alt="" width="100%">
+  <img src="/images/activity/newYearIvt-bg17.png" alt="" width="100%">
+  <img src="/images/activity/newYearIvt-bg18.png" alt="" width="100%">
+  <div class="part19 position-re">
+    <div id="invite" class="invite position-ab cursor-pt" ng-click="goInvite()"></div>
+    <img src="/images/activity/newYearIvt-bg19.png" alt="" width="100%">
+  </div>
+  <img src="/images/activity/newYearIvt-bg20.png" alt="" width="100%">
+</div>
+<!-- 点击复制链接弹出模态框 -->
+<div class="modal fade modal-top" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog-invite">
+    <div class="modal-content overflow-hi">
+       <div class="modal-header">
+          <button type="button" class="close"
+             data-dismiss="modal" aria-hidden="true">
+                &times;
+          </button>
+          <h4 class="modal-title" id="myModalLabel">
+            <span>我的专属链接</span>
+          </h4>
+       </div>
+       <div class="modal-body fl text-center margin-b-20 margin-l-6p">
+          <div id="qrcode" class="qrcode margin-auto"></div>
+          <div class="ft-14">
+            专属二维码
+          </div>
+       </div>
+       <div class="modal-body fl text-center">
+          <div class="modal-connect1 ft-16">
+            http://www.hongcai.com/register?inviteCode={{inviteCode}}
+          </div>
+          <div class="">专属邀请链接</div>
+       </div>
+       
+       <div class="modal-body fl text-center">
+          <div class="inviteCode ft-20">
+            {{inviteCode}}
+          </div>
+          <div class="ft-14">
+            专属邀请码
+          </div>
+       </div>
+       <div class="modal-footer text-center ft-18 border-0">
+         复制以上链接邀请好友，双重奖励等你哟!!
+       </div>
+    </div>
+  </div>
+</div>
+

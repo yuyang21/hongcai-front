@@ -1,0 +1,53 @@
+<div class="alert" ng-class="[type ? 'alert-' + type : null]" ng-controller="RechargeCtrl">
+  <button type="button" class="close" ng-click="$hide()">&times;</button>
+  <div class="title">
+    <strong>充值</strong>
+  </div>
+  <div class="content">
+    <div class="row">
+      <form class="col-xs-offset-3" name="rechargeForm">
+        <div class="row">
+          <div class="h-line modal-form">
+            <label class="col-xs-3">可用余额：</label>
+            <span class="col-xs-3">{{ balance || "0" | number:2}}元</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <label class="col-xs-3">充值金额：</label>
+            <input name="amount" type="text" class="verify-input" ng-model="rechargeAmount" min="3" ng-pattern="/^[0-9]*(\.[0-9]{1,2})?$/" ng-focus required/>&nbsp;&nbsp;元
+            <div class="row" ng-show="rechargeForm.amount.$dirty && rechargeForm.amount.$error.pattern">
+              <p class="input-tips user-input-tips col-xs-8">请输入数字(最多精确到小数点后两位)</p>
+            </div>
+            <div class="row margin-l-30" ng-show="rechargeAmount < 3">
+              <p class="input-tips user-input-tips col-xs-8">充值金额不能小于3元 </p>
+            </div>
+            <div class="row margin-l-30" ng-show="rechargeAmount > bankRemain">
+              <p class="input-tips user-input-tips col-xs-8">充值金额不能大于{{bankRemain}}元 </p>
+            </div>
+            <div class="row" ng-show="rechargeForm.amount.$dirty && rechargeForm.amount.$error.required && !rechargeForm.amount.$focused">
+              <p class="input-tips user-input-tips col-xs-8">充值金额不能为空</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <input type="button" value="确认充值" class="col-xs-offset-3 col-xs-4" ng-click="recharge(rechargeAmount);$hide()" ng-disabled="rechargeForm.$invalid || rechargeAmount < 3 || rechargeAmount > bankRemain" ng-class="{'white-button-orange':rechargeForm.$invalid || rechargeAmount < 3 || rechargeAmount > bankRemain , 'orange-button':!rechargeForm.$invalid}" style="box-sizing:content-box;padding: 0px 1px !important;" />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row margin-t-30 margin-b-30 padding-l-45 padding-r-45">
+      <div class="ft-12">
+        <h5>温馨提示:</h5>
+        <ul class="padding-l-15">
+          <li>1. 您的账户资金将由海口联合农商银行资金存管系统进行存管；</li>
+          <li>2. 首先请注意您是否开通网上银行等功能,可能存在充值超过限额：（充值限额，是银行、第三方支付平台、和用户您自己设定的支付限额决定的，取三者最小值）以免造成充值不成功；</li>
+          <li>3. 禁止洗钱、信用卡套现、虚假交易等行为，一经发现并确认，将终止该账户的使用；</li>
+          <li>4. 如果充值金额没有及时到账，请联系客服，400-900-7626。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mask_layer"></div>

@@ -1,0 +1,16 @@
+<div class="alert cancenlAutoTender" ng-class="[type ? 'alert-' + type : null]">
+  <div class="title">
+    <strong >温馨提示：</strong>
+  </div>
+  
+  <div class="content">
+    <p>当前已开启自动投标功能，可能导致债权转让的回款资金自动出借，强烈建议您禁用此功能后再进行转让操作。</p>
+  </div>
+
+  <div class="bottom col-xs-10 col-xs-offset-1 margin-b-30">
+    <a class="btn btn-primary-orange btn-block pull-left margin-r-80 margin-l-50 w-25" href="javascript:;" ng-click="goToAssignmentsTransfer();$hide();">继续转让</a>
+    <a class="btn btn-primary-orange btn-block pull-left w-25" href="javascript:;" ng-click="$hide();disabledAutoTender()">立即禁用</a>
+  </div>
+  
+</div>
+<div class="mask_layer"></div>

@@ -1,0 +1,984 @@
+.content-list {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-right: 0px;
+}
+
+.page-container {
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  margin-bottom: 30px;
+}
+.bg-white {
+  background-color: #fff;
+}
+
+.safe {
+  .padding-lr-30 {
+    padding: 0 30px;
+  }
+  .tit2 {
+    margin-left: -24px;
+    font-weight: 700;
+  }
+  .top {
+  width: 100%;
+  height: 255px;
+  }
+  .service {
+    border-top: 1px solid #dbdbdb;
+  }
+  .service .col-md-5 {
+    background-position: -750px -470px;
+  }
+  .technique .col-md-5 {
+    background-position: -750px -675px;
+  }
+  .capital .col-md-5 {
+    background-position: -750px -940px;
+  }
+  .privacy .col-md-5 {
+    background-position: -750px -1150px;
+  }
+  #carousel-generic {
+    margin-left: 50px;
+    width: 865px;
+    .left {
+      left: -30px;
+    }
+  }
+  .list-item {
+    padding-top: 40px;
+    padding-bottom: 30px;
+    .col-md-5 {
+      //height: 190px;
+    }
+  }
+  .nav {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+    float: none;
+    li {
+      text-align: center;
+      width: 11.11%;
+      float: left;
+      padding: 0 15px;
+      a {
+        padding: 0;
+        color: #717071;
+        display: block;
+        div {
+          width: 62px;
+          height: 63px;
+          margin: 0 auto;
+        }
+      }
+      a:hover {
+        background: none;
+        color: #ea5430;
+      }
+      small {
+        display: block;
+      }
+      .active {
+        color: #eb5c3f;
+      }
+      ;
+    }
+  }
+  .sticky {
+    z-index: 50;
+    background-color: #fff;
+    box-shadow: rgb(136, 136, 136) 1px 1px 5px;
+    li div {
+      background: url(/images/safe/safe.png) no-repeat;
+    }
+    .step-1 {
+      background-position: 0 0;
+    }
+    .step-2 {
+      background-position: 0 -226px;
+    }
+    .step-3 {
+      background-position: 0 -452px;
+    }
+    .step-4 {
+      background-position: 0 -678px;
+    }
+    .step-5 {
+      background-position: 0 -904px;
+    }
+    .step-6 {
+      background-position: 0 -1130px;
+    }
+    .step-7 {
+      background-position: 0 -1356px;
+    }
+    .step-8 {
+      background-position: 0 -1582px;
+    }
+    .step-9 {
+      background-position: 0 -1808px;
+    }
+  }
+  .active {
+    .step-1 {
+      background-position: 0 -113px;
+    }
+    .step-2 {
+      background-position: 0 -339px;
+    }
+    .step-3 {
+      background-position: 0 -565px;
+    }
+    .step-4 {
+      background-position: 0 -791px;
+    }
+    .step-5 {
+      background-position: 0 -1017px;
+    }
+    .step-6 {
+      background-position: 0 -1243px;
+    }
+    .step-7 {
+      background-position: 0 -1469px;
+    }
+    .step-8 {
+      background-position: 0 -1695px;
+    }
+    .step-9 {
+      background-position: 0 -1921px;
+    }
+  }
+}
+
+.safe-header {
+  height: 368px;
+  .header-bg {
+    width: 100%;
+    height:368px;
+    margin:0 auto;
+    background: url('/images/safe/safe_title5.png') no-repeat center center;
+  }
+}
+
+// 新安全保障
+.new-safe {
+  //处理导航栏锚点定位不准虚div样式
+  .seat-div {
+    height: 80px;
+    visibility: hidden;
+    position: absolute;
+    bottom: 0;
+  }
+  // header
+  .floatTop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 108px;
+    line-height: 108px;
+    background: #011222;
+    z-index: 999;
+    div.wrap {
+      height: 100%;
+      width: 1190px;
+      margin: 0 auto;
+      ul {
+        height: 100%;
+        margin-bottom: 0;
+        li {
+          float: left;
+          width: 95px;
+          color: #fff;
+          font-size: 20px;
+          font-family: 'MicrosoftYaHei';
+          margin-right: 60px;
+          a {
+            width: 95px;
+            height: 100%;
+            color: #fff;
+          }
+          a:hover {
+            color: #fff;
+          }
+          .logoImgs {
+            display: block;
+            width: 146px;
+            height: 108px;
+            background: url('/images/safe/logo.png') no-repeat 0 center;
+            margin-left: 30px;
+          }
+        }
+        .imgLi {
+          width: 146px;
+          height: 108px;
+          margin-right: 78px;
+        }
+        .return {
+          margin-left: 18px;
+          margin-right: 0px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  //资金安全视图放大缩小动画
+  @-webkit-keyframes toggle_scale {
+    0% {
+      -webkit-transform: scale(.8);
+    }
+    50% {
+      -webkit-transform: scale(1.2);
+    }
+    100%{
+      -webkit-transform: scale(1);
+    }
+  }
+  @-moz-keyframes toggle_scale {
+    0% {
+      -moz-transform: scale(.8);
+    }
+    50% {
+      -moz-transform: scale(1.2);
+    }
+    100%{
+      -moz-transform: scale(1);
+    }
+  }
+  @-o-keyframes toggle_scale {
+    0% {
+      -o-transform: scale(.8);
+    }
+    50% {
+      -o-transform: scale(1.2);
+    }
+    100%{
+      -o-transform: scale(1);
+    }
+  }
+  @-ms-keyframes toggle_scale {
+    0% {
+      -ms-transform: scale(.8);
+    }
+    50% {
+      -ms-transform: scale(1.2);
+    }
+    100%{
+      -ms-transform: scale(1);
+    }
+  }
+  @keyframes toggle_scale {
+    0% {
+      transform: scale(.8);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100%{
+      transform: scale(1);
+    }
+  }
+
+  .banner>ul {
+    width: 1190px;
+    padding: 128px 0;
+    margin: 0 auto;
+    font-size: 18px;
+    li {
+      float: left;
+      width: 25%;
+      .banner-tit {
+        width: 155px;
+        height: 155px;
+        margin: 0 auto;
+        margin-bottom: 45px;
+        cursor: pointer;
+      }
+      .banner-tit1 {
+        background: url('/images/safe/icon_gz1.png') no-repeat 0 0;
+      }
+      .banner-tit1:hover, .banner-click1 {
+        background: url('/images/safe/icon_gz.png') no-repeat 0 0
+      }
+      .banner-tit2 {
+        background: url('/images/safe/icon_zj1.png') no-repeat 0 0;
+      }
+      .banner-tit2:hover, .banner-click2 {
+        background: url('/images/safe/icon_zj.png') no-repeat 0 0;
+      }
+      .banner-tit3 {
+        background: url('/images/safe/icon_hy.png') no-repeat 0 0;
+      }
+      .banner-tit3:hover, .banner-click3 {
+        background: url('/images/safe/icon_hy1.png') no-repeat 0 0;
+      }
+      .banner-tit4 {
+        background: url('/images/safe/icon_ld.png') no-repeat 0 0;
+      }
+      .banner-tit4:hover, .banner-click4 {
+        background: url('/images/safe/icon_ld1.png') no-repeat 0 0;
+      }
+    }
+    .banner-li01 {
+      position: absolute;
+      top: 0;
+      left: 10%;
+    }
+    .banner-li02 {
+      position: absolute;
+      top: 0;
+      left: 38%;
+    }
+    .banner-li03 {
+      position: absolute;
+      top: 0;
+      left: 68%;
+    }
+    .banner-li04 {
+      position: absolute;
+      top: 0;
+      left: 67%;
+    }
+  }
+  .banner {
+    position: relative;
+    width: 100%;
+    height: 770px;
+    background: url('/images/safe/banner.jpg') no-repeat center center;
+    background-color: #011222;
+    font-size: 16px;
+    color: #fff;
+    overflow: hidden;
+    h4 {
+      font-size: 22px;
+      margin-top: 300px;
+      font-family: 'MicrosoftYaHei';
+      font-weight: normal;
+    } 
+    .banner-info {
+      display: none;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 208px;
+      text-align: left;
+      z-index: 20;
+      .wrapB {
+        position: relative;
+        width: 1190px;
+        height: 36px;
+        margin-bottom: -18px;
+        margin: 0 auto;
+        top: 18px;
+        b {
+          display: block;
+          width: 36px;
+          height: 36px;
+          background: url('/images/safe/close.png') no-repeat center center;
+          margin: 0 auto;
+          cursor: pointer;
+          z-index: 20;
+        }
+      }
+      .wrapC {
+        width: 100%;
+        height: 208px;
+        background: #1877AD;
+        background: rgba(25,122,178,0.9);
+        filter: alpha(opacity=90);
+        overflow: hidden;
+        ul {
+          width: 710px;
+          margin: 0px auto;
+          height: 2088px;
+          li {
+            width: 100%;
+            margin: 15px 25px;
+            text-align: left;
+            .fa-circle {
+              position: relative;
+              top: -2px;
+              margin-right: 10px;
+            }
+          }
+        }
+        .w660 {
+          width: 1000px;
+          margin: 75px auto
+        }
+        a {
+          margin: -40px 200px 0 0;
+          color: #fff
+        }
+      }
+    }
+  }
+
+  //资金安全
+  .fund-safty h, .running-rules h {
+    font-size: 68px;
+    font-family: PingFang SC;
+    color: #666;
+    font-weight: 100;
+  }
+  .fund-safty {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    height: 758px;
+    background: url("/images/safe/fund-safty-bg.jpg") no-repeat center center;
+    text-align: center;
+    padding-top: 42px;
+    .fund-slide {
+      width: 900px;
+      margin: 74px auto 0px;
+      p {
+        display: inline-block;
+        margin-right: 128px;
+        width: 125px;
+        height: 48px;
+        background: url("/images/safe/no-click-bg.png") no-repeat;
+        line-height: 48px;
+        font-size: 20px;
+        color: #fff;
+        text-align: center;
+      }
+      .active-tab {
+        background: url("/images/safe/clicked-bg.png") no-repeat;
+      }
+    }
+    .fund-slide-content {
+      width: 1300px;
+      margin: 0 auto;
+      padding-top: 60px;  
+      .tab{
+        width: 72px;
+        height: 72px;
+        top: 30%;
+        position: absolute;
+      }
+      .pre {
+        background: url("/images/safe/fund-slide-pre.png") no-repeat;
+        left: 0;
+      }
+      .nxt {
+        background: url("/images/safe/fund-slide-nxt.png") no-repeat;
+        right: 0;
+      }
+      #unit1 .icon img {
+        transform: scale(.8);
+      }
+     
+      #unit1 .icon .toggle-scale {
+        -webkit-animation: toggle_scale 2s linear .8s normal;
+        -moz-animation: toggle_scale 2s linear .8s normal;
+        -o-animation: toggle_scale 2s linear .8s normal;
+        animation: toggle_scale 2s linear .8s normal;
+        animation-fill-mode: forwards;
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation-fill-mode: forwards;
+        -o-animation-fill-mode: forwards;
+        
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        -moz-perspective: 1000;
+        -ms-perspective: 1000;
+        perspective: 1000;
+      }
+      #unit1 .descrip {
+        width: 31%;
+        margin-left: 106px;
+        font-size: 28px;
+        color: #1082db;
+        height: 255px;
+        vertical-align: top;
+        text-align: left;
+        padding-top: 65px;
+      }
+      #unit2 .descrip, #unit3 .descrip{
+        width: 31%;
+        height: 100%;
+        margin-left: 106px;
+        font-size: 28px;
+        color: #666;
+        height: 255px;
+        vertical-align: top;
+        text-align: left;
+      }
+      #unit2 .descrip {
+        width: 30%;
+      }
+      #unit2 .icon {
+        background: url("/images/safe/slide-img4.png") no-repeat;
+        width: 379px;
+        height: 258px;
+        overflow: hidden;
+        .firstUl {
+          top: -344px;
+          left: 0;
+        }
+        .secondUl {
+          top: -22px;
+          left: 146px;
+        }
+        .thirdUl {
+          top: -343px;
+          right: 0;
+        }
+        ul {
+          height: 258px;
+          width: 84px;
+          float: left;
+          over-flow: hidden;
+          position: absolute;
+          li {
+            height: 84px;
+            width: 84px;
+            line-height: 86px;
+            float: left;
+            //position: absolute;
+            img {
+              margin: 22px auto;
+            }
+          }
+        }
+        ul.margin-r-63 {
+          margin-right: 63px;
+        }
+      }
+      #unit3 .descrip {
+        color: #0759af;
+        padding-top: 20px;
+      }
+      #unit3 {
+        .icon {
+        width: 357px;
+        height: 475px;
+        }
+       img:first-child{
+        margin-top: -55px;
+       }
+        .line {
+          position: absolute;
+          top: -55px;
+          left: -18px;
+        }
+      }
+    }
+
+  }
+
+  //风控严谨
+  .strict-control {
+    position: relative;
+    width: 100%;
+    height: 758px;
+    background: url("/images/safe/strict-control-bg.jpg") no-repeat center center;
+    text-align: center;
+    padding-top: 42px;
+    h {
+      font-size: 68px;
+      font-family: PingFang SC;
+      color: #fff;
+      font-weight: 100;
+    }
+    .strict-content {
+      width: 1197px;
+      margin: 0 auto;
+      padding-top: 25px;  
+      .content-top, .content-bottom {
+        width: 100%;
+        height: 211px;
+        border-radius: 7px;
+        background-color: rgba(255,255,255,0.5);
+        padding: 30px 36px;
+        background: url('/images/safe/strict-bottom-bg.png') no-repeat center center;
+        a {
+          width: 269px;
+          height: 186px;
+          display: block;
+          float: left;
+          margin-left: 16px;
+          cursor: unset;
+          .flipper {
+            width: 269px;
+            height: 186px;
+            position: relative;
+            .front {
+              width: 269px;
+              height: 151px;
+              text-align: center;
+              position: absolute;
+              top: 0;
+              left: 0;
+              // z-index: -1;
+              z-index: -1;
+              z-index: 1\9;
+              z-index: 9999;
+              background: url('/images/safe/srtict-orange-bg.jpg') no-repeat center center;
+              -webkit-backface-visibility: hidden;
+              -moz-backface-visibility: hidden;
+              // -ms-backface-visibility: hidden;
+              // backface-visibility: hidden;
+              i {
+                width: 50px;
+                height: 50px;
+                display: inline-block;
+                position: absolute;
+                z-index: -1;
+                bottom: 66px;
+                left: 28px;
+                background: url('/images/safe/strict-icon1.png') no-repeat center center;
+              }
+              .a-icon2 {
+                background: url('/images/safe/strict-icon2.png') no-repeat center center;
+              }
+              .a-icon3 {
+                background: url('/images/safe/strict-icon3.png') no-repeat center center;
+              }
+              .a-icon4 {
+                background: url('/images/safe/strict-icon4.png') no-repeat center center;
+              }
+              .a-icon5 {
+                background: url('/images/safe/strict-icon5.png') no-repeat center center;
+              }
+              .a-icon6 {
+                background: url('/images/safe/strict-icon6.png') no-repeat center center;
+              }
+              .a-icon7 {
+                background: url('/images/safe/strict-icon7.png') no-repeat center center;
+              }
+              .a-icon8 {
+                background: url('/images/safe/strict-icon8.png') no-repeat center center;
+              }
+              strong {
+                font-weight: normal;
+                color: #ff6500;
+                font-size: 18px;
+                padding-top: 62px;
+                display: inline-block;
+                font-family: '微软雅黑';
+                position: absolute;
+                left: 108px;
+              }
+              b {
+                display: block;
+                font-weight: normal;
+                color: #fffefe;
+                font-size: 28px;
+                font-family: Arial;
+                position: absolute;
+                right: 14px;
+                bottom: 1px;
+              }
+            }
+            .back {
+              width: 269px;
+              height: 151px;
+              background-color: #fff;
+              color: #ff6500;
+              padding: 28px 24px;
+              font-size: 14px;
+              line-height: 24px;
+              text-align: justify;
+              position: absolute;
+              top: 0;
+              left: 0;
+              z-index: 50;
+              display: none\9;
+              display: none;
+            }
+          }
+          // .flipper .back,.flipper .front,.flipper .front strong,.strict-content a .flipper,b,i {
+          //   -webkit-backface-visibility: hidden;
+          //   -moz-backface-visibility: hidden;
+          //   // -ms-backface-visibility: hidden;
+          //   // backface-visibility: hidden;
+          //   -webkit-perspective: 1000;
+          //   -moz-perspective: 1000;
+          //   // -ms-perspective: 1000;
+          //   // perspective: 1000;
+          // }
+        }
+      }
+      .content-top {
+        position: relative;
+        left: -48px;
+      }
+      .strict-midlle {
+        width: 864px;
+        height: 114px;
+        background: url("/images/safe/strict-arrow.png") no-repeat center center;
+        margin: 0 auto;
+        position: relative;
+        right: -48px;
+      }
+      .content-bottom {
+        a>.flipper>.front {
+          background: url('/images/safe/srtict-blue-bg.jpg') no-repeat center center;
+          strong {
+            color: #60add8;
+          }
+        }
+        a>.flipper>.back {
+          color: #60add8;
+        }
+        position: relative;
+        right: -48px;
+      } 
+    }
+    // .strict-content a:hover .flipper,.strict-content a.hover .flipper {
+    //   -webkit-transform: rotateY(180deg);
+    //   -moz-transform: rotateY(180deg);
+    //   -ms-transform: rotateY(180deg);
+    //   -o-transform: rotateY(180deg);
+    //   transform: rotateY(180deg)
+    // }
+    // .strict-content a .flipper {
+    //   -webkit-transition: .5s;
+    //   -moz-transition: .5s;
+    //   -ms-transition: .5s;
+    //   -o-transition: .5s;
+    //   transition: .5s;
+    //   transform-style: preserve-3d;
+    //   -webkit-transform-style: preserve-3d;
+    //   -moz-transform-style: preserve-3d;
+    //   -ms-transform-style: preserve-3d;
+    //   -o-transform-style: preserve-3d;
+      
+    //   -webkit-backface-visibility: hidden;
+    //   -moz-backface-visibility: hidden;
+    //   // -ms-backface-visibility: hidden;
+    //   // backface-visibility: hidden;
+    //   -webkit-perspective: 1000;
+    //   -moz-perspective: 1000;
+    //   // -ms-perspective: 1000;
+    //   // perspective: 1000;
+    // }
+    // .strict-content .back {
+    //   -webkit-transform: rotateY(182deg);
+    //   -moz-transform: rotateY(182deg);
+    //   -ms-transform: rotateY(182deg);
+    //   -o-transform: rotateY(182deg);
+    //   transform: rotateY(182deg);
+    // }
+    // .strict-content a:hover .back, .strict-content a.hover .back  {
+    //   // display: block\9;
+    //   // display: none\9;
+    //   display: block  !important;
+    //   opacity: 1 !important;
+    //   z-index: 9999999 !important;
+    // }
+    
+  }
+
+  //运营规范
+  .running-rules {
+    position: relative;
+    width: 100%;
+    height: 758px;
+    margin: 0 auto;
+    background: url("/images/safe/running-rules-bg.jpg") no-repeat center center;
+    text-align: center;
+    padding-top: 42px;
+    .running-rule-list {
+      width: 1197px;
+      margin: 0 auto;
+      padding-top: 25px;
+      ul {
+        li {
+          width: 339px;
+          height: 480px;
+          float: left;
+          margin-right: 90px;
+          background-color: #17679F;
+          .front {
+            left: 0;
+            top: 0;
+            width: 339px;
+            height: 480px;
+            position: absolute;
+            background: url("/images/safe/running-rules-front.png") no-repeat;
+            img {
+              margin: 0 auto;
+              padding-top: 90px;
+            }
+            p {
+              margin: 110px 0 108px 0;
+              text-align: center;
+              font-size: 34px;
+            }
+          }
+          .back {
+            width: 339px;
+            height: 480px;
+            background: url("/images/safe/running-rules-back.png") no-repeat;
+            padding: 20px;
+            .content {
+              font-size: 14px;
+              color:#fff;
+              text-align: left;
+              margin-top: 8px;
+              line-height: 22px;
+            }
+            p {
+              font-size: 24px;
+              color: #fff;
+              text-align: justify;
+              margin-bottom: 0;
+            }
+            hr {
+              margin-top: 12px;
+              margin-bottom: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //技术保障
+  .technical-support {
+    width: 100%;
+    height: 758px;
+    background: url("/images/safe/technical-support-bg.jpg") no-repeat center center;
+    text-align: center;
+    padding-top: 42px;
+    h {
+      font-size: 68px;
+      font-family: PingFang SC;
+      color: #fff;
+      font-weight: 100;
+    }
+    .technical-content {
+      width: 880px;
+      height: 618px;
+      margin: 0 auto;
+      position: relative;
+      font-family: "Microsoft YaHei";
+      background: url('/images/safe/support-circle-bg.png') no-repeat right center;
+      .information-security, .data-security, .system-security {
+        position: absolute;
+        z-index: 999;
+        h4 {
+          font-weight: normal;
+          text-align: left;
+          font-size: 24px;
+          color: #8ffff6;
+          position: relative;
+        }
+        .content {
+          font-size: 16px;
+          text-align: justify;
+          color: #fff;
+        }
+        //悬浮动画
+        -webkit-transition: -webkit-transform 1s,left 1s,right 1s;
+        -o-transition: -o-transform 1s,left 1s,right 1s;
+        -moz-transition: -moz-transform 1s,left 1s,right 1s;
+        -ms-transition: -ms-transform 1s,left 1s,right 1s;
+        transition: transform 1s,left 1s,right 1s;
+
+        -o-transition-property: -o-transform,left,right;
+        -webkit-transition-property: -webkit-transform,left,right;
+        -moz-transition-property: -moz-transform,left,right;
+        -ms-transition-property: -ms-transform,left,right;
+        transition-property: transform,left,right;
+
+
+        -o-transition-duration: 1s,1s,1s; 
+        -ms-transition-duration: 1s,1s,1s; 
+        -webkit-transition-duration: 1s,1s,1s; 
+        -moz-transition-duration: 1s,1s,1s;
+        transition-duration: 1s,1s,1s;
+
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        -moz-perspective: 1000;
+        -ms-perspective: 1000;
+        perspective: 1000;
+      }
+      .information-security {    
+        width: 328px;
+        height: 200px;
+        top: 40px;
+        left: -12px;
+        .content {
+          width: 328px;
+          height: 170px;
+          padding: 20px 40px;
+          background: url('/images/safe/information-security-bg.png') no-repeat center center;
+        }
+        h4 {
+          left: -40px;
+        }
+      }
+      .data-security {
+        width: 286px;
+        height: 150px;
+        bottom: 185px;
+        left: -92px;
+        .content {
+          width: 286px;
+          height: 124px;
+          line-height: 30px;
+          padding: 20px;
+          background: url('/images/safe/data-security-bg.png') no-repeat center center;
+        }
+        h4 {
+          left: -40px;
+        }
+      }
+      .system-security {
+        width: 255px;
+        height: 300px;
+        top: 80px;
+        right: -30px;
+        .content {
+          width: 255px;
+          height: 263px;
+          line-height: 29px;
+          padding: 22px 27px;
+          background: url('/images/safe/system-security-bg.png') no-repeat center center;
+        }
+        h4 {
+          right: -40px;
+        }
+      }
+      .information-security:hover, .system-security:hover, .data-security:hover {
+        transform: scale(1.4,1.4);
+        -ms-transform: scale(1.4,1.4);  /* IE 9 */
+        -webkit-transform: scale(1.4,1.4);  /* Safari 和 Chrome */
+        -o-transform: scale(1.4,1.4); /* Opera */
+        -moz-transform: scale(1.4,1.4); /* Firefox */
+      }
+      .information-security:hover {
+        width:330px;
+        height:210px;
+        left: -68px;
+      }
+      .data-security:hover {
+        width:300px;
+        height:160px;
+        left: -144px;
+      }
+      .system-security:hover {
+        width:265px;
+        height:310px;
+        right: -88px;
+      } 
+    }
+  }
+
+}

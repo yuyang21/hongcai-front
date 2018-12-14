@@ -1,0 +1,13 @@
+node_modules
+dist
+.tmp
+.idea
+.sass-cache
+app/styles/bootstrap_overwrite.css
+app/styles/main_leo.css
+app/styles/test.css
+app/styles/main.css
+bin/
+.project
+target/
+bower_components.zip

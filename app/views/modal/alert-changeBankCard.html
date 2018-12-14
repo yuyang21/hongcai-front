@@ -1,0 +1,27 @@
+<div class="alert" ng-class="[type ? 'alert-' + type : null]">
+  <!-- changeBankCardTip -->
+  <div class="title">
+    <strong >温馨提示：</strong>
+  </div>
+  <!-- 账户总资产≤2元，可以自行解绑 -->
+  <div ng-if="account.tTotalAssets <= 2">
+    <div class="content">
+      <p>您的提现银行卡也将随之更换，是否继续？</p>
+    </div>
+    <div class="bottom col-xs-10 col-xs-offset-1 margin-b-30">
+      <a class="btn btn-primary-orange btn-block pull-left margin-r-60 margin-l-30 w-25" href="javascript:;" ng-click="$hide();">稍后再说</a>
+      <a class="btn dark-orange ft-white btn-block pull-left w-25" href="javascript:;" ng-click="unbindBankCard();$hide();">继续更换</a>
+    </div>
+  </div>
+  <!-- 账户资产＞2元，需要联系客服解绑 -->
+  <div ng-if="account.tTotalAssets > 2">
+    <div class="content">
+      <p class="text-justify padding-l-10 padding-r-10">尊敬的用户，检测到您的账户总资产大于2元，为了您的资金安全，请联系客服进行人工解绑。客服热线：400-990-7626</p>
+    </div>
+    <div class="bottom col-xs-10 col-xs-offset-4 margin-b-30">
+      <a class="btn btn-primary-orange btn-block pull-left w-25" href="javascript:;" ng-click="$hide();">我知道了</a>
+    </div>
+  </div>
+
+</div>
+<div class="mask_layer"></div>

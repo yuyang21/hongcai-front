@@ -1,0 +1,17 @@
+{
+  "YEEPAY_ADDRESS": "http://test321.hongcai.com:7000/yeepay/2.0.3/member/bha/",
+  "CGT_ADDRESS":"https://hk.lanmaoly.com/bha-neo-app/lanmaotech/gateway",
+  "viewFlAG": {
+    "tuhaoIsShowedFlAG": false,
+    "sponsorsIsShowedFlAG": false,
+    "reservationIsShowedFlAG": true,
+    "newbieIsShowedFLAG": true,
+    "creditIsShowedFLAG": true
+  },
+  "jumpHttpsPath": ["/register-mobile", "/login", "/register-mail"],
+  "ignorePATH": ["/credit-list", "/credit-details", "/credit-verify", "/credit-assignment", "/credit-success", "/credit-create"],
+  "domain":"http://test321.hongcai.com",
+  "en": "321",
+  "baseFileUrl": "http://test321.hongcai.com/uploads/",
+  "pay_company": "cgt"
+}

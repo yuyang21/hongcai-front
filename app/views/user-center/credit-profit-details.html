@@ -1,0 +1,100 @@
+<div class="userCenter-credit right-area record col-md-8 col-lg-9">
+  <div class="currency-style">
+    <div class="title">
+      <span class="tip">债权详情</span>
+    </div>
+    <a class="pull-right padding-r-30 padding-t-20 margin-b-20 text-unline" ui-sref="root.userCenter.credit">返回我的投资</a>
+
+      <table class="table table-bordered security-table margin-t-30">
+        <thead>
+          <tr>
+            <th>项目名称</th>
+            <th>当前年化利率</th>
+            <th>封闭期</th>
+            <th>项目预计收益(元)</th>
+            <th>持有债权(元)</th>
+            <th>已收收益(元)</th>
+            <th>待收收益(元)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ order.projectName }}</td>
+            <td>{{ creditRight.baseRate + creditRight.riseRate }}%</td>
+            <td>{{ productsMap[project.productId].sealingDays }}</td>
+            <td>{{ creditRight.profit | number:2 }}</td>
+            <td>{{ creditRight.amount | number:2 }}</td>
+            <td>{{ creditRight.returnProfit | number:2 }}</td>
+            <td>{{ creditRight.profit-creditRight.returnProfit | number:2 }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="container-fluid main">
+        <div class="row">
+          <div class="col-md-12 fl ft-14" >
+            <!-- <h4 class="page-header"><i class="fa fa-square hc-text-red"></i> 项目历程</h4> -->
+            <div class="display-inbl border-b margin-b-20" style="width: 100%">
+                <div class="col-xs-1 padding-b-5 credit-untoggle credit-toggle" ng-click="detailStatus=1">项目历程</div>
+            </div>
+            <ul class="timeline">
+              <li>
+                <div class="timeline-badge success"><i class="fa fa-rocket ft-orange buchong1"></i>
+                </div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4 class="timeline-title border-b padding-b-15">项目投标<small class="pull-right">{{ order.createTime | date:'yyyy-MM-dd'}}</small></h4>
+
+                  </div>
+                  <div class="timeline-body">
+                    <p><strong>{{ order.orderAmount | number: 2 }}</strong>元</p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="timeline-badge" ng-class="{'success':project.status === 4 || project.status === 5}"><i class="fa fa-users ft-orange buchong1"></i>
+                </div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4 class="timeline-title border-b padding-b-15">项目放款
+                      <small class="pull-right" ng-if="project.loanTime > 0">{{ project.loanTime | date:'yyyy-MM-dd'}}</small>
+                      <small class="pull-right" ng-if="project.loanTime <= 0">未放款</small>
+                    </h4>
+                  </div>
+                  <div class="timeline-body">
+                    <p><strong>{{ order.payAmount | number: 2 }}</strong>元</p>
+                  </div>
+                </div>
+              </li>
+              <li class="timeline-inverted" ng-repeat="item in creditRightBillList">
+                <div class="timeline-badge success"><i class="fa fa-tree ft-orange buchong1"></i>
+                </div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4 class="timeline-title border-b padding-b-15">项目回款<small class="pull-right">{{ item.successTime | date:'yyyy-MM-dd'}}</small></h4>
+                  </div>
+                  <div class="timeline-body">
+                    <p><strong>{{item.amount | number: 2 }}&nbsp;元</strong></p>
+                    <p><small>利息{{ item.profit | number: 2 }}&nbsp; + &nbsp;本金{{ item.principal | number: 2 }}</small></p>
+                  </div>
+                </div>
+              </li>
+              <li class="timeline-inverted" ng-if="creditRightBillList.length === 0">
+                <div class="timeline-badge"><i class="fa fa-list-ol ft-orange buchong2"></i>
+                </div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4 class="timeline-title border-b padding-b-15">项目待回款<small class="pull-right">{{ project.repaymentDate | date:'yyyy-MM-dd'}}</small></h4>
+                  </div>
+                  <div class="timeline-body">
+                    <p ng-if="creditRight.isRepeatInvest === 1">待回款：<strong>{{ creditRight.profit | number: 2 }}</strong>元（利息）</p>
+                    <p ng-if="creditRight.isRepeatInvest === 2">待回款：<strong>利息{{ creditRight.profit | number: 2 }}&nbsp; + &nbsp;本金{{ creditRight.payAmount | number: 2 }}</strong>元</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>

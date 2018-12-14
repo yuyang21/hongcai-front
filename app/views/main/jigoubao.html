@@ -1,0 +1,38 @@
+<div id="best-profit" class="panel panel-default margin-t-30">
+  <div class="col-md-12 bg-white main-new-w padding-0 border-t-blue border-r-grey5">
+    <div class="col-md-2 linear-gradient linear-gradient1 padding-0 left-new-w">
+      <h3 class="ft-30 padding-l-20 margin-t-20">宏财尊贵</h3>
+      <p class="ft-18 padding-l-20 margin-b-0">中长期尊贵体验</p>
+      <img src="/images/index/cut.png" alt="">
+      <div class="ft-16 padding-l-20 margin-t-30 padding-b-40 ft-white2">
+        <p>募集期间享受奖励</p>
+        <p>多重风控保障体系</p>
+      </div>
+      <button class="ft-14 ft-white1 border-none margin-l-20 margin-t-30 cursor-pointer" ui-sref="root.guaranteepro-list-query-no({type: 6})">查看更多&nbsp;&gt;</button>
+      <img src="/images/index/project02.png" alt="" class="pull-right margin-r-5">
+    </div>
+    <div class="col-md-10 padding-r-0" ng-repeat="item in zungui | limitTo: 3">
+      <div class="row padding-30 border-b-grey5 padding-b-25 margin-r--10">
+        <div class="col-md-4 ft-16 ft-grey1 padding-r-0 margin-t-15"><a ui-sref="root.project-details({number:item.number, type: 6})">{{item.name | limitTo: 15 }}{{item.name.length > 15 ? '...':''}}</a></div>
+        <div class="col-md-2 padding-l-0 margin-l--30 margin-t--8">
+          <p class="ft-30 ft-orange margin-b-0">{{item.annualEarnings | number : 2}}<span class="ft-16">%</span></p>
+          <p class="ft-14 ft-grey666">年化利率</p>
+        </div>
+        <div class="col-md-2" >
+          <p class="ft-24 ft-grey1 margin-b-0">{{item.projectDays}}<span class="ft-16">天</span></p>
+          <p class="ft-14 ft-grey666">项目期限</p>
+        </div>
+        <div class="col-md-2">
+          <p class="ft-24 ft-grey1 margin-b-0">{{item.amount || 0 | number:2}}<span class="ft-16">元</span></p>
+          <p class="ft-14 ft-grey666">剩余可出借</p>
+        </div>
+        <div class="col-md-2 margin-l--5">
+            <a class="btn btn-primary-orange ft-18 btn-ljtz" ui-sref="root.project-details({number: item.number, type: 6})" ng-show="item.status == 6">{{item._timeDown.hour}}:{{item._timeDown.min}}:{{item._timeDown.seconds}}&nbsp;<i class="fa fa-chevron-circle-right"></i></a>
+            <button class="btn btn-primary-orange ft-18 btn-ljtz" ui-sref="root.project-details({number: item.number, type: 6})" ng-show="item.status == 7">立即出借&nbsp;<i class="fa fa-chevron-circle-right"></i></button>
+            <button class="btn ft-18 btn-ljtz" ng-class="{'btn-grey-spirit2':item.status > 7&&item.status !== 11,'btn-primary-orange':item.status === 11}" ui-sref="root.project-details({number: item.number, type: 6})" ng-show="item.status > 7">{{projectStatusMap[item.status]}}&nbsp;<i class="fa fa-chevron-circle-right"></i></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

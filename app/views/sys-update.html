@@ -1,0 +1,66 @@
+
+<div class="sys-update">
+  <!-- <p>2016年1月11日17时——1月11日18时</p> -->
+  <div class="overflow-hi offlineBox margin-auto" ng-show="offline">
+    <img src="/images/offline.png" alt="网络加载失败" class="fl">
+    <div class="fr reload">
+      <span>
+        您好像没网了。。。 <br>
+        非常抱歉，页面加载失败
+      </span>
+      <span class="reloadBtn ft-18 ft-white text-center fl cursor-pt" ng-click="reload();">
+        重新加载    
+      </span> 
+    </div>
+  </div>
+  <div style="" ng-show="!offline">
+    <img src="/images/sys.png" alt="服务器升级中">
+    <p>亲爱的宏财网用户：</p>
+    <span style="text-align: center;margin-left: 20%;">为了给您提供更加优质、高效的服务，宏财网团队对网站系统进行优化升级。</span>
+    <!-- <span></span> -->
+    <span style="margin-right: 20%;"></span>
+  </div>
+</div>
+
+<style type="text/css">
+  body{
+    font-family: "微软雅黑";
+  }
+  .sys-update {
+   margin-top: 100px;
+
+  }
+  img{
+    margin: 50px auto;
+    display: block;
+  }
+  p{
+    margin-left:29%;
+    font-size: 30px;
+    color:grey;
+  }
+  span {
+    display: block;
+    margin: 0 auto;
+    font-size: 22px;
+    color: grey;
+    text-align: left;
+    line-height: 36px;
+    /*border-bottom: 1px solid grey;*/
+  }
+  .offlineBox {
+    width: 54%;
+  }
+  .reload {
+    margin-top: 80px;
+  }
+  .reloadBtn {
+    width: 220px;
+    height: 55px;
+    line-height:55px;
+    border-radius: 35px;
+    background-color: #ff611d;
+    margin-top: 30px;
+  }
+</style>
+

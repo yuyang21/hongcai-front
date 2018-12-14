@@ -1,0 +1,41 @@
+<p class="ft-orange5 ft-12 cursor-pointer fr margin-0 readAll" id="readAll" ng-click="updateAllMsgStatus()">全部已读</p>
+<div class="right-area bg-offWhite right-assets-height userMessage fl">
+    <!-- tab切换 -->
+    <div class="tabs row margin-l-0 margin-r-0 position-re">
+      <div class="toggle-tab col-md-4 ft-b cursor-pointer {{status==='0,1' ? 'credit-toggle2' : ''}}" ui-sref="root.userCenter.message({status:'0,1'})">全部</div>
+      <div class="toggle-tab col-md-4 ft-b cursor-pointer {{status=== '0' ? 'credit-toggle2' : ''}}" ui-sref="root.userCenter.message({status:'0'})">未读</div>
+      <div class="toggle-tab col-md-4 ft-b cursor-pointer {{status=== '1' ? 'credit-toggle2' : ''}}" ui-sref="root.userCenter.message({status:'1'})">已读</div>
+    </div>
+    <!-- 1:系统消息 2:充值消息 3:活动消息 4:项目消息 * -->
+    <div class="messages-wrap bg-white" ng-repeat="item in data">
+      <div class="message-item" ng-click="changeStatus(item.status, item.id, $index)">
+        <div class="item-nav cursor-pointer" ng-click="openMsg($index);" >
+          <p class="ft-black2">
+           <!--  <span class="msg-type ft-grey666 ft-16" ng-if="item.type == 1">系统消息</span>
+            <span class="msg-type ft-grey666 ft-16" ng-if="item.type == 2">充值消息</span>
+            <span class="msg-type ft-grey666 ft-16" ng-if="item.type == 3">活动消息</span>
+            <span class="msg-type ft-grey666 ft-16" ng-if="item.type == 4">项目消息</span> -->
+            <span class="msg-title ft-16 {{item.status == 0 ? 'ft-grey666' : 'ft-grey4'}}">{{item.title}}</span>
+            <span class="ft-14 fr ft-grey4 msg-time">{{item.createTime | date: "yy-MM-dd HH:mm"}}</span>
+            <span class="ft-14 fr ft-orange5 msg-delete display-no" ng-click="deleteMsg(item.id);">删除此条信息<i class="fa fa-times"></i></span>
+          </p>
+        </div>
+        <div class="ft-14 ft-grey666 item-discrip display-no" >{{item.content}}<p class="text-right ft-14 ft-grey4">{{item.createTime | date: "yy-MM-dd HH:mm"}}</p></div>
+      </div>
+    </div>
+    
+    <div class="bg-white">
+      <div ng-if="status=== '0' && data.length ==0" class="text-center ft-16 ft-grey4 padding-t-30 padding-b-30 bg-white">
+      <img src="/images/user-center/no-message.png"><p>暂无未读消息</p></div>
+      <div ng-if="status=== '1' && data.length ==0" class="text-center ft-16 ft-grey4 padding-t-30 padding-b-30 bg-white">
+      <img src="/images/user-center/no-message.png"><p>暂无已读消息</p></div>
+      <div ng-if="status=== '0,1' && data.length ==0" class="text-center ft-16 ft-grey4 padding-t-30 padding-b-30 bg-white">
+      <img src="/images/user-center/no-message.png"><p>暂无消息</p></div>
+      <ul class="pager margin-t-0 padding-30 ft-14 ft-white4" ng-if="data.length > 0">
+        <li class="display-inbl"><button class="btn btn-orange6 {{currentPage == 1 ? 'btn-disabled6' : ''}}" ng-disabled="currentPage == 1" ng-click="loadPage(currentPage-1, pageSize, status)">上一页</button></li>
+        <div class="display-inbl current-page">&nbsp;&nbsp;{{ currentPage }}&nbsp;&nbsp;</div><div class="dot">...</div>
+      <div class="display-inbl total-page">&nbsp;&nbsp;{{ numberOfPages() }}&nbsp;&nbsp;</div>
+        <li class="display-inbl"><button class="btn btn-orange6 {{currentPage >= numberOfPages() ? 'btn-disabled6' : ''}}" ng-disabled="currentPage >= numberOfPages() " ng-click="loadPage(currentPage+1, pageSize, status)">下一页</button></li>
+      </ul>
+    </div>
+</div>

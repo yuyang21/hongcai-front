@@ -1,0 +1,21 @@
+<div class="modal-toBindBank alert" ng-class="[type ? 'alert-' + type : null]" ng-controller="RechargeCtrl">
+  <button type="button" class="close" ng-click="$hide()">&times;</button>
+  <div class="title">
+    <strong>绑卡银行卡</strong>
+  </div>
+  <div class="content">
+    <div class="row">
+      <form class="margin-auto" name="rechargeForm">
+        <div class="row">
+          <div class="h-line modal-form margin-b-20">
+            <p>请先绑定一张银行卡以完成充值</p>
+          </div>
+        </div>
+        <div class="row margin-auto">
+            <input type="button" value="立即绑卡" class="white-button-orange col-xs-3 bankbtn" ng-click="toBindBank();$hide()"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="mask_layer"></div>

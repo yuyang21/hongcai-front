@@ -1,0 +1,44 @@
+<!-- start header -->
+  <!--<div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+  -->
+<!-- end header -->
+<nav id="mini-bar" role="navigation">
+  <div class="container">
+    <p class="nav-text">您好，欢迎来到宏财！<i class="fa fa-phone"></i>400-990-7626</p>
+    <ul>
+      <li ng-if="isLogged === true">
+          <span>欢迎，
+            <a class="ft-white" ui-sref="root.userCenter.account-overview">{{loginName}}</a> 
+            <a ng-href="#" ng-click="logout();" class="logout ft-white">退出</a>
+          </span>
+      </li>
+      <li ng-if="isLogged !== true">
+          <a ui-sref="root.login">登录</a>
+      </li>
+      <li ng-if="isLogged !== true">
+        <a ui-sref="root.register">注册</a>
+      </li>
+      <li><a href="newbie-guide.html" target="_blank">新手引导</a></li>
+      <li><a ui-sref="root.help-center.introduce" class="help">帮助中心</a></li>
+    </ul>
+  </div>
+</nav>
+
+<nav id="major-bar" role="navigation">
+  <div class="container">
+    <a class="logo-img" href="/"></a>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a ui-sref="root.main" class={{selectPage==''?'active':''}}>首页</a></li>
+          <li><a ui-sref="root.project-list-query({status: '6,7,8,9,10', minCycle: 0, maxCycle: 100, minEarning: 0, maxEarning: 100, minTotalAmount: 0, maxTotalAmount: 200000000, sortCondition:'release_start_time', sortType: false })" class={{selectPage=='project-list'?'active':''}}>我要投资</a></li>
+          <li><a ui-sref="root.safe" class={{selectPage=='safe'?'active':''}}>安全保障</a></li>
+          <li><a ui-sref="root.us.introduction-of-platform" class={{selectPage=='introduction-of-platform'?'active':''}}>关于我们</a></li>
+        </ul>
+      </div>
+</nav>

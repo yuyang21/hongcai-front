@@ -1,0 +1,9 @@
+<div ng-repeat="card in media" class="slide" on-finish-render="init()">
+  <div ng-if="card.href">
+    <a href="{{ card.href }}" target="_blank"><img ng-src="{{ card.src }}" alt="{{card.name}}" height ="100%" ></a>
+    <!-- <a href="{{ card.href }}" target="_blank"><img ng-src="{{ card.src }}" alt="" width="100%"></a> -->
+  </div>
+  <div ng-if="!card.href">
+    <img ng-src="{{ card.src }}" alt="{{card.name}}" height="100%">
+  </div>
+</div>

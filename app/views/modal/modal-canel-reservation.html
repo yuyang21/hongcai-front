@@ -1,0 +1,20 @@
+<div class="modal ng-scope top am-fade-and-slide-top" tabindex="-1" role="dialog" style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="$hide()">×</button>
+        <h4 class="modal-title ng-binding text-center">亲爱的{{ loginName }},您将撤销预约！</h4>
+      </div>
+      <div class="modal-body">
+        <p class="text-center">
+          预付金额：{{ freezeAmount || 0 | number:2 }}元，预约总额：{{ reserveAmount || 0 | number: 2 }}元。
+          <br> 您的预约期收益为: {{returnProfit || 0 | number:2}}元,撤销将无法获得收益。
+          <br> 这是您第{{ cancelNum + 1 || 1 }}次撤销，为了您的出借信誉，请谨慎撤销！</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary col-xs-offset-2 col-xs-4 button-w200" ng-click="reserveCancel(reserveOrder);$hide()">撤销</button>
+        <button type="button" class="btn btn-primary col-xs-4 button-w200" ng-click="$hide()">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

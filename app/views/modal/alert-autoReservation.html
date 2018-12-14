@@ -1,0 +1,126 @@
+<div class="autoReservation alert" id="autoReservation" ng-class="[type ? 'alert-' + type : null]" ng-click="blurUl($event)" ng-controller="AutoReservationCtrl">
+  <!--  ng-controller="autoReservationCtrl" -->
+  <button type="button" class="close" ng-if="dismissable" ng-click="reload();$hide();">&times;</button>
+  <div class="title">
+    <strong class="ftw-n">自动投标</strong>
+  </div>
+
+  <div class="content">
+    <!-- 账户余额 -->
+    <div class="row margin-b-20">
+      <div class="col-22 col-md-offset-1 padding-0"><i class="icon1"></i>账户余额</div>
+      <div class="col-md-6 ft-grey666 padding-t-9 padding-l-0"><span class="ft-orange ft-Arial">{{account.balance || 0 | number:2}}</span>元</div>
+    </div>
+    <!-- 最小出借金额 -->
+    <div class="row margin-b-20">
+      <div class="col-22 col-md-offset-1 padding-0"><i class="icon2"></i>最小出借金额</div>
+      <div ng-show="setAutoTender">
+        <span class="col-4 padding-t-9 ft-grey666">{{autoTenderDetail.minInvestAmount}}元</span>
+      </div>
+      <form ng-if="!setAutoTender" name="investForm">
+        <input class="minInvestAmount col-4 padding-t-9 input-invest ft-grey666 box-shadow" type="number" ng-model="autoTender.minInvestAmount" name="minInvestAmount" ng-change="watchInvestAmount(autoTender.minInvestAmount)"/><span class="input-money ft-black4 ft-14 fl">元</span>
+        <div class="col-md-4 padding-0 ft-12 margin-t-15 ft-grey6 margin-l-5">自动投标时，每笔出借金额都将大于此数值</div>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 ft-red4 ft-12">
+            <div class="margin-b-0 margin-l-30 text-left" ng-if="errorMsg1 != ''">{{errorMsg1}}</div>
+          </div>
+        </div>
+      </form>   
+    </div>
+    <!-- 最高标的期限 -->
+    <div class="row margin-b-20">
+      <div class="col-22 col-md-offset-1 padding-0"><i class="icon3"></i>最高标的期限</div>
+      <div ng-if="setAutoTender">
+        <span class="col-4 padding-t-9 ft-grey666">{{autoTenderDetail.maxRemainDay}}天</span>
+      </div>
+      <a ng-if="!setAutoTender" class="col-9 cursor-pt display-bl" ng-click="dateLineFn();" href="javascript:;" focus-blur>
+        <input class="col-8 padding-t-5 input-invest ft-grey666" value="{{autoTender.selectedDateLine}}天" disabled/>
+        <span class="input-money ft-grey6 ft-20"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+      </a>
+      <ul class="select" ng-if="showDateLine">
+        <li ng-click="selectDateLine(date)" ng-repeat="date in dateLine">{{date}}天</li>
+      </ul>
+    </div>
+    <!-- 最低年化利率 -->
+    <div class="row margin-b-20">
+      <div class="col-22 col-md-offset-1 padding-0"><i class="icon4"></i>最低年化利率</div>
+      <div ng-if="setAutoTender">
+        <span class="col-4 padding-t-9 ft-grey666">{{autoTenderDetail.annualEarnings}}%</span>
+      </div>
+      <a ng-if="!setAutoTender" class="col-9 cursor-pt display-bl" ng-click="interestRateFn()" href="javascript:;" focus-blur>
+        <input class="col-8 padding-t-5 input-invest ft-grey666" value="{{autoTender.annualEarnings}}%" disabled/>
+        <span class="input-money ft-grey6 ft-20"><i class="fa fa-angle-down" aria-hidden="true"></i></span> 
+      </a>
+      <ul class="select" ng-if="showInterestRate">
+        <li ng-click="autoTender.annualEarnings = rate" ng-repeat="rate in interestRate">{{rate}}%</li>        
+      </ul>
+    </div>
+    <!-- 标的类型 -->
+    <div class="row margin-b-20">
+      <div class="col-22 col-md-offset-1 padding-0"><i class="icon5"></i>标的类型</div>
+      <div ng-if="setAutoTender">
+        <span class="col-4 padding-t-9 ft-grey666">{{selectTypeText}}</span>
+      </div>
+      <a ng-if="!setAutoTender" class="col-9 cursor-pt display-bl" ng-click="projectTypeFn()" href="javascript:;" id="input">
+        <input class="col-8 padding-t-5 input-invest ft-grey666" value="{{selectTypeText}}" disabled/>
+        <span class="input-money ft-grey6 ft-20"><i class="fa fa-angle-down" aria-hidden="true"></i></span>       
+      </a>
+      <span ng-if="!noType" class="col-md-4 padding-0 ft-12 ng-binding ft-red4" style="float: right; margin-top: -16px;margin-right: 16px;">请选择标的类型</span>
+      <ul class="select" ng-if="showProjectType" id="projectTypeUl">
+        <li ng-click="multiSelect(item.type,$event)" ng-repeat="item in projectTypeNo" ng-class="{'selected': (autoTender.investType.indexOf(item.type) >= 0)}">{{projectType[item.type]}}</li>
+        <button class="btn-open orange-button col-1 pull-left margin-l-prcent35 ng-scope" ng-click="projectTypeFn(enter)">确定</button>
+        <p>（债权转让项目，不可使用各类优惠券哦~）</p>
+      </ul>
+    </div>
+    <!-- 账户保留金额 -->
+    <div class="row margin-b-20">
+      <div class="col-22 col-md-offset-1 padding-0"><i class="icon6"></i>账户保留金额</div>
+      <div ng-if="setAutoTender">
+        <span class="col-4 padding-t-9 ft-grey666">{{autoTenderDetail.remainAmount}}元</span>
+      </div>
+      <form ng-if="!setAutoTender" name="retentionForm">
+        <input class="col-4 padding-t-5 input-invest ft-grey666 box-shadow" type="number"  name="retentionAmount" ng-model="autoTender.retentionAmount" ng-change="watchRetentionAmount(autoTender.retentionAmount)" /><span class="input-money ft-black4 ft-14 fl">元</span>
+        <div class="col-md-4 padding-0 ft-12 margin-t-15 ft-grey6 margin-l-5">这部分资金将不会加入自动投标</div>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 ft-red4 ft-12">
+            <div class="margin-b-0 margin-l-30 text-left">{{errorMsg2}}</div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- 有效日期 -->
+    <div class="row margin-b-20">
+      <div class="col-22 col-md-offset-1 padding-0"><i class="icon7"></i>有效日期</div>
+      <div ng-if="setAutoTender">
+        <span class="col-4 padding-t-9 ft-grey666">{{autoTenderDetail.startTime | date: 'yyyy.MM.dd'}} — {{autoTenderDetail.endTime | date: 'yyyy.MM.dd'}}</span>
+      </div>
+      <div ng-if="!setAutoTender">
+        <div class="col-1 input-invest" onClick="laydate({elem: '#start', istime: false, format: 'YYYY-MM-DD', min: laydate.now()})">
+          <input id="start" class="ft-grey666 col-100 padding-t-5 input-invest border-none" value="{{currentTime || autoTenderDetail.startTime | date: 'yyyy-MM-dd'}}" disabled/>
+        </div><!-- <i class="icon8 cursor-pt" "></i> -->
+        <div class="fl ft-grey3 margin-t-5"> &nbsp;—&nbsp; </div>
+          <div class="col-1 input-invest" onClick="laydate({elem: '#end', istime: false, format: 'YYYY-MM-DD', min: laydate.now()})">
+            <input id="end" class="ft-grey666 col-100 padding-t-5 input-invest border-none" value="{{endTime || autoTenderDetail.endTime | date: 'yyyy-MM-dd'}}" disabled /><!-- <i class="icon9 cursor-pt""></i> -->
+        </div>  
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 ft-red4 ft-12">
+            <!-- <div class="margin-b-0 margin-l-30 text-left">{{errorMsg3}}</div> -->
+          </div>
+        </div>
+      </div> 
+    </div>
+    <div class="row ft-orange2 text-center ft-13 margin-b-10">
+      开启即表明您已阅读并同意
+      <a ui-sref="root.automatic-tender-authorization" class="ft-blue3" target="_blank" href="/automatic-tender-authorization">《自动投标授权书》</a>
+    </div>
+    <!-- 提交按钮 -->
+    <div class="margin-b-30 col-xs-10 col-xs-offset-1">
+      <button class="btn-open orange-button col-1 pull-left margin-l-prcent35" ng-click="openReservation2(autoTender);errorMsg3 == '' ? $hide() : null;" ng-if="!setAutoTender && errorMsg1 == '' && !error2 && disableDubble && noType">开启</button>
+      <button class="btn-disabled btn-open orange-button col-1 pull-left margin-l-prcent35" ng-if="!setAutoTender && (errorMsg1 != '' || error2 || !noType)" disabled>开启</button>
+      <a class="btn-open orange-button col-1 pull-left margin-l-prcent22" ng-click="modify()"  ng-if="setAutoTender">修改</a>
+      <a class="btn-open orange-button col-1 pull-left margin-l-60" ng-click="showCancelAuthorization();$hide()"  ng-if="setAutoTender && disableDubble">禁用</a>  
+    </div>
+  </div>
+</div>
+<div class="mask_layer"></div>
+

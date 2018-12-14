@@ -1,0 +1,262 @@
+<!-- 送现金活动页 -->
+<div class="activity-new">
+  <!-- 投资返现部分 -->
+  <div class="send-money">
+    <!-- //顶部图片 -->
+    <div class="col-md-12 text-center send-money-header" width="1920" height="521px">
+        <p class="ft-18 ft-white4">活动时间：2016年7月6日——2016年7月19日</p>
+    </div>
+  <!-- //版心 -->
+    <div class="send-money-connent clearfix" width="1035px" >
+      <!-- 01投资返现 -->
+      <div class="send-money-01 margin-t-20" >
+        <img class="" src="/images/activity/send-money-01.png" alt="">
+      </div>
+  <!-- 表格 -->
+      <div class="send-money-connent-l fl">
+        <img src="/images/activity/invest.png" alt="">
+        <table >
+          <thead cellspacing="0">
+            <tr>
+              <th class="border-right1 border-left2" width="188px">赠送现金</th>
+              <th class="border-right1" width="188px">单笔投资</th>
+              <th class="border-right2" width="188px">投资期限</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col0-ft-red1 boder-l2" ui-sref="root.guaranteepro-list-query-no">10元</td>
+              <td class="border-left2">&ge;500元</td>
+              <td class="border-r2">&ge;30天</td>
+            </tr>
+            <tr>
+              <td class="col0-ft-red1 boder-l2" ui-sref="root.guaranteepro-list-query-no">35元</td>
+              <td class="border-left2">&ge;2000元</td>
+              <td class="border-r2">&ge;30天</td>
+            </tr>
+            <tr>
+              <td class="col0-ft-red1 boder-l2" ui-sref="root.guaranteepro-list-query-no">40元</td>
+              <td class="border-left2">&ge;5000元</td>
+              <td class="border-r2">&ge;30天</td>
+            </tr>
+            <tr>
+              <td class="col0-ft-red1 boder-l2" ui-sref="root.guaranteepro-list-query-no">80元</td>
+              <td class="border-left2">&ge;10000元</td>
+              <td class="border-r2">&ge;30天</td>
+            </tr>
+            <tr>
+              <td class="col0-ft-red1 boder-l2" ui-sref="root.guaranteepro-list-query-no">135元</td>
+              <td class="border-left2">&ge;30000元</td>
+              <td class="border-r2">&ge;30天</td>
+            </tr>
+            <tr>
+              <td class="col0-ft-red1 boder-l2 border-b2" ui-sref="root.guaranteepro-list-query-no">388元</td>
+              <td class="border-left1 border-b2">&ge;100000元</td>
+              <td class="border-b1 border-r2 border-b2">&ge;30天</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="send-money-connent-r fr">
+        <img src="/images/activity/luck-list.png" alt="">
+        <table class="table2" cellspacing="0">
+          <thead>
+            <tr>
+              <th class="border-left2" width="188px">账户名</th>
+              <th class="border-right2" width="188px">获得现金</th>
+            </tr>
+          </thead>
+          <tbody ng-show="!rankList || rankList.length == 0">
+            <tr>
+              <td class="border-right0 boder-l2">181****2851</td>
+              <td class="col0-ft-red border-r2">￥135</td>
+            </tr>
+            <tr>
+              <td class="border-right0 boder-l2" width="188px">177****2374</td>
+              <td class="col0-ft-red border-r2">￥15</td>
+            </tr>
+            <tr>
+              <td class="boder-l2">187****3747</td>
+              <td class="col0-ft-red border-r2">￥80</td>
+            </tr>
+            <tr>
+              <td class=" boder-l2">187****4689</td>
+              <td class="col0-ft-red border-r2">￥55</td>
+            </tr>
+            <tr>
+              <td class=" boder-l2">187****4659</td>
+              <td class="col0-ft-red border-r2">￥15</td>
+            </tr>
+            <tr>
+              <td class=" boder-l2 border-b2">187****4659</td>
+              <td class="col0-ft-red border-b2 border-r2">￥15</td>
+            </tr>
+          </tbody>
+          <tbody ng-show="rankList && rankList.length > 0">
+            <tr ng-repeat="rank in rankList  | limitTo: 6">
+              <td class=" boder-l2 border-b2">{{rank.mobile}}</td>
+              <td class="col0-ft-red border-b2 border-r2">￥{{rank.amount}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <!-- 马上领钱按钮 -->
+        <div class="pointer invest-btn">
+          <img src="/images/activity/send-money-invest1.png" alt="" ui-sref="root.guaranteepro-list-query-no">
+        </div>
+    <!-- 投资返现活动细则 -->
+        <div class="invite-connent1">
+          <span class="rule-line line-l"></span>
+          <p class="ft-20 ft-white4 ftw-b text-center">投资返现活动细则 <i class="fa fa-angle-double-down"></i></p>
+          <span class="rule-line line-r"></span>
+        </div>
+        <div class="send-money-rules">
+          <div class="row padd">
+            <div class="col-md-11"><p>活动规则：&nbsp;&nbsp;&nbsp;1、宏财网所有用户均可参与。</p></div>
+          </div>
+          <div class="row padd">
+            <div class="col-md-11 margin-l-105"><p>2、活动期间内，每档投资只返现1次。单笔投资首次达到对应额度时，赠送对应现金和一张2%加息券。</p></div>
+          </div>
+          <div class="row padd">
+            <div class="col-md-11 margin-l-105"><p>3、每个账号每天只返现1次。连续投资只对第1次满足条件的投资进行返现。</p></div>
+          </div>
+          <div class="row padd">
+            <div class="col-md-11 margin-l-105"><p>4、参加过宏财投资返现活动的用户，请选择其他档投资，依然可获奖金。</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 加息券部分 -->
+    <div class="rate-increase">
+    <!-- 弧度背景01 -->
+      <div class="radian-bg-red"><div class="radian1"></div></div>
+        <!-- 版心 -->
+      <div class="rate-coupon-connent clearfix" width="1035px">
+        <!-- 02加息券 -->
+        <div class="rate-increase-02" >
+          <img class="" src="/images/activity/rate-increase-02.png" alt="">
+        </div>
+        <!-- 矩形字块 -->
+        <div class="rate-ractangle text-center">
+          <p class="ft-20 ft-white4 ftw-b">每次投资宏金保项目任意金额，均可领取一张2%加息券。投资返现和加息券活动可同时参加。</p>
+        </div>
+        <!-- 举例子 -->
+        <div class="rate-example">
+          <div class="rate-example-words ft-18 margin-b-30">
+            <p class="ft-bold ft-greyc64">举个栗子：</p>
+            <p class="ft">王先生在7月5日投资500元，获得一张2%加息券+10元投资返现活动奖金。</p>
+            <p>王先生在7月6日，使用加息券投资一月期项目3万元，除原有收益外，</p>
+            <p class="ft-red10 ftw-b">本次王先生还将获得：184.32元现金和2%加息券一张。</p>
+          </div>
+          <div class="rate-example-img">
+            <ul class="col-md-12 padding-l-40 ft-white4">
+              <li class="width-35 fl" >
+                <div class="red-packets1 fl text-center ft-20">
+                  <p class="ftw-b rate-example-title">加息收益</p>
+                  <p class="margin-t-137 margin-b-0">30000×2%÷365×30</p>
+                  <p class="margin-b-0">＝</p>
+                  <p>49.32 元</p>
+                </div>
+                <img class=""fr src="/images/activity/red-plus.png" alt="">
+              </li>
+              <li class="width-35 fl">
+                <div class="red-packets1 fl text-center ft-20">
+                  <p class="ftw-b rate-example-title">投资返现奖金</p>
+                  <p class="margin-t-137 margin-b-30">投资金额&ge;30000元</p>
+                  <p>奖励 135 元</p>
+                </div>
+                <img class=""fr src="/images/activity/red-plus.png" alt="">
+              </li>
+              <li class="width-30 fl text-center">
+                <div class="red-packets2 ft-20">
+                  <p class="ftw-b rate-example-title">加息券</p>
+                  <p class="margin-t-137 margin-b-30">宏金保项目</p>
+                  <p>任意金额</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- 立即投资按钮 -->
+        <div class="pointer invest-btn ">
+          <img src="/images/activity/send-money-invest2.png" alt="" ui-sref="root.guaranteepro-list-query-no">
+        </div>
+        <!-- 加息券活动细则 -->
+        <div class="invite-connent1">
+          <span class="rule-line line-l"></span>
+          <p class="ft-20 ft-red10 text-center ftw-b">加息券使用细则 <i class="fa fa-angle-double-down"></i></p>
+          <span class="rule-line line-r"></span>
+        </div>
+        <div class="rate-increase-rules">
+          <div class="row padd">
+            <div class="col-md-11"><p>使用规则：&nbsp;&nbsp;&nbsp;1、加息券有效期15天；</p></div>
+          </div>
+          <div class="row padd">
+            <div class="col-md-11 margin-l-105"><p>2、每次投资最多限使用一张加息券，当次投资加息2%；</p></div>
+          </div>
+          <div class="row padd">
+            <div class="col-md-11 margin-l-105"><p>3、现金奖励和加息券额外收益请在“<span class="ft-red ft-bold">我的账户—资金信息—资金流水</span>”中查看。</p></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="radian-bg-yellow"><div class="radian2"></div></div>
+    <div  class="radian-bg-red">
+      <div class="about-us-all radian-bg-red clearfix">
+        <div class="about-us-03" >
+          <img class="" src="/images/activity/about-us03.png" alt="">
+        </div>
+        <!-- 关于宏财 -->
+        <div class="invite-connent1 margin-t-40">
+          <span class="rule-line"></span>
+          <p class="ft-26 ft-white4 text-center">关于宏财 <i class="fa fa-angle-double-down"></i></p>
+          <span class="rule-line"></span>
+        </div>
+        <div class="send-money-aboutus clearfix">
+          <ul class="margin-b-80">
+            <li class="bg-white fl mar-r">
+              <img class="fl" src="../images/activity/introduction.png" alt="">
+              <div class="col-8">
+              <p>宏财介绍</p>
+              <span>宏财网是一家国有企业战略投资的互联网金融平</span>
+              <span>台,2016年A轮融资达1亿元。是国内极少数由上</span><br>
+              <span>市金融集团提供专业安全金融资产的平台之一。</span>
+              </div>
+            </li>
+            <li class=" bg-white fl">
+              <img  class="fl" src="../images/activity/safe.png" alt="">
+              <div class="col-8"><p>资金安全</p>
+              <span>宏财网联合知名支付平台“易宝支付”打造了一</span><br>
+              <span>套完整的资金支付存管账户体系，一人一户且</span><br>
+              <span>每笔资金的流动都可追查记录。</span>
+              </div>
+            </li>
+            <li class=" bg-white fl mar-r mar-t">
+              <img  class="fl" src="../images/activity/origin.png" alt="">
+              <div class="col-8">
+                <p>项目来源</p>
+              <span>项目由鑫融基金控集团推荐，是新三板“金控”</span><br>
+              <span>第一股和首家金牌照民间金融服务商，股本规模</span><br>
+              <span>全国第四。</span>
+              </div>
+            </li>
+            <li class=" bg-white fl mar-t">
+              <div class="fl"><img  src="../images/activity/ensure.png" alt=""></div>
+              <div class="col-8">
+                <p>项目保障</p>
+              <span>项目由政府参与出资、全国排名前三的民营担</span>
+              <span>保机构提供担保。如果项目方违约，担保公司</span>
+              <span>先行垫付。</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="text-center ft-18 ft-white">
+          <p>本活动最终解释权归宏财网所有 &nbsp;服务热线：400-990-7626</p>
+          <p class="ft-16">北京竞财投资服务有限公司 &nbsp;京ICP备15025477号-1</p>
+        </div>
+      </div>
+    </div>
+    <div class="radian-bg-red"><div class="activity-footer"></div></div>
+</div>

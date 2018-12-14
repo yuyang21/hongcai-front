@@ -1,0 +1,24 @@
+<div class="alert" ng-class="[type ? 'alert-' + type : null]" ng-controller="UnfinishedOrderCtrl">
+  <button type="button" class="close" ng-click="$hide()">&times;</button>
+  <div class="title">
+    <strong >温馨提示：</strong>
+  </div>
+
+  <div>
+    <div class="wid-51 margin-auto text-justify">
+      <p class="ft-orange ft-16 margin-t-15 margin-b-15">您当前有一笔尚未支付的订单：</p>
+      <p class="margin-b-5">项目名称：{{unFinishedOrder.projectName}}</p>
+      <p class="margin-b-5">年化利率：{{unFinishedOrder.projectAnnualEarnings}}%</p>
+      <p class="margin-b-5">项目期限：{{projectDays}}天</p>
+      <p class="margin-b-5">出借金额：{{unFinishedOrder.orderAmount}}元</p>
+      <p class="order-red ft-13 margin-t-15 margin-b-30">放弃该笔出借点击取消订单；完成该笔出借点击继续支付</p>
+    </div>
+  </div>
+
+  <div class="bottom col-xs-10 col-xs-offset-1">
+    <a class="btn btn-order-n btn-block pull-left" ng-click="cancelOrder(unFinishedOrder.number);$hide()">取消订单</a>
+    <a class="btn btn-order-y btn-block pull-left margin-l" href="javascript:;" ng-click="toPay(unFinishedOrder);$hide()">继续支付</a>
+  </div>
+
+</div>
+<div class="mask_layer"></div>

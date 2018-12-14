@@ -1,0 +1,200 @@
+<div id="investmentplan-list" class="container padding-t-30">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="row panel panel-default padding-b-30 margin-b-30">
+        <div class="col-xs-12 border-b margin-b-30">
+          <div class="row">
+            <div class="col-xs-3 text-center border-r padding-t-30 padding-b-30">累计募集
+              <br><strong class="ft-20">42,654<!-- 数据绑定 --></strong>万元</div>
+            <div class="col-xs-3 text-center border-r padding-t-30 padding-b-30">投资人数
+              <br><strong class="ft-20">5,158<!-- 数据绑定 --></strong>人次</div>
+            <div class="col-xs-3 text-center border-r padding-t-30 padding-b-30">自动投标
+              <br><strong class="ft-20">15,158<!-- 数据绑定 --></strong>次</div>
+            <div class="col-xs-3 text-center padding-t-30 padding-b-30">累计收益
+              <br><strong class="ft-20">105,235<!-- 数据绑定 --></strong>元</div>
+          </div>
+        </div>
+        <div class="col-xs-12 padding-b-30" ng-init="toggle.activeTab=0;">
+          <div class="row margin-b-30">
+            <div class="col-xs-6 col-xs-offset-3">
+              <ul class="nav nav-pills nav-justified text-center">
+                <!-- <li><strong class="ft-24">七日盈</strong></li>
+              <li><strong class="ft-24">月月盈</strong></li>
+              <li><strong class="ft-24">季度盈</strong></li> -->
+
+                <li ng-class="{active: toggle.activeTab===$index}" ng-repeat="tab in tabs"><a ng-click="toggle.switchTab($index)"><strong class="ft-24 ft-grey4">{{tab.title}}</strong></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row tab-content padding-l-30 padding-r-30 margin-b-30">
+            <div class="tab-pane border-t-grey" ng-class="{active: toggle.activeTab===$index}" ng-repeat="tab in tabs">
+              <section ng-if="tab.title==='七日盈'">
+                <table class="container-fluid" width="100%">
+                  <thead class="bg-offWhite text-center">
+                    <tr>
+                      <th width="20%">计划名称</th>
+                      <th width="20%">募集金额（元）</th>
+                      <th width="15%">参加人次</th>
+                      <th width="15%">综合回报率</th>
+                      <th width="15%">累计收益（元）</th>
+                      <th width="15%">状态</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td>七日盈 20150228期
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>5,000
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>185
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>6.53%
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>1,321.45
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>募集中
+                      <!-- 数据绑定 -->
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>七日盈 20150228期
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>5,000
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>185
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>6.53%
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>1,321.45
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>募集中
+                      <!-- 数据绑定 -->
+                    </td>
+                  </tr>
+                </table>
+              </section>
+              <section ng-if="tab.title==='月月盈'">
+                <table class="container-fluid" width="100%">
+                  <thead class="bg-offWhite text-center">
+                    <tr>
+                      <th width="20%">计划名称</th>
+                      <th width="20%">募集金额（元）</th>
+                      <th width="15%">参加人次</th>
+                      <th width="15%">综合回报率</th>
+                      <th width="15%">累计收益（元）</th>
+                      <th width="15%">状态</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td>月月盈 20150301期
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>5,000
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>185
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>6.53%
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>1,321.45
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>还款完成
+                      <!-- 数据绑定 -->
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>月月盈 20150301期
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>5,000
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>185
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>6.53%
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>1,321.45
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>还款完成
+                      <!-- 数据绑定 -->
+                    </td>
+                  </tr>
+                </table>
+              </section>
+              <section ng-if="tab.title==='季度盈'">
+                <table class="container-fluid" width="100%">
+                  <thead class="bg-offWhite text-center">
+                    <tr>
+                      <th width="20%">计划名称</th>
+                      <th width="20%">募集金额（元）</th>
+                      <th width="15%">参加人次</th>
+                      <th width="15%">综合回报率</th>
+                      <th width="15%">累计收益（元）</th>
+                      <th width="15%">状态</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td>季度盈 20150302期
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>5,000
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>185
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>6.53%
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>45
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>还款完成
+                      <!-- 数据绑定 -->
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>季度盈 20150302期
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>5,000
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>185
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>6.53%
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>45
+                      <!-- 数据绑定 -->
+                    </td>
+                    <td>还款完成
+                      <!-- 数据绑定 -->
+                    </td>
+                  </tr>
+                </table>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

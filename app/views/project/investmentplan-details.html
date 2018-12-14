@@ -1,0 +1,77 @@
+<!-- 宏金盈详情页 -->
+<div class="row">
+  <div class="padding-t-20 padding-b-20 container hjy-w1">
+    <div class="row">
+      <a ui-sref="root.main">首页</a>  &gt;&nbsp; <a ui-sref="root.investmentplan-Newlist">宏金盈</a> &gt;&nbsp; {{ fundsProduct.name }}&nbsp;{{ fundsProject.name }}
+    </div>
+  </div>
+</div>
+<div id="investmentplan-detail" class="container  hjy-w1">
+  <div class="row bg-white margin-b-30">
+    <!-- <div class="col-xs-12 margin-t-15 padding-l-30 padding-r-30 set-position">
+      <strong class="ft-24">{{ fundsProduct.name }}</strong>&nbsp;&nbsp;<span>{{ fundsProject.name }}</span>
+      <a class="ft-red pull-right" ng-click="showAgreement();" style="padding-top: 10px;">宏金盈协议范本</a>
+    </div> -->
+    <!--<div class="col-xs-12 padding-l-30 padding-r-30 set-position" style="background:#eee;padding-top:15px;padding-bottom:15px;">
+      <b class="ft-18">{{ fundsProduct.name }}&nbsp;{{ fundsProject.name }}</b>
+      <span>当日计息，<span class="ft-orange">100%</span>本息保障</span>
+    </div>-->
+    <!-- <div class="col-xs-12 bg-grey cut-off-rule padding-l-0 margin-t-15">
+      <div class="bg-red" style="width:25%;height:5px;"></div>
+    </div> -->
+    <div class="col-xs-12 padding-l-45">
+      <div class="row margin-l--60">
+        <!-- 项目描述模块 -->
+        <div class="col-xs-9 padding-t-20 border-r-5 hjy-w padding-r-0" ng-include src='"views/project/_investmentplan_description.html"' style=""></div>
+        <!-- 投资模块 -->
+        <div class="col-xs-3 margin-l-40" ng-include src='"views/project/_current_deposit_investment.html"'></div>
+      </div>
+    </div>
+    <!-- <div class="col-xs-12 margin-t-30 padding-l-45 padding-r-60">
+      <div class="row margin-t-15">
+        项目描述模块
+        <div class="col-xs-7" ng-include src='"views/project/_investmentplan_description.html"'></div>
+        投资模块
+        <div class="col-xs-4 pull-right" ng-include src='"views/project/_investmentplan_investment.html"'></div>
+      </div>
+    </div> -->
+   
+  </div>
+   <div class="row bg-white margin-b-30">
+      <!-- <img src="images/investmentplan/process-1.png" width="100%" style="width:1200px;margin-left:-15px;"> -->
+      <img src="images/project/hjy-project01.png" width="100%">
+    </div>
+    <!-- 项目详情模块 -->
+    <!-- <div class="col-xs-12 margin-t-15 margin-b-30 padding-l-30 padding-r-30" ng-include src='"views/project/_investmentplan_detail.html"'></div> -->
+    <div class="row bg-white margin-b-30" ng-include src='"views/project/_investmentplan_detail.html"'></div>
+    
+    <!-- 相关阅读 -->
+    <div class="col-xs-12 padding-0 bg-white margin-l--15 hjy-w1 margin-b-30 padding-b-20">
+      <div class="row">
+        <p class="ft-18 ft-grey1 line-h-30 margin-l-45 margin-t-15">相关阅读</p>
+        <hr width="93%" class="margin-auto" color="#e6e4e4">
+      </div>
+      <div class="row">
+        <div class="col-xs-5 margin-t-15 margin-l-15">
+          <div class="col-xs-3">
+            <img src="images/project/reading21.png" alt="">
+          </div>
+          <div class="col-xs-9 ft-14 ft-grey555 line-h-15 margin-t-7">
+            <p ng-repeat="item in mediaList | limitTo:4">
+              <a ui-sref="root.us.media-reports-detail({textId: item.id})" target="_blank" title="{{item.title}}">{{item.title}}</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-xs-6 margin-t-15 margin-l-60">
+          <div class="col-xs-2">
+            <img src="images/project/reading22.png" alt="">
+          </div>
+          <div class="col-xs-9 ft-14 ft-grey555 line-h-15 margin-t-7 margin-l-25">
+            <p ng-repeat="item in mediaList | limitTo:-4">
+              <a ui-sref="root.us.media-reports-detail({textId: item.id})" target="_blank" title="{{item.title}}">{{item.title}}</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

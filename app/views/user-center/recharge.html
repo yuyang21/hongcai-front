@@ -1,0 +1,119 @@
+<!--充值-->
+<div class="right-area recharge col-md-8 col-lg-9 border-0 bg-offWhite user-right-h">
+  <div class="">
+    <!--end 安全认证提示  user-right-h-->
+    <div class="part1 overflow-hi bg-white padding-t-30" ng-if="securityStatus.realNameAuthStatus === 1">
+      <!-- 绑定银行卡 -->
+      <form ng-if="bankCardStatus === 'VERIFIED'" class="record-w" name="rechargeForm">
+        <!-- 可用余额 -->
+        <div class="row">
+          <div class="text-recharge-tip margin-t-20">
+            <div class="col-md-2 text-right ft-grey666"><span>可用余额：</span></div>
+            <div class="col-md-2 padding-0"><span class="ft-orange ft-30">{{ balance || "0" | number:2}}</span>&nbsp;&nbsp;元</div>
+          </div>
+        </div>
+        <!-- 充值金额 -->
+        <div class="row">
+          <div class="overflow-hi">
+            <div class="col-md-2 text-right text-recharge-tip ft-14 ft-grey666 padding-r-30"><span>充值金额</span></div>
+            <input id="recharge-input" name="amount" type="number" class="fl" ng-model="rechargeAmount" ng-pattern="/^[0-9]*(\.[0-9]{1,2})?$/" ng-focus required placeholder="{{bankRemainHolder}}" id="amount"/>            
+            <div class="col-md-2 text-left text-recharge-tip ft-14 ft-grey666 padding-l-20">元</div>
+          </div>
+          <div class="col-md-8 col-md-offset-2 padding-0 text-left ft-12 ft-red4" ng-show="rechargeForm.amount.$dirty">
+            <p class="" ng-show="(rechargeForm.amount.$error.pattern || rechargeAmount < 3) && (payment ==1)">请输入大于等于3的数字(最多精确到小数点后两位)</p>
+            <p class="" ng-show="(rechargeForm.amount.$error.pattern || rechargeAmount == 0) && payment ==2 ">请输入大于0的数字(最多精确到小数点后两位)</p>
+            <p class="" ng-show="rechargeForm.amount.$error.required && !rechargeForm.amount.$focused">充值金额不能为空</p>
+            <p class=" " ng-show="rechargeAmount > bankRemain && payment !== 2">该卡本次最多充值{{bankRemain | number:2}}元</p>
+          </div>
+          <div class="col-md-8 col-md-offset-2 padding-0 text-left ft-13 ft-grey4">充值后账户余额<span class="ft-orange">&nbsp;{{ balance + rechargeAmount || "0" | number:2}}&nbsp;</span>元</div>
+        </div>
+        <!-- 支付方式 -->
+        <div class="row text-recharge-tip margin-t-20">
+          <div class="col-md-2 text-right ft-14 ft-grey666 padding-r-30"><span>支付方式</span></div>
+          <div class="col-10 padding-l-0 border-dash" ng-class="{'border-0': payment != 1}">
+            <div class="fl payment SWIFT" ng-class="{'pay-active':payment == 1}" ng-click="selectPay(1)"></div>
+            <div class="fl payment margin-l-20" ng-class="{'pay-active':payment ==2}" ng-click="selectPay(2)"><span class="unionPay"></span>网银支付</div>
+            <a ng-show="payment == 1" class=" col-md-2 padding-0 text-right fr padding-0 cursor-pt supportBank" href="javascript:;" focus-blur ng-click="showSupportBank = !showSupportBank;">支持银行及限额</a>
+            <table class="supportList border-grey1" ng-if="payment !=2 && showSupportBank">
+              <thead>
+                <tr class="ftw-b border-grey1">
+                  <td>支持银行</td>
+                  <td>单笔/单日/单月</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="list in bankCodeList">
+                  <td><img ng-src="{{list.src}}" >{{list.bankName}}</td>
+                  <td>
+                    <span ng-if="list.singleLimit < 0">不限</span>
+                    <span ng-if="list.singleLimit > 0">{{list.singleLimit%10000 !== 0 ? list.singleLimit : list.singleLimit/10000 + 'w'}}</span>/
+                    <span ng-if="list.dayLimit < 0">不限</span>
+                    <span ng-if="list.dayLimit > 0">{{list.dayLimit%10000 !== 0 ? list.dayLimit : list.dayLimit/10000 + 'w'}}</span>/
+                    <span ng-if="list.monthLimit < 0">不限</span>
+                    <span ng-if="list.monthLimit > 0">{{list.monthLimit%10000 !== 0 ? list.monthLimit : list.monthLimit/10000 + 'w'}}</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- 银行卡 -->
+        <div ng-if="payment ==1">
+          <div class="row text-recharge-tip margin-t-40">
+            <div class="col-md-2 text-right ft-14 ft-grey666 padding-r-40"><span>银行卡</span></div>
+            <div class="col-md-10 padding-l-0">
+              <div class="payment pay-active padding-0 margin-b-10">
+                <img class="openBank" ng-src="{{userCurrenBank.src}}"> {{ userCard.openBank}}({{userCard.cardNo.slice(-4)}})
+              </div>
+            </div>
+          </div>
+          <div class="row userCurrenBank">
+            <div class="fl text-left margin-r-10 col-md-2 padding-0">
+              <span class="margin-r-5">卡种：借记卡</span>|<span class="margin-l-5">快捷</span>
+            </div>
+            <div class="fl text-center">单笔 / 单日 / 单月限额：
+              <span ng-if="userCurrenBank.singleLimit < 0">不限</span><span ng-if="userCurrenBank.singleLimit > 0">{{userCurrenBank.singleLimit%10000 !== 0 ? userCurrenBank.singleLimit : userCurrenBank.singleLimit/10000 + 'w'}}</span> / <span ng-if="userCurrenBank.dayLimit < 0">不限</span><span ng-if="userCurrenBank.dayLimit > 0">{{userCurrenBank.dayLimit%10000 !== 0 ? userCurrenBank.dayLimit : userCurrenBank.dayLimit/10000 + 'w'}}</span> / <span ng-if="userCurrenBank.monthLimit < 0">不限</span><span ng-if="userCurrenBank.monthLimit > 0">{{userCurrenBank.monthLimit%10000 !== 0 ? userCurrenBank.monthLimit : userCurrenBank.monthLimit/10000 + 'w'}}</span>
+            </div>
+          </div>
+        </div>
+        <!-- 确认充值按钮 -->
+        <div class="col-md-4 col-md-offset-4 margin-t-35 margin-b-30">
+          <div class="form-group col-xs-12" ng-if="payment !== 2">
+            <input type="button" value="确认充值" id="recharge-virify-btn" class="border-half cursor-pointer ft-16" ng-click="recharge(rechargeAmount)" ng-disabled="rechargeForm.$invalid" ng-class="{'btn-recharge-grey':rechargeForm.$invalid || rechargeAmount > bankRemain || rechargeAmount< 3, 'btn-recharge-orange':!rechargeForm.$invalid && rechargeAmount <= bankRemain && rechargeAmount >= 3}" />
+          </div>
+          <div class="form-group col-xs-12" ng-if="payment == 2">
+            <input type="button" value="确认充值" id="recharge-virify-btn" class="border-half cursor-pointer ft-16" ng-click="recharge(rechargeAmount)" ng-disabled="rechargeForm.$invalid" ng-class="{'btn-recharge-grey':rechargeForm.$invalid || rechargeAmount == 0, 'btn-recharge-orange':!rechargeForm.$invalid && rechargeAmount != 0}" />
+          </div>
+        </div>
+      </form>
+      <!-- 未绑定银行卡 -->
+      <div ng-if="bankCardStatus !== 'VERIFIED'" class="col-md-12 padding-30 record-w">
+        <p class="verify-tip col-md-9 col-md-offset-2 margin-t-20">充值需要绑定银行卡，请您前往<a ng-click="toBindBank()">【银行资金存管系统】</a>完成绑卡操作</p>
+      </div>
+    </div>
+
+    <!-- 温馨提示 -->
+    <div class="row bg-white margin-t-30 ft-grey666 padding-30" ng-hide="securityStatus.realNameAuthStatus !== 1">
+      <div class="ft-13 padding-l-40">
+        <p class="ft-16"><span class="rechargeTips"></span>  温馨提示</p>
+        <div class="">
+          <p ng-if="pay_company === 'cgt'">1. 您的账户资金将由海口联合农商银行资金存管系统进行存管；</p>
+          <p ng-if="pay_company === 'yeepay'"> 1. 您的账户资金将由有银监会颁发牌照的银行存管机构托管；</p>
+          <p>2. 首先请注意您是否开通网上银行等功能，可能存在充值超过限额（充值限额，是银行、第三方支付平台、和用户您自己设定的</p><p class="margin-l-15">支付限额决定的，取三者最小值），以免造成充值不成功；</p>
+          <p>3. 禁止洗钱、信用卡套现、虚假交易等行为，一经发现并确认，将终止该账户的使用；</p>
+          <p>4. 如果充值金额没有及时到账，请联系客服，400-990-7626。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--start 安全认证提示  securityStatus.realNameAuthStatus !== 1 未认证"-->
+  <div class="main bg-white row padding-30"  ng-if="!securityStatus.realNameAuthStatus || securityStatus.realNameAuthStatus !== 1">
+    <div class="col-md-12 text-center">
+      <img src="/images/unbind.png" alt="" class="margin-t-20">
+      <p class="margin-t-20">您尚未开通银行存管账户！</p>
+      <p class="padding-b-30"><button class="btn btn-primary-orange ft-18 margin-t-10 bg-btn-red padding-l-45 padding-r-45" ng-click="toRealNameAuth()">开通银行存管账户</button></p>
+      <!-- <button class="col-md-4 col-md-offset-4 btn-recharge-red margin-t-20" ui-sref="root.userCenter.security-settings">开通银行存管账户</button> -->
+    </div>
+  </div>
+</div>

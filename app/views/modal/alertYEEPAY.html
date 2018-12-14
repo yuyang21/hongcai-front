@@ -1,0 +1,93 @@
+<div class="alert" ng-class="[type ? 'alert-' + type : null]">
+  <button type="button" class="close" ng-if="dismissable" ng-click="$hide()">&times;</button>
+  <div class="title text-center">
+    <strong ng-if="msg === '1' && pay_company === 'cgt'">开通海口联合农商银行资金存管系统账户</strong>
+    <strong ng-if="msg === '1' && pay_company === 'yeepay'">开通银行存管账户</strong>
+    <strong ng-if="msg === '2'">申请充值</strong>
+    <strong ng-if="msg === '3'">申请提现</strong>
+    <strong ng-if="msg === '4' || msg === '12'">支付</strong>
+    <strong ng-if="msg === '5'">绑定提现银行卡</strong>
+    <strong ng-if="msg === '6'">申请自动投标权限</strong>
+    <strong ng-if="msg === '8'">转账到平台</strong>
+    <strong ng-if="msg === '11'">解绑银行卡</strong>
+  </div>
+
+  <div class="content" ng-if="msg === '1'">
+    <p>您已申请开通银行存管账户</p>
+    <p ng-if="pay_company === 'cgt'">请在银行资金存管系统页面填写信息，完成银行存管账户的开通</p>
+    <p ng-if="pay_company === 'yeepay'">请在新窗口内填写信息，完成银行存管账户的开通</p>
+  </div>
+  <div class="content" ng-if="msg === '2'">
+    <p>您已申请进行充值操作，充值金额{{rechargeAmount}}元</p>
+    <p ng-if="pay_company === 'cgt'">请在银行资金存管系统页面完成充值操作</p>
+    <p ng-if="pay_company === 'yeepay'">请在新窗口内填写信息，完成充值操作</p>
+  </div>
+  <div class="content" ng-if="msg === '3'">
+    <p>您已申请进行提现操作，提现金额{{withdrawAmount}}元</p>
+    <p ng-if="pay_company === 'cgt'">请在银行资金存管系统页面输入交易密码和短信验证码，完成提现操作</p>
+    <p ng-if="pay_company === 'yeepay'">请在新窗口内输入支付密码，完成提现申请</p>
+  </div>
+  <div class="content" ng-if="msg === '4'">
+    <p>您已申请对项目进行投资，投资金额为{{investAmount}}元</p>
+    <p ng-if="pay_company === 'cgt'">请在银行资金存管系统页面输入交易密码和短信验证码，完成支付操作</p>
+    <p ng-if="pay_company === 'yeepay'">请在新窗口内输入支付密码及绑定手机验证码，完成支付操作</p>
+  </div>
+  <div class="content" ng-if="msg === '5'">
+    <p>您已申请绑定提现银行卡</p>
+    <p ng-if="pay_company === 'cgt'">请在银行资金存管系统页面完成绑卡操作</p>
+    <p ng-if="pay_company === 'yeepay'">请在银行存管机构所提供页面完成绑卡操作</p>
+  </div>
+  <div class="content" ng-if="msg === '6'">
+    <p ng-if="pay_company === 'cgt'">您已申请开通自动投标权限</p>
+    <p ng-if="pay_company === 'cgt'">请在银行资金存管系统页面完成授权</p>
+    <p ng-if="pay_company === 'yeepay'">您已申请开通预约权限</p>
+    <p ng-if="pay_company === 'yeepay'">请在银行存管机构所提供页面完成授权</p>
+  </div>
+  <div class="content" ng-if="msg === '7'">
+    <p>您已申请取消绑定的银行卡</p>
+    <p>请在银行存管机构所提供页面完成取消绑定</p>
+  </div>
+  <div class="content" ng-if="msg === '8'">
+    <p>您已申请转账资金到平台</p>
+    <p>请在银行存管机构所提供页面完成转账操作</p>
+  </div>
+  <div class="content" ng-if="msg === '9'">
+    <p>您已申请修改手机号</p>
+    <p>请在银行存管机构所提供页面完成修改操作</p>
+  </div>
+  <div class="content" ng-if="msg === '11' && account.tTotalAssets <= 2">
+    <p>解绑银行卡会影响您的提现</p>
+    <p>您确认要解绑此银行卡吗？</p>
+  </div>
+  <div class="content padding-b-0" ng-if="msg === '11' && account.tTotalAssets > 2">
+    <p class="text-justify padding-l-10 padding-r-10">尊敬的用户，检测到您的账户总资产大于2元，为了您的资金安全，请联系客服进行授权。客服热线：400-990-7626</p>
+  </div>
+  <div class="content" ng-if="msg === '12'">
+    <p>您已申请对项目进行认购，认购金额为{{investAmount}}元</p>
+    <p ng-if="pay_company === 'cgt'">请在银行资金存管系统页面输入交易密码和短信验证码，完成支付操作</p>
+    <p ng-if="pay_company === 'yeepay'">请在新窗口内输入支付密码及绑定手机验证码，完成支付操作</p>
+  </div>
+  <div class="bottom col-xs-10 col-xs-offset-1">
+    <a class="btn btn-primary-orange btn-block pull-left" href="javascript:;" ng-click="reload();$hide()" ng-if="msg === '1'">开通成功</a>
+    <a class="btn btn-primary-orange btn-block pull-left" href="javascript:;" ng-click="reload();$hide()" ng-if="msg === '2'">充值成功</a>
+    <a class="btn btn-primary-orange btn-block pull-left" href="javascript:;" ng-click="reload();$hide()" ng-if="msg === '3'">提现申请成功</a>
+    <a class="btn btn-primary-orange btn-block pull-left" href="javascript:;" ng-click="reload();$hide()" ng-if="msg === '4' || msg=== '12'">支付成功</a>
+    <a class="btn btn-primary-orange btn-block pull-left" href="javascript:;" ng-click="reload();$hide()" ng-if="msg === '5'">绑卡成功</a>
+    <a class="btn btn-primary-orange btn-block pull-left" href="javascript:;" ng-click="reload();$hide()" ng-if="msg === '6'">授权成功</a>
+    <a class="btn btn-primary-orange btn-block pull-left" href="javascript:;" ng-click="reload();$hide()" ng-if="msg === '7'">解绑申请成功</a>
+    <a class="btn btn-primary-orange btn-block pull-left" href="javascript:;" ng-click="reload();$hide()" ng-if="msg === '9'">成功修改手机号</a>
+    <a class="btn btn-primary-orange btn-block pull-left" href="javascript:;" ng-click="unbindBankCard();$hide()" ng-if="msg === '11' && account.tTotalAssets <= 2">确认解绑</a>
+
+    <a class="btn btn-primary-orange btn-block pull-left margin-l" ui-sref="root.help-center.safety-certification" ng-click="$hide()" ng-if="msg === '1' || msg === '6'">遇到问题</a>
+    <a class="btn btn-primary-orange btn-block pull-left margin-l" ui-sref="root.help-center.account-management" ng-click="$hide()" ng-if="msg === '2' || msg === '3'">遇到问题</a>
+    <a class="btn btn-primary-orange btn-block pull-left margin-l" ui-sref="root.help-center.account-management" ng-click="$hide()" ng-if="msg === '4' || msg === '12'">遇到问题</a>
+    <a class="btn btn-primary-orange btn-block pull-left margin-l" ng-click="reload();$hide()" ng-if="msg === '5' || msg === '7' || msg === '9'">遇到问题</a>
+    <a class="btn btn-primary-orange btn-block pull-left margin-l" ng-click="$hide()" ng-if="msg === '11' && account.tTotalAssets <= 2">取消</a>
+
+  </div>
+  <div class="bottom col-xs-10 col-xs-offset-4 margin-b-30" ng-if="msg === '11' && account.tTotalAssets > 2">
+      <a class="btn btn-primary-orange btn-block pull-left w-25" href="javascript:;" ng-click="$hide();">我知道了</a>
+  </div>
+
+</div>
+<div class="mask_layer"></div>

@@ -1,0 +1,21 @@
+<div id="guaranteepro-list" class="container padding-t-20">
+  <div class="col-md-12 margin-b-20 ft-14 margin-l--30">
+    <a ui-sref="root.main">首页</a>  &gt;&nbsp; <a ui-sref="root.guaranteepro-list-query({status: '7,8,9,10,11,12', minCycle: '0', maxCycle: '100', minEarning: '0', maxEarning: '100', minTotalAmount: '0', maxTotalAmount: 200000000, sortCondition: 'release_start_time', sortType: false, type: type })">{{typeName || '宏财精选'}}</a>
+  </div>
+  <div class="row">
+    <!-- 项目条件过滤 宏金保 + 债权转让 -->
+    <div class="panel panel-default border-none no-boxshadow">
+      <div class="list-group margin-r-20">
+        <!-- 项目列表查询 -->
+        <div class="row list-group-item projects-filter" ng-include src='"views/project/_list_search.html"' style="margin-left: 20px;"></div>
+        <!-- 项目列表过滤 -->
+        <div class="row list-group-item" ng-include src='"views/project/_list_filter.html"' style="margin-left: 20px;"></div>
+      </div>
+    </div>
+    <!-- 项目列表展示详情 宏金保 + 债权转让 -->
+    <div class="row margin-t-30" ng-include src='"views/project/_list_detail.html"'></div>
+
+    <!-- 分页 -->
+    <div project-pagination></div>
+  </div>
+</div>

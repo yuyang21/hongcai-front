@@ -1,0 +1,128 @@
+<div class="newInvite">
+  <div class="header">
+    <!-- //顶部图片 -->
+    <div class="col-md-12 text-center top-img">22</div>
+  </div>
+  <!-- 主体内容 -->
+  <div class="invite-main">
+    <!-- 中间部分宽1065px -->
+    <div class="middle margin-auto">
+      <!-- 活动时间 -->
+      <div class="activeTime">
+        <!-- 标题 -->
+        <div class="title margin-auto">
+          <p class="text-center margin-b-0 ft-24 ftw-b">活动时间：2016.10.08—2016.10.31</p>
+        </div>
+        <!-- 内容 -->
+        <div class="content">
+          <p class="text ft-18 margin-b-0 ft-grey1">活动期间内邀请好友注册投资，该好友在活动期间累计投资宏金保项目（期限≥30天）达2500元（含）以上且投资两次（不包含体验标）以上，邀请人即可获得邀请奖金80元，奖金总额上不封顶，同时被邀请人也可获得最高45元投资返现。</p>
+        </div>
+      </div>
+       <!-- 举个栗子 -->
+      <div class="jugelizi">
+        <!-- 标题 -->
+        <div class="title margin-auto">
+          <p class="text-center margin-b-0 ft-24 ftw-b">举个栗子</p>
+        </div>
+        <!-- 内容 -->
+        <div class="content">
+          <p class="text ft-18 margin-b-0 ft-grey1">李雷邀请好友韩梅梅注册投资，韩梅梅在活动期间内分两天投资宏金保项目2000元，500元，则李雷可获得邀请奖金80元，韩梅梅可分别获得35元、10元投资返现。</p>
+          <ul class="process margin-b-0">
+            <li>
+              <img src="/images/activity/newIvt01.png" alt="">
+              <p class="ft-16 ft-grey1 margin-b-0 margin-t-20">分享专属二维码/复制链接给好友</p>
+            </li>
+            <li class="arrow margin-l-20">
+              <img src="/images/activity/newIvt04.png" alt="">
+            </li>
+            <li class="margin-t--13">
+              <img src="/images/activity/newIvt02.png" alt="">
+              <p class="ft-16 ft-grey1 margin-b-0 margin-t-20">好友通过链接注册并购买</p>
+            </li>
+            <li class="arrow">
+              <img src="/images/activity/newIvt04.png" alt="">
+            </li>
+            <li class="margin-t--8">
+              <img src="/images/activity/newIvt03.png" alt="">
+              <p class="ft-16 ft-grey1 margin-b-0 margin-t-20">您将获得80元奖金</p>
+            </li>
+          </ul>
+          <div class="newIvt-btn margin-auto text-center ft-36 ftw-b ft-white cursor-pt" ng-click="toEarnMoney()">
+            立即赚奖金
+          </div>
+        </div>
+      </div>
+      <!-- 活动规则 -->
+      <div class="activeRule">
+        <!-- 标题 -->
+        <div class="title margin-auto">
+          <p class="text-center margin-b-0 ft-24 ftw-b">活动规则</p>
+        </div>
+        <!-- 内容 -->
+        <div class="content">
+          <div class="rule">
+            <p class="ft-18 margin-b-0 ft-grey1">1、邀请关系认定：好友注册时填写邀请人手机号或通过邀请人的专属链接（或二维码）注册。</p>
+            <p class="ft-18 margin-b-0 ft-grey1">2、邀请奖金自动发放至邀请人宏财账户，邀请人可在账户“<span class="ftw-b">资金流水</span>”中查看，该奖金可立即提现；</p>
+            <p class="ft-18 margin-b-0 ft-grey1">3、活动中如发现通过非正常手段恶意获取奖金，宏财网保留不派发奖金的权利；</p>
+            <p class="ft-18 margin-b-0 ft-grey1">4、本活动最终解释权归宏财网所有。客服热线：400-990-7626。</p>
+          </div>
+        </div>
+      </div>
+      <!-- 关于宏财 -->
+      <div class="aboutUs">
+        <!-- 标题 -->
+        <div class="title margin-auto">
+          <p class="text-center margin-b-0 ft-24 ftw-b">关于宏财</p>
+        </div>
+        <!-- 内容 -->
+        <div class="content1 clearfix">
+          <ul>
+            <li class="fl mar-r">
+              <img class="fl" src="../images/activity/introduction.png" alt="">
+              <div class="col-8">
+              <p>宏财介绍</p>
+                <span>宏财网是一家国有企业战略投资的互联网金融平</span>
+                <span>台，2016年A轮融资达1亿元。是国内极少数由上</span><br>
+                <span>市金融集团提供专业安全金融资产的平台之一。</span>
+              </div>
+            </li>
+            <li class="fl">
+              <img  class="fl" src="../images/activity/safe.png" alt="">
+              <div ng-if="pay_company === 'cgt'" class="col-8"><p>资金安全</p>
+                <span>宏财网联合海口联合农商银行打造了一套完善的风险</span><br>
+                <span>监控及资金存管系统，一人一户且每笔资金的流动</span><br>
+                <span>都可追查记录。</span>
+              </div>
+              <div ng-if="pay_company === 'yeepay'" class="col-8"><p>资金安全</p>
+                <span>宏财网联合知名支付平台“易宝支付”打造了一</span><br>
+                <span>套完整的资金支付存管账户体系，一人一户且</span><br>
+                <span>每笔资金的流动都可追查记录。</span>
+              </div>
+            </li>
+            <li class="fl mar-r mar-t">
+              <img  class="fl" src="../images/activity/origin.png" alt="">
+              <div class="col-8"><p>项目来源</p>
+                <span>项目由鑫融基金控集团推荐，是新三板“金控”</span><br>
+                <span>第一股和首家金牌照民间金融服务商，股本规模</span><br>
+                <span>全国第四。</span>
+              </div>
+            </li>
+            <li class="fl mar-t">
+              <div class="fl"><img  src="../images/activity/ensure.png" alt=""></div>
+              <div class="col-8"><p>项目保障</p>
+                <span>项目由政府参与出资、全国排名前三的民营担</span>
+                <span>保机构提供担保。如果项目方违约，担保公司</span>
+                <span>先行垫付。</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 底部bottom -->
+  <div class="bg-bottom text-center ft-16 ft-white">
+    <p>本活动最终解释权归宏财网所有 &nbsp;服务热线：400-990-7626</p>
+    <p class="ft-16">北京竞财投资服务有限公司 &nbsp;京ICP备15025477号-1</p>
+  </div>
+</div>

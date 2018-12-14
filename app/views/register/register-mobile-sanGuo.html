@@ -1,0 +1,222 @@
+<!--手机注册-->
+<div class="container bg bg-regist" ng-contrlller="RegisterMobileCtrl">
+  <div class="row regist-area">
+    <div class="regist-left-area col-md-7 col-lg-7">
+      <div class="row">
+        <a class="a-regist red-regist a-phone-regist col-md-12 col-lg-12">手机注册</a>
+        <!-- <a class="a-regist grey-regist a-mail-regist col-md-6 col-lg-6" ui-sref="root.registerMail">邮箱注册</a> -->
+      </div>
+      <!-- <div class="row triangle-container">
+        <div class="col-md-2 col-lg-2 col-md-offset-2 col-lg-offset-2">
+          <p class="triangle"></p>
+        </div>
+      </div> -->
+      <div class="row">
+        <form class="form-regist col-md-12 col-lg-12" name="registerForm" ng-submit="submitRegisterMobile(user);" >
+          <div class="form-group col-md-12 col-lg-12">
+            <label for="userName" class="col-md-3 col-lg-3">用户名：</label> 
+            <input type="text" 
+              class="col-md-6 col-lg-6" 
+              id="name" 
+              name="name" 
+              ng-model="user.name" 
+              ng-minlength="3" 
+              ng-maxlength="15" 
+              ng-pattern="/^[\u4e00-\u9fa5|a-z|A-Z][\u4e00-\u9fa5|a-z|A-Z|_|0-9|\-]{1,}$/" 
+              ensure-unique-name="name" 
+              required 
+              ng-focus 
+              autofocus/>
+            <div ng-if="registerForm.name.$dirty && registerForm.name.$invalid && !registerForm.name.$focused" class="col-lg-9 col-md-9 col-md-offset-3 col-lg-offset-3 form-div">
+              <div ng-if="registerForm.name.$error.unique" class="row">
+                <!-- <img ng-src="images/check_no.png" class="regist-check-img"> -->
+                <i class="fa fa-times-circle-o regist-check-img"></i>
+                <p class="input-tips regist-input-tips">用户名已被占用</p>
+              </div>
+              <div ng-if="registerForm.name.$error.minlength" class="row">
+                <!-- <img ng-src="images/check_no.png" class="regist-check-img"> -->
+                <i class="fa fa-times-circle-o regist-check-img"></i>
+                <p class="input-tips regist-input-tips">不能小于3个字符</p>
+              </div>
+              <div ng-if="registerForm.name.$error.maxlength" class="row">
+                <!-- <img ng-src="images/check_no.png" class="regist-check-img"> -->
+                <i class="fa fa-times-circle-o regist-check-img"></i>
+                <p class="input-tips regist-input-tips">不能大于15个字符</p>
+              </div>
+              <div ng-if="registerForm.name.$error.pattern" class="row">
+                <!-- <img ng-src="images/check_no.png" class="regist-check-img"> -->
+                <i class="fa fa-times-circle-o regist-check-img"></i>
+                <p class="input-tips regist-input-tips">4-15位字符，以字母、中文开头，支持中文、字母、数字以及下划线</p>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-md-12 col-lg-12">
+            <label for="password" class="col-md-3 col-lg-3">密码：</label>
+            <input type="password" 
+              class="col-md-6 col-lg-6" 
+              id="password" 
+              name="password" 
+              ng-model="user.password" 
+              ng-minlength="6" 
+              ng-maxlength="22" 
+              ng-pattern="/^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,22}$/"
+              required 
+              ng-focus />
+            <div ng-if="registerForm.password.$dirty && registerForm.password.$invalid && !registerForm.password.$focused" class="col-lg-9 col-md-9 col-md-offset-3 col-lg-offset-3 form-div">
+              <div ng-if="registerForm.password.$error.minlength" class="row">
+                <!-- <img ng-src="images/check_no.png" class="regist-check-img"> -->
+                <i class="fa fa-times-circle-o regist-check-img"></i>
+                <p class="input-tips regist-input-tips">不能小于6个字符</p>
+              </div>
+              <div ng-if="registerForm.password.$error.maxlength" class="row">
+                <!-- <img ng-src="images/check_no.png" class="regist-check-img"> -->
+                <i class="fa fa-times-circle-o regist-check-img"></i>
+                <p class="input-tips regist-input-tips">不能大于22个字符</p>
+              </div>
+              <div ng-if="registerForm.password.$error.pattern" class="row">
+                <!-- <img ng-src="images/check_no.png" class="regist-check-img"> -->
+                <i class="fa fa-times-circle-o regist-check-img"></i>
+                <p class="input-tips regist-input-tips">数字或字母的组合，可以包含特殊字符，长度6-22</p>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-md-12 col-lg-12">
+            <label for="repeatPassword" class="col-md-3 col-lg-3">确认密码：</label>
+            <input type="password" 
+              class="col-md-6 col-lg-6" 
+              name="repeatPassword" 
+              id="repeatPassword" 
+              ng-model="user.repeatPassword" 
+              password-match="password" 
+              required />
+            <div ng-if="registerForm.repeatPassword.$dirty && registerForm.$error && registerForm.repeatPassword.$error.passwordmatch && !registerForm.password.$focused && !registerForm.repeatPassword.$focused" class="col-lg-9 col-md-9 col-md-offset-3 col-lg-offset-3 form-div">
+              <div class="row">
+                <!-- <img ng-src="images/check_no.png" class="regist-check-img"> -->
+                <i class="fa fa-times-circle-o regist-check-img"></i>
+                <p class="input-tips regist-input-tips">密码不一致</p>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-md-12 col-lg-12">
+            <label for="mobile" class="col-md-3 col-lg-3">手机号：</label>
+            <input type="text" 
+              class="col-md-6 col-lg-6"
+              id="mobile" 
+              name="mobile" 
+              ng-model="user.mobile" 
+              ng-pattern="mobilePattern" 
+              ensure-unique-mobile="mobile" 
+              required 
+              ng-focus 
+              /> 
+            <div ng-if="registerForm.mobile.$dirty && registerForm.mobile.$invalid && !registerForm.mobile.$focused" class="col-lg-9 col-md-9 col-md-offset-3 col-lg-offset-3 form-div">
+              <div ng-if="registerForm.mobile.$error.unique" class="row">
+                <!-- <img ng-src="images/check_no.png" class="regist-check-img"> -->
+                <i class="fa fa-times-circle-o regist-check-img"></i>
+                <p class="input-tips regist-input-tips">手机号码已被占用</p>
+              </div>
+              <div ng-if="registerForm.mobile.$error.pattern" class="row">
+                <!-- <img ng-src="images/check_no.png" class="regist-check-img"> -->
+                <i class="fa fa-times-circle-o regist-check-img"></i>
+                <p class="input-tips regist-input-tips">手机号码格式不正确</p>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-md-12 col-lg-12">
+            <label for="mobileCaptcha" class="col-md-3 col-lg-3">验证码：</label>
+            <input type="text" 
+              class="col-md-3 col-lg-3"
+              id="mobileCaptcha"
+              name="mobileCaptcha"
+              ng-model="user.mobileCaptcha"
+              required 
+              ng-focus />
+            <input type="button" 
+              class="col-md-3 col-lg-3 {{registerForm.mobile.$invalid ? 'white-button grey' : 'white-button'}}" 
+              value="获取验证码" 
+              onclick="countDown(this,60);" 
+              ng-click="sendMobileCaptcha();" 
+              ng-disabled="registerForm.mobile.$invalid" 
+              style="margin-left:5px" />
+            <div ng-if="registerForm.mobileCaptcha.$dirty && registerForm.mobileCaptcha.$invalid && registerForm.mobileCaptcha.$error.check && !registerForm.mobileCaptcha.$focused" class="col-lg-9 col-md-9 col-md-offset-3 col-lg-offset-3  form-div">
+              <div class="row">
+                <!-- <img ng-src="images/check_no.png" class="regist-check-img"> -->
+                <i class="fa fa-times-circle-o regist-check-img"></i>
+                <p class="input-tips regist-input-tips">验证码错误!</p>
+              </div>
+            </div>
+            <div ng-if="registerForm.mobileCaptcha.$dirty && registerForm.mobile.$invalid && !registerForm.mobile.$focused && !registerForm.mobileCaptcha.$focused" class="col-lg-9 col-md-9 col-md-offset-3 col-lg-offset-3 form-div">
+              <div class="row">
+                <!-- <img ng-src="images/check_no.png" class="regist-check-img"> -->
+                <i class="fa fa-times-circle-o regist-check-img"></i>
+                <p class="input-tips regist-input-tips">手机号码有误!</p>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="form-group col-md-12 col-lg-12">
+            <label class="col-md-3 col-lg-3">邀请码：<br>（选填）</label>
+            <input type="text"
+              class="col-md-6 col-lg-6" 
+              ng-model="user.inviteCode" 
+              check-invite-code='inviteCode' 
+              name='inviteCode' 
+              id='inviteCode' />
+            <div class="col-lg-9 col-md-9 col-md-offset-3 col-lg-offset-3 form-div"
+              ng-if='registerForm.inviteCode.$error.isInviteCodeTrue'>
+              <div class="row">
+                <i class="fa fa-times-circle-o regist-check-img"></i>
+                <p class="input-tips regist-input-tips">邀请码无效</p>
+              </div>
+            </div>
+          </div> -->
+          <div class="form-group col-md-12 col-lg-12">
+            <label class="col-md-3 col-lg-3"></label>
+            <div class="col-md-9 col-lg-9">
+              <div class="row">
+                <input name="checkFlag" ng-model="user.checkFlag" type="checkbox" class="p-checkbox" ng-checked="true"/>
+                <p class="p-remember">同意<a ui-sref="root.registration-agreement" target="_blank">《注册协议》</a></p>
+              </div>
+            </div>
+            <label class="col-md-3 col-lg-3"></label>
+            <input type="submit" 
+              class="col-md-6 col-lg-6 red-button {{registerForm.$invalid ? 'grey' : ''}} {{user.checkFlag == false ? 'grey' : ''}}" 
+              ng-disabled="registerForm.$invalid || user.checkFlag == false" 
+              value="立即注册" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="regist-right-area col-md-5 col-lg-5">
+      <p class="p-regist-right col-md-12 col-lg-12">已有宏财账号？<a ui-sref="root.login">立即登录</a></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function countDown(obj, second){
+      // 如果秒数还是大于0，则表示倒计时还没结束
+      if(second >= 0){
+            // 获取默认按钮上的文字
+            if(typeof buttonDefaultValue === 'undefined' ){
+              buttonDefaultValue =  obj.defaultValue;
+          }
+          // 按钮置为不可点击状态
+          obj.disabled = true;            
+          // 按钮里的内容呈现倒计时状态
+          //obj.value = buttonDefaultValue + '(' + second + ')';
+          obj.value = second + "秒后重新发送";
+          obj.className = 'col-md-3 col-lg-3 white-button grey';
+          // 时间减一
+          second--;
+          // 一秒后重复执行
+          setTimeout(function(){countDown(obj,second);},1000);
+      // 否则，按钮重置为初始状态
+      }else{
+          // 按钮置未可点击状态
+          obj.disabled = false;   
+          // 按钮里的内容恢复初始状态
+          obj.className = 'col-md-3 col-lg-3 white-button';
+          obj.value = buttonDefaultValue;
+      }   
+  }
+</script>

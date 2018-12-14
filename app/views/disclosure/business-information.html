@@ -1,0 +1,46 @@
+<!-- 经营信息 -->
+<div class="right-area business-infor col-md-9 col-lg-9" ng-click="blurUl($event)">
+  <div class="row">
+    <div class="right-title-about2"><p>经营信息</p></div>
+  </div>
+  <div class="row ft-14 ft-grey555 text-center">
+    <div class="jy-header">
+      <p>累计交易总额(元)</p>
+      <p>{{cumulative.totalTransactionAmount | number}}元</p>
+      <p>累计交易{{cumulative.totalTransactionCount | number}}笔</p>
+    </div>
+    <div class="management-info">
+      <div class="dateTime">
+        <div class="years">
+          <div class="yearBox" ng-click="selectYear();">
+            <input class="ft-grey666" ng-model="selectedYearText" disabled/>
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
+          </div>
+          <ul class="yearList" ng-if="showYearList">
+            <li ng-click="changeYear(year);" ng-repeat="year in yearList">{{year}}年</li>
+          </ul>
+        </div>
+        <div class="months">
+          <div class="monthBox" ng-click="selectMonth();">
+            <input class="ft-grey666" ng-model="selectedMonthText" disabled/>
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
+          </div>
+          <ul class="monthList" ng-if="showMonthList">
+            <li ng-click="changeMonth(month);" ng-repeat="month in monthList" ng-class="{'disabled-month': selectedYear <= startYear && month < startMonth || selectedYear >= currentYear && month > currentMonth}">{{month}}月</li>
+          </ul>
+        </div>
+        <div class="search" ng-click="search(selectedYear, selectedMonth);">查询</div>
+      </div>
+      <table class="info">
+        <div>
+          <tr ng-repeat="info in managementInfo">
+            <td>{{info.name}}</td> 
+            <td ng-if="$index != managementInfo.length - 1">{{info.content | number}}{{info.type}}</td>
+            <td ng-if="$index == managementInfo.length - 1">{{info.content}}</td>
+          </tr>
+        </div>
+      </table>
+      <p class="ft-14 ft-grey666 margin-t-30 margin-b-50">数据统计：截至{{updateDate | date: 'yyyy-MM-dd'}}</p>
+    </div>
+  </div>
+</div>

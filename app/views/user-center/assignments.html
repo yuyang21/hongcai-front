@@ -1,0 +1,153 @@
+<div class="userCenter-assignments right-area fl padding-b-30 bg-offWhite margin-t-30" >
+  <!-- 数据统计 -->
+  <div class="data-statistics row">
+    <div class="col-md-4">
+      <p class="ft-36 ft-grey1 ft-Arial">{{assignmentsCount.transferedAmount || 0 | number: 2}}</p>
+      <p class="ft-grey666 margin-t-20">转让总额（ 元 ）</p>
+    </div>
+    <div class="col-md-4">
+      <p class="ft-36 ft-orange6 ft-Arial">{{assignmentsCount.transferedIncome || 0 | number: 2}}</p>
+      <p class="ft-grey666 margin-t-20">转让收入（ 元 ）</p>
+    </div>
+    <div class="col-md-4 border-0">
+      <p class="ft-36 ft-grey1 ft-Arial">{{assignmentsCount.canTransferAmount || 0 | number:2}}</p>
+      <p class="ft-grey666 margin-t-20">可转债权（ 元 ）</p>
+    </div>
+  </div>
+
+  <!-- tab切换 -->
+  <div class="tabs row margin-l-0 margin-r-0 margin-t-30">
+    <div class="toggle-tab col-md-4 ft-grey666 cursor-pointer {{searchStatus == 1 ? 'credit-toggle2' : ''}}" ng-click="loadAssignments(currentPage, pageSize, 1)">可转让（ {{assignmentsCount.transferableCount || 0}} ）</div>
+    <div class="toggle-tab col-md-4 ft-grey666 cursor-pointer {{searchStatus == 2 ? 'credit-toggle2' : ''}}" ng-click="getTranferingAssignmentsList(1,6,'1,2,5')">转让中（ {{assignmentsCount.transferingCount || 0}} ）</div>
+    <div class="toggle-tab col-md-4 ft-grey666 cursor-pointer {{searchStatus == 3 ? 'credit-toggle2' : ''}}" ng-click="getTranferingAssignmentsList(1,6,'3,4')">已转让（ {{assignmentsCount.transferedCount || 0}} ）</div>
+  </div>
+
+  <!-- 列表 -->
+  <div ng-show="searchStatus == 1">
+    <table class="table-solid">
+      <thead>
+        <tr>
+          <th class="th-first">项目名称</th>
+          <th>持有债权(元)</th>
+          <th>待收利息(元)</th>
+          <th>到期时间</th>
+          <th class="th-last">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-show="transferablesList.length <= 0">
+          <td colspan="5">
+            <div>
+              <p class="ft-18 ft-grey666 margin-t-20">暂无记录</p>
+            </div>
+          </td>
+        </tr>
+        <tr ng-repeat="item in transferablesList track by $index" ng-if="item.amount > 0" class="assignment-left">
+          <td class="padding-l-30"><a class="invment-blue5 cursor-pointer special-recommend" ng-click="getPreprPojectDetails(item.number)"><span class="assignmentsZhuan text-center" ng-if="item.type === 6">转</span>{{item.projectName | limitTo: 15 }}{{item.projectName.length > 15 ? '...':''}}
+          <span class="used-rate2" ng-show="item.couponProfit > 0"></span>
+          <!-- <img ng-show="item.couponProfit > 0" src="/images/rate-coupon.png" alt="使用加息券" class="used-rate"> -->
+          </a></td>
+          <td>{{item.amount | number:2 || 0}}</td>
+          <td>{{item.profit - item.returnProfit | number:2 || 0}}<span ng-show="item.couponProfit > 0" class="ft-red7">+{{item.couponProfit | number:2 || 0 }}</span></td>
+          <td>{{item.repaymentDate | date:'yyyy-MM-dd'}}</td>
+          <td ng-if="item.canTransfer" class="th-last cursor-pointer ft-blue5" ui-sref="root.userCenter.assignments-transfer-details({number: item.number})">转让</td>
+          <td ng-if="!item.canTransfer" class="th-last">
+            <p class="line-h-30">{{item.createTime +  30*24*3600*1000 | date:'yyyy-MM-dd'}}</p>
+            <p class="line-h-10">可转让</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ul class="pager padding-30 margin-t-0 ft-14 ft-white4" ng-if="transferablesList.length > 0">
+      <li class="display-inbl"><button class="btn btn-orange6 {{currentPage == 1 ? 'btn-disabled6' : ''}}" ng-disabled="currentPage == 1" ng-click="loadAssignments(currentPage-1, pageSize, searchStatus)">上一页</button></li>
+      <div class="display-inbl current-page">&nbsp;&nbsp;{{ currentPage }}&nbsp;&nbsp;</div><div class="dot">...</div>
+      <div class="display-inbl total-page">&nbsp;&nbsp;{{ numberOfPages }}&nbsp;&nbsp;</div>
+      <li class="display-inbl"><button class="btn btn-orange6 {{currentPage >= numberOfPages ? 'btn-disabled6' : ''}}" ng-disabled="currentPage >= numberOfPages " ng-click="loadAssignments(currentPage+1, pageSize, searchStatus)">下一页</button></li>
+    </ul>
+  </div>
+  <div ng-show="searchStatus == 2">
+    <table class="table-solid">
+      <thead>
+        <tr>
+          <th class="th-first">项目名称</th>
+          <th>发起时间</th>
+          <th>转让金额(元)</th>
+          <th>折让比例(%)</th>
+          <th>已转让金额(元)</th>
+          <th>已转让收入(元)</th>
+          <th class="th-last">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-show="assignmentsList.length <= 0">
+          <td colspan="7">
+            <div>
+              <p class="ft-18 ft-grey666 margin-t-20">暂无记录</p>
+            </div>
+          </td>
+        </tr>
+        <tr ng-repeat="item in assignmentsList" class="assignment-left">
+          <td class="padding-l-30 width-title"><a class="invment-blue5 cursor-pointer" ng-click="getPreprPojectDetails(item.projectId)">{{item.name | limitTo: 12 }}{{item.name.length > 12 ? '...':''}}</a></td>
+          <td>{{item.createTime | date:'yyyy-MM-dd'}}</td>
+          <td>{{item.amount || 0 | number: 2}}</td>
+          <td ng-if="item.type === 1">{{item.discountScale}}</td>
+          <td ng-if="item.type === 0">--</td>
+          <td>{{item.soldStock * 100 || 0 | number: 2}}</td>
+          <td>{{item.transferedIncome || 0 | number: 2}}</td>
+          <td class="th-last">
+            <a type="button" class="ft-blue5 margin-r-5 cursor-pointer" ng-click="cancelCreditAssignment(item)">撤销</a>
+            <a type="button" class="ft-blue5 cursor-pointer" ng-click= "getAssignmentDetail(item, 1, 7)">详情</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ul class="pager padding-30 margin-t-0 ft-14 ft-white4" ng-if="assignmentsList.length > 0">
+      <li class="display-inbl"><button class="btn btn-orange6 {{page2 == 1 ? 'btn-disabled6' : ''}}" ng-disabled="page2 == 1" ng-click="getTranferingAssignmentsList(page2-1, pageSize2, '1,2,5')">上一页</button></li>
+      <div class="display-inbl current-page">&nbsp;&nbsp;{{ page2 }}&nbsp;&nbsp;</div><div class="dot">...</div>
+      <div class="display-inbl total-page">&nbsp;&nbsp;{{ totalPage }}&nbsp;&nbsp;</div>
+      <li class="display-inbl"><button class="btn btn-orange6 {{page2 >= totalPage ? 'btn-disabled6' : ''}}" ng-disabled="page2 >= totalPage " ng-click="getTranferingAssignmentsList(page2+1, pageSize2, '1,2,5')">下一页</button></li>
+    </ul>
+  </div>
+  <div ng-show="searchStatus == 3">
+    <table class="table-solid">
+      <thead>
+        <tr>
+          <th class="th-first">项目名称</th>
+          <th>转让金额(元)</th>
+          <th>折让比例(%)</th>
+          <th>转让本金(元)</th>
+          <th>转让收入(元)</th>
+          <th class="th-last">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-show="assignmentsList.length <= 0">
+          <td colspan="6">
+            <div>
+              <p class="ft-18 ft-grey666 margin-t-20">暂无记录</p>
+            </div>
+          </td>
+        </tr>
+        <tr ng-repeat="item in assignmentsList" class="assignment-left">
+          <td class="padding-l-30"><a class="invment-blue5 cursor-pointer" ng-click="getPreprPojectDetails(item.projectId)">{{item.name | limitTo: 15 }}{{item.name.length > 15 ? '...':''}}</a></td>
+          <td>{{item.amount || 0 | number: 2}}</td>
+          <td ng-if="item.type === 1">{{item.discountScale}}</td>
+          <td ng-if="item.type === 0">--</td>
+          <td>{{item.soldStock * 100 || 0 | number: 2}}</td>
+          <td>{{item.transferedIncome || 0 | number: 2}}</td>
+          <td class="ft-blue5 cursor-pointer th-last" ng-click="getAssignmentDetail(item, 1, 7)">详情</td>
+        </tr>
+      </tbody>
+    </table> 
+
+    <ul class="pager padding-30 margin-t-0 ft-14 ft-white4" ng-if="assignmentsList.length > 0">
+      <li class="display-inbl"><button class="btn btn-orange6 {{page2 == 1 ? 'btn-disabled6' : ''}}" ng-disabled="page2 == 1" ng-click="getTranferingAssignmentsList(page2-1, pageSize2, '3,4')">上一页</button></li>
+      <div class="display-inbl current-page">&nbsp;&nbsp;{{page2}}&nbsp;&nbsp;</div><div class="dot">...</div>
+      <div class="display-inbl total-page">&nbsp;&nbsp;{{ totalPage }}&nbsp;&nbsp;</div>
+      <li class="display-inbl"><button class="btn btn-orange6 {{page2 >= totalPage ? 'btn-disabled6' : ''}}" ng-disabled="page2 >= totalPage " ng-click="getTranferingAssignmentsList(page2+1, pageSize2, '3,4')">下一页</button></li>
+    </ul> 
+  </div>
+</div>
+
+

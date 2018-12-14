@@ -1,0 +1,110 @@
+<!-- .row -->
+<div class="row">
+  <div class="col-xs-12">
+    <!-- <ul class="list-inline"> -->
+    <div class="row">
+      <div class="col-xs-1 pull-left text-nowrap col-100 margin-r-20">剩余期限：</div>
+      <div class="col-xs-1 text-nowrap col-100 padding-0 margin-r-20">
+        <a ui-sref="root.assignments({remainDays:'1_1000'})" class="project-noncheck" ng-class="{'project-check': remainDays == '1_1000', 'project-noncheck': !(remainDays == '1_1000') }">
+                        全部
+                      </a>
+      </div>
+      <div class="col-xs-2 pull-left text-nowrap col-100 padding-0 margin-l-10">
+        <a ui-sref="root.assignments({remainDays:'1_30'})" class="'project-noncheck'" ng-class="{'project-check': remainDays =='1_30', 'project-noncheck': !(remainDays =='1_30') }">
+                        30天以下
+                      </a>
+      </div>
+      <div class="col-xs-2 pull-left text-nowrap col-100 padding-0 margin-l-40">
+        <a ui-sref="root.assignments({remainDays:'31_90'})" class="project-noncheck" ng-class="{'project-check': remainDays =='31_90', 'project-noncheck': !(remainDays =='31_90')}">
+                        31 - 90天
+                      </a>
+      </div>
+      <div class="col-xs-2 pull-left text-nowrap col-100 padding-0 margin-l-40">
+        <a ui-sref="root.assignments({remainDays:'91_180'})" class="project-noncheck" ng-class="{'project-check': remainDays =='91_180', 'project-noncheck': !(remainDays =='91_180')}">
+                        91 - 180天
+                      </a>
+      </div>
+      <div class="col-xs-2 pull-left text-nowrap col-100 padding-0 margin-l-40">
+        <a ui-sref="root.assignments({remainDays:'181_1000'})" class="project-noncheck" ng-class="{'project-check': remainDays =='181_1000', 'project-noncheck': !(remainDays =='181_1000')}">
+                        181天以上
+                      </a>
+      </div>
+      <div class="col-xs-1">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="search-right padding-l-40">
+    <p class="ft-16 ft-777 margin-t-5">新手引导</p>
+    <a class="ft-13 ft-777 display-bl margin-b-10 cursor-pt" ui-sref="root.help-center.investment">如何进行债权转让？</a>
+    <a class="ft-13 ft-777 display-bl margin-b-10 cursor-pt" ui-sref="root.help-center.investment">债权转让的手续费如何收取？</a>
+    <a class="ft-13 ft-777 display-bl margin-b-10 cursor-pt" ui-sref="root.help-center.investment">使用过优惠券的项目，如何进行债权转让？</a>
+  </div>
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-1 pull-left text-nowrap col-100 margin-r-20">年化利率：</div>
+      <div class="col-xs-1 text-nowrap col-100 padding-0 margin-r-20">
+        <a ui-sref="root.assignments({annualEarnings: '0_1000'})" class="project-noncheck" ng-class="{'project-check': annualEarnings=='0_1000', 'project-noncheck': !(annualEarnings=='0_1000')}">
+                        全部
+                      </a>
+      </div>
+      <div class="col-xs-2 pull-left text-nowrap col-100 padding-0 margin-l-10">
+        <a ui-sref="root.assignments({annualEarnings: '0_8'})" class="project-noncheck" ng-class="{'project-check': annualEarnings=='0_8', 'project-noncheck': !(annualEarnings=='0_8')}">
+                        8%以下
+                      </a>
+      </div>
+      <div class="col-xs-2 pull-left text-nowrap col-100 padding-0 margin-l-40">
+        <a ui-sref="root.assignments({annualEarnings:'8_12'})" class="project-noncheck" ng-class="{'project-check': annualEarnings=='8_12', 'project-noncheck': !(annualEarnings=='8_12')}">
+                        8-12%
+                      </a>
+      </div>
+      <div class="col-xs-2 pull-left text-nowrap col-100 padding-0 margin-l-40">
+        <a ui-sref="root.assignments({annualEarnings:'12_15'})" class="project-noncheck" ng-class="{'project-check': annualEarnings=='12_15', 'project-noncheck': !(annualEarnings=='12_15')}">
+                        12-15%
+                      </a>
+      </div>
+      <div class="col-xs-2 pull-left text-nowrap col-100 padding-0 margin-l-40">
+        <a ui-sref="root.assignments({annualEarnings:'15_1000'})" class="project-noncheck" ng-class="{'project-check': annualEarnings=='15_1000', 'project-noncheck': !(annualEarnings=='15_1000')}">
+                        15%以上
+                      </a>
+      </div>
+      <div class="col-xs-1">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-1 pull-left text-nowrap col-100 margin-r-20">可出借金额：</div>
+      <div class="col-xs-1 text-nowrap col-100 padding-0 margin-r-20">
+        <a ui-sref="root.assignments({currentStocks: '0_1000000'})" class="project-noncheck" ng-class="{'project-check': currentStocks === '0_1000000', 'project-noncheck': !(currentStocks === '0_1000000')}">
+                        全部
+                      </a>
+      </div>
+      <div class="col-xs-2 pull-left text-nowrap col-100 padding-0 margin-l-10">
+        <a ui-sref="root.assignments({currentStocks: '0_10000'})" class="project-noncheck" ng-class="{'project-check': currentStocks === '0_10000', 'project-noncheck': !(currentStocks === '10000_100000')}">
+                        1万元以下
+                      </a>
+      </div>
+      <div class="col-xs-2 pull-left text-nowrap col-100 padding-0 margin-l-40">
+        <a ui-sref="root.assignments({currentStocks: '10000_100000'})" class="project-noncheck" ng-class="{'project-check': currentStocks === '10000_100000', 'project-noncheck': !(currentStocks === '10000_100000')}">
+                        1-10万元
+                      </a>
+      </div>
+      <div class="col-xs-2 pull-left text-nowrap col-100 padding-0 margin-l-40">
+        <a ui-sref="root.assignments({currentStocks: '100000_1000000'})" class="project-noncheck" ng-class="{'project-check': currentStocks === '100000_1000000', 'project-noncheck': !(currentStocks === '100000_1000000')}">
+                        10万元以上
+                      </a>
+      </div><!-- 
+      <div class="col-xs-2">
+        <a ui-sref="root.assignments({status: status, minCycle: minCycle, maxCycle: maxCycle, minEarning: minEarning, maxEarning: maxEarning, minTotalAmount: 10000000, maxTotalAmount: 200000000, sortCondition:sortCondition, sortType: sortType})" class="project-noncheck" ng-class="{'project-check': minTotalAmount==10000000 && maxTotalAmount==200000000, 'project-noncheck': !(minTotalAmount==10000000 && maxTotalAmount==200000000)}">
+                        1000万以上
+                      </a>
+      </div> -->
+    </div>
+  </div>
+</div>

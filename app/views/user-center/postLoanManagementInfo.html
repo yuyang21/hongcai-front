@@ -1,0 +1,22 @@
+<div class="postLoanManagementInfo right-area col-md-8 col-lg-9 bg-White">
+  <div class="currency-style">
+    <div class="title">
+      <span class="tip">贷后管理信息</span>
+    </div>
+    <div ng-if="msg == ''">
+      <table class="info">
+        <div>
+          <tr ng-repeat="info in postLoanMsg" ng-class="{'border-none': $index === postLoanMsg.length-1}">
+            <td>{{info.name}}</td> 
+            <td>{{info.content}}</td>
+          </tr>
+        </div>
+      </table>
+      <div class="creatTime">最近披露时间：{{disclosureTime | date: 'yyyy-MM-dd'}}</div>
+    </div>
+    <div ng-if="msg != ''" class="text-center padding-30">
+      <img src="../images/project/no-record.png" alt="" width="30%"> <br>
+      <p class="margin-t-30">{{msg}}</p>
+    </div>
+  </div>
+</div>

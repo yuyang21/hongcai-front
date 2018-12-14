@@ -1,0 +1,30 @@
+<div id="project-detail" class="container" style="padding:20px 0;">
+  <div class="row">
+    <div class="col-md-12 padding-b-20">
+      <a ui-sref="root.main">首页</a>  &gt;&nbsp; <a ui-sref="root.assignments({sortType:1,remainDays:'1_365',annualEarnings:'0_1000',currentStocks:'0_1000000',sortOrder:false})">债权转让</a> &gt;&nbsp; {{ creditProject.name || '项目名称'}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 padding-r-0">
+        <!-- 项目描述模块 -->
+        <div class="row col-xs-8" ng-include src='"views/assignment/_description.html"'>
+        </div>
+        <!-- 项目投资模块 -->
+        <div class="row col-xs-4" ng-include src='"views/assignment/_investment.html"'>
+            <!-- <div class="hidden-xs col-sm-12">&nbsp;</div> -->
+        </div>
+    </div>
+    <div class="col-xs-12 padding-r-0">
+      <!-- 项目详情模块 -->
+      <div class="row col-md-8" ng-include src='"views/assignment/_detail.html"'>
+      </div>
+      <!-- 项目附加信息模块 -->
+      <div class="row col-md-4 padding-l-0 fr" ng-include src='"views/assignment/_additional.html"'>
+      </div>
+
+      <!-- 相关阅读 -->
+      <div class="row col-md-4 pull-right padding-l-15 padding-l-0" ng-include src='"views/project/_reading.html"'>
+      </div>
+    </div>
+  </div>
+</div>

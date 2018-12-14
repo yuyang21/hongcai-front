@@ -1,0 +1,57 @@
+<!--银行卡管理-->
+<div class="right-area col-md-8 col-lg-9">
+  <div class="currency-style">
+    <div class="title">
+      <span class="tip tip2">银行卡管理</span>
+    </div>
+    <div class="main padding-b-73">
+<!--     	<div class="col-md-12 over-auto">
+    		<div class="col-md-offset-1 col-md-10 warning-tip margin-b-0">
+          <span class="bank_tip display-inbl col-xs-1"></span>
+    			<p class="col-xs-10 ft-14 margin-l-5 margin-b-0">为保障您的账户安全，暂不支持添加多张银行卡，如果银行卡遗失或损坏，请解绑银行卡，重新更换新的银行卡</p>
+    		</div>
+    	</div> -->
+    	<div class="col-md-12 over-auto margin-t-20" ng-show="!isAuth">
+    		<div class="col-md-offset-1 col-md-10 warning-tip text-center margin-t-20 margin-b-0">
+    			您未完成安全认证，请前往<a ui-sref="root.userCenter.security-settings">【安全设置】</a>更新状态
+    		</div>
+    	</div>
+    	<div class="col-md-12 over-auto margin-t-20 ft-16">
+    		<!-- 银行卡正在认证中 -->
+    		<div class="col-md-offset-1 col-md-10 bankcard-tip text-center" ng-show="isVerifying" ng-init="isAuth=false;haveCard=false;unbinding=false;">
+    			<i class="fa fa-credit-card fa-2x margin-r-20 tip-green"></i>您的银行卡正在<span class="tip-font-blue">绑定中……</span>
+    		</div>
+    		<!-- 添加银行卡 -->
+    		<div class="col-md-offset-1 col-md-10 bankcard-tip text-center" ng-show="isAuth && !haveCard && !isVerifying && !unbinding" ng-init="isAuth=false" >
+  				您尚未绑定任何银行卡，<span class="tip-font-blue cursor-hand" ng-click="bindBankCard()">去绑定</span>
+    		</div>
+    		<!-- 绑定银行卡信息 -->
+    		<div class="col-md-offset-1 col-md-10 bankcard-tip text-center unbankbind margin-t-30 margin-b-30" ng-show="isAuth && haveCard && !isVerifying && !unbinding">
+    			<div class="col-md-offset-2 col-md-2">
+  					<span class="register-bind display-inbl"></span>
+  				</div>
+  				<div class="col-md-8 text-left">
+  					<p>您的银行卡已绑定</p>
+  					<p class="tip-font-blue">{{bankName}}&nbsp;&nbsp;<a ng-click="confirmUnbindBankCard()" class="tip-font-blue ft-12 a-under">去解绑</a></p>
+  					<p class="tip-font-blue">{{ cardNo }}</p>
+  				</div>
+    		</div>
+    		<!-- 解绑中 ng-show="isAuth && unbinding"-->
+    		<div class="col-md-offset-1 col-md-10 bankcard-tip text-center" ng-show="isAuth && unbinding">
+  				<i class="fa fa-credit-card fa-2x margin-r-20 tip-grey"></i>您的银行卡正在<span class="tip-font-blue">解绑中……</span>
+    		</div>
+    	</div>
+    	<div class="col-md-12 over-auto margin-t-20">
+    		<div class="col-md-offset-1 col-md-10 warning-tip tip-black margin-t-0">
+	        <p class="ft-red3"><span class="warm-tip display-inbl"></span>温馨提示:</p>
+	        <p ng-if="pay_company === 'yeepay'" class="margin-t-20 padding-l-10">1. 银行存管系统，会对您申请绑定的银行卡进行认证，认证时间需1-2个工作日（邮政储蓄银行的认证时间需5-6个工作日）。</p>
+	        <p ng-if="pay_company === 'yeepay'" class="margin-t-20 padding-l-10"> 2. 为确保您的资金划转安全高效，宏财网建议您完善开户行信息。务必将银行卡开户行精确到支行（或营业室或储蓄所）。</p>
+          <p ng-if="pay_company === 'cgt'" class="margin-t-20 padding-l-10"> 为确保您的资金划转安全高效，宏财网建议您完善开户行信息。务必将银行卡开户行精确到支行（或营业室或储蓄所）。</p>
+	        <p class="margin-t-20 padding-l-10">例如：“工商银行北京分行宣武门支行”"招商银行北京分行方庄支行""陕西省西安市农业银行西安分行人民东路储蓄所“。
+	      支行""陕西省西安市农业银行西安分行人民东路储蓄所“。</p>
+    		</div>
+    	</div>
+  <!--end 添加银行卡 -->
+    </div>
+  </div>
+</div>

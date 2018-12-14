@@ -1,0 +1,66 @@
+<div id="calculater" class="popover">
+	<div  class="result">
+       	<div class="handle" ng-click="switchResult();" ng-class="{'select': isResultShow}"><p class="rotate">{{arrow}}</p></div>
+      	<div class="slide">
+			<label>计算结果：</label>
+      		<!-- <pre>
+      						<span>出借本金&nbsp;=&nbsp;<strong>{{params.displayValue}}</strong>元</span>
+      						<span>收获利息&nbsp;=&nbsp;<strong>{{params.interest}}</strong>元</span>
+      						<span>回款总额&nbsp;=&nbsp;<strong>{{params.payback}}</strong>元</span>
+      					</pre> -->
+			<div class="table-responsive">
+   			 	<table class="table table-bordered table-striped">
+		      		<tbody>
+				        <tr>
+				          <th class="" class="text-nowrap" width="40%">出借金额</th>
+				          <td width="60%">{{params.displayValue}}元</td>
+				        </tr>
+				        <tr>
+				          <th class="text-nowrap" width="40%">收获利息</th>
+				          <td width="60%">{{params.interest || 0 }}元</td>
+				        </tr>
+				        <tr>
+				          <th class="text-nowrap" width="40%">回款总额</th>
+				          <td width="60%">{{params.payback || 0 }}元</td>
+				        </tr>
+		      		</tbody>
+		    	</table>
+		  	</div>
+		</div>
+	</div>
+
+  	<div class="arrow"></div>
+  	<h3 class="popover-title" ng-show="title"></h3>
+  	<div class="popover-content">
+	  	<form name="popoverForm" class="ng-pristine ng-valid">
+	  		<div class="preview">
+	  			<span>出借金额：{{params.displayValue}}</span>
+	  			<span>年化利率：{{params.displayRate ||0}}</span>
+          <span>项目期限：{{params.selectedIcon || 0}}天</span>
+	  		</div>
+			  <div class="cal-input"><label>出借金额：</label>
+          <input type="number" min="0" ng-model="params.inputValue" placeholder="输入出借金额" ng-change="capitalValueChange();">
+        </div>
+			  <div class="cal-input">
+          <label>年化利率：</label>
+          <input type="number" min="0" ng-model="params.rate" placeholder="输入年化利率" ng-change="rateValueChange();">
+        </div>
+	    	<!-- <button type="button" class="btn btn-default" ng-model="params.selectedIcon" data-html="1" ng-options="icon.value as icon.label for icon in params.icons" placeholder="选择项目期限" ng-change="colorCtrl()" bs-select><span class="caret"></span>
+        </button> -->
+        <div class="cal-input">
+          <label>项目期限：</label>
+          <input type="number" ng-model="params.selectedIcon" placeholder="输入项目期限">
+          <!-- <select ng-model="params.selectedIcon" ng-options="m.allottedTime for m in params.icons">
+            <option value="">-- 选择项目期限 --</option>
+          </select> -->
+        </div>
+
+	  		<div class="form-actions">
+	  			<button type="button" class="btn btn-danger" ng-click="$hide()">关闭</button>
+	  			<button type="button" class="btn btn-primary" ng-click="calculate()">计算</button>
+	  		</div>
+	  	</form>
+  	</div>
+
+
+</div>

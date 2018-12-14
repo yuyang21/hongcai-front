@@ -1,0 +1,89 @@
+<!--交易记录-->
+<div class="right-area record fl padding-b-30 bg-offWhite" >
+  <!-- 数据统计 -->
+  <div class="data-statistics row">
+    <div class="col-md-4">
+      <p class="ft-36 ft-grey1 ft-Arial">{{rechargeTotal || 0 | number: 2}}</p>
+      <p class="ft-14 ft-grey666 margin-t-20">充值总额（ 元 ）</p>
+    </div>
+    <div class="col-md-4">
+      <p class="ft-36 ft-orange6 ft-Arial">{{withdrawTotal || 0 | number: 2}}</p>
+      <p class="ft-14 ft-grey666 margin-t-20">提现总额（ 元 ）</p>
+    </div>
+    <div class="col-md-4 border-0">
+      <p class="ft-36 ft-grey1 ft-Arial">{{capital.balance || 0 | number: 2}}</p>
+      <p class="ft-14 ft-grey666 margin-t-20">账户资产（ 元 ）</p>
+    </div>
+  </div>
+  
+  <!-- 筛选条件 -->
+  <div class="screening-conditions row">
+    <div class="date row margin-0">
+      <div class="col-xs-1 text-nowrap line-25 ft-grey59">起止日期 ：</div>
+      <div class="conditions-date {{ dateInterval=item.no === '0' ? 'margin-l-20' : ''}}" ng-repeat="item in dateIntervalList">
+        <span ng-click="selectdateInterval(item);getDeals(currentPage);" class="cursor-pointer {{ selected2 == item.type ? 'project-yescheck' : 'project-noncheck'}}">
+          {{item.type}}
+        </span>
+      </div>
+      <!-- 日期输入框 -->
+      <div class="col-md-1 input-date margin-r-10" onClick="laydate({elem: '#start', istime: false, format: 'YYYY-MM-DD'})">
+        <input name="startTime" id="start" class="startTime" ng-model="start" value="{{start | date: 'yyyy-MM-dd'}}"  ng-click="startEnd()"/>
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+      </div>
+        <div class="col-md-1 input-date" onClick="laydate({elem: '#end', istime: false, format: 'YYYY-MM-DD'})" >
+          <input name="endTime" id="end" class="endTime" ng-model="end" value="{{end | date: 'yyyy-MM-dd'}}"  ng-click="startEnd()"/>
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+      </div>  
+    </div>
+    <div class="row margin-t-25 margin-l-0 margin-r-0">
+      <div class="col-xs-1 text-nowrap line-25 ft-grey59">交易类型 ：</div>
+      <div class="conditions-date {{ dealType=item.no === '' ? 'margin-l-20' : ''}}" ng-repeat="item in dealTypeList">
+        <span ng-click="selectDealType(item);getDeals(currentPage);" class="cursor-pointer {{ selected1 == item.type ? 'project-yescheck' : 'project-noncheck'}}">
+          {{item.type}}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 列表 -->
+  <div>
+    <table class="table-solid record-table">
+      <thead>
+        <tr>
+          <th class="th-first">交易日期</th>
+          <th>交易类型</th>
+          <th>交易金额</th>
+          <th class="th-last">可用金额</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-show="count<=0">
+            <td colspan="6" class="border-0 line-h-0 padding-t-50 padding-b-30">
+              <div>
+                <p class="ft-18 ft-grey666">暂无记录</p>
+                <p><a class="btn btn-primary-orange ft-18 margin-t-10 bg-btn-red padding-l-45 padding-r-45" ui-sref="root.main" href="/">浏览项目</a></p>
+              </div>
+            </td>
+          </tr>
+          <tr ng-repeat="item in data | orderBy: '-id'" class="border-0">
+            <td class="padding-l-50 text-left">{{ item.createTime | date: 'yyyy-MM-dd'}} <span class="ft-grey4 margin-l-10">{{ item.createTime | date: 'HH :  mm'}}</span></td>
+            <td>{{ dealTypes[item.type] }}
+              <div class="icon-box position-re cursor-pointer">
+                <span class="tip-icon cursor-pointer" toggle-fade></span>
+                <i class="sidebar-tip-bottom ft-inherit" ng-class="{'tip-500': item.description.length > 30 && item.description.length <= 40, 'tip-350': item.description.length > 20 && item.description.length <= 30, 'tip-160': item.description.length <15 && item.description.length >6, 'tip-100': item.description.length <=6}">{{item.description}}</i>     
+              </div>
+            </td>
+            <td ng-class="{'ft-green0': item.payAmount > 0, 'record-red': item.payAmount <= 0 }">{{item.payAmount > 0 ? '-' : '+'}}{{item.payAmount > 0 ? item.payAmount : item.getAmount | number: 2}}元</td>
+            <td class="text-right padding-r-50">{{item.balance || 0 | number: 2}}元</td>
+          </tr>
+      </tbody>
+    </table>
+
+    <ul class="pager margin-t-0 padding-30 ft-14 ft-white4" ng-hide="dealList.length<=0">
+      <li class="display-inbl"><button class="btn btn-orange6 {{currentPage == 1 ? 'btn-disabled6' : ''}}" ng-disabled="currentPage == 1" ng-click="getDeals(currentPage - 1)">上一页</button></li>
+      <div class="display-inbl current-page">&nbsp;&nbsp;{{ currentPage }}&nbsp;&nbsp;</div><div class="dot">...</div>
+      <div class="display-inbl total-page">&nbsp;&nbsp;{{ totalPage }}&nbsp;&nbsp;</div>
+      <li class="display-inbl"><button class="btn btn-orange6 {{currentPage >= totalPage ? 'btn-disabled6' : ''}}" ng-disabled="currentPage >= totalPage" ng-click="getDeals(currentPage + 1)">下一页</button></li>
+    </ul>
+  </div>
+</div>

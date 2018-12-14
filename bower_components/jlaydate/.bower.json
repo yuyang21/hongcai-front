@@ -1,0 +1,31 @@
+{
+  "name": "jlaydate",
+  "main": "laydate.js",
+  "homepage": "https://github.com/janceChun/laydate",
+  "authors": [
+    "wangyuchun <wangyuchun@yy.com>"
+  ],
+  "description": "jlaydate datetime angular",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "keywords": [
+    "datetime"
+  ],
+  "version": "0.0.1",
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.1",
+    "commit": "a0d001d219c0c2893c4e86df850caa03787cd898"
+  },
+  "_source": "https://github.com/janceChun/laydate.git",
+  "_target": "0.0.1",
+  "_originalSource": "jlaydate"
+}

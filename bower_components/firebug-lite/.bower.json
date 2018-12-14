@@ -1,0 +1,14 @@
+{
+  "name": "firebug-lite",
+  "homepage": "https://github.com/firebug/firebug-lite",
+  "version": "1.5.1",
+  "_release": "1.5.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.5.1",
+    "commit": "5e11d7865a2c3bae26ecbe77750bb9c744885fe9"
+  },
+  "_source": "https://github.com/firebug/firebug-lite.git",
+  "_target": "~1.5.1",
+  "_originalSource": "firebug-lite"
+}
